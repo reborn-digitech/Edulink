@@ -286,7 +286,7 @@ export async function setSchoolTerms(session: ActiveContext, schoolId: string, b
     premium: chipOf(row.premiumPricePaise, row.premiumDiscountBps),
   };
   const expect = body.expect;
-  if (expect.termsSetAt !== asRead.termsSetAt || expect.premiumStudents !== asRead.premiumStudents || expect.premiumTeachers !== asRead.premiumTeachers || !sameChip(expect.subscription, asRead.subscription) || !sameChip(expect.premium, asRead.premium)) {
+  if (expect.termsSetAt !== asRead.termsSetAt || expect.premiumStudents !== asRead.premiumStudents || expect.premiumTeachers !== asRead.premiumTeachers || !sameChip(expect.subscription, asRead.subscription) || !sameChip(expect.premium, asRead.premium) || expect.note !== (row.termsNote ?? null)) {
     return refusal("root.termsChangedMeanwhile");
   }
   const college = isCollegeKind(row.kind);
@@ -342,6 +342,8 @@ export async function setSchoolTerms(session: ActiveContext, schoolId: string, b
           subscriptionDiscountBps: row.subscriptionDiscountBps,
           premiumPricePaise: row.premiumPricePaise,
           premiumDiscountBps: row.premiumDiscountBps,
+          // The note too (the review's B-3): its text is in no log, so a stale form must not write over a newer one.
+          termsNote: row.termsNote,
         },
         data,
       });

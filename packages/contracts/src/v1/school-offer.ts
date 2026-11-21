@@ -396,7 +396,11 @@ export type SubscriptionsQuery = z.infer<typeof subscriptionsQuerySchema>;
 
 const doorId = z.string().min(1).max(64);
 
-/** A school's terms as the form read them: compare-and-set, so a change made meanwhile is refused (terms.changedMeanwhile). */
+/**
+ * A school's terms as the form read them: compare-and-set, so a change made meanwhile is refused (terms.changedMeanwhile).
+ * The operator's note is among them (the coordinator's decision on the review's B-3, 21 November 2026): its text is in no
+ * log, so a note written over by a stale form could not be recovered.
+ */
 export const schoolTermsExpectSchema = z
   .object({
     termsSetAt: iso.nullable(),
@@ -404,6 +408,7 @@ export const schoolTermsExpectSchema = z
     premiumTeachers: z.boolean(),
     subscription: partTermsSchema,
     premium: partTermsSchema,
+    note: z.string().max(500).nullable(),
   })
   .strict();
 

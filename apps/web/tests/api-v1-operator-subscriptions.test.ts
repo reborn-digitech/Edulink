@@ -154,8 +154,8 @@ afterAll(async () => {
   await db.$disconnect();
 });
 
-const expectFrom = (t: { termsSetAt: string | null; premiumStudents: boolean; premiumTeachers: boolean; subscription: unknown; premium: unknown }) =>
-  ({ termsSetAt: t.termsSetAt, premiumStudents: t.premiumStudents, premiumTeachers: t.premiumTeachers, subscription: t.subscription, premium: t.premium }) as never;
+const expectFrom = (t: { termsSetAt: string | null; premiumStudents: boolean; premiumTeachers: boolean; subscription: unknown; premium: unknown; note: string | null }) =>
+  ({ termsSetAt: t.termsSetAt, premiumStudents: t.premiumStudents, premiumTeachers: t.premiumTeachers, subscription: t.subscription, premium: t.premium, note: t.note }) as never;
 
 describe("the doors are the operator's, and the office's card its own", () => {
   it("a teacher meets no door of the operator's; signed out, none", async () => {
@@ -354,6 +354,22 @@ describe("a school's terms", () => {
     if ("ok" in before) throw new Error(before.errorKey);
     expect(await setSchoolTerms(ctx, ids.college, { subscription: { mode: "OWN_PRICE", pricePaise: 15_000 }, expect: expectFrom(before) })).toEqual({ ok: false, errorKey: "root.termsOwnPriceAtCollege" });
     expect(await setSchoolTerms(ctx, ids.college, { premium: { teachers: true }, expect: expectFrom(before) })).toEqual({ ok: false, errorKey: "root.termsTeachersAtCollege" });
+  });
+});
+
+describe("the operator's note is compared too (the review's B-3)", () => {
+  it("a form still showing the note as it was is refused once another hand has saved a newer one, and the newer note stands", async () => {
+    const ctx = await as("OPERATOR");
+    const before = await readSchoolTerms(ctx, ids.follow);
+    if ("ok" in before) throw new Error(before.errorKey);
+    expect(await setSchoolTerms(ctx, ids.follow, { note: "ZZ agreed until March", expect: expectFrom(before) })).toMatchObject({ changed: true });
+    expect(await setSchoolTerms(ctx, ids.follow, { note: "ZZ call after Diwali", expect: expectFrom(before) })).toEqual({ ok: false, errorKey: "root.termsChangedMeanwhile" });
+    expect((await db.school.findUniqueOrThrow({ where: { id: ids.follow }, select: { termsNote: true } })).termsNote).toBe("ZZ agreed until March");
+    // The door asks for the note as read like the rest of the terms.
+    await as("OPERATOR");
+    const withoutNote = Object.fromEntries(Object.entries(expectFrom(before) as Record<string, unknown>).filter(([key]) => key !== "note"));
+    const res = await termsPut(send("PUT", `/operator/schools/${ids.follow}/terms`, { note: "ZZ no expectation of the note", expect: withoutNote }), params(ids.follow));
+    expect(res.status).toBe(422);
   });
 });
 

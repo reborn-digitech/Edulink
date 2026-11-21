@@ -43012,6 +43012,11 @@
                       },
                       "premium": {
                         "$ref": "#/properties/subscription"
+                      },
+                      "note": {
+                        "type": "string",
+                        "maxLength": 500,
+                        "nullable": true
                       }
                     },
                     "required": [
@@ -43019,7 +43024,8 @@
                       "premiumStudents",
                       "premiumTeachers",
                       "subscription",
-                      "premium"
+                      "premium",
+                      "note"
                     ],
                     "additionalProperties": false
                   },
