@@ -2,8 +2,9 @@
 # The question bank's chapter batch files, committed as a daily snapshot and pushed to both remotes.
 #
 # Takes the top-level batch files of apps/web/content/quiz/generated, new, changed or removed, and nothing else: every
-# git command below takes one glob pathspec, ":(glob)apps/web/content/quiz/generated/*.json", whose "*" never crosses a
-# "/", so every subfolder is out by construction. Leaves out runs/ (the generator's run logs, also ignored in
+# git command below that stages, compares, counts, commits or unstages the batch files takes one glob pathspec,
+# ":(glob)apps/web/content/quiz/generated/*.json", whose "*" never crosses a "/", so every subfolder is out by
+# construction. Leaves out runs/ (the generator's run logs, also ignored in
 # apps/web/.gitignore), held/ (chapters set aside), any other subfolder, any file that is not .json, and whatever is
 # staged outside the batch files, which stays staged and out of the commit (TA-441).
 #
@@ -19,11 +20,18 @@
 #   - master moves, or the checkout leaves master, during the run (a landing's merge, say), before the commit; or the
 #     commit lands on a master that moved, when it is taken back to its own parent, so a commit made on a master that
 #     moved is not left there (unless the take-back itself fails, which is said);
+#   - the checkout leaves master as the commit is made: unlike the others, this one leaves the snapshot commit, on the
+#     other branch, and says which branch and that the commit was not checked and must not be pushed; nothing is pushed;
 #   - the commit fails.
 # Each push is checked and sends the snapshot commit by its id, after checking local master is still that commit; a
 # push that fails is reported, exit 1, naming the commit, the remote and the remotes already pushed; never retried.
-# A stop by INT, TERM or HUP exits 130, 143 or 129 with a last line saying how far the run had gone, before the commit,
-# after it was attempted, or after it was checked, with the remotes pushed by then.
+# From the staging on, a stop by INT, TERM or HUP exits 130, 143 or 129 with a last line saying how far the run had gone,
+# before the commit, after it was attempted, or after it was checked, with the remotes pushed by then; before it the
+# shell's own default applies and nothing has been done. A signal sent to the script alone stops a hung push only once
+# git returns, since zsh runs a trapped signal's handler only after a plain command it waits on has returned; a remote
+# read that hangs comes before the staging, when no trap is set, so a TERM ends the script at once and leaves git
+# running. A signal to the run's whole process group reaches git too, but that group may hold more than the run (the
+# program that started it), so look at what it holds before signalling it.
 # Exits 0 with "nothing to snapshot" when no batch file changed, and after a full success.
 #
 # By whose word: the daily snapshot is the owner's ask of 31 October 2026; leaving out runs/ is the owner's "Keep them
@@ -34,11 +42,16 @@ cd "$(dirname "$0")/../../.."
 export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 # An unattended run never waits at a prompt, for a read or for a push.
 export GIT_TERMINAL_PROMPT=0
-# Characters in en_US.UTF-8 where it is installed and LC_ALL does not decide (this machine's shell runs LC_CTYPE=C,
-# under which a subject's Devanagari or ₹ would be shown as byte escapes and cut by bytes). Where it is not installed,
-# the locale is left as it is, and under C a subject's characters of several bytes are shown as escapes.
+# Subjects are shown in characters under en_US.UTF-8 where `locale -a` lists it, in either spelling and any case (glibc
+# lists en_US.utf8), and LC_ALL does not decide. Where the shell runs under a C locale and neither spelling is listed,
+# the locale is left as it is, and a subject's Devanagari or ₹ is shown partly as raw bytes and partly as byte escapes,
+# and may be split.
 LOCALES=$(locale -a 2>/dev/null || true)
-if [[ -z "${LC_ALL:-}" && $'\n'"${LOCALES}"$'\n' == *$'\n'en_US.UTF-8$'\n'* ]]; then export LC_CTYPE=en_US.UTF-8; fi
+if [[ -z "${LC_ALL:-}" ]]; then
+  for NAME in "${(@f)LOCALES}"; do
+    if [[ "${NAME:l}" == en_us.utf-8 || "${NAME:l}" == en_us.utf8 ]]; then export LC_CTYPE="$NAME"; break; fi
+  done
+fi
 FOLDER=apps/web/content/quiz/generated
 SPEC=":(glob)${FOLDER}/*.json"
 REMOTES=(reborn origin)
@@ -197,6 +210,11 @@ git commit -q --only -m "The question bank's chapter batch files as they stood o
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>" -- "$SPEC" || fail "the commit failed; nothing committed or pushed"
 MADE=$(git rev-parse HEAD) || fail "the commit was made but HEAD could not be read (git rev-parse HEAD failed); local master may hold an unverified snapshot commit; nothing pushed"
 PARENT=$(git rev-parse "${MADE}^") || fail "the snapshot commit ${MADE}'s parent could not be read; it is on local master, unverified; nothing pushed"
+HEADREF=$(git symbolic-ref -q HEAD || true)
+if [[ "$HEADREF" != refs/heads/master ]]; then
+  if [[ -n "$HEADREF" ]]; then WHERE="the branch ${HEADREF#refs/heads/}"; else WHERE="a detached HEAD"; fi
+  fail "the checkout left master as the commit was made: the snapshot commit ${MADE} is on ${WHERE}, not on master; it was not checked and must not be pushed; nothing pushed"
+fi
 # commit --only reads every tracked batch file from the working tree as it commits, and commits on whatever master is
 # then: unless the commit stands on master as step 2 found it and holds the tree quiz:verify checked, it is taken back to
 # its own parent before any push (never to the old id, which would drop a commit landed meanwhile).
@@ -204,7 +222,7 @@ if [[ "$PARENT" != "$OLD" ]] || ! git diff --quiet "$TREE" "$MADE" -- "$SPEC"; t
   if ! git update-ref -m "bank snapshot: unverified commit taken back" refs/heads/master "$PARENT" "$MADE"; then
     NOW=$(git rev-parse -q --verify refs/heads/master) || NOW="unreadable"
     if [[ "$NOW" == "$MADE" ]]; then
-      fail "the snapshot commit ${MADE} could not be taken back (git update-ref failed) and is still on local master; it was not checked and must not be pushed; take it back with: git update-ref refs/heads/master ${PARENT} ${MADE}; nothing pushed"
+      fail "the snapshot commit ${MADE} could not be taken back (git update-ref failed) and is still on local master; it was not checked and must not be pushed; take it back with: git update-ref refs/heads/master ${PARENT} ${MADE}, then: git reset -q -- '${SPEC}'; nothing pushed"
     fi
     fail "the snapshot commit ${MADE} could not be taken back (git update-ref failed); local master is now ${NOW}; nothing pushed"
   fi
@@ -215,8 +233,8 @@ if [[ "$PARENT" != "$OLD" ]] || ! git diff --quiet "$TREE" "$MADE" -- "$SPEC"; t
   fail "the batch files changed between quiz:verify and the commit; the commit was taken back; nothing committed or pushed"
 fi
 COMMITTED=1
-HASH=$(git rev-parse --short "$MADE") || fail "the snapshot commit ${MADE} is on local master and not pushed (git rev-parse --short failed); read it before pushing: git push reborn refs/heads/master:refs/heads/master; ${PUSH_LINE}"
-BATCHES=$(git ls-files -- "$SPEC" | wc -l | tr -d ' ') || fail "the snapshot commit ${MADE} is on local master and not pushed (git ls-files failed); read it before pushing: git push reborn refs/heads/master:refs/heads/master; ${PUSH_LINE}"
+HASH=$(git rev-parse --short "$MADE") || fail "the snapshot commit ${MADE} is on local master and not pushed (git rev-parse --short failed); read it before pushing the commit by its id: git push reborn ${MADE}:refs/heads/master; ${PUSH_LINE}"
+BATCHES=$(git ls-files -- "$SPEC" | wc -l | tr -d ' ') || fail "the snapshot commit ${MADE} is on local master and not pushed (git ls-files failed); read it before pushing the commit by its id: git push reborn ${MADE}:refs/heads/master; ${PUSH_LINE}"
 
 # 9. Each push its own checked step, the snapshot commit by its id while local master is still that commit; never retried.
 for REMOTE in $REMOTES; do
@@ -227,7 +245,7 @@ for REMOTE in $REMOTES; do
   PUSHING=$REMOTE
   if ! git push -q "$REMOTE" "${MADE}:refs/heads/master"; then
     PUSHING=""
-    fail "snapshot ${HASH} is committed on local master, but the push to ${REMOTE} failed (already pushed to: ${PUSHED[*]:-none}); not retried; read it before pushing: git push ${REMOTE} refs/heads/master:refs/heads/master; ${PUSH_LINE}"
+    fail "snapshot ${HASH} is committed on local master, but the push to ${REMOTE} failed (already pushed to: ${PUSHED[*]:-none}); not retried; read it before pushing the commit by its id: git push ${REMOTE} ${MADE}:refs/heads/master; ${PUSH_LINE}"
   fi
   PUSHED+=("$REMOTE")
   PUSHING=""

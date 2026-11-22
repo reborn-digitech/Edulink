@@ -180,7 +180,8 @@ const RUNS_IGNORE = "/content/quiz/generated/runs/";
  * verifier's error lines start with two spaces and ✗), print 25 such lines, fail with no such line, write to the folder
  * while it runs, merge a landing into master while it runs, wait for ZZ_RELEASE for at most 30 s (marking ZZ_MARKER as it
  * starts and ZZ_MARKER.done as it ends; land-wait merges the landing first), switch the checkout to another branch, or
- * take the index lock and fail, keeping it (lock) or letting it go half a second later (lock-brief).
+ * take the index lock and fail, keeping it (lock) or letting it go once ZZ_MARKER appears (lock-brief), or write the
+ * LC_CTYPE it was run with to ZZ_SEEN (locale).
  */
 const VERIFY_STUB = [
   "#!/bin/sh",
@@ -192,9 +193,10 @@ const VERIFY_STUB = [
   "  edit) printf '{\"edited\":true}\\n' > content/quiz/generated/a.json ;;",
   "  land) git merge -q --ff-only zz-landing ;;",
   '  wait) touch "$ZZ_MARKER"; i=0; while [ ! -e "$ZZ_RELEASE" ] && [ $i -lt 300 ]; do sleep 0.1; i=$((i + 1)); done; touch "$ZZ_MARKER.done" ;;',
-  '  land-wait) git merge -q --ff-only zz-landing; touch "$ZZ_MARKER"; i=0; while [ ! -e "$ZZ_RELEASE" ] && [ $i -lt 300 ]; do sleep 0.1; i=$((i + 1)); done ;;',
+  '  land-wait) git merge -q --ff-only zz-landing; touch "$ZZ_MARKER"; i=0; while [ ! -e "$ZZ_RELEASE" ] && [ $i -lt 300 ]; do sleep 0.1; i=$((i + 1)); done; touch "$ZZ_MARKER.done" ;;',
   "  switch) git checkout -q -b zz-other ;;",
-  '  lock-brief) L="$(git rev-parse --absolute-git-dir)/index.lock"; touch "$L"; (sleep 0.5; rm -f "$L") >/dev/null 2>&1 </dev/null & exit 1 ;;',
+  '  lock-brief) L="$(git rev-parse --absolute-git-dir)/index.lock"; touch "$L"; (i=0; while [ ! -e "$ZZ_MARKER" ] && [ $i -lt 300 ]; do sleep 0.1; i=$((i + 1)); done; rm -f "$L") >/dev/null 2>&1 </dev/null & exit 1 ;;',
+  '  locale) printf "%s\\n" "${LC_CTYPE:-}" > "$ZZ_SEEN" ;;',
   '  lock) touch "$(git rev-parse --absolute-git-dir)/index.lock"; exit 1 ;;',
   "esac",
   'echo "Structure and arithmetic: all checks passed."',
@@ -207,7 +209,7 @@ const PUSH_LINE = "until it is pushed the next runs refuse, and any landing buil
 /** Holds a stub or shim until the case writes ZZ_RELEASE, for at most 30 s. */
 const HOLD = 'i=0; while [ ! -e "$ZZ_RELEASE" ] && [ $i -lt 300 ]; do sleep 0.1; i=$((i + 1)); done';
 /** Whether this machine has the UTF-8 locale the script sets for printing subjects. */
-const hasEnUtf8 = (spawnSync("locale", ["-a"], { encoding: "utf8" }).stdout ?? "").split("\n").includes("en_US.UTF-8");
+const hasEnUtf8 = (spawnSync("locale", ["-a"], { encoding: "utf8" }).stdout ?? "").split("\n").some((name) => /^en_US\.utf-?8$/i.test(name));
 /** The one pathspec the script's git commands take, as its lines print it. */
 const SPEC = `:(glob)${BANK}/*.json`;
 
@@ -348,7 +350,11 @@ async function signalled(r: SnapshotRepo, extra: Record<string, string>, signal:
   const closed = new Promise<void>((done) => child.on("close", () => done()));
   try {
     const marked = await Promise.race([until(() => existsSync(marker)).then(() => true, () => false), exited.then(() => false)]);
-    if (!marked) throw new Error(`the run ended or stalled before the step it was to be stopped in; its stderr:\n${stderr}`);
+    if (!marked) {
+      // Its last line is the script's own: read it, for two seconds at most, before failing with it.
+      await Promise.race([closed, new Promise((done) => setTimeout(done, 2_000))]);
+      throw new Error(`the run ended or stalled before the step it was to be stopped in; its stderr:\n${stderr}`);
+    }
     // The signal first, then the release: zsh runs the trap once a foreground command it waits on (a held shim) exits,
     // and in a command substitution at once.
     child.kill(signal);
@@ -591,7 +597,7 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
       expect(run.last).toMatch(/^bank snapshot: /);
       expect(run.last).toContain(short);
       expect(run.last).toMatch(/the push to reborn failed \(already pushed to: none\); not retried/);
-      expect(run.last.endsWith(`read it before pushing: git push reborn refs/heads/master:refs/heads/master; ${PUSH_LINE}`)).toBe(true);
+      expect(run.last.endsWith(`read it before pushing the commit by its id: git push reborn ${r.head()}:refs/heads/master; ${PUSH_LINE}`)).toBe(true);
       expect([r.remote("reborn"), r.remote("origin")]).toEqual([start, start]);
       expect(run.stdout).not.toMatch(/pushed/);
       run = r.run();
@@ -613,7 +619,7 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
       let run = r.run();
       expect(run.status, run.stderr).toBe(1);
       expect(run.last).toMatch(/the push to origin failed \(already pushed to: reborn\); not retried/);
-      expect(run.last.endsWith(`read it before pushing: git push origin refs/heads/master:refs/heads/master; ${PUSH_LINE}`)).toBe(true);
+      expect(run.last.endsWith(`read it before pushing the commit by its id: git push origin ${r.head()}:refs/heads/master; ${PUSH_LINE}`)).toBe(true);
       expect([r.remote("reborn"), r.remote("origin")]).toEqual([r.head(), start]);
       expect(run.stdout).not.toMatch(/pushed/);
       run = r.run();
@@ -854,6 +860,8 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
       expect(r.head()).toBe(landed);
       expect(r.staged()).toBe("");
     } finally {
+      // The stub, released, marks its end: the folder goes only after it, or after five seconds at most.
+      await until(() => existsSync(join(r.dir, "running.done")), 5_000).catch(() => undefined);
       r.done();
     }
   }, 60_000);
@@ -896,7 +904,7 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
     const r = snapshotRepo();
     try {
       r.put(`${BANK}/b.json`);
-      const stop = await signalled(r, { ...gitShim(r, 'if [ "$1" = reset ]; then touch "$ZZ_MARKER"; fi'), ZZ_VERIFY: "lock" }, "SIGTERM");
+      const stop = await signalled(r, { ...gitShim(r, `if [ "$1" = reset ] && [ ! -e "$ZZ_MARKER" ]; then touch "$ZZ_MARKER"; ${HOLD}; fi`), ZZ_VERIFY: "lock" }, "SIGTERM");
       expect(stop.code, stop.stderr).toBe(1);
       expect(stop.last).toBe(`bank snapshot: could not unstage the chapter batch files (git reset failed); they are still staged, and the next runs refuse until they are unstaged with: git reset -q -- '${SPEC}'`);
     } finally {
@@ -909,7 +917,11 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
     try {
       r.put(`${BANK}/b.json`);
       const before = { refs: r.refs(), remote: r.head() };
-      refused(r, r.run({ ZZ_VERIFY: "lock-brief" }), /^bank snapshot: npm run quiz:verify failed on the chapter batch files as they stand; nothing committed or pushed$/, before);
+      // The first reset runs while the lock is held and then marks that it has, which lets the stub's remover take the lock
+      // away during the second's wait.
+      const env = { ...gitShim(r, 'if [ "$1" = reset ] && [ ! -e "$ZZ_MARKER" ]; then "$ZZ_REAL_GIT" "$@"; s=$?; touch "$ZZ_MARKER"; exit $s; fi'), ZZ_VERIFY: "lock-brief", ZZ_MARKER: join(r.dir, "first-reset") };
+      refused(r, r.run(env), /^bank snapshot: npm run quiz:verify failed on the chapter batch files as they stand; nothing committed or pushed$/, before);
+      expect(existsSync(join(r.dir, "first-reset"))).toBe(true);
     } finally {
       r.done();
     }
@@ -924,7 +936,7 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
       expect(run.status, run.stderr).toBe(1);
       const made = r.head();
       expect(made).not.toBe(start);
-      expect(run.last).toBe(`bank snapshot: the snapshot commit ${made} could not be taken back (git update-ref failed) and is still on local master; it was not checked and must not be pushed; take it back with: git update-ref refs/heads/master ${start} ${made}; nothing pushed`);
+      expect(run.last).toBe(`bank snapshot: the snapshot commit ${made} could not be taken back (git update-ref failed) and is still on local master; it was not checked and must not be pushed; take it back with: git update-ref refs/heads/master ${start} ${made}, then: git reset -q -- '${SPEC}'; nothing pushed`);
       expect([r.remote("reborn"), r.remote("origin")]).toEqual([start, start]);
     } finally {
       r.done();
@@ -951,7 +963,7 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
     const cases: [string, string, (made: string) => string][] = [
       ["its id", '[ "$1" = rev-parse ] && [ "$2" = HEAD ]', () => "bank snapshot: the commit was made but HEAD could not be read (git rev-parse HEAD failed); local master may hold an unverified snapshot commit; nothing pushed"],
       ["its parent", '[ "$1" = rev-parse ] && case "$2" in *^) true ;; *) false ;; esac', (made) => `bank snapshot: the snapshot commit ${made}'s parent could not be read; it is on local master, unverified; nothing pushed`],
-      ["the count", '[ "$1" = ls-files ]', (made) => `bank snapshot: the snapshot commit ${made} is on local master and not pushed (git ls-files failed); read it before pushing: git push reborn refs/heads/master:refs/heads/master; ${PUSH_LINE}`],
+      ["the count", '[ "$1" = ls-files ]', (made) => `bank snapshot: the snapshot commit ${made} is on local master and not pushed (git ls-files failed); read it before pushing the commit by its id: git push reborn ${made}:refs/heads/master; ${PUSH_LINE}`],
     ];
     for (const [name, test, line] of cases) {
       const r = snapshotRepo();
@@ -1024,7 +1036,7 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
       expect(run.status, run.stderr).toBe(1);
       const made = r.head();
       expect(made).not.toBe(start);
-      expect(run.last).toBe(`bank snapshot: the snapshot commit ${made} is on local master and not pushed (git rev-parse --short failed); read it before pushing: git push reborn refs/heads/master:refs/heads/master; ${PUSH_LINE}`);
+      expect(run.last).toBe(`bank snapshot: the snapshot commit ${made} is on local master and not pushed (git rev-parse --short failed); read it before pushing the commit by its id: git push reborn ${made}:refs/heads/master; ${PUSH_LINE}`);
       expect([r.remote("reborn"), r.remote("origin")]).toEqual([start, start]);
     } finally {
       r.done();
@@ -1078,6 +1090,42 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
       expect(run.last).not.toContain("\u001b");
     } finally {
       r.done();
+    }
+  }, 60_000);
+
+  zshCase("(F4) the checkout switched to another branch as the commit starts: exit 1 naming the branch the commit is on, master and the remotes unmoved", () => {
+    const r = snapshotRepo();
+    try {
+      const start = r.head();
+      r.put(`${BANK}/b.json`);
+      const run = r.run(gitShim(r, 'if [ "$1" = commit ]; then "$ZZ_REAL_GIT" checkout -q -b zz-other || exit 1; fi'));
+      expect(run.status, run.stderr).toBe(1);
+      const made = r.g("rev-parse", "zz-other").trim();
+      expect(made).not.toBe(start);
+      expect(run.last).toBe(`bank snapshot: the checkout left master as the commit was made: the snapshot commit ${made} is on the branch zz-other, not on master; it was not checked and must not be pushed; nothing pushed`);
+      expect(r.g("rev-parse", "master").trim()).toBe(start);
+      expect([r.remote("reborn"), r.remote("origin")]).toEqual([start, start]);
+    } finally {
+      r.done();
+    }
+  }, 60_000);
+
+  zshCase("(F5) the UTF-8 locale is found in either spelling and in any case: a `locale -a` listing only en_US.utf8, or EN_us.UTF-8, sets LC_CTYPE to that name", () => {
+    for (const listed of ["en_US.utf8", "EN_us.UTF-8"]) {
+      const r = snapshotRepo();
+      try {
+        const bin = join(r.dir, "fake-locale");
+        mkdirSync(bin);
+        writeFileSync(join(bin, "locale"), `#!/bin/sh\nprintf 'C\\nC.utf8\\n${listed}\\nPOSIX\\n'\n`);
+        chmodSync(join(bin, "locale"), 0o755);
+        const seen = join(r.dir, "seen");
+        r.put(`${BANK}/b.json`);
+        const run = r.run({ PATH: `${bin}:${r.env.PATH ?? ""}`, LC_ALL: "", LC_CTYPE: "C", ZZ_VERIFY: "locale", ZZ_SEEN: seen });
+        expect(run.status, run.stderr).toBe(0);
+        expect(readFileSync(seen, "utf8").trim(), listed).toBe(listed);
+      } finally {
+        r.done();
+      }
     }
   }, 60_000);
 
