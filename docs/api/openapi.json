@@ -44336,6 +44336,13 @@
                   "freeMonths": {
                     "type": "integer"
                   },
+                  "tier": {
+                    "type": "string",
+                    "enum": [
+                      "college-affiliated",
+                      "college-autonomous"
+                    ]
+                  },
                   "acceptOverAYear": {
                     "type": "boolean"
                   },

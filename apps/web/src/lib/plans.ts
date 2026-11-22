@@ -82,14 +82,15 @@ function cap(value: number | null | undefined): number | null | undefined {
   return value;
 }
 
-export async function createPlan(session: ActiveContext, input: PlanInput): Promise<PlanResult> {
+export async function createPlan(session: ActiveContext, input: PlanInput, client: typeof db = db): Promise<PlanResult> {
   assertSuperuser(session);
   const code = input.code.trim().toLowerCase();
   const name = input.name.trim();
   if (!/^[a-z0-9][a-z0-9-]{1,31}$/.test(code)) return { ok: false, errorKey: "root.planCodeInvalid" };
   if (!name) return { ok: false, errorKey: "root.planNameRequired" };
-  if (await db.plan.findUnique({ where: { code }, select: { id: true } })) return { ok: false, errorKey: "root.planCodeTaken" };
-  const plan = await db.plan.create({
+  // Through the caller's client, as assignPlan: onboarding makes a college's missing tier plan inside its own transaction (phase 6).
+  if (await client.plan.findUnique({ where: { code }, select: { id: true } })) return { ok: false, errorKey: "root.planCodeTaken" };
+  const plan = await client.plan.create({
     data: {
       code,
       name,
@@ -99,7 +100,7 @@ export async function createPlan(session: ActiveContext, input: PlanInput): Prom
     },
     select: { id: true },
   });
-  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.plan.create", targetType: "Plan", targetId: plan.id, meta: { code, name } });
+  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.plan.create", targetType: "Plan", targetId: plan.id, meta: { code, name } }, client === db ? undefined : client);
   return { ok: true, planId: plan.id };
 }
 

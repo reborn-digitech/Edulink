@@ -2,7 +2,7 @@ import { z } from "zod";
 import { institutionKindSchema } from "./modules";
 import { streamListSchema } from "./streams";
 import { schoolBoardSchema } from "./filings";
-import { freeMonthsSchema, partTermsSchema } from "./school-offer-parts";
+import { collegeTierCodeSchema, freeMonthsSchema, partTermsSchema } from "./school-offer-parts";
 
 /**
  * operator-dashboard: the operator's one page for running fifty schools —
@@ -214,6 +214,11 @@ export const operatorOnboardBodySchema = z.object({
   subscription: partTermsSchema.optional(),
   premium: z.object({ students: z.boolean(), teachers: z.boolean(), terms: partTermsSchema.optional() }).strict().optional(),
   freeMonths: freeMonthsSchema.optional(),
+  /**
+   * A college's tier (§2.5; phase 6): its plan, found by the tier's code or made in the onboarding's own transaction when
+   * there is none. A college only, one that suits its kind, and never beside planId.
+   */
+  tier: collegeTierCodeSchema.optional(),
   acceptOverAYear: z.boolean().optional(),
   acceptDueNow: z.boolean().optional(),
   contact: operatorContactBodySchema.optional(),

@@ -77,7 +77,7 @@ const OFFICE_FORM_PAGES: Record<string, string[]> = {
  */
 const PLATFORM: Record<string, string[]> = {
   APPADMIN: ["/appadmin", "/appadmin/bank", "/appadmin/contributions", "/appadmin/new"],
-  OPERATOR: ["/root", "/root/experts", "/root/content-team", "/root/gigs", "/root/audit", "/root/jobs", "/root/plans", "/root/subscriptions", "/root/subscriptions/prices", "/root/metrics", "/root/new", "/appadmin", "/appadmin/bank", "/appadmin/contributions"],
+  OPERATOR: ["/root", "/root/experts", "/root/content-team", "/root/gigs", "/root/audit", "/root/jobs", "/root/plans", "/root/subscriptions", "/root/subscriptions/prices", "/root/metrics", "/root/new", "/root/onboard", "/appadmin", "/appadmin/bank", "/appadmin/contributions"],
 };
 
 const walked: [role: string, hrefs: string[], prefixes: Set<string>][] = [

@@ -159,6 +159,80 @@ export function schoolTermsSentence(f: Fmt, view: SchoolTerms, oldMonthPaise?: n
   return lines.join(" ");
 }
 
+/** How a part will move, in the onboarding summary's words (C2): "our price: it moves when you change your price", "held at ₹120 whatever your price does". */
+function onboardHow(f: Fmt, figure: PartFigure): string {
+  if (isTier(figure)) {
+    const tier = tierName(f, figure.tierCode);
+    if (figure.source === "OWN_DISCOUNT") return f.t("subs.obHowTierOwnDiscount", { tier, percent: f.percent(figure.discountBps) });
+    // Our discount at nothing: the tier's full price, with no word of a discount (the second review's W-4).
+    return figure.discountBps === 0 ? f.t("subs.obHowTierFull", { tier }) : f.t("subs.obHowTier", { tier });
+  }
+  if (figure.source === "OWN_PRICE") return f.t("subs.obHowOwnPrice", { price: f.money(figure.paysPaise) });
+  if (figure.source === "OWN_DISCOUNT") return f.t("subs.obHowOwnDiscount", { percent: f.percent(figure.discountBps) });
+  return f.t("subs.obHowOurs");
+}
+
+/** What onboarding will set, as its preview reckoned it (src/lib/subscriptions.ts, previewOnboarding): the summary's input. */
+export type OnboardSummary = {
+  school: string;
+  subscription: PartFigure | null;
+  premium: { students: boolean; teachers: boolean; figure: PartFigure; billed: boolean; waitsFor: readonly string[] };
+  startsOn: string;
+  renewsOn: string;
+  status: "TRIAL" | "DUE";
+  /** The whole free months a typed renewal gives, said back (§2.5); null where the free months set the renewal. */
+  impliedMonths: number | null;
+};
+
+/**
+ * Onboarding's summary sentence (§2.5; phase 6), under the form's "Subscription and premium": what the school will pay for
+ * its subscription and how it moves (C2: "it moves when you change your price", "held at ₹… whatever your price does"), a
+ * ticked premium in the sheet's own sentence, the price chosen and, while its plan is not asked for, "billed once the Student
+ * plan is asked for" (C6), and when billing starts:
+ * free until the renewal (TRIAL), owed from its first day (no free months) or owed now (a renewal on or before today, which
+ * the tick confirms). Nothing billed at all (no tier, or free by agreement), the renewal alone. Each piece a whole sentence.
+ */
+export function onboardSentence(f: Fmt, input: OnboardSummary): string {
+  const lines: string[] = [];
+  const sub = input.subscription;
+  if (!sub) lines.push(f.t("subs.sNoTier", { school: input.school }));
+  else if (sub.paysPaise === 0) lines.push(f.t("subs.sSubscriptionFree", { school: input.school }));
+  else lines.push(f.t("subs.obSubscription", { school: input.school, price: f.money(sub.paysPaise), how: onboardHow(f, sub) }));
+  const premium = input.premium;
+  const on = premium.students || premium.teachers;
+  const premiumCharged = on && premium.billed && premium.figure.paysPaise > 0;
+  // No subscription figure (a college with no tier), no bill at all, premium or not (billFor; C2a).
+  const charged = sub !== null && (sub.paysPaise > 0 || premiumCharged);
+  // When billing starts, next to the subscription it concerns, so it never stands beside premium's own "billed once …".
+  const date = f.day(input.renewsOn);
+  if (!charged) lines.push(f.t("subs.obRenewsOn", { date }));
+  else if (input.status === "TRIAL") lines.push(f.t("subs.obFreeUntil", { date }));
+  else if (input.renewsOn === input.startsOn) lines.push(f.t("subs.obOwedFirstDay", { date }));
+  else lines.push(f.t("subs.obOwedNow", { date }));
+  if (input.impliedMonths !== null) lines.push(f.t("subs.obTypedMonths", { count: input.impliedMonths }));
+  // A ticked premium is named as the sheet names it, the price chosen and how it moves, with "billed once the Student plan is
+  // asked for" while its plan is not (C6, replacing C3 point 3: the operator sets that price in this very step); none
+  // ticked, no premium price, unless premium's own price or discount was chosen in this step, which the save writes: then the
+  // sheet's off sentence names it (C7.4). The terms are set by this onboarding, so the plan is the only reason premium waits.
+  const ownPremium = premium.figure.source !== "OURS";
+  if (!on && !ownPremium) lines.push(f.t("subs.obPremiumOff"));
+  else
+    lines.push(
+      premiumSentence(f, {
+        premiumStudents: premium.students,
+        premiumTeachers: premium.teachers,
+        premiumBilled: premium.billed,
+        premiumNotBilled: !on || premium.billed ? null : "PLAN_NOT_ASKED",
+        premiumWaitsFor: premium.waitsFor.filter((plan): plan is "STUDENT" | "TEACHER" => plan === "STUDENT" || plan === "TEACHER"),
+        premiumFigure: premium.figure,
+      }),
+    );
+  // Whenever a figure in rupees is named (C7.6).
+  const namesRupees = (sub !== null && sub.paysPaise > 0) || ((on || ownPremium) && premium.figure.paysPaise > 0);
+  if (namesRupees) lines.push(f.t("subs.sBeforeGst"));
+  return lines.join(" ");
+}
+
 /** The premium line's amount on a bill, when the bill has one (C2b: the amount only from the bill's own line). */
 function premiumAmount(view: SchoolTerms): number | null {
   return view.bill?.lines.find((l) => l.part === "PREMIUM")?.totalPaise ?? null;

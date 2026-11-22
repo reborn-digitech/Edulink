@@ -1616,6 +1616,9 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
     await check(riversideTeacher, path, 307, "⚠ …nor a teacher's");
     await check(riversideAdmin, path, 307, "⚠ …nor a school office's");
   }
+  // Onboarding with the school's terms (phase 6, §2.5): the operator's alone too.
+  await check(riversideTeacher, "/root/onboard", 307, "⚠ onboarding a school is not a teacher's");
+  await check(riversideAdmin, "/root/onboard", 307, "⚠ …nor a school office's");
 
   // The ZZ operator (zz-fixtures.ts), signed in with no school and no role, the way the operator really is.
   const operator = await db.user.findUnique({ where: { email: "zz.operator@zz.test" }, select: { isSuperuser: true } });
@@ -1635,6 +1638,8 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
     } else skip("a school's page with its subscription card", "no ZZ school (run zz:fixtures)");
     const prices = await hit(op, "/root/subscriptions/prices");
     results.push({ role: op.label, path: "/root/subscriptions/prices", status: prices.status, expected: 200, ok: prices.status === 200 && prices.body.includes('data-testid="prices-form"'), note: "…and our prices on the Prices tab" });
+    const onboard = await hit(op, "/root/onboard");
+    results.push({ role: op.label, path: "/root/onboard", status: onboard.status, expected: 200, ok: onboard.status === 200 && onboard.body.includes('data-testid="onboard-terms"'), note: "…and onboarding, with the school's subscription and premium (phase 6)" });
     const experts = await hit(op, "/root/experts");
     results.push({ role: op.label, path: "/root/experts", status: experts.status, expected: 200, ok: experts.status === 200 && experts.body.includes('id="expert-applications"'), note: "…and the expert applications above the curation queue" });
   } else {

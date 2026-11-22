@@ -1,5 +1,6 @@
 import "server-only";
-import { collegeTierOf, isCollegeKind, isRealDateKey, nextRenewalOnPayment, partnerMonth, renewalFrom, renewalOverAYear, statusByRenewal, subscriptionTerms, tierMonthPaise, type InstitutionKind, type PaymentAnswer, type PaymentBody } from "@edulink/contracts";
+import { Prisma } from "@prisma/client";
+import { collegeTierOf, freeMonthsImplied, isCollegeKind, isRealDateKey, nextRenewalOnPayment, partnerMonth, planSuitsKind, premiumBilling, premiumTerms, renewalFrom, renewalOverAYear, statusByRenewal, subscriptionTerms, tierMonthPaise, type InstitutionKind, type PartTerms, type PaymentAnswer, type PaymentBody, type PremiumPlan } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
   SUBSCRIPTION_STATUSES,
@@ -16,8 +17,9 @@ import { db } from "./db";
 import { audit, type AuditTx } from "./audit";
 import { billedYear, columnsOf, newestPupils, readOffer, readSchoolTerms } from "./school-terms";
 import { assertSuperuser, createSchool, inviteAdmin, sendAdminInviteMail, type AdminInviteMail, type SchoolDetails } from "./superuser";
-import { assignPlan, monthKeyFor } from "./plans";
-import { addDaysToKey, safeTimeZone, todayKey } from "./dates";
+import { assignPlan, createPlan, monthKeyFor } from "./plans";
+import { activePlans } from "./person-plans";
+import { addDaysToKey, isValidTimeZone, safeTimeZone, todayKey } from "./dates";
 import { messageCapOf } from "./message-cap";
 import { notify } from "./notify";
 import { translator } from "./i18n/dictionary";
@@ -782,7 +784,124 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
 /* Onboarding: one call                                                        */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * The new onboarding path's dates (§2.5; rule 5; C1c), one reckoning for onboardSchool and its preview, so the form's summary
+ * and the school made can never disagree: the renewal is the typed day, else the start plus the free months; before the start
+ * it is refused; the status is the one the dates call for (statusByRenewal: DUE on the start day or on or before today,
+ * TRIAL otherwise). `asks` names the ticks the renewal needs, which onboardSchool refuses without and the form shows: more
+ * than a year on, and on or before today with the start before today (a school that starts today with no free months is
+ * simply owed from its first day and needs none). `impliedMonths`, for a typed renewal, is the whole free months it gives,
+ * said back (freeMonthsImplied); null where the free months set it. Pure; days are the school's own.
+ */
+export function onboardingDates(input: { startsAt: string; dueAt?: string | null; freeMonths: number; today: string }):
+  | { ok: true; startsAt: string; dueAt: string; status: "TRIAL" | "DUE"; impliedMonths: number | null; asks: { overAYear: boolean; dueNow: boolean } }
+  | { ok: false; errorKey: "root.renewalBeforeStart" } {
+  const dueAt = input.dueAt ?? renewalFrom(input.startsAt, input.freeMonths);
+  // The renewal may be the start day (owed from the first day), so the refusal says "before the start" (the review of phase 6).
+  if (dueAt < input.startsAt) return { ok: false, errorKey: "root.renewalBeforeStart" };
+  return {
+    ok: true,
+    startsAt: input.startsAt,
+    dueAt,
+    status: statusByRenewal(input.startsAt, dueAt, input.today),
+    // Said back only where the typed day is a whole number of months on (nought on the start day itself); a part month is
+    // left to the date (C7.3; the second review's B1: "1 month free" for a month and a fortnight).
+    impliedMonths: input.dueAt ? wholeMonths(input.startsAt, dueAt) : null,
+    asks: { overAYear: renewalOverAYear(input.startsAt, dueAt), dueNow: dueAt <= input.today && input.startsAt < input.today },
+  };
+}
+
+/** The free months a typed renewal gives, when it is a whole number of months from the start; null otherwise. */
+function wholeMonths(startDay: string, renewalDay: string): number | null {
+  const months = freeMonthsImplied(startDay, renewalDay);
+  return months !== null && renewalFrom(startDay, months) === renewalDay ? months : null;
+}
+
+/** What onboarding's new path will set for the terms, reckoned and written nowhere: the form's summary reads it (§2.5). */
+export type OnboardingPreview = {
+  startsOn: string;
+  renewsOn: string;
+  status: "TRIAL" | "DUE";
+  impliedMonths: number | null;
+  asks: { overAYear: boolean; dueNow: boolean };
+  subscription: PartTerms | null;
+  premium: PartTerms;
+  premiumBilled: boolean;
+  premiumWaitsFor: PremiumPlan[];
+};
+/** The fields of the form a preview's refusal is shown under ("errors under their fields", §2.5). */
+export type OnboardingField = "startsAt" | "dueAt" | "subscription" | "premium" | "tier" | "timezone";
+export type OnboardingPreviewInput = Pick<OperatorOnboardBody, "kind" | "timezone" | "startsAt" | "dueAt" | "subscription" | "premium" | "freeMonths" | "tier">;
+
+/**
+ * Onboarding's preview (§2.5; phase 6): what the new path will set for the terms of a school with these fields, reckoned as
+ * onboardSchool reckons it and writing nothing (no row, no audit). The same refusals of the terms, each named with the field
+ * it is shown under, and the same dates (onboardingDates), offer (readOffer), figures (subscriptionTerms and premiumTerms, a
+ * college on its tier) and billing (premiumBilling with the plans asked for, the terms being set by this path: C3). Always the
+ * new path: the form always sends its terms. The ticks are not refused here but named in `asks`, for the form to show. It
+ * writes no school and no audit row; reading the plans asked for (activePlans) may create the plan rows that are missing, as
+ * every reader of the plans does.
+ */
+export async function previewOnboarding(session: ActiveContext, input: OnboardingPreviewInput, now: Date = new Date()): Promise<{ ok: true; preview: OnboardingPreview } | { ok: false; errorKey: TranslationKey; field: OnboardingField }> {
+  assertSuperuser(session);
+  const college = isCollegeKind(input.kind);
+  if (input.tier && !college) return { ok: false, errorKey: "operatorCollege.refuseTierNotCollege", field: "tier" };
+  if (input.tier && !planSuitsKind(input.tier, input.kind)) return { ok: false, errorKey: "operatorCollege.refuseTierKind", field: "tier" };
+  if (input.startsAt && !isRealDateKey(input.startsAt)) return { ok: false, errorKey: "root.subscriptionDayNotReal", field: "startsAt" };
+  if (input.dueAt && !isRealDateKey(input.dueAt)) return { ok: false, errorKey: "root.subscriptionDayNotReal", field: "dueAt" };
+  if (college && input.subscription?.mode === "OWN_PRICE") return { ok: false, errorKey: "root.termsOwnPriceAtCollege", field: "subscription" };
+  if (college && input.premium?.teachers) return { ok: false, errorKey: "root.termsTeachersAtCollege", field: "premium" };
+  // A timezone that is no zone is refused here, under its field, where createSchool would refuse it only at the save, and the
+  // summary must not be reckoned on Asia/Kolkata meanwhile (C7.2; the second review's W-2).
+  if (input.timezone && !isValidTimeZone(input.timezone)) return { ok: false, errorKey: "refusal.timezoneUnknown", field: "timezone" };
+  const today = todayKey(safeTimeZone(input.timezone), now);
+  const [offer, asked] = await Promise.all([readOffer(), activePlans()]);
+  const dates = onboardingDates({ startsAt: input.startsAt ?? today, dueAt: input.dueAt, freeMonths: input.freeMonths ?? offer.freeMonths, today });
+  if (!dates.ok) return { ok: false, errorKey: dates.errorKey, field: "dueAt" };
+  const own = columnsOf(input.subscription ?? { mode: "OURS" });
+  const ownPremium = columnsOf(input.premium?.terms ?? { mode: "OURS" });
+  const students = input.premium?.students ?? false;
+  const teachers = input.premium?.teachers ?? false;
+  const billing = premiumBilling({ termsSet: true, students, teachers }, asked);
+  return {
+    ok: true,
+    preview: {
+      startsOn: dates.startsAt,
+      renewsOn: dates.dueAt,
+      status: dates.status,
+      impliedMonths: dates.impliedMonths,
+      asks: dates.asks,
+      subscription: subscriptionTerms({ kind: input.kind, planCode: input.tier ?? null, own: { pricePaise: own.price, discountBps: own.discount } }, { pricePaise: offer.subscriptionPricePaise, discountBps: offer.subscriptionDiscountBps }),
+      premium: premiumTerms({ pricePaise: ownPremium.price, discountBps: ownPremium.discount }, { pricePaise: offer.premiumPricePaise, discountBps: offer.premiumDiscountBps }),
+      premiumBilled: billing.billed,
+      premiumWaitsFor: billing.waitsFor,
+    },
+  };
+}
+
 export type OnboardResult = { ok: true; schoolId: string; code: string; slug: string; partnerId: string | null; mailSent: boolean } | Refusal;
+
+/**
+ * THE LOOK BEFORE A SECOND SEND (C7 point 8, as C7a point 1 settles it): whether the school an onboarding request that went
+ * unanswered would have made is there. That school is one made since the form was opened (`since`, the moment its page was
+ * served, by the server's clock), not removed, whose name is the name the request carried (trimmed, case aside, as
+ * createSchool stores it) and for which an invitation of the first administrator was made at the address the request
+ * carried (trimmed and lower-cased, as inviteAdmin stores it), whatever has become of that invitation since. Onboarding
+ * makes the school and that invitation in one transaction, so every school the lost request made is found so. The
+ * operator's own question; it writes nothing.
+ */
+export async function lookForOnboarded(session: ActiveContext, input: { since: string; name: string; adminEmail: string }): Promise<{ ok: true; found: { id: string; name: string } | null }> {
+  assertSuperuser(session);
+  const since = new Date(input.since);
+  const name = input.name.trim();
+  const email = input.adminEmail.trim().toLowerCase();
+  if (Number.isNaN(since.getTime()) || !name || !email) return { ok: true, found: null };
+  const schools = await db.school.findMany({ where: { createdAt: { gte: since }, removedAt: null, name: { equals: name, mode: "insensitive" } }, select: { id: true, name: true }, orderBy: { createdAt: "asc" } });
+  if (schools.length === 0) return { ok: true, found: null };
+  // Invite is readable to the operator across schools, as listSchools reads it.
+  const invited = await db.invite.findFirst({ where: { schoolId: { in: schools.map((s) => s.id) }, role: "ADMIN", email }, select: { schoolId: true }, orderBy: { createdAt: "asc" } });
+  return { ok: true, found: invited ? (schools.find((s) => s.id === invited.schoolId) ?? null) : null };
+}
 
 /**
  * The guided flow's one door: makes the school through createSchool, puts
@@ -828,6 +947,10 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
   const own = session.user.email?.trim().toLowerCase();
   if (own && own === adminEmail) return { ok: false, errorKey: "root.didNotWork" };
   if (input.planId && !(await db.plan.findUnique({ where: { id: input.planId }, select: { id: true } }))) return { ok: false, errorKey: "root.noSuchPlan" };
+  // A college's tier (§2.5; phase 6): a college only, one that suits its kind (TA-488), and never beside a plan.
+  if (input.tier && !isCollegeKind(input.kind)) return { ok: false, errorKey: "operatorCollege.refuseTierNotCollege" };
+  if (input.tier && !planSuitsKind(input.tier, input.kind)) return { ok: false, errorKey: "operatorCollege.refuseTierKind" };
+  if (input.tier && input.planId) return { ok: false, errorKey: "root.tierOrPlan" };
   if (input.commission && "partnerId" in input.commission && !(await db.commissionPartner.findUnique({ where: { id: input.commission.partnerId }, select: { id: true } }))) {
     return { ok: false, errorKey: "root.noSuchPartner" };
   }
@@ -849,13 +972,12 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
   if (withTerms) {
     if (isCollegeKind(input.kind) && input.subscription?.mode === "OWN_PRICE") return { ok: false, errorKey: "root.termsOwnPriceAtCollege" };
     if (isCollegeKind(input.kind) && input.premium?.teachers) return { ok: false, errorKey: "root.termsTeachersAtCollege" };
-    dueAt = input.dueAt ?? renewalFrom(startsAt, input.freeMonths ?? (await readOffer()).freeMonths);
-    if (dueAt < startsAt) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
-    if (renewalOverAYear(startsAt, dueAt) && !input.acceptOverAYear) return { ok: false, errorKey: "root.renewalOverAYear" };
-    // §2.5: a renewal on or before today starts the school due and asks a tick, except on its own first day (no free
-    // months, starting today), which is simply owed from the start.
-    if (dueAt <= today && startsAt < today && !input.acceptDueNow) return { ok: false, errorKey: "root.renewalBeforeToday" };
-    status = statusByRenewal(startsAt, dueAt, today);
+    const dates = onboardingDates({ startsAt, dueAt: input.dueAt, freeMonths: input.dueAt ? 0 : (input.freeMonths ?? (await readOffer()).freeMonths), today });
+    if (!dates.ok) return { ok: false, errorKey: dates.errorKey };
+    if (dates.asks.overAYear && !input.acceptOverAYear) return { ok: false, errorKey: "root.renewalOverAYear" };
+    if (dates.asks.dueNow && !input.acceptDueNow) return { ok: false, errorKey: "root.renewalBeforeToday" };
+    dueAt = dates.dueAt;
+    status = dates.status;
   } else {
     dueAt = input.dueAt ?? addDaysToKey(startsAt, input.trial ? 30 : 365);
     if (dayToDate(dueAt).getTime() <= dayToDate(startsAt).getTime()) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
@@ -895,11 +1017,14 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
   // TA-172: a taken slug aborts the transaction it is met in, so the next number is tried in a fresh transaction, as
   // registration does (school-signup.ts): createSchool makes one attempt inside a caller's transaction. A slug the
   // operator typed is made exactly as typed, and the index refuses it as taken if two operators race for it.
+  // The name's own counter numbers the web address; a retry after two onboardings raced for a tier's plan does not move it,
+  // since the first attempt was rolled back and its address is still free (the second review's A1).
+  let nameAttempt = 0;
   for (let attempt = 0; attempt < 6 && !made; attempt++) {
     try {
       made = await db.$tenantTransaction(async (raw) => {
         const tx = raw as Tx;
-        const created = await createSchool(session, details, tx, { slug: slug ?? undefined, attempt });
+        const created = await createSchool(session, details, tx, { slug: slug ?? undefined, attempt: nameAttempt });
         if (!created.ok) throw new Refused(created);
         const schoolId = created.schoolId;
 
@@ -936,8 +1061,22 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
               : {}),
           },
         });
-        if (input.planId) {
-          const assigned = await assignPlan(session, schoolId, input.planId, tx);
+        // A college's tier: its plan found by the tier's code, or made here, in this transaction, when there is none, so a refusal
+        // later in the onboarding leaves no plan behind (§2.5; phase 6). Its name is the record's, in English as the console's.
+        let planId = input.planId ?? null;
+        if (input.tier) {
+          const found = await tx.plan.findUnique({ where: { code: input.tier }, select: { id: true } });
+          if (found) planId = found.id;
+          else {
+            const made = await createPlan(session, { code: input.tier, name: translator("en")(input.tier === "college-affiliated" ? "operatorCollege.tierAffiliated" : "operatorCollege.tierAutonomous") }, tx as unknown as typeof db);
+            // Another onboarding made the tier's plan a moment ago (committed since the read above): that one is used.
+            const again = !made.ok && made.errorKey === "root.planCodeTaken" ? await tx.plan.findUnique({ where: { code: input.tier }, select: { id: true } }) : null;
+            if (!made.ok && !again) throw new Refused({ ok: false, errorKey: made.errorKey ?? "root.didNotWork" });
+            planId = again?.id ?? (made.ok ? (made.planId ?? null) : null);
+          }
+        }
+        if (planId) {
+          const assigned = await assignPlan(session, schoolId, planId, tx);
           if (!assigned.ok) throw new Refused({ ok: false, errorKey: assigned.errorKey ?? "root.didNotWork" });
         }
         const invited = await inviteAdmin(session, schoolId, { email: adminEmail, name: input.adminName || null, role: "ADMIN", mail: "after-commit" }, tx);
@@ -951,14 +1090,20 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
             action: "superuser.school.onboard",
             targetType: "School",
             targetId: schoolId,
-            meta: { schoolId, name: input.name.trim(), slug: row.slug, planId: input.planId ?? null, status, startsAt, dueAt, partnerId, adminEmail, terms: withTerms ? { subscription: input.subscription ?? { mode: "OURS" }, premium: input.premium ?? null, freeMonths: input.freeMonths ?? null } : null },
+            meta: { schoolId, name: input.name.trim(), slug: row.slug, planId, tier: input.tier ?? null, status, startsAt, dueAt, partnerId, adminEmail, terms: withTerms ? { subscription: input.subscription ?? { mode: "OURS" }, premium: input.premium ?? null, freeMonths: input.freeMonths ?? null } : null },
           },
           tx,
         );
         return { schoolId, code: created.code, slug: row.slug, partnerId, mail: invited.mail ?? null };
       });
     } catch (error) {
-      if (error instanceof Refused && error.refusal.errorKey === "root.nameCollides" && attempt < 5) continue;
+      if (error instanceof Refused && error.refusal.errorKey === "root.nameCollides" && attempt < 5) {
+        nameAttempt += 1;
+        continue;
+      }
+      // Two onboardings that both found no plan for a tier and both made one: the second's insert aborts its transaction on
+      // the code's unique index, and the next attempt finds the first's plan (the review of phase 6, 8).
+      if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002" && String(error.meta?.target ?? "").includes("code") && input.tier && attempt < 5) continue;
       if (error instanceof Refused) return error.refusal;
       throw error;
     }

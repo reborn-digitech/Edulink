@@ -5,7 +5,7 @@
  * run as they do in the app, against ZZ schools of this suite's own, signed in as a ZZ operator; the client parts render as
  * the server first sends them. No plan is asked for (person-plans.ts under VITEST), so C2's line stands.
  */
-import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import * as React from "react";
 import { prerenderToNodeStream } from "react-dom/static";
 import { PrismaClient } from "@prisma/client";
@@ -25,9 +25,14 @@ import SubscriptionsPage from "@/app/root/subscriptions/page";
 import PricesPage from "@/app/root/subscriptions/prices/page";
 import SchoolPage from "@/app/root/[schoolId]/page";
 import RootPage from "@/app/root/page";
+import OnboardPage from "@/app/root/onboard/page";
+import { summaryWaitsKey } from "@/app/root/onboard/terms-fieldset";
+import { setActivePlansForTests } from "@/lib/person-plans";
+import { formatDateKey, todayKey } from "@/lib/dates";
+import { paysPaise, renewalFrom } from "@edulink/contracts";
 import { createSession, getSession, type ActiveContext } from "@/lib/session";
 import { operatorDashboard } from "@/lib/subscriptions";
-import { billedYear, listSubscriptions } from "@/lib/school-terms";
+import { billedYear, listSubscriptions, readOffer } from "@/lib/school-terms";
 import { formatPaise } from "@edulink/i18n";
 import { ToastProvider } from "@/components/ui/toast";
 import { I18nProvider } from "@/lib/i18n/provider";
@@ -186,3 +191,56 @@ describe("the dashboard (§2.6)", () => {
     expect(html).toContain(formatPaise(totals.billedYearPaise, "en"));
   });
 });
+
+describe("onboarding's terms (§2.5; phase 6)", () => {
+  afterEach(() => setActivePlansForTests([]));
+  /** The checked boxes in the page: onboarding's form has no other box than the premium ticks once the trial box is gone. */
+  const checked = (html: string) => (html.match(/<input(?=[^>]*type="checkbox")(?=[^>]*\schecked="")[^>]*>/g) ?? []).length;
+  /** Whether the box labelled so is ticked: its input stands just before its label's text in the same label element. */
+  const ticked = (html: string, label: string) => {
+    const at = html.indexOf(`>${label}</span>`);
+    if (at < 0) throw new Error(`no box labelled ${label}`);
+    const input = html.slice(html.lastIndexOf("<input", at), html.indexOf(">", html.lastIndexOf("<input", at)) + 1);
+    return /\schecked=""/.test(input);
+  };
+
+  it("fieldset 2 is \"Subscription and premium\": the subscription's line from our offer, the premium ticks as C3 starts them, the optional plan, and no trial box", async () => {
+    const offer = await readOffer();
+    setActivePlansForTests([]);
+    const html = text(await shell(await OnboardPage()));
+    expect(html).toContain(t("root.obLegend"));
+    const ours = formatPaise(paysPaise(offer.subscriptionPricePaise, offer.subscriptionDiscountBps), "en");
+    const months = offer.freeMonths === 0 ? t("root.obMonthsFreeNone") : offer.freeMonths === 1 ? t("root.obMonthsFreeOne") : t("root.obMonthsFree", { count: offer.freeMonths });
+    const renews = formatDateKey(renewalFrom(todayKey("Asia/Kolkata"), offer.freeMonths), { day: "numeric", month: "short", year: "numeric" }, "en");
+    expect(html).toContain(`${ours} a student a year + GST (ours) · ${months} · renews on ${renews}`);
+    expect(html).toContain(t("root.obPremiumStudents"));
+    expect(html).toContain(t("root.obPremiumTeachers"));
+    expect(html).toContain(t("root.obPlanOptional"));
+    expect(html).not.toContain("30-day trial");
+    // C7.5: with no box ticked, premium's line reads as what it would be if switched on, not as a charge.
+    expect(html).toMatch(/\+ ₹[\d,]+ more a student a year \+ GST if switched on \(ours\)/);
+    // The button names what it still waits for (the second review's C3, W-5 and the streams).
+    expect(html).toContain("Still needed before onboarding: Name, Contact email, First administrator");
+    // C3: no plan asked for, so neither premium box starts ticked whatever our offer's defaults say.
+    expect(checked(html)).toBe(0);
+    // Both plans asked for: each box starts as our offer's default for it.
+    setActivePlansForTests(["STUDENT", "TEACHER"]);
+    const asked = text(await shell(await OnboardPage()));
+    expect(checked(asked)).toBe(Number(offer.studentsByDefault) + Number(offer.teachersByDefault));
+    // Each box as our offer's default for it, read box by box (the review of phase 6, 8), and only the Student plan asked for
+    // leaves Teachers unticked whatever its default.
+    expect({ students: ticked(asked, t("root.obPremiumStudents")), teachers: ticked(asked, t("root.obPremiumTeachers")) }).toEqual({ students: offer.studentsByDefault, teachers: offer.teachersByDefault });
+    setActivePlansForTests(["STUDENT"]);
+    const studentOnly = text(await shell(await OnboardPage()));
+    expect({ students: ticked(studentOnly, t("root.obPremiumStudents")), teachers: ticked(studentOnly, t("root.obPremiumTeachers")) }).toEqual({ students: offer.studentsByDefault, teachers: false });
+    // No name typed yet: the summary says it waits for one, and no stand-in is worded.
+    expect(html).toContain(t("root.obSummaryWaitsName"));
+  });
+
+  it("what the summary waits for names both the figures and the dates where both are missing (the review of 07d594f3, R3)", () => {
+    expect(t(summaryWaitsKey({ figures: true, dates: true }))).toBe("The summary waits for the figures and dates above.");
+    expect(t(summaryWaitsKey({ figures: true, dates: false }))).toBe("The summary waits for the figures above.");
+    expect(t(summaryWaitsKey({ figures: false, dates: true }))).toBe("The summary waits for the dates above.");
+  });
+});
+

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { institutionKindSchema, schoolModuleSchema, type InstitutionKind } from "./modules";
 import { subscriptionStatusSchema } from "./operator-dashboard";
 import { streamSchema } from "./streams";
+import { COLLEGE_TIER_LIST } from "./school-offer-parts";
 
 /**
  * operator-college: the operator's college console (4 October 2026) — the
@@ -23,8 +24,8 @@ import { streamSchema } from "./streams";
  * Offered to a college only: assignPlan refuses one for a school.
  */
 export const COLLEGE_TIERS = [
-  { code: "college-affiliated", perStudentYearPaise: 19_900, suits: ["COLLEGE"] as readonly InstitutionKind[] },
-  { code: "college-autonomous", perStudentYearPaise: 29_900, suits: ["AUTONOMOUS_COLLEGE", "COLLEGE"] as readonly InstitutionKind[] },
+  { code: COLLEGE_TIER_LIST[0], perStudentYearPaise: 19_900, suits: ["COLLEGE"] as readonly InstitutionKind[] },
+  { code: COLLEGE_TIER_LIST[1], perStudentYearPaise: 29_900, suits: ["AUTONOMOUS_COLLEGE", "COLLEGE"] as readonly InstitutionKind[] },
 ] as const;
 export type CollegeTierCode = (typeof COLLEGE_TIERS)[number]["code"];
 export const COLLEGE_TIER_CODES = COLLEGE_TIERS.map((t) => t.code) as readonly CollegeTierCode[];

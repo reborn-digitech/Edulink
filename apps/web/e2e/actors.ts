@@ -24,7 +24,7 @@ export function sessions(): Sessions {
 export async function contextFor(
   browser: Browser,
   cookie: string,
-  opts: { viewport: { width: number; height: number }; theme: "light" | "dark"; locale: "en" | "hi" | "mr"; live?: boolean; javaScriptEnabled?: boolean },
+  opts: { viewport: { width: number; height: number }; theme: "light" | "dark"; locale: "en" | "hi" | "mr"; live?: boolean; javaScriptEnabled?: boolean; serviceWorkers?: "allow" | "block" },
   baseURL: string,
 ): Promise<BrowserContext> {
   const url = new URL(baseURL);
@@ -38,6 +38,9 @@ export async function contextFor(
     hasTouch: opts.viewport.width < 768,
     // Off only for a spec about what the HTML alone paints (first-paint.spec.ts).
     javaScriptEnabled: opts.javaScriptEnabled ?? true,
+    // "block" for a spec that must see every request in its routes, none answered by a service worker round them
+    // (onboard-submit-body.spec.ts, which aborts the submit).
+    serviceWorkers: opts.serviceWorkers ?? "allow",
   });
   await context.addCookies([
     { name, value, domain: url.hostname, path: "/", httpOnly: true, sameSite: "Lax" },

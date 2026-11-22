@@ -7,6 +7,13 @@ import { z } from "zod";
  * operator-dashboard.ts). Re-exported by school-offer.ts; see there for the terms as a whole.
  */
 
+/**
+ * The college tiers' codes (4 Oct 2026), here in the leaf so the onboarding body can name them without a cycle
+ * (operator-college.ts, which prices them, imports operator-dashboard.ts); operator-college.ts takes its codes from this list.
+ */
+export const COLLEGE_TIER_LIST = ["college-affiliated", "college-autonomous"] as const;
+export const collegeTierCodeSchema = z.enum(COLLEGE_TIER_LIST);
+
 /** The free months a new school may be given, covering both parts. */
 export const FREE_MONTHS = [0, 1, 3, 6, 12] as const;
 export type FreeMonths = (typeof FREE_MONTHS)[number];

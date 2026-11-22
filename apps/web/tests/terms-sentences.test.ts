@@ -16,7 +16,7 @@ import { en } from "@edulink/i18n/en";
 import { hi } from "@edulink/i18n/hi";
 import { mr } from "@edulink/i18n/mr";
 import { translator } from "@/lib/i18n/dictionary";
-import { bulkSentence, datesSentence, notCountedLine, offerChangeSentence, partCell, partnerSentence, paymentSentence, premiumCell, premiumInfoLines, schoolTermsSentence, stateLabel, switchSentence, termsChangeSentence, type Fmt } from "@/lib/terms-sentences";
+import { bulkSentence, datesSentence, notCountedLine, offerChangeSentence, onboardSentence, partCell, partnerSentence, paymentSentence, premiumCell, premiumInfoLines, schoolTermsSentence, stateLabel, switchSentence, termsChangeSentence, type Fmt } from "@/lib/terms-sentences";
 
 function fmtFor(locale: "en" | "hi" | "mr"): Fmt {
   return {
@@ -401,3 +401,101 @@ describe("the review of phase 5 and C5 (22 November 2026)", () => {
   });
 });
 
+describe("phase 6: the onboarding summary (§2.5; C2; C6)", () => {
+  const base = { school: "ZZ School", subscription: OURS_SUB, premium: { students: true, teachers: false, figure: OURS_PREMIUM, billed: true, waitsFor: [] as string[] }, startsOn: "2026-11-21", renewsOn: "2027-05-21", status: "TRIAL" as const, impliedMonths: null };
+
+  it("the brief's summary: what it pays and how it moves, premium's price where it is billed, free until the renewal, before GST", () => {
+    expect(onboardSentence(f, base)).toBe(
+      "ZZ School pays ₹100 a student a year for Shalaghar, our price: it moves when you change your price. Billed from 21 May 2027; free until then. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours). Figures are before GST.",
+    );
+  });
+
+  it("C2: an own price is held whatever ours does; an own discount moves with ours; a college's tier; no tier", () => {
+    expect(onboardSentence(f, { ...base, subscription: OWN_PRICE })).toContain("ZZ School pays ₹120 a student a year for Shalaghar, held at ₹120 whatever your price does.");
+    expect(onboardSentence(f, { ...base, subscription: OWN20_SUB })).toContain("ZZ School pays ₹80 a student a year for Shalaghar, its own 20 % off ours: it moves when you change your price.");
+    // Our discount may stand between the tier's price and what the college pays, so the tier is named, not called its price (the review of phase 6, 6).
+    expect(onboardSentence(f, { ...base, subscription: { ...TIER, discountBps: 1_000, paysPaise: 17_900 } })).toContain("ZZ School pays ₹179 a student a year for Shalaghar, on the Affiliated college tier at our discount: it moves when you change your discount.");
+    // Our discount at nothing: the full tier price, with no word of a discount (the second review's W-4).
+    expect(onboardSentence(f, { ...base, subscription: TIER })).toContain("ZZ School pays ₹199 a student a year for Shalaghar, on the Affiliated college tier: it moves when you change your discount.");
+    expect(onboardSentence(f, { ...base, subscription: { ...TIER, discountBps: 1_000, paysPaise: 17_900, source: "OWN_DISCOUNT" } })).toContain("ZZ School pays ₹179 a student a year for Shalaghar, on the Affiliated college tier less its own 10 %: held whatever your discount does.");
+    // A college with no tier has no bill at all, premium or not (C2a): nothing is said to be billed (the review of phase 6, 4).
+    expect(onboardSentence(f, { ...base, subscription: null })).toBe(
+      "ZZ School has no tier chosen, so it has no Shalaghar price yet. Nothing is billed; its renewal date is 21 May 2027. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours). Figures are before GST.",
+    );
+    expect(onboardSentence(f, { ...base, premium: { ...base.premium, figure: { ...OURS_PREMIUM, basePaise: 6_000, paysPaise: 6_000, source: "OWN_PRICE" } } })).toContain("Premium add-on for students: ₹60 more a student a year (its own price, fixed).");
+  });
+
+  it("C6: a ticked premium names the price chosen, in the sheet's own sentence, billed once its plan is asked for; none ticked names no premium price", () => {
+    // The operator sets that price in this very step, so the server's sentence confirms it (C6, replacing C3 point 3).
+    expect(onboardSentence(f, { ...base, premium: { ...base.premium, billed: false, waitsFor: ["STUDENT"] } })).toContain("Premium add-on for students: ₹50 more a student a year (ours; it moves with ours), billed once the Student plan is asked for.");
+    expect(onboardSentence(f, { ...base, premium: { ...base.premium, students: false, teachers: true, billed: false, waitsFor: ["TEACHER"] } })).toContain("Premium add-on for teachers: ₹50 more a student a year (ours; it moves with ours), billed once the Teacher plan is asked for.");
+    expect(onboardSentence(f, { ...base, premium: { ...base.premium, teachers: true, billed: false, waitsFor: ["STUDENT", "TEACHER"] } })).toContain("Premium add-on for students and teachers: ₹50 more a student a year (ours; it moves with ours), billed once the Student or the Teacher plan is asked for.");
+    const off = onboardSentence(f, { ...base, premium: { ...base.premium, students: false } });
+    expect(off).toContain("Premium add-on: off.");
+    expect(off).not.toContain("₹50");
+    // C7.4: premium's own price or discount chosen with no box ticked is saved, so the sheet's off sentence names it.
+    expect(onboardSentence(f, { ...base, premium: { ...base.premium, students: false, figure: { ...OURS_PREMIUM, basePaise: 7_500, paysPaise: 7_500, source: "OWN_PRICE" } } })).toContain("Premium add-on: off; if switched on, ₹75 more a student a year (its own price, fixed).");
+  });
+
+  it("the dates: owed from its first day, owed now, a typed renewal's free months said back, and nothing billed", () => {
+    expect(onboardSentence(f, { ...base, status: "DUE", renewsOn: "2026-11-21" })).toContain("Owed from its first day, 21 Nov 2026: send the invoice now.");
+    expect(onboardSentence(f, { ...base, status: "DUE", startsOn: "2026-11-01", renewsOn: "2026-11-21" })).toContain("Owed now: its renewal, 21 Nov 2026, is today or earlier.");
+    expect(onboardSentence(f, { ...base, impliedMonths: 8 })).toContain("Billed from 21 May 2027; free until then. Free months by the date you typed: 8.");
+    const nothing = onboardSentence(f, { ...base, subscription: { ...OURS_SUB, discountBps: 10_000, paysPaise: 0, source: "OWN_DISCOUNT" }, premium: { ...base.premium, students: false }, status: "DUE", renewsOn: "2026-11-21" });
+    expect(nothing).toBe("ZZ School's Shalaghar subscription is free by agreement. Nothing is billed; its renewal date is 21 Nov 2026. Premium add-on: off.");
+  });
+
+  it("in Hindi and Marathi every piece is filled and ends as its language ends", () => {
+    for (const [locale, end] of [["hi", "।"], ["mr", "."]] as const) {
+      const g = fmtFor(locale);
+      for (const input of [base, { ...base, subscription: OWN_PRICE, impliedMonths: 8 }, { ...base, subscription: TIER, premium: { ...base.premium, billed: false, waitsFor: ["STUDENT"] } }, { ...base, status: "DUE" as const, renewsOn: "2026-11-21" }, { ...base, subscription: null }, { ...base, subscription: { ...OURS_SUB, discountBps: 10_000, paysPaise: 0, source: "OWN_DISCOUNT" as const }, premium: { ...base.premium, students: false } }]) {
+        const said = onboardSentence(g, input);
+        expect(said).not.toMatch(/[{}]|subs\./);
+        expect(said.endsWith(end)).toBe(true);
+        // Every sentence of the passage ends as its language ends, not the last alone (the review of phase 6, 8).
+        if (locale === "hi") expect(said).not.toMatch(/\.(\s|$)/);
+        if (locale === "mr") expect(said).not.toContain("।");
+        if (locale === "mr") expect(said).not.toContain("स्कूल");
+      }
+    }
+    // No verb or pronoun takes the name's gender, and no postposition follows the name (the second review's B6, B8).
+    expect(onboardSentence(fmtFor("hi"), base)).toContain("शालाघर के लिए ZZ School का शुल्क प्रति विद्यार्थी प्रति वर्ष ₹100 है");
+    expect(onboardSentence(fmtFor("mr"), base)).toContain("ZZ School: शाळाघरसाठी प्रति विद्यार्थी वर्षाला ₹100");
+    for (const input of [{ ...base, subscription: { ...TIER, discountBps: 1_000, paysPaise: 17_900, source: "OWN_DISCOUNT" as const } }, { ...base, subscription: null }, { ...base, status: "DUE" as const, startsOn: "2026-11-01", renewsOn: "2026-11-21" }]) {
+      expect(onboardSentence(fmtFor("mr"), input)).not.toMatch(/तिची|तिचे|तिच्या/);
+    }
+    // The day in brackets where Hindi and Marathi cannot set it off with commas (the review of phase 6, 6).
+    expect(onboardSentence(fmtFor("hi"), { ...base, status: "DUE", renewsOn: "2026-11-21" })).toContain("पहले दिन (21 Nov 2026) से बकाया");
+    expect(onboardSentence(fmtFor("mr"), { ...base, status: "DUE", renewsOn: "2026-11-21" })).toContain("पहिल्या दिवसापासून (21 Nov 2026) थकबाकी");
+  });
+});
+
+describe("C7.9: Hindi and Marathi sentences that carry a school's or a college's name", () => {
+  /** The keys C7.9 names, the whole of what phases 6 and 8 are asked to change (C7a point 3). */
+  const flat = (node: Record<string, unknown>, prefix = ""): [string, string][] =>
+    Object.entries(node).flatMap(([key, value]) => (typeof value === "string" ? [[`${prefix}${key}`, value] as [string, string]] : flat(value as Record<string, unknown>, `${prefix}${key}.`)));
+  const named = (dictionary: Record<string, unknown>) =>
+    flat(dictionary).filter(([key]) => /^subs\.ob[A-Z]/.test(key) || ["root.onboardDone", "subs.sSubscription", "subs.sSubscriptionFree", "subs.sNoTier", "subs.sNotSet", "subs.sNotSetOld", "subs.howTier", "subs.howTierOwnDiscount", "subs.switchOnStudents", "subs.switchOnTeachers", "subs.switchOffBill", "subs.switchOffBillWill"].includes(key));
+
+  it("Marathi: no case suffix after the name with a space, and no feminine pronoun standing for the institution", () => {
+    const rows = named(mr as unknown as Record<string, unknown>);
+    expect(rows.length).toBeGreaterThanOrEqual(25);
+    for (const [key, value] of rows) {
+      expect(value, key).not.toMatch(/\{(school|name)\} (ची|चे|च्या|चा|ला|साठी)(?![ऀ-ॿ])/);
+      expect(value, key).not.toMatch(/(^|[\s(,;:])(तिच्या|तिचा|तिची|तिचे|तिला)(?![ऀ-ॿ])/);
+    }
+    // The walk's own finds, by key.
+    for (const key of ["subs.sNotSet", "subs.sNotSetOld"]) expect(Object.fromEntries(rows)[key], key).not.toMatch(/(^|\s)ती\s/);
+    expect(Object.fromEntries(rows)["root.onboardDone"]).not.toMatch(/\{name\} जोडली/);
+  });
+
+  it("Hindi: no verb or pronoun agreeing with the name (\"वह … देता है\", \"{name} जुड़ गया\"); its postpositions after a name stay", () => {
+    const rows = Object.fromEntries(named(hi as unknown as Record<string, unknown>));
+    for (const key of ["subs.sNotSet", "subs.sNotSetOld"]) {
+      expect(rows[key], key).not.toMatch(/(^|[\s:])वह\s/);
+      expect(rows[key], key).not.toMatch(/देता है/);
+    }
+    expect(rows["root.onboardDone"]).not.toMatch(/\{name\} जुड़ गया/);
+    expect(rows["subs.sSubscription"]).toMatch(/\{school\} का/);
+  });
+});

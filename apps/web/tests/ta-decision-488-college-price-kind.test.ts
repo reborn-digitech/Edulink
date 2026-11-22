@@ -152,8 +152,12 @@ describe("TA-488: a college price is set only on a college whose kind it suits",
   it("TA-488: the web's school page and new-school form offer only the prices that suit the kind", () => {
     const page = readFileSync(resolve(ROOT, "src/app/root/[schoolId]/page.tsx"), "utf8");
     expect(page).toMatch(/plans\.filter\(\(p\) => planSuitsKind\(p\.code, school\.kind\)/);
-    const form = readFileSync(resolve(ROOT, "src/app/root/onboard/onboard-form.tsx"), "utf8");
-    expect(form).toMatch(/plans\.filter\(\(p\) => planSuitsKind\(p\.code, school\.kind\)\)/);
+    // The new-school form's terms (phase 6, §2.5): its optional plan and a college's tier chips, in terms-fieldset.tsx, each
+    // filtered by the kind chosen, and a plan chosen before the kind changed let go as the form renders.
+    const form = readFileSync(resolve(ROOT, "src/app/root/onboard/terms-fieldset.tsx"), "utf8");
+    expect(form).toMatch(/plans\s*\.filter\(\(p\) => planSuitsKind\(p\.code, kind\)\)/);
+    expect(form).toMatch(/COLLEGE_TIERS\.filter\(\(t\) => planSuitsKind\(t\.code, kind\)\)/);
+    expect(form).toMatch(/planChosen && planSuitsKind\(plans\.find\(\(p\) => p\.id === planChosen\)\?\.code, kind\)/);
   });
 
   it("TA-488: the refusal is a sentence in English, Hindi and Marathi", () => {
