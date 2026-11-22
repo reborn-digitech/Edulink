@@ -26,6 +26,7 @@ import PricesPage from "@/app/root/subscriptions/prices/page";
 import SchoolPage from "@/app/root/[schoolId]/page";
 import RootPage from "@/app/root/page";
 import OnboardPage from "@/app/root/onboard/page";
+import { OnboardForm } from "@/app/root/onboard/onboard-form";
 import { summaryWaitsKey } from "@/app/root/onboard/terms-fieldset";
 import { setActivePlansForTests } from "@/lib/person-plans";
 import { formatDateKey, todayKey } from "@/lib/dates";
@@ -254,6 +255,45 @@ describe("onboarding's terms (§2.5; phase 6)", () => {
     expect(t(summaryWaitsKey({ figures: true, dates: true }))).toBe("The summary waits for the figures and dates above.");
     expect(t(summaryWaitsKey({ figures: true, dates: false }))).toBe("The summary waits for the figures above.");
     expect(t(summaryWaitsKey({ figures: false, dates: true }))).toBe("The summary waits for the dates above.");
+  });
+});
+
+describe("onboarding's partner", () => {
+  /** The form as the page serves it, given these partners on record (this suite makes no partner row: the form alone is drawn). */
+  async function form(partners: { id: string; name: string; percentTenths: number }[]): Promise<string> {
+    const offer = await readOffer();
+    return text(await shell(React.createElement(OnboardForm, {
+      plans: [],
+      partners,
+      offer: {
+        subscriptionPricePaise: offer.subscriptionPricePaise,
+        subscriptionDiscountBps: offer.subscriptionDiscountBps,
+        premiumPricePaise: offer.premiumPricePaise,
+        premiumDiscountBps: offer.premiumDiscountBps,
+        freeMonths: offer.freeMonths,
+        studentsByDefault: offer.studentsByDefault,
+        teachersByDefault: offer.teachersByDefault,
+      },
+      asked: [],
+      servedAt: new Date().toISOString(),
+    })));
+  }
+
+  it("starts on None whether or not a partner is on record (the owner's answer of 22 November 2026, 18:28 IST: \"Start on None\"): Existing partner offered, no Partners list drawn, so no partner is chosen for the operator", async () => {
+    const html = await form([
+      { id: "zz-partner-a", name: "ZZ Partner A", percentTenths: 125 },
+      { id: "zz-partner-b", name: "ZZ Partner B", percentTenths: 100 },
+    ]);
+    // On None, read through the option React's prerender marks as chosen; a text check for either label holds either way.
+    expect(html).toContain(`<option value="none" selected="">${t("root.commissionNoneOption")}</option>`);
+    expect(html).not.toContain(`<option value="existing" selected="">`);
+    expect(html).toContain(`<option value="existing">${t("root.commissionPickPartner")}</option>`);
+    expect(html).not.toContain(`>${t("root.partners")}<`);
+    expect(html).not.toContain("ZZ Partner A");
+    // No partner on record: None, and no Existing partner to offer, as before.
+    const none = await form([]);
+    expect(none).toContain(`<option value="none" selected="">${t("root.commissionNoneOption")}</option>`);
+    expect(none).not.toContain(`<option value="existing"`);
   });
 });
 

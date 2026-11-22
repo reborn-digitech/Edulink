@@ -25,7 +25,9 @@ type CommissionMode = "none" | "existing" | "new";
  * (§2.5: our price or its own, the free months that set the renewal, the
  * premium ticks, a college's tier, the optional plan, and the server's
  * summary of it all, terms-fieldset.tsx), who to call there, the partner
- * if there is one, and the first administrator. The percent is typed as a
+ * if there is one (the field starts on None, a partner on record or not:
+ * the owner's answer of 22 November 2026, 18:28 IST, "Start on None"),
+ * and the first administrator. The percent is typed as a
  * percentage with one decimal and sent as tenths, the integer the row
  * holds. Every refusal is the server's own sentence: the terms' under
  * their fields as they are chosen, the rest above the button; nothing is
@@ -51,7 +53,9 @@ export function OnboardForm({ plans, partners, offer, asked, servedAt }: { plans
   // A college's streams (5 Oct 2026), chosen beside the kind.
   const [streams, setStreams] = useState<StreamCode[]>([]);
   const [contact, setContact] = useState({ name: "", role: "", phone: "", email: "" });
-  const [mode, setMode] = useState<CommissionMode>(partners.length ? "existing" : "none");
+  // None until the operator chooses a partner, whether or not one is on record (the doc comment above). Existing partner opens
+  // on the first partner by name, which is what its list, with no empty option, draws.
+  const [mode, setMode] = useState<CommissionMode>("none");
   const [partnerId, setPartnerId] = useState(partners[0]?.id ?? "");
   const [newPartner, setNewPartner] = useState({ name: "", percent: "", phone: "", email: "", notes: "" });
   const [admin, setAdmin] = useState({ email: "", name: "" });
