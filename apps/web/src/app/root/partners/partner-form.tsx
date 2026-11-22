@@ -21,8 +21,12 @@ export type PartnerView = {
   email: string | null;
   percentTenths: number;
   notes: string;
-  schools: { id: string; name: string; statusLabel: string; planName: string | null }[];
+  /** `freeByAgreement`: terms set at ₹0, so it adds nothing and is in neither line (C4e). */
+  schools: { id: string; name: string; statusLabel: string; planName: string | null; freeByAgreement: boolean }[];
   owed: string;
+  /** The partner's schools not counted, named (decision 0010 decision 6; C4 point 2, C4c point 2): no price to take a share of, and renewal date reached with no payment recorded (with the day). */
+  unpriced: string[];
+  renewalReached: string[];
 };
 
 const BLANK: Values = { name: "", percent: "", phone: "", email: "", notes: "" };
@@ -136,12 +140,14 @@ export function PartnerRowCard({ partner }: { partner: PartnerView }) {
               <li key={s.id}>
                 <Link href={`/root/${s.id}`} className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-sm text-fg hover:bg-surface-muted">
                   {s.name}
-                  <span className="text-xs text-fg-muted">· {s.statusLabel}{s.planName ? ` · ${s.planName}` : ""}</span>
+                  <span className="text-xs text-fg-muted">· {s.statusLabel}{s.freeByAgreement ? ` · ${t("root.freeByAgreement")}` : ""}{s.planName ? ` · ${s.planName}` : ""}</span>
                 </Link>
               </li>
             ))}
           </ul>
         )}
+        {partner.unpriced.length > 0 && <p className="text-xs text-fg-subtle">{t("root.partnerUnpricedNamed", { schools: partner.unpriced.join(", ") })}</p>}
+        {partner.renewalReached.length > 0 && <p className="text-xs text-fg-subtle">{t("root.partnerRenewalReachedNamed", { schools: partner.renewalReached.join(", ") })}</p>}
         {editing && (
           <form onSubmit={save} className="space-y-4 border-t border-border pt-4" noValidate>
             {error && (

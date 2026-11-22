@@ -37,7 +37,8 @@ export function collegeTierOf(planCode: string | null | undefined) {
 /**
  * TA-488 (the owner's decision, 14 November 2026): whether a plan may be set on an institution of this kind. An
  * ordinary plan suits every kind; a tier suits only the kinds its list names, so an autonomous college is never
- * put on the affiliated price (a deliberate discount is an ordinary flat-priced plan). Read by assignPlan and
+ * put on the affiliated price (a deliberate discount is the college's own discount on its tier, decision 0010 decision 3,
+ * since a plan carries no price there, decision 4). Read by assignPlan and
  * updatePlan, and by the web's school page and new-school form to offer only what fits.
  */
 export function planSuitsKind(planCode: string | null | undefined, kind: string | null | undefined): boolean {
@@ -99,8 +100,18 @@ export const operatorCollegeRowSchema = z.object({
   modulesOn: z.array(schoolModuleSchema),
   subscription: z.object({ status: subscriptionStatusSchema.nullable(), dueAt: z.string().nullable() }),
   plan: z.object({ code: z.string(), name: z.string() }).nullable(),
-  /** The tier's year at today's roll, when the plan is a college tier; null otherwise. */
+  /** The tier's year at today's roll, when the plan is a college tier and the college's terms are not set; null otherwise (once terms are set, `terms` holds the figure). */
   tierYearPaise: z.number().int().nullable(),
+  /**
+   * The college's terms (decision 0010 decision 3; rule 7; C4 (i), C4a point 8): once set, its Shalaghar subscription a
+   * student a year from the sums (its tier less its own discount or ours; null: no tier chosen, so no price), the newest
+   * count from the nightly sample (`pupils`, null: none yet; never the enrolled count beside it, decision 18) and the year at
+   * that figure × that count, at today's prices (null without a count or a tier). Not set: false and nulls, and the tier's
+   * year reads exactly as before. Defaults so an older answer still parses.
+   */
+  terms: z
+    .object({ set: z.boolean(), perStudentPaise: z.number().int().nullable(), pupils: z.number().int().nullable().default(null), yearPaise: z.number().int().nullable() })
+    .default({ set: false, perStudentPaise: null, pupils: null, yearPaise: null }),
   health: collegeHealthSchema,
 });
 export type OperatorCollegeRow = z.infer<typeof operatorCollegeRowSchema>;

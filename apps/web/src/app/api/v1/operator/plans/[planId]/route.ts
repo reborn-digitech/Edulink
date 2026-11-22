@@ -6,13 +6,17 @@ import { operatorRefused } from "@/lib/api-reads/operator-school";
 
 type Params = { params: Promise<{ planId: string }> };
 
-/** PATCH /api/v1/operator/plans/{planId} — correct a plan; only the fields sent change, a null cap is "no cap". Audited as superuser.plan.update. */
+/**
+ * PATCH /api/v1/operator/plans/{planId} — correct a plan; only the fields sent change, a null cap is "no cap". Audited as
+ * superuser.plan.update. A monthly price sent is taken for one release and ignored (decision 0010 decision 4).
+ */
 export async function PATCH(request: Request, { params }: Params) {
   try {
     const ctx = await requireApiOperator();
     const { planId } = await params;
     const parsed = operatorPlanUpdateBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
+    // A monthly price in the body is taken and ignored: the library writes none (decision 0010 decision 4).
     const result = await updatePlan(ctx, planId, parsed.data);
     if (!result.ok) return operatorRefused(result);
     return ok(okSchema.parse({ ok: true }));

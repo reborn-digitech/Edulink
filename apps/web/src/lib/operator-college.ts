@@ -7,6 +7,7 @@ import {
   modulesForKind,
   REGULATOR_DEADLINES,
   SCHOOL_MODULES,
+  subscriptionTerms,
   tierYearPaise,
   type CollegeHealth,
   type InstitutionKind,
@@ -28,6 +29,7 @@ import { DEFAULT_PREFS, revokeAllAccess, type ActiveContext, type UserPrefs } fr
 import { forTenant } from "./tenant-context";
 import { assertSuperuser, withSchoolAccess } from "./superuser";
 import { isAlwaysOn, switchModuleFor } from "./modules";
+import { newestPupils, readOffer } from "./school-terms";
 import { MODULE_META } from "./module-meta";
 import { placementSummary } from "./placement-analytics";
 import { gradeOf } from "./iqac-rules";
@@ -85,6 +87,8 @@ const COLLEGE_SELECT = {
   naacValidUntil: true,
   subscriptionStatus: true,
   subscriptionDueAt: true,
+  subscriptionDiscountBps: true,
+  termsSetAt: true,
   plan: { select: { code: true, name: true } },
 } as const;
 
@@ -128,6 +132,17 @@ export async function healthOf(schoolId: string, timezone: string, now: Date = n
   };
 }
 
+/** A college's terms from the sums once they are set (decision 0010 decision 3): a student a year, and the year at its newest count. */
+function termsOf(
+  s: { kind: string | null; termsSetAt: Date | null; subscriptionDiscountBps: number | null; plan: { code: string } | null },
+  offer: { subscriptionPricePaise: number; subscriptionDiscountBps: number } | null,
+  pupils: number | undefined,
+): OperatorCollegeRow["terms"] {
+  if (s.termsSetAt === null || !offer) return { set: false, perStudentPaise: null, pupils: null, yearPaise: null };
+  const sub = subscriptionTerms({ kind: s.kind, planCode: s.plan?.code ?? null, own: { discountBps: s.subscriptionDiscountBps } }, { pricePaise: offer.subscriptionPricePaise, discountBps: offer.subscriptionDiscountBps });
+  return { set: true, perStudentPaise: sub?.paysPaise ?? null, pupils: pupils ?? null, yearPaise: sub && pupils !== undefined ? sub.paysPaise * pupils : null };
+}
+
 /**
  * Every college, by name, with its profile, programmes and intake, students
  * enrolled (ACTIVE STUDENT memberships on the roll), modules on, subscription,
@@ -142,6 +157,10 @@ export async function listColleges(session: ActiveContext, opts: CollegesOpts = 
     select: COLLEGE_SELECT,
   });
   const modules = await db.schoolModule.findMany({ where: { schoolId: { in: schools.map((s) => s.id) } }, select: { schoolId: true, module: true } });
+  // A college whose terms are set reads its subscription from the sums (decision 0010; rule 7): its tier less its own
+  // discount or ours, × its newest count from the nightly sample, at today's prices. One read of the offer and the counts.
+  const termsSet = schools.filter((s) => s.termsSetAt !== null).map((s) => s.id);
+  const [offer, newest] = termsSet.length ? await Promise.all([readOffer(), newestPupils(termsSet)]) : [null, new Map<string, number>()];
   const items: OperatorCollegeRow[] = [];
   for (const s of schools) {
     const on = new Set(modules.filter((m) => m.schoolId === s.id).map((m) => m.module));
@@ -181,7 +200,8 @@ export async function listColleges(session: ActiveContext, opts: CollegesOpts = 
       modulesOn: SCHOOL_MODULES.filter((m) => on.has(m)),
       subscription: { status: (SUBSCRIPTION as readonly string[]).includes(s.subscriptionStatus ?? "") ? (s.subscriptionStatus as (typeof SUBSCRIPTION)[number]) : null, dueAt: dayOf(s.subscriptionDueAt) },
       plan: s.plan,
-      tierYearPaise: tierYearPaise(s.plan?.code, row.students),
+      tierYearPaise: s.termsSetAt === null ? tierYearPaise(s.plan?.code, row.students) : null,
+      terms: termsOf(s, offer, newest.get(s.id)),
       health: row.health,
     });
   }

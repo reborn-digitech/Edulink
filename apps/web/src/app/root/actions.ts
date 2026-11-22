@@ -234,6 +234,7 @@ export async function dismissAppAdminAction(userId: string): Promise<Result> {
 /* Plans, and the three support doors (2026-10-01)                            */
 /* -------------------------------------------------------------------------- */
 
+/** A plan from the console's form: its code, name and caps. The library writes no monthly price (decision 0010 decision 4), whatever the client sends. */
 export async function createPlanAction(input: PlanInput): Promise<Result & { planId?: string }> {
   try {
     const session = await requireApiUser();

@@ -98,9 +98,12 @@ async function makeSchool(suffix: string, data: Record<string, unknown> = {}) {
 beforeAll(async () => {
   const op = await db.user.create({ data: { name: "ZZ Subs Operator", email: `zz-subs-op-${STAMP}@test.invalid`, isSuperuser: true }, select: { id: true } });
   operatorUserId = op.id;
-  const made = await createPlan(operator(), { code: `zz-subs-${STAMP}`, name: "ZZ Subs Plan", priceMonthlyPaise: 100_000 });
+  const made = await createPlan(operator(), { code: `zz-subs-${STAMP}`, name: "ZZ Subs Plan" });
   if (!made.ok) throw new Error(made.errorKey);
   planId = made.planId;
+  // An old monthly price, as a plan made before decision 0010 holds one: written on this ZZ plan alone, since nothing in the
+  // app writes one any more (decision 4; C4 point 1, C4a point 6). The partner's share of a school whose terms are not set reads it.
+  await db.plan.update({ where: { id: planId }, data: { priceMonthlyPaise: 100_000 } });
   schoolId = await makeSchool("Main", { planId, subscriptionStatus: "TRIAL", subscriptionStartsAt: dayToDate(day(-10)), subscriptionDueAt: dayToDate(day(20)) });
   soonSchoolId = await makeSchool("Soon", { planId, subscriptionStatus: "ACTIVE", subscriptionStartsAt: dayToDate(day(-360)), subscriptionDueAt: dayToDate(day(3)) });
   pastSchoolId = await makeSchool("Past", { planId, subscriptionStatus: "ACTIVE", subscriptionStartsAt: dayToDate(day(-400)), subscriptionDueAt: dayToDate(day(-5)) });

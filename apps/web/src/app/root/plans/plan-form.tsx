@@ -10,8 +10,9 @@ import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { createPlanAction, deletePlanAction, updatePlanAction } from "../actions";
 import { useT } from "@/lib/i18n";
+import { collegeTierOf } from "@edulink/contracts";
 
-type PlanValues = { code: string; name: string; pupilCap: string; messageCap: string; storageCapMb: string; priceMonthlyPaise: string };
+type PlanValues = { code: string; name: string; pupilCap: string; messageCap: string; storageCapMb: string };
 
 export type PlanView = {
   id: string;
@@ -25,7 +26,7 @@ export type PlanView = {
   schools: number;
 };
 
-const BLANK: PlanValues = { code: "", name: "", pupilCap: "", messageCap: "", storageCapMb: "", priceMonthlyPaise: "" };
+const BLANK: PlanValues = { code: "", name: "", pupilCap: "", messageCap: "", storageCapMb: "" };
 
 function valuesOf(plan: PlanView): PlanValues {
   return {
@@ -34,8 +35,6 @@ function valuesOf(plan: PlanView): PlanValues {
     pupilCap: plan.pupilCap === null ? "" : String(plan.pupilCap),
     messageCap: plan.messageCap === null ? "" : String(plan.messageCap),
     storageCapMb: plan.storageCapMb === null ? "" : String(plan.storageCapMb),
-    // Rupees on the form, paise in the row: the operator thinks in rupees.
-    priceMonthlyPaise: plan.priceMonthlyPaise === null ? "" : String(plan.priceMonthlyPaise / 100),
   };
 }
 
@@ -46,12 +45,12 @@ function capOf(raw: string): number | null {
   return Math.round(Number(trimmed));
 }
 
+/** A plan carries no price since decision 0010 (decision 4): what a school pays is its terms, set on its own page. */
 function inputOf(values: PlanValues) {
-  const price = values.priceMonthlyPaise.trim() ? Math.round(Number(values.priceMonthlyPaise) * 100) : null;
-  return { code: values.code, name: values.name, pupilCap: capOf(values.pupilCap), messageCap: capOf(values.messageCap), storageCapMb: capOf(values.storageCapMb), priceMonthlyPaise: price };
+  return { code: values.code, name: values.name, pupilCap: capOf(values.pupilCap), messageCap: capOf(values.messageCap), storageCapMb: capOf(values.storageCapMb) };
 }
 
-/** The six fields, for adding and for correcting. */
+/** The five fields, for adding and for correcting. */
 function PlanFields({ values, set }: { values: PlanValues; set: (key: keyof PlanValues, value: string) => void }) {
   const t = useT();
   return (
@@ -64,7 +63,6 @@ function PlanFields({ values, set }: { values: PlanValues; set: (key: keyof Plan
         <TextField label={t("root.planPupilCap")} type="number" min={0} inputMode="numeric" value={values.pupilCap} onChange={(e) => set("pupilCap", e.target.value)} placeholder={t("root.planNoCap")} />
         <TextField label={t("root.planMessageCap")} type="number" min={0} inputMode="numeric" value={values.messageCap} onChange={(e) => set("messageCap", e.target.value)} placeholder={t("root.planNoCap")} />
         <TextField label={t("root.planStorageCap")} type="number" min={0} inputMode="numeric" value={values.storageCapMb} onChange={(e) => set("storageCapMb", e.target.value)} placeholder={t("root.planNoCap")} />
-        <TextField label={t("root.planPrice")} type="number" min={0} step="0.01" inputMode="decimal" value={values.priceMonthlyPaise} onChange={(e) => set("priceMonthlyPaise", e.target.value)} />
       </div>
     </>
   );
@@ -166,7 +164,10 @@ export function PlanRowCard({ plan }: { plan: PlanView }) {
           [t("root.planPupilCap"), cap(plan.pupilCap)].join(": "),
           [t("root.planMessageCap"), cap(plan.messageCap)].join(": "),
           [t("root.planStorageCap"), cap(plan.storageCapMb, " MB")].join(": "),
-          [t("root.planPrice"), plan.priceMonthlyPaise === null ? "—" : `₹${(plan.priceMonthlyPaise / 100).toLocaleString()}`].join(": "),
+          // An old price is still shown where a plan has one and something reads it: only for schools whose terms are not set
+          // (rule 16). A college tier is reckoned from its code and the roll, never from a monthly price (decision 4; C4d point
+          // 4), so a tier's old price is read by nothing and is not shown (the coordinating session's review, A2).
+          ...(plan.priceMonthlyPaise === null || collegeTierOf(plan.code) ? [] : [t("root.planOldPrice", { amount: `₹${(plan.priceMonthlyPaise / 100).toLocaleString()}` })]),
         ].join(" · ")}
         action={
           <div className="flex gap-2">

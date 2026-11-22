@@ -53,12 +53,39 @@ export const operatorPartnerSchema = z.object({
   percentTenths,
   notes: z.string(),
   createdAt: iso,
-  /** The partner's schools, live ones only. */
-  schools: z.array(z.object({ id, name: z.string(), subscriptionStatus: subscriptionStatusSchema.nullable(), planName: z.string().nullable(), priceMonthlyPaise: count.nullable() })),
-  /** What the partner is owed this month: percent × plan price over the schools whose subscription is ACTIVE. Recorded only; nothing is paid here. */
+  /**
+   * The partner's schools, live ones only. `priceMonthlyPaise` is the month the share is taken of (decision 0010 decision 6,
+   * contracts `partnerMonth`): terms set, the subscription month (what the school pays a student a year × its newest count
+   * ÷ 12); terms not set, the plan's old monthly price or a college tier's month (today's reading); null, no figure. Only an
+   * ACTIVE school earns or is in a list. `earns`: it adds to the partner's figure this month; `unpriced`: no price to take a
+   * share of; `renewalReached`: terms set, its renewal day come with no payment recorded; `freeByAgreement`: terms set, its
+   * subscription at ₹0, in neither list. The flags default so an older answer still parses.
+   */
+  schools: z.array(
+    z.object({
+      id,
+      name: z.string(),
+      subscriptionStatus: subscriptionStatusSchema.nullable(),
+      planName: z.string().nullable(),
+      priceMonthlyPaise: count.nullable(),
+      termsSet: z.boolean().default(false),
+      earns: z.boolean().default(false),
+      unpriced: z.boolean().default(false),
+      renewalReached: z.boolean().default(false),
+      freeByAgreement: z.boolean().default(false),
+    }),
+  ),
+  /** What the partner is owed this month: their percent of the month of each school that earns (decision 6; premium never shared). Recorded only; nothing is paid here. */
   owedThisMonthPaise: count,
-  /** The partner's ACTIVE schools on no plan, or on a plan with no price, which the owed figure cannot count. Defaults to 0 so an older answer still parses. */
+  /**
+   * The partner's ACTIVE schools with no price to take a share of (C4c point 2): terms not set, as today (no plan, a plan with no
+   * price or at ₹0, a tier with no roll this month); terms set, no count or a college with no tier, never one at ₹0. Defaults to
+   * 0 so an older answer still parses; `unpricedSchoolsNamed` names them.
+   */
   unpricedSchools: count.default(0),
+  unpricedSchoolsNamed: z.array(z.object({ id, name: z.string() })).default([]),
+  /** The partner's ACTIVE schools with terms set whose renewal day has come with no payment recorded, on the school's own day (C4 point 2): they add nothing until paid. */
+  renewalReachedSchools: z.array(z.object({ id, name: z.string(), dueDay: day })).default([]),
 });
 export type OperatorPartner = z.infer<typeof operatorPartnerSchema>;
 
@@ -260,7 +287,7 @@ export const operatorDashboardSchema = z.object({
     owedThisMonthPaise: count,
   }),
   /** The partners and what each is owed this month. */
-  partners: z.array(z.object({ id, name: z.string(), percentTenths, schools: count, owedThisMonthPaise: count, unpricedSchools: count.default(0) })),
+  partners: z.array(z.object({ id, name: z.string(), percentTenths, schools: count, owedThisMonthPaise: count, unpricedSchools: count.default(0), renewalReachedSchools: count.default(0) })),
   plans: z.array(z.object({ id, code: z.string(), name: z.string() })),
   /** The schools the query matches, due-first. */
   rows: z.array(operatorDashboardRowSchema),

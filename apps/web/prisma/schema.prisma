@@ -596,8 +596,11 @@ model School {
 /// owed a share of what those schools pay. Operator-only and school-less,
 /// like Plan. `percentTenths` is the share as TENTHS OF A PERCENT — 125 is
 /// 12.5 % — so it is an integer and 0–1000 covers 0–100 %; what is owed is
-/// computed on read (percent × the plan's recorded price × the partner's
-/// ACTIVE schools) and never stored: nothing here moves money (decision 0003).
+/// computed on read and never stored (decision 0010 decision 6): for a school
+/// whose terms are set, the percent of its subscription month (what it pays a
+/// student a year × its newest count ÷ 12) while ACTIVE before its renewal day;
+/// for one whose terms are not set, of its plan's old monthly price while
+/// ACTIVE; premium is never shared. Nothing here moves money (decision 0003).
 model CommissionPartner {
   id            String   @id @default(cuid())
   name          String
@@ -6281,11 +6284,13 @@ model SchoolOffer {
   updatedByUserId         String?
 }
 
-/// A plan the operator offers a school: what it allows per month, and a
-/// price the operator RECORDS, never collects — money never touches the
-/// platform (decision 0003). A null cap is "no cap". Platform-wide, so no
-/// school policy: the office reads its own school's plan through the School
-/// row, and the operator reads and writes every one.
+/// A plan the operator offers a school: what it allows per month. A plan
+/// carries limits, not a price (decision 0010 decision 4): its old monthly
+/// price is written by nothing and read only for a partner's share of a school
+/// whose terms are not set; what a school pays is its terms. A null cap is
+/// "no cap". Platform-wide, so no school policy: the office reads its own
+/// school's plan through the School row, and the operator reads and writes
+/// every one. Money never touches the platform (decision 0003).
 model Plan {
   id                String   @id @default(cuid())
   /// Short, unique, typed by the operator: starter, standard, …

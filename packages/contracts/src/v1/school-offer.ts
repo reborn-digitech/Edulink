@@ -197,6 +197,50 @@ export function subscriptionMonthPaise(terms: PartTerms | null, pupils: number |
   return Math.round((terms.paysPaise * Math.max(0, Math.trunc(pupils))) / 12);
 }
 
+/**
+ * A school's month for its partner's share, and where it stands on the partners card (decision 0010 decision 6; the owner's
+ * Q5 of 21 November 2026, "Paid-up subscription only": "Their percent of the subscription (price x pupils / 12 a month),
+ * only while the school is Active and not past its renewal date. Premium is not shared. A paused school earns nothing.";
+ * the coordinating session's C4 point 2, C4c point 2, C4d and C4e). Only an ACTIVE school counts at all: TRIAL, DUE,
+ * SUSPENDED, ENDED or no status earns nothing and is in no list.
+ *
+ * Terms set: the subscription month (subscriptionMonthPaise: what the school pays a student a year after any discount, × its
+ * newest count, ÷ 12), every kind, premium never; it earns while its renewal day has not come on its own day (renewalReached:
+ * on the day itself nothing is owed; with none on record it never comes). A subscription at ₹0 (free by agreement: 100 %
+ * off, or a discount that rounds to nothing) earns nothing and is in neither list, its entry reading "Free by agreement";
+ * otherwise, with no figure (no count, or a college with no tier) it is unpriced, and with its renewal day come it is
+ * renewal-reached, in both lists where both hold.
+ *
+ * Terms not set: today's reading, exactly: the month the caller read (the plan's old monthly price, or a college tier's
+ * twelfth of this month's count, none without a roll), earning while ACTIVE whatever the renewal; with no month, or a month
+ * of ₹0, unpriced, as today's `!priceMonthlyPaise` counts it (C4d point 3); never renewal-reached (C4 point 2).
+ */
+export function partnerMonth(input: {
+  termsSet: boolean;
+  status: string | null;
+  renewalDay: string | null;
+  todayDay: string;
+  subscription: PartTerms | null;
+  pupils: number | null;
+  oldMonthPaise: number | null;
+}): { monthPaise: number | null; earns: boolean; renewalReached: boolean; unpriced: boolean; freeByAgreement: boolean } {
+  const active = input.status === "ACTIVE";
+  if (!input.termsSet) {
+    const priced = Boolean(input.oldMonthPaise);
+    return { monthPaise: input.oldMonthPaise, earns: active && priced, renewalReached: false, unpriced: active && !priced, freeByAgreement: false };
+  }
+  const free = input.subscription !== null && input.subscription.paysPaise === 0;
+  const monthPaise = free ? 0 : subscriptionMonthPaise(input.subscription, input.pupils);
+  const reached = renewalReached(input.renewalDay, input.todayDay);
+  return {
+    monthPaise,
+    earns: active && !free && !reached && monthPaise !== null && monthPaise > 0,
+    renewalReached: active && !free && reached,
+    unpriced: active && !free && monthPaise === null,
+    freeByAgreement: free,
+  };
+}
+
 /* ---------------------------------------------------------------------- */
 /* The days                                                                */
 /* ---------------------------------------------------------------------- */

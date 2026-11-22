@@ -14,14 +14,17 @@ import type { ActiveContext } from "./session";
 /**
  * Plans and metering.
  *
- * A PLAN IS FOUR CAPS AND A NAME. The operator writes them; a school is put
+ * A PLAN IS THREE CAPS AND A NAME. The operator writes them; a school is put
  * on one (audited, and the school's office told); and once a night the
  * usage:sample job writes what each school used that month — pupils on the
  * roll, texts sent, bytes held, people active — as one UsageSample row per
  * school and month, which is the ONE WRITER of that table. The operator
  * reads every school's row against its plan's caps; the office reads its
- * own. The price on a plan is a number the operator records so the page can
- * say what a school is on; nothing here collects it (decision 0003).
+ * own. A plan carries limits, not a price: since decision 0010 (decision 4)
+ * nothing writes a plan's old monthly price, and it is read only for a
+ * partner's share of a school whose terms are not set (subscriptions.ts
+ * listPartners); what a school pays is its terms (school-terms.ts). Nothing
+ * here collects anything (decision 0003).
  *
  * THE CAP THAT ALREADY EXISTED keeps working: the school's monthly text
  * cap is the plan's when the school has a plan that states one and the
@@ -41,7 +44,6 @@ export type PlanInput = {
   pupilCap?: number | null;
   messageCap?: number | null;
   storageCapMb?: number | null;
-  priceMonthlyPaise?: number | null;
 };
 
 export type PlanRow = {
@@ -58,6 +60,7 @@ export type PlanRow = {
 };
 
 export type PlanResult = { ok: true; planId: string } | { ok: false; errorKey: TranslationKey };
+
 
 const PLAN_SELECT = { id: true, code: true, name: true, pupilCap: true, messageCap: true, storageCapMb: true, priceMonthlyPaise: true, createdAt: true } as const;
 
@@ -93,7 +96,6 @@ export async function createPlan(session: ActiveContext, input: PlanInput): Prom
       pupilCap: cap(input.pupilCap) ?? null,
       messageCap: cap(input.messageCap) ?? null,
       storageCapMb: cap(input.storageCapMb) ?? null,
-      priceMonthlyPaise: cap(input.priceMonthlyPaise) ?? null,
     },
     select: { id: true },
   });
@@ -127,7 +129,8 @@ export async function updatePlan(session: ActiveContext, planId: string, input: 
     if (!name) return { ok: false, errorKey: "root.planNameRequired" };
     data.name = name;
   }
-  for (const key of ["pupilCap", "messageCap", "storageCapMb", "priceMonthlyPaise"] as const) {
+  // The caps alone: a plan's old monthly price is written by nothing (decision 0010 decision 4; C4 point 1).
+  for (const key of ["pupilCap", "messageCap", "storageCapMb"] as const) {
     const value = cap(input[key]);
     if (value !== undefined) data[key] = value;
   }

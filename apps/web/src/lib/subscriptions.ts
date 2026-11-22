@@ -1,5 +1,5 @@
 import "server-only";
-import { collegeTierOf, isCollegeKind, isRealDateKey, nextRenewalOnPayment, renewalFrom, renewalOverAYear, statusByRenewal, tierMonthPaise, type InstitutionKind, type PaymentAnswer, type PaymentBody } from "@edulink/contracts";
+import { collegeTierOf, isCollegeKind, isRealDateKey, nextRenewalOnPayment, partnerMonth, renewalFrom, renewalOverAYear, statusByRenewal, subscriptionTerms, tierMonthPaise, type InstitutionKind, type PaymentAnswer, type PaymentBody } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
   SUBSCRIPTION_STATUSES,
@@ -14,7 +14,7 @@ import {
 } from "@edulink/contracts";
 import { db } from "./db";
 import { audit, type AuditTx } from "./audit";
-import { columnsOf, readOffer, readSchoolTerms } from "./school-terms";
+import { columnsOf, newestPupils, readOffer, readSchoolTerms } from "./school-terms";
 import { assertSuperuser, createSchool, inviteAdmin, sendAdminInviteMail, type AdminInviteMail, type SchoolDetails } from "./superuser";
 import { assignPlan, monthKeyFor } from "./plans";
 import { addDaysToKey, safeTimeZone, todayKey } from "./dates";
@@ -111,7 +111,7 @@ export function dueTone(days: number | null, status: SubscriptionStatus | null):
   return "later";
 }
 
-/** A partner's share of one school's month: tenths of a percent of the plan's recorded price, rounded to the paisa. Null price, null plan: nothing. */
+/** A partner's share of one school's month: tenths of a percent of the month its share is taken of (partnerMonth), rounded to the paisa. No figure: nothing. */
 export function commissionOwedPaise(percentTenths: number, priceMonthlyPaise: number | null | undefined): number {
   if (!priceMonthlyPaise || percentTenths <= 0) return 0;
   return Math.round((priceMonthlyPaise * percentTenths) / 1000);
@@ -450,37 +450,110 @@ export type PartnerRow = {
   percentTenths: number;
   notes: string;
   createdAt: Date;
-  schools: { id: string; name: string; subscriptionStatus: SubscriptionStatus | null; planName: string | null; priceMonthlyPaise: number | null }[];
+  /**
+   * The partner's live schools. `priceMonthlyPaise` is the month the share is taken of (partnerMonth): terms set, the
+   * subscription month; terms not set, the plan's old monthly price or a tier's month (today's reading); null, no figure. Only
+   * an ACTIVE school earns or is in a list (decision 6; C4, C4c, C4d, C4e): `earns` adds to the figure, `unpriced` has no price
+   * to take a share of, `renewalReached` has its renewal day come with no payment recorded, `freeByAgreement` is at ₹0.
+   */
+  schools: { id: string; name: string; subscriptionStatus: SubscriptionStatus | null; planName: string | null; priceMonthlyPaise: number | null; termsSet: boolean; earns: boolean; unpriced: boolean; renewalReached: boolean; freeByAgreement: boolean }[];
   owedThisMonthPaise: number;
-  /** ACTIVE schools on no plan, or on a plan with no price: the owed figure cannot count them, and the card says so. */
+  /** The partner's ACTIVE schools with no price to take a share of: the owed figure cannot count them, and the card says so; named in `unpricedSchoolsNamed`. ₹0 with terms set is free by agreement, not unpriced. */
   unpricedSchools: number;
+  unpricedSchoolsNamed: { id: string; name: string }[];
+  /** The partner's ACTIVE schools with terms set whose renewal day has come, on their own day, with no payment recorded: nothing until paid (C4 point 2). */
+  renewalReachedSchools: { id: string; name: string; dueDay: string }[];
 };
 
-/** Every partner with their live schools and what each is owed this month — computed here, stored nowhere. */
-export async function listPartners(session: ActiveContext): Promise<PartnerRow[]> {
+/**
+ * Every partner with their live schools and what each is owed this month, computed here and stored nowhere (decision
+ * 0010 decision 6; the owner's Q5, "Paid-up subscription only"). A school whose terms are set gives its partner their
+ * percent of its subscription month, what it pays a student a year after any discount × its newest count ÷ 12, every
+ * kind, while ACTIVE and before its renewal day on its own day; premium is never shared; a school in its free months,
+ * with a year owed, paused or ended gives nothing. A school whose terms are not set keeps today's reading: the plan's old
+ * monthly price, or a college tier's twelfth of this month's count, while ACTIVE whatever the date; that branch is the only
+ * place a plan's old price is still read for money (rule 16). The day is the school's own (C1b, C1c); `now` for the suites.
+ */
+export async function listPartners(session: ActiveContext, now: Date = new Date()): Promise<PartnerRow[]> {
   assertSuperuser(session);
   const partners = await db.commissionPartner.findMany({
     orderBy: { name: "asc" },
     select: {
       ...PARTNER_SELECT,
-      schools: { where: { removedAt: null }, orderBy: { name: "asc" }, select: { id: true, name: true, subscriptionStatus: true, plan: { select: { code: true, name: true, priceMonthlyPaise: true } } } },
+      schools: {
+        where: { removedAt: null },
+        orderBy: { name: "asc" },
+        select: {
+          id: true,
+          name: true,
+          kind: true,
+          timezone: true,
+          subscriptionStatus: true,
+          subscriptionDueAt: true,
+          termsSetAt: true,
+          subscriptionPricePaise: true,
+          subscriptionDiscountBps: true,
+          plan: { select: { code: true, name: true, priceMonthlyPaise: true } },
+        },
+      },
     },
   });
-  // A college tier is priced a student a year (4 Oct 2026): its month is a twelfth of the tier times this month's roll from the nightly sample, computed here and stored nowhere.
-  const tiered = partners.flatMap((p) => p.schools.filter((s) => collegeTierOf(s.plan?.code)).map((s) => s.id));
+  const all = partners.flatMap((p) => p.schools);
+  // Terms not set, a college tier (4 Oct 2026): a twelfth of the tier times this month's roll from the nightly sample.
+  const tiered = all.filter((s) => s.termsSetAt === null && collegeTierOf(s.plan?.code)).map((s) => s.id);
   const roll = tiered.length ? new Map((await db.usageSample.findMany({ where: { schoolId: { in: tiered }, month: monthKeyFor("UTC") }, select: { schoolId: true, pupils: true } })).map((u) => [u.schoolId, u.pupils])) : new Map<string, number>();
+  // Terms set: our offer as it stands and each school's newest count (UsageSample, never members).
+  const termsSet = all.filter((s) => s.termsSetAt !== null).map((s) => s.id);
+  const [offer, newest] = termsSet.length ? await Promise.all([readOffer(), newestPupils(termsSet)]) : [null, new Map<string, number>()];
   return partners.map((p) => {
-    const schools = p.schools.map((s) => ({
-      id: s.id,
-      name: s.name,
-      subscriptionStatus: isSubscriptionStatus(s.subscriptionStatus) ? s.subscriptionStatus : null,
-      planName: s.plan?.name ?? null,
-      priceMonthlyPaise: collegeTierOf(s.plan?.code) ? tierMonthPaise(s.plan?.code, roll.get(s.id) ?? 0) || null : (s.plan?.priceMonthlyPaise ?? null),
-    }));
-    const active = schools.filter((s) => s.subscriptionStatus === "ACTIVE");
-    const owedThisMonthPaise = active.reduce((sum, s) => sum + commissionOwedPaise(p.percentTenths, s.priceMonthlyPaise), 0);
-    const unpricedSchools = active.filter((s) => !s.priceMonthlyPaise).length;
-    return { id: p.id, name: p.name, phone: p.phone, email: p.email, percentTenths: p.percentTenths, notes: p.notes, createdAt: p.createdAt, schools, owedThisMonthPaise, unpricedSchools };
+    const schools = p.schools.map((s) => {
+      const status = isSubscriptionStatus(s.subscriptionStatus) ? s.subscriptionStatus : null;
+      const set = s.termsSetAt !== null;
+      // Terms not set: today's reading exactly (C4d point 3): a tier's month of this month's roll, none without one; a plan's old price.
+      const oldMonthPaise = set ? null : collegeTierOf(s.plan?.code) ? tierMonthPaise(s.plan?.code, roll.get(s.id) ?? 0) || null : (s.plan?.priceMonthlyPaise ?? null);
+      const month = partnerMonth({
+        termsSet: set,
+        status,
+        renewalDay: dateToDay(s.subscriptionDueAt),
+        todayDay: todayKey(safeTimeZone(s.timezone), now),
+        subscription:
+          set && offer
+            ? subscriptionTerms({ kind: s.kind, planCode: s.plan?.code ?? null, own: { pricePaise: s.subscriptionPricePaise, discountBps: s.subscriptionDiscountBps } }, { pricePaise: offer.subscriptionPricePaise, discountBps: offer.subscriptionDiscountBps })
+            : null,
+        pupils: set ? (newest.get(s.id) ?? null) : null,
+        oldMonthPaise,
+      });
+      return {
+        id: s.id,
+        name: s.name,
+        subscriptionStatus: status,
+        planName: s.plan?.name ?? null,
+        priceMonthlyPaise: month.monthPaise,
+        termsSet: set,
+        earns: month.earns,
+        unpriced: month.unpriced,
+        renewalReached: month.renewalReached,
+        freeByAgreement: month.freeByAgreement,
+        dueDay: dateToDay(s.subscriptionDueAt),
+      };
+    });
+    const owedThisMonthPaise = schools.filter((s) => s.earns).reduce((sum, s) => sum + commissionOwedPaise(p.percentTenths, s.priceMonthlyPaise), 0);
+    const unpriced = schools.filter((s) => s.unpriced);
+    const renewalReachedSchools = schools.filter((s) => s.renewalReached).map((s) => ({ id: s.id, name: s.name, dueDay: s.dueDay! }));
+    return {
+      id: p.id,
+      name: p.name,
+      phone: p.phone,
+      email: p.email,
+      percentTenths: p.percentTenths,
+      notes: p.notes,
+      createdAt: p.createdAt,
+      schools: schools.map((s) => ({ id: s.id, name: s.name, subscriptionStatus: s.subscriptionStatus, planName: s.planName, priceMonthlyPaise: s.priceMonthlyPaise, termsSet: s.termsSet, earns: s.earns, unpriced: s.unpriced, renewalReached: s.renewalReached, freeByAgreement: s.freeByAgreement })),
+      owedThisMonthPaise,
+      unpricedSchools: unpriced.length,
+      unpricedSchoolsNamed: unpriced.map((s) => ({ id: s.id, name: s.name })),
+      renewalReachedSchools,
+    };
   });
 }
 
@@ -541,7 +614,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
     db.usageSample.findMany({ where: { month }, select: { schoolId: true, pupils: true, messages: true, storageMb: true } }),
     db.invite.groupBy({ by: ["schoolId"], where: { role: "ADMIN", status: "PENDING", expiresAt: { gt: now } }, _count: true }),
     db.session.groupBy({ by: ["activeSchoolId"], where: { activeSchoolId: { not: null } }, _max: { lastSeenAt: true } }),
-    listPartners(session),
+    listPartners(session, now),
   ]);
   const sampleOf = new Map(samples.map((s) => [s.schoolId, s]));
   const pendingOf = new Map(invites.map((i) => [i.schoolId, i._count]));
@@ -632,7 +705,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
   const { jobStatuses } = await import("./jobs");
   const jobsOverdue = (await jobStatuses(now)).filter((j) => j.overdue).length;
 
-  const partnerTiles = partners.map((p) => ({ id: p.id, name: p.name, percentTenths: p.percentTenths, schools: p.schools.length, owedThisMonthPaise: p.owedThisMonthPaise, unpricedSchools: p.unpricedSchools }));
+  const partnerTiles = partners.map((p) => ({ id: p.id, name: p.name, percentTenths: p.percentTenths, schools: p.schools.length, owedThisMonthPaise: p.owedThisMonthPaise, unpricedSchools: p.unpricedSchools, renewalReachedSchools: p.renewalReachedSchools.length }));
   const plans = await db.plan.findMany({ orderBy: { createdAt: "asc" }, select: { id: true, code: true, name: true } });
 
   const dueSoon = live

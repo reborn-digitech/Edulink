@@ -100,10 +100,13 @@ afterAll(async () => {
 
 describe("plans", () => {
   it("the operator adds a plan, a taken code and a bad code are refused, and the list counts schools on it", async () => {
-    const made = await createPlan(operator(), { code: CODE, name: "ZZ Starter", pupilCap: 2, messageCap: 2, storageCapMb: null, priceMonthlyPaise: 49900 });
+    const made = await createPlan(operator(), { code: CODE, name: "ZZ Starter", pupilCap: 2, messageCap: 2, storageCapMb: null });
     expect(made.ok).toBe(true);
     if (!made.ok) return;
     planId = made.planId;
+    // An old monthly price, as a plan made before decision 0010 holds one: written on this ZZ plan alone, since no door,
+    // form or library function writes one any more (decision 4; C4 point 1, C4a point 6).
+    await db.plan.update({ where: { id: planId }, data: { priceMonthlyPaise: 49900 } });
     expect(await createPlan(operator(), { code: CODE, name: "Again" })).toEqual({ ok: false, errorKey: "root.planCodeTaken" });
     expect(await createPlan(operator(), { code: "Bad Code!", name: "x" })).toEqual({ ok: false, errorKey: "root.planCodeInvalid" });
     const listed = (await listPlans(operator())).find((p) => p.id === planId);

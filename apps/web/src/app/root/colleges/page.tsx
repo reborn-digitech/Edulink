@@ -158,7 +158,26 @@ function CollegeCard({ college, t, money }: { college: OperatorCollegeRow; t: Tr
             </span>
             <span className="mt-1 block text-xs text-fg-muted">
               {college.plan ? college.plan.name : t("root.planNone")}
-              {college.tierYearPaise !== null && <> · {t("operatorCollege.tierYear", { amount: money(college.tierYearPaise) })}</>}
+              {/* Terms set: the figure from the sums (decision 0010; rule 7). Not set: what it was on, the tier's year at today's roll. */}
+              {college.terms.set ? (
+                college.terms.perStudentPaise === null ? (
+                  <> · {t("operatorCollege.noTierChosen")}</>
+                ) : college.terms.perStudentPaise === 0 ? (
+                  // A part at ₹0 reads "Free by agreement" (decision 0010 decision 14; C2a), never "₹0".
+                  <> · {t("root.freeByAgreement")}</>
+                ) : (
+                  <>
+                    {" · "}
+                    {t("operatorCollege.subscriptionPerStudent", { amount: money(college.terms.perStudentPaise) })}
+                    {" · "}
+                    {college.terms.yearPaise !== null && college.terms.pupils !== null
+                      ? t("operatorCollege.subscriptionYear", { amount: money(college.terms.yearPaise), count: college.terms.pupils })
+                      : t("operatorCollege.noCountYet")}
+                  </>
+                )
+              ) : (
+                college.tierYearPaise !== null && <> · {t("operatorCollege.tierYear", { amount: money(college.tierYearPaise) })}</>
+              )}
             </span>
           </Fact>
           <Fact label={t("operatorCollege.modules")}>{t("operatorCollege.modulesOn", { count: college.modulesOn.length })}</Fact>

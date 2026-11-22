@@ -28,7 +28,10 @@ export const operatorPlanSchema = z.object({
   pupilCap: capOrNull,
   messageCap: capOrNull,
   storageCapMb: capOrNull,
-  /** Recorded, never collected. */
+  /**
+   * The old monthly price (decision 0010 decision 4; the brief's rule 16): written by nothing since phase 3 and kept only
+   * for a partner's share of a school whose terms are not set. Still sent, for the phone's school screen.
+   */
   priceMonthlyPaise: capOrNull,
   createdAt: iso,
   /** Live schools on the plan. */
@@ -52,6 +55,7 @@ export const operatorPlanBodySchema = z.object({
   pupilCap: capOrNull.optional(),
   messageCap: capOrNull.optional(),
   storageCapMb: capOrNull.optional(),
+  /** Taken for one release and ignored (decision 0010 decision 4): a plan carries no price; what a school pays is its terms. */
   priceMonthlyPaise: capOrNull.optional(),
 });
 export type OperatorPlanBody = z.infer<typeof operatorPlanBodySchema>;

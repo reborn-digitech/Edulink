@@ -72,6 +72,7 @@
     "cron:remove": "node scripts/cron.mjs remove",
     "demo:seed": "tsx --tsconfig scripts/tsconfig.json scripts/demo-seed.ts",
     "zz:fixtures": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-fixtures.ts",
+    "terms:report": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/terms-report.ts",
     "demo:schools": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-schools.ts",
     "demo:college": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college.ts",
     "demo:college-engineering": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college-engineering.ts",

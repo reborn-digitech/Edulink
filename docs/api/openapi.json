@@ -39003,7 +39003,7 @@
     },
     "/api/v1/operator/plans": {
       "get": {
-        "summary": "Every plan the operator offers, with how many live schools are on each",
+        "summary": "Every plan the operator offers, with how many live schools are on each, and a plan's old monthly price where it has one (read only for schools whose terms are not set)",
         "description": "The server operator.",
         "security": [
           {
@@ -39125,7 +39125,7 @@
         }
       },
       "post": {
-        "summary": "Add a plan: a code, a name, caps on pupils, texts and storage, and a recorded monthly price; 201 with its id",
+        "summary": "Add a plan: a code, a name and caps on pupils, texts and storage; a monthly price sent is ignored, a plan carrying no price since decision 0010; 201 with its id",
         "description": "The server operator.",
         "security": [
           {
@@ -40635,6 +40635,10 @@
                             "$ref": "#/properties/tiles/properties/live"
                           },
                           "unpricedSchools": {
+                            "$ref": "#/properties/tiles/properties/live",
+                            "default": 0
+                          },
+                          "renewalReachedSchools": {
                             "$ref": "#/properties/tiles/properties/live",
                             "default": 0
                           }
@@ -43480,7 +43484,7 @@
     },
     "/api/v1/operator/partners": {
       "get": {
-        "summary": "Every commission partner with their live schools and what each is owed this month: their share of the plan's recorded price over the schools whose subscription is active, computed on read",
+        "summary": "Every commission partner with their live schools and what each is owed this month, computed on read (decision 0010 decision 6). Only Active schools are counted or listed. Terms set: their share of the school's Shalaghar subscription, a twelfth of its year at its newest count, while it is before its renewal day; terms not set: of what it was on before, whatever its renewal date. Premium is never shared, and a school free by agreement earns nothing and is in neither list. The two lists: Active schools with no price to take a share of, and Active schools with terms set whose renewal day has come with no payment recorded",
         "description": "The server operator.",
         "security": [
           {
@@ -43559,6 +43563,26 @@
                                   "type": "integer",
                                   "minimum": 0,
                                   "nullable": true
+                                },
+                                "termsSet": {
+                                  "type": "boolean",
+                                  "default": false
+                                },
+                                "earns": {
+                                  "type": "boolean",
+                                  "default": false
+                                },
+                                "unpriced": {
+                                  "type": "boolean",
+                                  "default": false
+                                },
+                                "renewalReached": {
+                                  "type": "boolean",
+                                  "default": false
+                                },
+                                "freeByAgreement": {
+                                  "type": "boolean",
+                                  "default": false
                                 }
                               },
                               "required": [
@@ -43577,6 +43601,51 @@
                           "unpricedSchools": {
                             "$ref": "#/properties/items/items/properties/schools/items/properties/priceMonthlyPaise",
                             "default": 0
+                          },
+                          "unpricedSchoolsNamed": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "$ref": "#/properties/items/items/properties/id"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "default": []
+                          },
+                          "renewalReachedSchools": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "$ref": "#/properties/items/items/properties/id"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "dueDay": {
+                                  "type": "string",
+                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name",
+                                "dueDay"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "default": []
                           }
                         },
                         "required": [
@@ -208031,6 +208100,39 @@
                           "tierYearPaise": {
                             "type": "integer",
                             "nullable": true
+                          },
+                          "terms": {
+                            "type": "object",
+                            "properties": {
+                              "set": {
+                                "type": "boolean"
+                              },
+                              "perStudentPaise": {
+                                "type": "integer",
+                                "nullable": true
+                              },
+                              "pupils": {
+                                "type": "integer",
+                                "nullable": true,
+                                "default": null
+                              },
+                              "yearPaise": {
+                                "type": "integer",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "set",
+                              "perStudentPaise",
+                              "yearPaise"
+                            ],
+                            "additionalProperties": false,
+                            "default": {
+                              "set": false,
+                              "perStudentPaise": null,
+                              "pupils": null,
+                              "yearPaise": null
+                            }
                           },
                           "health": {
                             "type": "object",

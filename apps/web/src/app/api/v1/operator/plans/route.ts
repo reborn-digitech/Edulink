@@ -15,12 +15,16 @@ export async function GET() {
   }
 }
 
-/** POST /api/v1/operator/plans — add a plan; 201 with its id. A taken code is a 422 with the lib's sentence. Audited as superuser.plan.create. */
+/**
+ * POST /api/v1/operator/plans — add a plan; 201 with its id. A taken code is a 422 with the lib's sentence. Audited as
+ * superuser.plan.create. A monthly price sent is taken for one release and ignored (decision 0010 decision 4).
+ */
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiOperator();
     const parsed = operatorPlanBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
+    // A monthly price in the body is taken and ignored: the library writes none (decision 0010 decision 4).
     const result = await createPlan(ctx, parsed.data);
     if (!result.ok) return operatorRefused(result);
     return ok(operatorPlanCreatedSchema.parse({ ok: true, planId: result.planId }), 201);

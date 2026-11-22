@@ -2,6 +2,7 @@ import { HandshakeIcon } from "@phosphor-icons/react/ssr";
 import { formatPaise } from "@edulink/i18n";
 import { requireSuperuser } from "@/lib/tenancy";
 import { listPartners } from "@/lib/subscriptions";
+import { formatDateKey } from "@/lib/dates";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/states";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -44,8 +45,10 @@ export default async function PartnersPage() {
                   email: p.email,
                   percentTenths: p.percentTenths,
                   notes: p.notes,
-                  schools: p.schools.map((s) => ({ id: s.id, name: s.name, statusLabel: statusLabel(t, s.subscriptionStatus), planName: s.planName })),
+                  schools: p.schools.map((s) => ({ id: s.id, name: s.name, statusLabel: statusLabel(t, s.subscriptionStatus), planName: s.planName, freeByAgreement: s.freeByAgreement })),
                   owed: formatPaise(p.owedThisMonthPaise, locale),
+                  unpriced: p.unpricedSchoolsNamed.map((s) => s.name),
+                  renewalReached: p.renewalReachedSchools.map((s) => `${s.name} (${formatDateKey(s.dueDay, { day: "numeric", month: "short", year: "numeric" }, locale)})`),
                 }}
               />
             </li>

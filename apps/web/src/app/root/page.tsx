@@ -51,8 +51,11 @@ export default async function RootPage({
   const planId = d.plans.some((p) => p.id === rawPlan) ? rawPlan : "";
   const partnerId = d.partners.some((p) => p.id === rawPartner) ? rawPartner : "";
   const narrowed = Boolean(q || state !== "live" || planId || partnerId);
-  // ACTIVE schools the partners brought that are on no plan, or on a plan with no price: no figure to take a share of, so the owed sum leaves them out and says so.
+  // The partners card's two lines (decision 0010 decision 6; C4b point 3, C4c point 2, C4d point 2): the partners' ACTIVE
+  // schools with no price to take a share of, and those with terms set whose renewal day has come with no payment recorded.
+  // The owed sum leaves both out and says so; the Partners page names them.
   const unpriced = d.partners.reduce((sum, p) => sum + p.unpricedSchools, 0);
+  const renewalReached = d.partners.reduce((sum, p) => sum + p.renewalReachedSchools, 0);
   const money = (paise: number) => formatPaise(paise, locale);
   const percent = (tenths: number) => (tenths / 10).toLocaleString(undefined, { maximumFractionDigits: 1 });
 
@@ -131,6 +134,7 @@ export default async function RootPage({
               ))}
             </ul>
             {unpriced > 0 && <p className="mt-2 text-xs text-fg-subtle">{unpriced === 1 ? t("root.partnerUnpricedOne") : t("root.partnerUnpricedMany", { count: unpriced })}</p>}
+            {renewalReached > 0 && <p className="mt-1 text-xs text-fg-subtle">{renewalReached === 1 ? t("root.partnerRenewalReachedOne") : t("root.partnerRenewalReachedMany", { count: renewalReached })}</p>}
           </CardBody>
         </Card>
       )}

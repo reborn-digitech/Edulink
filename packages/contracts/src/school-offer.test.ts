@@ -20,6 +20,7 @@ import {
   nextRenewalOnPayment,
   offerBodySchema,
   onboardingTicks,
+  partnerMonth,
   partTermsSchema,
   paymentBodySchema,
   paysPaise,
@@ -359,3 +360,59 @@ describe("the bodies the doors take", () => {
     expect(subscriptionsQuerySchema.safeParse({ premium: "maybe" }).success).toBe(false);
   });
 });
+
+describe("a partner's month and the partners card's lists (decision 6, the owner's Q5; C4, C4c, C4d, C4e; phase 3)", () => {
+  // Premium is never shared: the sum takes the subscription's terms alone, and nothing of premium can reach it.
+  const TODAY = "2026-11-21";
+  const set = (over: Partial<Parameters<typeof partnerMonth>[0]> = {}) =>
+    partnerMonth({ termsSet: true, status: "ACTIVE", renewalDay: "2027-05-21", todayDay: TODAY, subscription: subscriptionTerms(school({ pricePaise: 10_000 }), OURS), pupils: 120, oldMonthPaise: 49_900, ...over });
+  const none = { earns: false, renewalReached: false, unpriced: false, freeByAgreement: false };
+
+  it("terms set, ACTIVE, before the renewal day, with a count: earns the subscription month (pays x count / 12), in no list", () => {
+    // Rs 100 x 120 pupils / 12 = Rs 1,000 a month, whatever the old plan's price was.
+    expect(set()).toEqual({ monthPaise: 100_000, earns: true, renewalReached: false, unpriced: false, freeByAgreement: false });
+    expect(set({ subscription: subscriptionTerms(school(), OURS_20) }).monthPaise).toBe(80_000);
+    expect(set({ subscription: subscriptionTerms(school({ pricePaise: 9_900 }), OURS), pupils: 7 }).monthPaise).toBe(5_775);
+    expect(set({ subscription: subscriptionTerms(school({}, "COLLEGE", "college-affiliated"), OURS) }).monthPaise).toBe(199_000);
+    // No renewal on record: the day never comes; earns, not named.
+    expect(set({ renewalDay: null })).toMatchObject({ earns: true, renewalReached: false });
+  });
+
+  it("terms set: renewal day come (the day itself too), with a count: earns nothing, renewal-reached; with no count, or a college with no tier, unpriced; both lists where both hold", () => {
+    expect(set({ renewalDay: TODAY })).toEqual({ monthPaise: 100_000, ...none, renewalReached: true });
+    expect(set({ renewalDay: "2026-11-16" })).toEqual({ monthPaise: 100_000, ...none, renewalReached: true });
+    expect(set({ renewalDay: "2026-11-22" })).toMatchObject({ earns: true, renewalReached: false });
+    expect(set({ pupils: null })).toEqual({ monthPaise: null, ...none, unpriced: true });
+    expect(set({ subscription: subscriptionTerms(school({}, "COLLEGE", null), OURS) })).toEqual({ monthPaise: null, ...none, unpriced: true });
+    expect(set({ pupils: null, renewalDay: "2026-11-16" })).toEqual({ monthPaise: null, ...none, unpriced: true, renewalReached: true });
+    // A count of nought is a figure of nought: earns nothing, in no list.
+    expect(set({ pupils: 0 })).toEqual({ monthPaise: 0, ...none });
+  });
+
+  it("terms set at Rs 0 (free by agreement), reached or not, with a count or without: earns nothing, in neither list, 'Free by agreement'", () => {
+    const free = subscriptionTerms(school({ discountBps: 10_000 }), OURS);
+    for (const over of [{}, { renewalDay: "2026-11-16" }, { pupils: null }, { status: "DUE" }] as const) {
+      expect(set({ subscription: free, ...over })).toEqual({ monthPaise: 0, ...none, freeByAgreement: true });
+    }
+    // Rs 1 at 51 % rounds to nothing, a Rs 0 subscription without a full discount.
+    expect(set({ subscription: subscriptionTerms(school({ pricePaise: 100 }), { pricePaise: 10_000, discountBps: 5_100 }) }).freeByAgreement).toBe(false);
+    expect(set({ subscription: subscriptionTerms(school({ discountBps: 5_100 }), { pricePaise: 100, discountBps: 0 }) })).toMatchObject({ freeByAgreement: true, unpriced: false });
+  });
+
+  it("only ACTIVE counts: in its free months, with a year owed, paused, ended or with no status, terms set or not, nothing and no list", () => {
+    for (const status of ["TRIAL", "DUE", "SUSPENDED", "ENDED", null] as const) {
+      expect(set({ status, renewalDay: "2026-11-16" })).toEqual({ monthPaise: 100_000, ...none });
+      expect(set({ status, pupils: null })).toEqual({ monthPaise: null, ...none });
+      expect(set({ status, termsSet: false, oldMonthPaise: null })).toEqual({ monthPaise: null, ...none });
+    }
+  });
+
+  it("terms not set: today's reading exactly (the old month while ACTIVE, whatever the renewal; none or Rs 0 unpriced); never renewal-reached", () => {
+    const old = (over: Partial<Parameters<typeof partnerMonth>[0]> = {}) => set({ termsSet: false, ...over });
+    expect(old()).toEqual({ monthPaise: 49_900, earns: true, renewalReached: false, unpriced: false, freeByAgreement: false });
+    expect(old({ renewalDay: "2026-11-16" })).toMatchObject({ earns: true, renewalReached: false });
+    expect(old({ oldMonthPaise: null })).toEqual({ monthPaise: null, ...none, unpriced: true });
+    expect(old({ oldMonthPaise: 0 })).toEqual({ monthPaise: 0, ...none, unpriced: true });
+  });
+});
+
