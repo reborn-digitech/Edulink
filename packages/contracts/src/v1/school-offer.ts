@@ -189,15 +189,17 @@ export type PremiumNotBilled = (typeof PREMIUM_NOT_BILLED)[number];
  * switch on and that role's plan asked for (the plans the operator has made active), at a school whose terms are set. The
  * rule reads the plan alone, not the platform's feature switches and not the school's status (a SUSPENDED school's bill
  * keeps the line; its payment is refused anyway). With premium on and not billed, `notBilled` says why, the terms first
- * (there is no bill at all while they are not set, C2's "terms not set"), then the plan, with `waitsFor` naming the plans
- * of the switches that are on, none of them asked for. Premium off: neither.
+ * (there is no bill at all while they are not set, C2's "terms not set"), then the plan; `waitsFor` names the plans of the
+ * switches that are on where none of them is asked for, while the terms are not set too, so that a sentence can name every
+ * thing that stands between premium and a bill (C7a point 2b). Premium off: neither.
  */
 export function premiumBilling(school: { termsSet: boolean; students: boolean; teachers: boolean }, asked: ReadonlySet<string>): { billed: boolean; notBilled: PremiumNotBilled | null; waitsFor: PremiumPlan[] } {
   const on = (["students", "teachers"] as const).filter((role) => school[role]).map((role) => PREMIUM_PLAN_OF[role]);
   if (on.length === 0) return { billed: false, notBilled: null, waitsFor: [] };
-  if (!school.termsSet) return { billed: false, notBilled: "TERMS_NOT_SET", waitsFor: [] };
-  if (on.some((plan) => asked.has(plan))) return { billed: true, notBilled: null, waitsFor: [] };
-  return { billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor: on };
+  const waitsFor = on.some((plan) => asked.has(plan)) ? [] : on;
+  if (!school.termsSet) return { billed: false, notBilled: "TERMS_NOT_SET", waitsFor };
+  if (waitsFor.length === 0) return { billed: true, notBilled: null, waitsFor: [] };
+  return { billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor };
 }
 
 /**
@@ -614,6 +616,22 @@ export type SchoolTerms = z.infer<typeof schoolTermsSchema>;
 /** PUT /api/v1/operator/schools/{schoolId}/terms: the terms as they stand (or would, on a preview), and how many people are told. */
 export const termsChangeSchema = z.object({ preview: z.boolean(), terms: schoolTermsSchema, changed: z.boolean(), told: count });
 export type TermsChange = z.infer<typeof termsChangeSchema>;
+
+/**
+ * The terms door's own answer (GET, and the terms of PUT's answer): the school's terms with C2's lines beside the premium
+ * switches, worded by the server in the caller's language, as the web card shows them (C7 point 7d): the plans not asked
+ * for; the plans' features switched off for everyone, while the school has premium on; Vidura not switched on at a school
+ * with premium on. A preview's are the lines as they would stand after the change. An older server sends none.
+ */
+export const schoolTermsAnswerSchema = schoolTermsSchema.extend({ lines: z.array(z.string()).default([]) });
+export type SchoolTermsAnswer = z.infer<typeof schoolTermsAnswerSchema>;
+/**
+ * PUT /api/v1/operator/schools/{schoolId}/terms, as the door answers it: its terms with their lines (C7 point 7d), and, for a
+ * preview of one premium switch, what the switch will do, in the caller's language (C7 point 7c, as C7a point 2 settles it):
+ * the phone shows it under its own question. An older server sends none, and the phone keeps its own short line.
+ */
+export const termsChangeAnswerSchema = termsChangeSchema.extend({ terms: schoolTermsAnswerSchema, sentence: z.string().optional() });
+export type TermsChangeAnswer = z.infer<typeof termsChangeAnswerSchema>;
 
 /** One school's row on the Schools tab. */
 export const subscriptionRowSchema = schoolTermsSchema.omit({ note: true, bill: true }).extend({ billedYearPaise: paise.nullable() });

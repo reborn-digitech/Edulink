@@ -179,9 +179,9 @@ describe("premium billed only while its plan is asked for (the owner's \"Not bil
     }
     expect(premiumBilling(set(true, true), asked())).toEqual({ billed: false, notBilled: "PLAN_NOT_ASKED", waitsFor: ["STUDENT", "TEACHER"] });
   });
-  it("terms not set: not billed, and that is the reason first, whatever is asked for (C3a); the plan's reason only once they are set", () => {
+  it("terms not set: not billed, and that is the reason first, whatever is asked for (C3a); the plan not asked for is named too, so a sentence can name every thing that stands (C7a point 2b)", () => {
     const notSet = { termsSet: false, students: true, teachers: false };
-    expect(premiumBilling(notSet, asked())).toEqual({ billed: false, notBilled: "TERMS_NOT_SET", waitsFor: [] });
+    expect(premiumBilling(notSet, asked())).toEqual({ billed: false, notBilled: "TERMS_NOT_SET", waitsFor: ["STUDENT"] });
     expect(premiumBilling(notSet, asked("STUDENT"))).toEqual({ billed: false, notBilled: "TERMS_NOT_SET", waitsFor: [] });
     expect(bill(notSet, asked("STUDENT"))).toBeNull();
   });

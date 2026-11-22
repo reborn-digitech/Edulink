@@ -161,6 +161,19 @@ describe("a school's card (§2.3)", () => {
     expect(html).toMatch(/About ₹[\d,]+ a year for 412 students/);
   });
 
+  it("C7b point 2 (E7): at a college with no tier chosen, its premium on and its plan asked for, the card draws the tier's reason in the price's place and no billed premium line", async () => {
+    setActivePlansForTests(["STUDENT"]);
+    await db.school.update({ where: { id: school.College! }, data: { premiumStudents: true } });
+    try {
+      const html = text(await shell(await SchoolPage({ params: Promise.resolve({ schoolId: school.College! }), searchParams: Promise.resolve({}) })));
+      expect(html).toMatch(/Premium add-on<\/span> · (<!-- -->)?Premium on, not billed: no tier chosen/);
+      expect(html).not.toMatch(/Premium add-on<\/span> · (<!-- -->)?₹/);
+    } finally {
+      await db.school.update({ where: { id: school.College! }, data: { premiumStudents: false } });
+      setActivePlansForTests([]);
+    }
+  });
+
   it("terms not set: what it pays from before, Set terms, no estimate; one badge for one standing (C5 point 8)", async () => {
     const html = text(await shell(await SchoolPage({ params: Promise.resolve({ schoolId: school.NotSet! }), searchParams: Promise.resolve({}) })));
     expect(html).toContain(`${NAME} NotSet's terms are not set: it pays what was agreed before`);

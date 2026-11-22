@@ -1,14 +1,12 @@
 import { BuildingsIcon, StarIcon } from "@phosphor-icons/react/ssr";
-import { PLAN_FEATURES, PREMIUM_PLANS, collegeTierOf, isCollegeKind, paysPaise, subscriptionTerms, tierMonthPaise, type OperatorSchoolModules } from "@edulink/contracts";
+import { collegeTierOf, isCollegeKind, paysPaise, subscriptionTerms, tierMonthPaise, type OperatorSchoolModules } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { getT } from "@/lib/i18n/server";
 import { lastTermsChange, readOffer, readSchoolTerms, schoolDay } from "@/lib/school-terms";
-import { activePlans } from "@/lib/person-plans";
-import { featureOn } from "@/lib/platform-features";
-import { FEATURE_META } from "@/lib/feature-meta";
+import { premiumSwitchLines } from "@/lib/terms-lines";
 import type { ActiveContext } from "@/lib/session";
-import { datesSentence, partHow, premiumCell, premiumInfoLines, stateLabel, stateTone } from "@/lib/terms-sentences";
+import { datesSentence, partHow, premiumCell, stateLabel, stateTone } from "@/lib/terms-sentences";
 import { consoleFmt } from "../subscriptions/fmt";
 import { TermsControls } from "./terms-controls";
 
@@ -40,16 +38,14 @@ export async function TermsCard({
   const f = await consoleFmt();
   const view = await readSchoolTerms(session, schoolId);
   if ("ok" in view) return null;
-  const [offer, asked, last, today] = await Promise.all([readOffer(), activePlans(), lastTermsChange(session, schoolId), schoolDay(session, schoolId)]);
+  const [offer, last, today] = await Promise.all([readOffer(), lastTermsChange(session, schoolId), schoolDay(session, schoolId)]);
   const college = isCollegeKind(view.kind);
   const premiumOn = view.premiumStudents || view.premiumTeachers;
 
-  // C2's lines beside the premium switches: the plans not asked for, the plans' features switched off for everyone.
-  const bundle = [...new Set(PREMIUM_PLANS.flatMap((plan) => PLAN_FEATURES[plan]))];
-  const offForAll = (await Promise.all(bundle.map(async (code) => ((await featureOn(code)) ? null : code)))).filter((c): c is NonNullable<typeof c> => c !== null);
-  // One compact line for the plans; the features switched off only while this school has premium on (C5 point 6).
-  const premiumLines = premiumInfoLines(f, { notAsked: PREMIUM_PLANS.filter((plan) => !asked.has(plan)), offForAll: offForAll.map((code) => t(FEATURE_META[code].nameKey)), college, premiumOn });
-  const viduraOff = premiumOn && Boolean(modules?.modules.some((m) => m.module === "ASSISTANT" && !m.on));
+  // C2's lines beside the premium switches: one compact line for the plans not asked for, the plans' features switched off for
+  // everyone only while this school has premium on (C5 point 6), and Vidura not switched on; the terms door answers the same
+  // lines to the phone (src/lib/terms-lines.ts; C7 point 7d). A removed school's page reads no modules, and has no Vidura line.
+  const { info: premiumLines, viduraOff } = await premiumSwitchLines(session, view, f, modules);
 
   // Terms not set: what it pays from before (a tier's twelfth of the roll, else the plan's old monthly price), and no estimate.
   const oldMonthPaise = view.termsSet ? null : collegeTierOf(oldPlan?.code) ? tierMonthPaise(oldPlan?.code, view.pupils ?? 0) || null : (oldPlan?.priceMonthlyPaise ?? null);
@@ -63,7 +59,8 @@ export async function TermsCard({
       : sub.paysPaise === 0
         ? t("root.freeByAgreement")
         : t("subs.cardSubscription", { price: f.money(sub.paysPaise), how: partHow(f, sub) });
-  const premiumLine = premiumOn && view.premiumBilled && view.premiumFigure.paysPaise > 0 ? t("subs.cardPremium", { price: f.money(view.premiumFigure.paysPaise), how: partHow(f, view.premiumFigure) }) : premiumCell(f, view);
+  // Billed only where there is a bill: a college with no tier has none, and premiumCell says so (the review of bace327b, T1).
+  const premiumLine = premiumOn && view.premiumBilled && view.subscriptionFigure !== null && view.premiumFigure.paysPaise > 0 ? t("subs.cardPremium", { price: f.money(view.premiumFigure.paysPaise), how: partHow(f, view.premiumFigure) }) : premiumCell(f, view);
   const estimate = !view.termsSet
     ? null
     : view.bill

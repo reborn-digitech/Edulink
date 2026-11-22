@@ -112,7 +112,8 @@ function FailedCard({ message, error, onRetry }: { message?: string; error?: unk
  */
 /** `label` replaces what a screen reader says for a tappable row (title and caption by default), for a row whose state is drawn beside it. */
 /** `testID`: for a device flow that opens a row whose words are data (maestro/08-practice-question.yaml, TA-590). */
-export function Row({ title, caption, right, onPress, icon, label, testID }: { title: string; caption?: string; right?: ReactNode; onPress?: () => void; icon?: string; label?: string; testID?: string }) {
+/** `below`: what stands under the caption, across the text's width, so that badges which may sit on many rows leave the title its width (the coordinator's walk of phase 8, W1). */
+export function Row({ title, caption, right, below, onPress, icon, label, testID }: { title: string; caption?: string; right?: ReactNode; below?: ReactNode; onPress?: () => void; icon?: string; label?: string; testID?: string }) {
   const t = useTheme();
   const inner = (
     <View style={{ minHeight: t.tap, flexDirection: "row", alignItems: "center", gap: t.space[3], paddingVertical: t.space[2] }}>
@@ -130,6 +131,7 @@ export function Row({ title, caption, right, onPress, icon, label, testID }: { t
             {caption}
           </Text>
         ) : null}
+        {below}
       </View>
       {right}
       {onPress && !right ? <Icon name="caretRight" size={16} color={t.fgSubtle} weight="bold" /> : null}

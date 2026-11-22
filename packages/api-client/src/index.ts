@@ -106,8 +106,10 @@ export function createApiClient(options: ApiClientOptions): ApiClient {
 
     if (response.ok) return { ok: true, data: json as T };
 
+    // `said`: the sentence is the server's own answer. A bare status, a proxy's page or an empty body carries none, so a 5xx
+    // of that kind may be one whose request was carried out before it was cut off (C7 point 7g).
     const parsed = apiErrorSchema.safeParse(json);
-    if (parsed.success) return { ok: false, status: response.status, ...parsed.data };
+    if (parsed.success) return { ok: false, status: response.status, ...parsed.data, said: true };
     return { ok: false, status: response.status, error: text || response.statusText || "Request failed", code: codeFor(response.status) };
   }
 

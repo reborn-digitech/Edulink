@@ -8,10 +8,11 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { appAdminCompetitionsSchema, operatorAuditSchema, operatorExpertsSchema, operatorOverviewSchema } from "@edulink/contracts";
+import { appAdminCompetitionsSchema, operatorAuditSchema, operatorDashboardSchema, operatorExpertsSchema, operatorOverviewSchema } from "@edulink/contracts";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { GET as overviewGet } from "@/app/api/v1/operator/overview/route";
+import { GET as dashboardGet } from "@/app/api/v1/operator/dashboard/route";
 import { GET as auditGet } from "@/app/api/v1/operator/audit/route";
 import { GET as expertsGet } from "@/app/api/v1/operator/experts/route";
 import { GET as competitionsGet } from "@/app/api/v1/appadmin/competitions/route";
@@ -187,6 +188,45 @@ describe("as the operator", () => {
     expect(res.status).toBe(200);
     const body = appAdminCompetitionsSchema.parse(await res.json());
     expect(body.items.find((c) => c.id === competitionId)).toMatchObject({ title: `ZZ V1O Olympiad ${STAMP}`, status: "DRAFT", organizerName: "ZZ V1O Platform" });
+  });
+});
+
+describe("the dashboard door's rows (the second review of phase 8, E1)", () => {
+  it("carry what the contract's row declares, the kind and the premium switches among it, where the route copied them field by field and left both out", async () => {
+    await signInAs("OPERATOR");
+    // A college's row: the contract's default (a school) cannot fill in a kind the route left out (the review of 06ce1ebf, E1).
+    await db.school.update({ where: { id: schoolId }, data: { kind: "COLLEGE", premiumStudents: true } });
+    try {
+      const res = await dashboardGet(get(`${P}/operator/dashboard?q=${encodeURIComponent(SCHOOL_NAME)}&state=all`));
+      expect(res.status).toBe(200);
+      // Read before the contract's parse, whose defaults (a school, premium off) would fill in what a row left out (the review
+      // of bace327b, S3).
+      const raw = (await res.json()) as { rows: { name: string; kind?: unknown; premium?: unknown }[] };
+      const row = raw.rows.find((r) => r.name === SCHOOL_NAME);
+      expect({ kind: row?.kind, premium: row?.premium }).toEqual({ kind: "COLLEGE", premium: { students: true, teachers: false } });
+      expect(operatorDashboardSchema.safeParse(raw).success).toBe(true);
+    } finally {
+      await db.school.update({ where: { id: schoolId }, data: { kind: "SCHOOL", premiumStudents: false } });
+    }
+  });
+});
+
+describe("the overview door's rows (C7 point 7a)", () => {
+  it("carry the premium switches, so that a school the phone's list shows by search, by state or as a test school is badged: ZZ Premium School, asked with the test schools listed, has both on", async () => {
+    await signInAs("OPERATOR");
+    const res = await overviewGet(get(`${P}/operator/overview?state=test&q=${encodeURIComponent("ZZ Premium School")}`));
+    expect(res.status).toBe(200);
+    // Read before the contract's parse, whose default (both off, for an older server) would hide a row that left them out.
+    const raw = (await res.json()) as { schools: { name: string; premium?: unknown; isTestFixture?: unknown }[] };
+    const row = raw.schools.find((s) => s.name === "ZZ Premium School");
+    expect(row, "ZZ Premium School is listed (npm run zz:fixtures builds it)").toBeTruthy();
+    expect(row!.premium).toEqual({ students: true, teachers: true });
+    expect(row!.isTestFixture).toBe(true);
+    // The default list leaves the test schools out; this suite's own school is there, with premium off.
+    const live = operatorOverviewSchema.parse(await (await overviewGet(get(`${P}/operator/overview?q=ZZ`))).json());
+    expect(live.schools.some((s) => s.name === "ZZ Premium School")).toBe(false);
+    const own = (await (await overviewGet(get(`${P}/operator/overview?q=${encodeURIComponent(SCHOOL_NAME)}`))).json()) as typeof raw;
+    expect(own.schools.map((s) => ({ name: s.name, premium: s.premium, isTestFixture: s.isTestFixture }))).toEqual([{ name: SCHOOL_NAME, premium: { students: false, teachers: false }, isTestFixture: false }]);
   });
 });
 

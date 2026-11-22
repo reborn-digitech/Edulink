@@ -18,9 +18,12 @@ import { OFFER_START, PRICE_MAX_PAISE, bulkBodySchema, paysPaise, renewalFrom, t
 import { createSession, getSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { listSubscriptions, readOffer, readSchoolTerms, setSchoolTerms, bulkTerms, updateOffer } from "@/lib/school-terms";
+import { formatPaise } from "@edulink/i18n";
 import { addDaysToKey, todayKey } from "@/lib/dates";
 import { recordPayment, setSubscription } from "@/lib/subscriptions";
 import { setActivePlansForTests } from "@/lib/person-plans";
+import { setFeaturesForTests } from "@/lib/platform-features";
+import { PLATFORM_FEATURES } from "@edulink/contracts";
 import { GET as offerGet, PUT as offerPut } from "@/app/api/v1/operator/offer/route";
 import { GET as listGet } from "@/app/api/v1/operator/subscriptions/route";
 import { POST as bulkPost } from "@/app/api/v1/operator/subscriptions/bulk/route";
@@ -394,6 +397,76 @@ describe("a school's terms", () => {
     if ("ok" in before) throw new Error(before.errorKey);
     expect(await setSchoolTerms(ctx, ids.college, { subscription: { mode: "OWN_PRICE", pricePaise: 15_000 }, expect: expectFrom(before) })).toEqual({ ok: false, errorKey: "root.termsOwnPriceAtCollege" });
     expect(await setSchoolTerms(ctx, ids.college, { premium: { teachers: true }, expect: expectFrom(before) })).toEqual({ ok: false, errorKey: "root.termsTeachersAtCollege" });
+  });
+});
+
+describe("C2's lines beside the premium switches, answered by the terms door on GET and on PUT alike (C7 point 7d)", () => {
+  // The web card's lines (terms-card.tsx): the plans not asked for; the plans' features switched off for everyone, while the
+  // school has premium on; Vidura not switched on at a school with premium on. The suites open every feature (tests/setup.ts).
+  afterEach(() => setFeaturesForTests([...PLATFORM_FEATURES]));
+  const PLANS_BOTH = "The Student and Teacher plans are not asked for, so premium makes no difference yet: their features are open to everyone wherever they are switched on.";
+  const PLANS_TEACHER = "The Teacher plan is not asked for, so premium for teachers makes no difference yet: its features are open to every teacher wherever they are switched on.";
+  const PLANS_STUDENT = "The Student plan is not asked for, so premium for students makes no difference yet: its features are open to every student wherever they are switched on.";
+  const OFF_TWO = "Switched off for everyone, so premium does not open them: Competition marketplace, Job board.";
+  const VIDURA = "Vidura is not switched on for this school, so its premium does not include Vidura until it is.";
+  const lines = async (id: string) => ((await (await termsGet(get(`/operator/schools/${id}/terms`), params(id))).json()) as { lines?: unknown }).lines;
+
+  it("GET: at a school with both switches on, the plans, the features off for everyone and Vidura; with a plan asked for, its line goes; at a school with premium off, the plans alone; at a college, the Student plan alone", async () => {
+    await as("OPERATOR");
+    setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "COMPETITIONS" && code !== "JOB_BOARD"));
+    expect(await lines(ids.pBoth)).toEqual([PLANS_BOTH, OFF_TWO, VIDURA]);
+    setActivePlansForTests(["STUDENT"]);
+    expect(await lines(ids.pBoth)).toEqual([PLANS_TEACHER, OFF_TWO, VIDURA]);
+    setActivePlansForTests(["STUDENT", "TEACHER"]);
+    setFeaturesForTests([...PLATFORM_FEATURES]);
+    expect(await lines(ids.pBoth)).toEqual([VIDURA]);
+    setActivePlansForTests([]);
+    setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "COMPETITIONS" && code !== "JOB_BOARD"));
+    // Premium off: the features switched off and Vidura are not this school's to read (C5 point 6).
+    expect(await lines(ids.ownPrice)).toEqual([PLANS_BOTH]);
+    // A college has no teachers' premium, so the Teacher plan is not its line.
+    const college = (await lines(ids.pCollege)) as string[];
+    expect(college[0]).toBe(PLANS_STUDENT);
+    expect(college).not.toContain(PLANS_BOTH);
+  });
+
+  it("PUT: a preview's terms carry the lines as they would stand after the switch, and the save's terms the lines as they stand, so that the card keeps them", async () => {
+    const ctx = await as("OPERATOR");
+    setFeaturesForTests(PLATFORM_FEATURES.filter((code) => code !== "COMPETITIONS" && code !== "JOB_BOARD"));
+    const before = await readSchoolTerms(ctx, ids.pTeachers);
+    if ("ok" in before) throw new Error(before.errorKey);
+    expect(await lines(ids.pTeachers)).toEqual([PLANS_BOTH, OFF_TWO, VIDURA]);
+    const off = { premium: { teachers: false }, expect: expectFrom(before) };
+    const preview = (await (await termsPut(send("PUT", `/operator/schools/${ids.pTeachers}/terms`, { ...off, preview: true }), params(ids.pTeachers))).json()) as { terms: { lines?: unknown } };
+    expect(preview.terms.lines).toEqual([PLANS_BOTH]);
+    const saved = (await (await termsPut(send("PUT", `/operator/schools/${ids.pTeachers}/terms`, off), params(ids.pTeachers))).json()) as { terms: { lines?: unknown; premiumTeachers: boolean } };
+    expect(saved.terms).toMatchObject({ premiumTeachers: false, lines: [PLANS_BOTH] });
+    // Put back as it was, through the same door.
+    const now = await readSchoolTerms(ctx, ids.pTeachers);
+    if ("ok" in now) throw new Error(now.errorKey);
+    const on = (await (await termsPut(send("PUT", `/operator/schools/${ids.pTeachers}/terms`, { premium: { teachers: true }, expect: expectFrom(now) }), params(ids.pTeachers))).json()) as { terms: { lines?: unknown } };
+    expect(on.terms.lines).toEqual([PLANS_BOTH, OFF_TWO, VIDURA]);
+  });
+});
+
+describe("the sentence under the phone's question (C7 point 7c, as C7a point 2 settles it)", () => {
+  it("a preview of one premium switch answers what it will do, worded for the question: ON with every thing that still stands, OFF as the console's sheet says it; two switches, or a switch with a note, answer none; nothing is written", async () => {
+    const ctx = await as("OPERATOR");
+    const before = await readSchoolTerms(ctx, ids.pNotSet);
+    if ("ok" in before) throw new Error(before.errorKey);
+    const price = formatPaise((await ours()).premium, "en");
+    const put = async (body: Record<string, unknown>) =>
+      (await (await termsPut(send("PUT", `/operator/schools/${ids.pNotSet}/terms`, { expect: expectFrom(before), preview: true, ...body }), params(ids.pNotSet))).json()) as { sentence?: string };
+    // Terms not set and neither plan asked for (the suites ask for none): both named, in order.
+    expect((await put({ premium: { teachers: true } })).sentence).toBe(
+      `${PREFIX} PNotSet will get premium for teachers. Premium add-on for students and teachers: ${price} more a student a year (ours; it moves with ours). Not billed yet; still needed: terms set; the Student or the Teacher plan asked for. Figures are before GST. 2 people at the school will be told.`,
+    );
+    expect((await put({ premium: { students: false } })).sentence).toBe(`${PREFIX} PNotSet will no longer have premium for students. 2 people at the school will be told.`);
+    expect((await put({ premium: { students: false, teachers: true } })).sentence).toBeUndefined();
+    // A switch already where the body puts it moves nothing, and is told nothing (the review of bace327b, S1).
+    expect((await put({ premium: { students: true } })).sentence).toBeUndefined();
+    expect((await put({ premium: { teachers: true }, note: "ZZ a note" })).sentence).toBeUndefined();
+    expect(await db.school.findUniqueOrThrow({ where: { id: ids.pNotSet }, select: { premiumStudents: true, premiumTeachers: true, termsNote: true } })).toEqual({ premiumStudents: true, premiumTeachers: false, termsNote: null });
   });
 });
 

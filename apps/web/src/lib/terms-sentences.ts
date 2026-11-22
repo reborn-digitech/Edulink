@@ -1,4 +1,4 @@
-import { COLLEGE_TIERS, paysPaise, type BulkAction, type BulkAnswer, type OfferChange, type PartFigure, type PaymentAnswer, type SchoolTerms } from "@edulink/contracts";
+import { COLLEGE_TIERS, collegeTierOf, isCollegeKind, paysPaise, type BulkAction, type BulkAnswer, type OfferChange, type PartFigure, type PaymentAnswer, type SchoolTerms } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -69,7 +69,7 @@ function notBilledWhy(f: Fmt, view: Pick<SchoolTerms, "premiumNotBilled" | "prem
   return f.t(student && teacher ? "subs.notBilledBothPlans" : student ? "subs.notBilledStudentPlan" : "subs.notBilledTeacherPlan");
 }
 
-type PremiumView = Pick<SchoolTerms, "premiumStudents" | "premiumTeachers" | "premiumBilled" | "premiumNotBilled" | "premiumWaitsFor" | "premiumFigure">;
+type PremiumView = Pick<SchoolTerms, "premiumStudents" | "premiumTeachers" | "premiumBilled" | "premiumNotBilled" | "premiumWaitsFor" | "premiumFigure" | "subscriptionFigure">;
 
 /**
  * The premium column (§2.1; C2, C2b, C3): off, its price prospectively ("₹50 if on"); on and billed, its price and how; on and
@@ -78,32 +78,54 @@ type PremiumView = Pick<SchoolTerms, "premiumStudents" | "premiumTeachers" | "pr
 export function premiumCell(f: Fmt, view: PremiumView): string {
   const on = view.premiumStudents || view.premiumTeachers;
   if (!on) return view.premiumFigure.paysPaise === 0 ? f.t("root.freeByAgreement") : f.t("subs.premiumIfOn", { price: f.money(view.premiumFigure.paysPaise) });
+  // In C7a's order (point 2b): the terms not set first; then a college with no tier, which has no bill whatever its plan (the
+  // review of bace327b, T1: premiumBilled reads the terms and the plans, never the tier); then the plan.
+  if (view.premiumNotBilled !== "TERMS_NOT_SET" && view.subscriptionFigure === null) return f.t("subs.premiumOnNotBilled", { why: f.t("subs.notBilledTier") });
   if (!view.premiumBilled) return f.t("subs.premiumOnNotBilled", { why: notBilledWhy(f, view) });
   return partCell(f, view.premiumFigure);
 }
 
-/** When premium on and not billed will be billed (C3a's order: the terms first, then the plans not asked for). */
-function waitsKey(view: Pick<SchoolTerms, "premiumNotBilled" | "premiumWaitsFor">): TranslationKey {
-  if (view.premiumNotBilled === "TERMS_NOT_SET") return "subs.sPremiumWaitsTerms";
+/** A premium sentence's view: the cell's, with what tells a college on no tier. */
+type PremiumSentenceView = PremiumView & Pick<SchoolTerms, "kind" | "planCode" | "noTierChosen">;
+type PremiumNeed = "TERMS" | "TIER" | "STUDENT" | "TEACHER" | "EITHER";
+const WAITS_ONE: Record<PremiumNeed, TranslationKey> = { TERMS: "subs.sPremiumWaitsTerms", TIER: "subs.sPremiumWaitsTier", STUDENT: "subs.sPremiumWaitsStudent", TEACHER: "subs.sPremiumWaitsTeacher", EITHER: "subs.sPremiumWaitsBoth" };
+const NEED: Record<PremiumNeed, TranslationKey> = { TERMS: "subs.needTerms", TIER: "subs.needTier", STUDENT: "subs.needStudentPlan", TEACHER: "subs.needTeacherPlan", EITHER: "subs.needEitherPlan" };
+
+/**
+ * What still stands between premium switched on and a bill, in C7a's order (point 2b): its terms not set; at a college, no
+ * tier chosen (whether its terms are set or not); the plan, or either plan, not asked for (`premiumWaitsFor`).
+ */
+function premiumNeeds(view: PremiumSentenceView): PremiumNeed[] {
+  const needs: PremiumNeed[] = [];
+  if (view.premiumNotBilled === "TERMS_NOT_SET") needs.push("TERMS");
+  if (view.noTierChosen || (isCollegeKind(view.kind) && collegeTierOf(view.planCode) === null)) needs.push("TIER");
   const student = view.premiumWaitsFor.includes("STUDENT");
   const teacher = view.premiumWaitsFor.includes("TEACHER");
-  return student && teacher ? "subs.sPremiumWaitsBoth" : student ? "subs.sPremiumWaitsStudent" : "subs.sPremiumWaitsTeacher";
+  if (student && teacher) needs.push("EITHER");
+  else if (student) needs.push("STUDENT");
+  else if (teacher) needs.push("TEACHER");
+  return needs;
 }
 
 /**
  * The premium sentence of a school's terms, for a sheet's preview and its toast (§2.4; C3; C4a point 9 (i)): the price being
- * set always shows, as it will stand after the save, with when it will be billed where it will not be billed yet ("billed
- * once the Student plan is asked for", or "once terms are set"), and off, what it would be if switched on. Rows, cards and
- * bills keep the reason alone in the price's place (C2b's "not at all").
+ * set always shows, as it will stand after the save, with when it will be billed where it will not be billed yet, and off,
+ * what it would be if switched on. Never one condition named as if it were enough (C7a point 2b): where one thing stands
+ * ("billed once the Student plan is asked for", "once terms are set", "once the college's tier is chosen") it is said so;
+ * where more than one stands, every one, in order, after "Not billed yet; still needed:". Free by agreement is said so,
+ * whatever else is missing. Rows, cards and bills keep the reason alone in the price's place (C2b's "not at all").
  */
-function premiumSentence(f: Fmt, view: PremiumView): string {
+function premiumSentence(f: Fmt, view: PremiumSentenceView): string {
   const on = view.premiumStudents || view.premiumTeachers;
   const figure = view.premiumFigure;
   if (!on) return figure.paysPaise === 0 ? f.t("subs.sPremiumOffFree") : f.t("subs.sPremiumOffPrice", { price: f.money(figure.paysPaise), how: partHow(f, figure) });
   const who = whoOf(f, view.premiumStudents, view.premiumTeachers);
   if (figure.paysPaise === 0) return f.t("subs.sPremiumFree", { who });
   const vars = { who, price: f.money(figure.paysPaise), how: partHow(f, figure) };
-  return view.premiumBilled ? f.t("subs.sPremium", vars) : f.t(waitsKey(view), vars);
+  const needs = premiumNeeds(view);
+  if (needs.length === 0) return f.t("subs.sPremium", vars);
+  if (needs.length === 1) return f.t(WAITS_ONE[needs[0]!], vars);
+  return f.t("subs.sPremiumWaitsMany", { ...vars, needs: needs.map((need) => f.t(NEED[need])).join("; ") });
 }
 
 /** Where the school's year stands, in a sentence (§2.3, §2.4). */
@@ -225,6 +247,11 @@ export function onboardSentence(f: Fmt, input: OnboardSummary): string {
         premiumNotBilled: !on || premium.billed ? null : "PLAN_NOT_ASKED",
         premiumWaitsFor: premium.waitsFor.filter((plan): plan is "STUDENT" | "TEACHER" => plan === "STUDENT" || plan === "TEACHER"),
         premiumFigure: premium.figure,
+        // A college onboarded with no tier has no subscription figure, and no bill until one is chosen.
+        kind: null,
+        planCode: null,
+        noTierChosen: sub === null,
+        subscriptionFigure: sub,
       }),
     );
   // Whenever a figure in rupees is named (C7.6).
@@ -248,14 +275,27 @@ function toldSentence(f: Fmt, told: number, many: "school" | "schools", preview 
 /**
  * The switch's toast (§2.1): premium for students or teachers on or off at one school, worded from the preview of the
  * save (`after`) and the terms as read (`before`): when and what it is billed, or why not (C3), and who is told.
+ *
+ * `ask`: worded for the question asked before the act, as the terms door answers it under the phone's question (C7 point 7c,
+ * as C7a point 2 settles it), a flag the door sets. A switch ON opens in the future and says who will be told; where premium
+ * will not be billed after it, the price being set is named as the premium sheet names it, with every thing that still
+ * stands between it and a bill, in place of "It is not billed: …", then "Figures are before GST." where that names a figure
+ * (it says no "+ GST" itself); at a college whose plan is asked for and whose tier alone is missing, the sentence that
+ * exists. A switch OFF is the console's sheet's own sentence before the act, with nothing added. The console's toast,
+ * written when the toast goes, is unchanged.
  */
-export function switchSentence(f: Fmt, input: { role: "students" | "teachers"; on: boolean; before: SchoolTerms; after: SchoolTerms; told: number; preview?: boolean }): string {
+export function switchSentence(f: Fmt, input: { role: "students" | "teachers"; on: boolean; before: SchoolTerms; after: SchoolTerms; told: number; preview?: boolean; ask?: boolean }): string {
   const { role, on, before, after } = input;
+  const ask = input.ask === true;
   const school = after.name;
   const lines: string[] = [];
   if (on) {
-    lines.push(f.t(role === "students" ? "subs.switchOnStudents" : "subs.switchOnTeachers", { school }));
-    if (!after.premiumBilled) lines.push(f.t("subs.switchNotBilled", { why: notBilledWhy(f, after) }));
+    lines.push(f.t(role === "students" ? (ask ? "subs.switchOnStudentsWill" : "subs.switchOnStudents") : ask ? "subs.switchOnTeachersWill" : "subs.switchOnTeachers", { school }));
+    const needs = premiumNeeds(after);
+    if (ask && needs.length > 0 && !(needs.length === 1 && needs[0] === "TIER")) {
+      lines.push(premiumSentence(f, after));
+      if (after.premiumFigure.paysPaise > 0) lines.push(f.t("subs.sBeforeGst"));
+    } else if (!after.premiumBilled) lines.push(f.t("subs.switchNotBilled", { why: notBilledWhy(f, after) }));
     else if (after.premiumFigure.paysPaise === 0) lines.push(f.t("subs.switchFree"));
     // Billed already through the other role: one premium figure whichever switches are on (C3), so the bill does not move.
     else if (before.premiumBilled) lines.push(f.t("subs.switchAlreadyBilled"));
@@ -270,16 +310,21 @@ export function switchSentence(f: Fmt, input: { role: "students" | "teachers"; o
       else lines.push(f.t(free ? "subs.switchBilledFreeSubNoCount" : "subs.switchBilledNoCount", vars));
     }
   } else {
-    // Off is confirmed in a sheet first, so its sentence there is the future (the review of phase 5, A10).
-    const will = input.preview === true;
+    // Off is confirmed in a sheet first, so its sentence there is the future (the review of phase 5, A10); the phone's
+    // question is that sheet's sentence, with nothing added (C7a point 2a).
+    const will = input.preview === true || ask;
     lines.push(f.t(role === "students" ? (will ? "subs.switchOffStudentsWill" : "subs.switchOffStudents") : will ? "subs.switchOffTeachersWill" : "subs.switchOffTeachers", { school }));
     const stillOn = after.premiumStudents || after.premiumTeachers;
-    if (before.premiumBilled && !after.premiumBilled && before.premiumFigure.paysPaise > 0) lines.push(f.t(will ? "subs.switchOffBillWill" : "subs.switchOffBill", { price: f.money(before.premiumFigure.paysPaise) }));
-    else if (stillOn && after.premiumBilled)
+    // A college with no tier chosen has no bill, so neither bill line is said, in either tense (C7b point 2; premiumBilled reads
+    // the terms and the plans, never the tier, and is left so in phase 8).
+    const noBill = before.subscriptionFigure === null || after.subscriptionFigure === null;
+    if (!noBill && before.premiumBilled && !after.premiumBilled && before.premiumFigure.paysPaise > 0) lines.push(f.t(will ? "subs.switchOffBillWill" : "subs.switchOffBill", { price: f.money(before.premiumFigure.paysPaise) }));
+    else if (!noBill && stillOn && after.premiumBilled)
       lines.push(f.t(after.premiumTeachers ? (will ? "subs.switchOffStillBilledTeachersWill" : "subs.switchOffStillBilledTeachers") : will ? "subs.switchOffStillBilledStudentsWill" : "subs.switchOffStillBilledStudents"));
   }
-  // A switch on is the toast's own act, written when the toast goes; told is said as done there, as it will be in the sheet.
-  const told = toldSentence(f, input.told, "school", !on && input.preview === true);
+  // A switch on is the toast's own act, written when the toast goes; told is said as done there, as it will be in the sheet,
+  // and in the future under the phone's question. Nobody told, nothing said.
+  const told = toldSentence(f, input.told, "school", (!on && input.preview === true) || ask);
   if (told) lines.push(told);
   return lines.join(" ");
 }

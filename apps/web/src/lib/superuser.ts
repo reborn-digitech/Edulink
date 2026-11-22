@@ -75,6 +75,9 @@ export type SchoolSummary = {
   /** Set when the operator took this school off the installation. */
   removedAt: Date | null;
   isTestFixture: boolean;
+  /** Its premium add-on's switches (decision 0010). */
+  premiumStudents: boolean;
+  premiumTeachers: boolean;
   /** Pending admin invitations, so an operator can see a school with no admin yet. */
   pendingAdminInvites: number;
 };
@@ -132,6 +135,8 @@ export async function listSchools(session: ActiveContext, opts: SchoolListOpts =
       createdAt: true,
       removedAt: true,
       isTestFixture: true,
+      premiumStudents: true,
+      premiumTeachers: true,
     },
   });
 

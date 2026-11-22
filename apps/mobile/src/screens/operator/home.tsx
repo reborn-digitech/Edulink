@@ -243,6 +243,11 @@ function Dashboard({ d, onOpen }: { d: OperatorDashboard; onOpen: (schoolId: str
   );
 }
 
+/**
+ * The schools, each with what needs the operator's eye: removed, not yet checked, an invitation waiting (beside the name); and
+ * the premium add-on where it is on, for students or teachers, read from the list's own row, so that a school shown by search,
+ * by state or as a test school is badged too (decision 0010; the brief's §7; C7 point 7a), on a line under the caption (W1).
+ */
 function Schools({ d, narrowed, onOpen, onAdd, onClear }: { d: OperatorOverview; narrowed: boolean; onOpen: (schoolId: string) => void; onAdd: () => void; onClear: () => void }) {
   const t = useT();
   const th = useTheme();
@@ -256,34 +261,50 @@ function Schools({ d, narrowed, onOpen, onAdd, onClear }: { d: OperatorOverview;
         <Empty title={t("common.noResultsTitle")} body={t("common.noResultsBody")} action={<Button label={t("common.clearAll")} variant="secondary" onPress={onClear} />} />
       ) : (
         <Card title={t("root.schools")}>
-          {d.schools.map((s) => (
-            <Row
-              key={s.id}
-              icon="buildings"
-              title={s.name}
-              caption={[
-                [s.city, s.country].filter(Boolean).join(", ") || t("root.noAddress"),
-                s.removedAt ? null : `${t("root.joinCode")} ${s.code}`,
-                s.removedAt ? t("root.removedAgo", { when: relativeTime(s.removedAt, locale) }) : t("root.joinedAgo", { when: relativeTime(s.createdAt, locale) }),
-              ]
-                .filter(Boolean)
-                .join(" · ")}
-              right={
-                s.removedAt ? (
-                  <Pill label={t("root.removedBadge")} tone="danger" />
-                ) : !s.verifiedAt || s.pendingAdminInvites > 0 ? (
-                  // A school that registered itself is often both: not yet checked, and its admin still to accept.
-                  <View style={{ alignItems: "flex-end", gap: th.space[1] }}>
-                    {!s.verifiedAt ? <Pill label={t("root.stateUnverified")} tone="warn" /> : null}
-                    {s.pendingAdminInvites > 0 ? (
-                      <Pill label={s.pendingAdminInvites === 1 ? t("root.invitesPendingOne") : t("root.invitesPendingMany", { count: s.pendingAdminInvites })} tone="warn" />
-                    ) : null}
-                  </View>
-                ) : null
-              }
-              onPress={() => onOpen(s.id)}
-            />
-          ))}
+          {d.schools.map((s) => {
+            const caption = [
+              [s.city, s.country].filter(Boolean).join(", ") || t("root.noAddress"),
+              s.removedAt ? null : `${t("root.joinCode")} ${s.code}`,
+              s.removedAt ? t("root.removedAgo", { when: relativeTime(s.removedAt, locale) }) : t("root.joinedAgo", { when: relativeTime(s.createdAt, locale) }),
+            ]
+              .filter(Boolean)
+              .join(" · ");
+            const badges = s.removedAt ? [] : [s.premium.students ? t("subs.badgeStudents") : null, s.premium.teachers ? t("subs.badgeTeachers") : null].filter((badge): badge is string => badge !== null);
+            return (
+              <Row
+                key={s.id}
+                icon="buildings"
+                title={s.name}
+                caption={caption}
+                right={
+                  s.removedAt ? (
+                    <Pill label={t("root.removedBadge")} tone="danger" />
+                  ) : !s.verifiedAt || s.pendingAdminInvites > 0 ? (
+                    // A school that registered itself is often both: not yet checked, and its admin still to accept.
+                    <View style={{ alignItems: "flex-end", gap: th.space[1] }}>
+                      {!s.verifiedAt ? <Pill label={t("root.stateUnverified")} tone="warn" /> : null}
+                      {s.pendingAdminInvites > 0 ? (
+                        <Pill label={s.pendingAdminInvites === 1 ? t("root.invitesPendingOne") : t("root.invitesPendingMany", { count: s.pendingAdminInvites })} tone="warn" />
+                      ) : null}
+                    </View>
+                  ) : null
+                }
+                // The premium badges, on ordinary live schools too, stand on a line under the caption, so the name keeps the
+                // row's width less the status pills (the coordinator's walk of 06ce1ebf, W1), and are heard with the row.
+                below={
+                  badges.length > 0 ? (
+                    <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[1], marginTop: th.space[1] }}>
+                      {badges.map((badge) => (
+                        <Pill key={badge} label={badge} tone="accent" />
+                      ))}
+                    </View>
+                  ) : null
+                }
+                label={badges.length > 0 ? [s.name, caption, ...badges].join(", ") : undefined}
+                onPress={() => onOpen(s.id)}
+              />
+            );
+          })}
         </Card>
       )}
       <Button label={t("root.addSchool")} onPress={onAdd} />

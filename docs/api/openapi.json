@@ -36055,6 +36055,26 @@
                           "isTestFixture": {
                             "type": "boolean",
                             "default": false
+                          },
+                          "premium": {
+                            "type": "object",
+                            "properties": {
+                              "students": {
+                                "type": "boolean"
+                              },
+                              "teachers": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "students",
+                              "teachers"
+                            ],
+                            "additionalProperties": false,
+                            "default": {
+                              "students": false,
+                              "teachers": false
+                            }
                           }
                         },
                         "required": [
@@ -42190,7 +42210,7 @@
     },
     "/api/v1/operator/schools/{schoolId}/terms": {
       "get": {
-        "summary": "One school's subscription and premium terms worked out on read (ours, its own discount or its own price; a college's tier), its standing and renewal, and the year's bill at the newest count",
+        "summary": "One school's subscription and premium terms worked out on read (ours, its own discount or its own price; a college's tier), its standing and renewal, the year's bill at the newest count, and C2's lines beside its premium switches in the caller's language",
         "description": "The server operator.",
         "security": [
           {
@@ -42473,6 +42493,13 @@
                       ],
                       "additionalProperties": false,
                       "nullable": true
+                    },
+                    "lines": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -42560,7 +42587,7 @@
         ]
       },
       "put": {
-        "summary": "Change one school's own terms for either part, its premium switches or its note, against the terms as read; a save of a part's terms sets the school's terms; preview writes nothing; audited in both logs and the office told",
+        "summary": "Change one school's own terms for either part, its premium switches or its note, against the terms as read; a save of a part's terms sets the school's terms; preview writes nothing; audited in both logs and the office told; its terms carry C2's lines as they stand after the change, and a preview of one premium switch answers what it will do in the caller's language",
         "description": "The server operator.",
         "security": [
           {
@@ -42849,6 +42876,13 @@
                           ],
                           "additionalProperties": false,
                           "nullable": true
+                        },
+                        "lines": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "default": []
                         }
                       },
                       "required": [
@@ -42885,6 +42919,9 @@
                     },
                     "told": {
                       "$ref": "#/properties/terms/properties/pupils"
+                    },
+                    "sentence": {
+                      "type": "string"
                     }
                   },
                   "required": [

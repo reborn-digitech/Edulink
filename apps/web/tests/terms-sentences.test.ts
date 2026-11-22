@@ -84,6 +84,10 @@ describe("the Schools tab's cells (§2.1)", () => {
   it("the premium column: off, its price if on; on and billed, its price; on and not billed, why, the terms first (C2, C3, C3a)", () => {
     expect(premiumCell(f, view())).toBe("₹50 if on");
     expect(premiumCell(f, view(ON_BILLED))).toBe("₹50 · ours");
+    // A college whose plan is asked for and whose tier is not chosen has no bill: the tier's reason in the price's place (the
+    // review of bace327b, T1); the terms not set still come first.
+    expect(premiumCell(f, view({ ...ON_BILLED, kind: "COLLEGE", noTierChosen: true, subscriptionFigure: null, bill: null }))).toBe("Premium on, not billed: no tier chosen");
+    expect(premiumCell(f, view({ kind: "COLLEGE", subscriptionFigure: null, bill: null, termsSet: false, premiumStudents: true, premiumNotBilled: "TERMS_NOT_SET", premiumWaitsFor: [] }))).toBe("Premium on, not billed: terms not set");
     expect(premiumCell(f, view({ premiumStudents: true, premiumNotBilled: "TERMS_NOT_SET", premiumWaitsFor: ["STUDENT"] }))).toBe("Premium on, not billed: terms not set");
     expect(premiumCell(f, view({ premiumStudents: true, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT"] }))).toBe("Premium on, not billed: the Student plan is not asked for");
     expect(premiumCell(f, view({ premiumStudents: true, premiumTeachers: true, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT", "TEACHER"] }))).toBe(
@@ -110,7 +114,16 @@ describe("a school's terms in sentences (§2.4)", () => {
     expect(schoolTermsSentence(f, view({ premiumStudents: true, premiumTeachers: true, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT", "TEACHER"] }))).toContain(
       "billed once the Student or the Teacher plan is asked for.",
     );
-    expect(schoolTermsSentence(f, view({ termsSet: false, premiumStudents: true, premiumNotBilled: "TERMS_NOT_SET", premiumWaitsFor: ["STUDENT"] }))).toContain("billed once terms are set.");
+    expect(schoolTermsSentence(f, view({ termsSet: false, premiumStudents: true, premiumNotBilled: "TERMS_NOT_SET", premiumWaitsFor: [] }))).toContain("billed once terms are set.");
+    // C7a point 2b: never one condition named as if it were enough; the sheet names every thing that stands, in order.
+    expect(schoolTermsSentence(f, view({ termsSet: false, premiumStudents: true, premiumNotBilled: "TERMS_NOT_SET", premiumWaitsFor: ["STUDENT"] }))).toContain(
+      "Premium add-on for students: ₹50 more a student a year (ours; it moves with ours). Not billed yet; still needed: terms set; the Student plan asked for.",
+    );
+    expect(schoolTermsSentence(f, view({ termsSet: false, premiumStudents: true, premiumNotBilled: "TERMS_NOT_SET", premiumWaitsFor: ["STUDENT"] }))).not.toContain("billed once");
+    // At a college whose plan is asked for and whose tier is missing, the sheet no longer reads as billed.
+    expect(schoolTermsSentence(f, view({ ...ON_BILLED, kind: "COLLEGE", noTierChosen: true, subscriptionFigure: null, bill: null }))).toContain(
+      "Premium add-on for students: ₹50 more a student a year (ours; it moves with ours), billed once the college's tier is chosen.",
+    );
   });
 
   it("terms not set: what it pays from before, no figure of ours and no GST line (rule 19)", () => {
@@ -160,6 +173,22 @@ describe("the switch's toast (§2.1)", () => {
     expect(switchSentence(f, { role: "students", on: false, before: view({ ...ON_BILLED, premiumTeachers: true }), after: teachersBilled, told: 0 })).toBe(
       "ZZ Banyan School no longer has premium for students. Premium stays on its bill for its teachers.",
     );
+  });
+
+  it("C7b point 2 (E2): at a college with no tier chosen and its plan asked for, switching premium off says nothing of a bill, in either tense; the opening line and who is told as before", () => {
+    const college: Partial<SchoolTerms> = { kind: "COLLEGE", planCode: null, noTierChosen: true, subscriptionFigure: null, bill: null };
+    const before = view({ ...ON_BILLED, ...college });
+    const after = view(college);
+    expect(switchSentence(f, { role: "students", on: false, before, after, told: 2 })).toBe("ZZ Banyan School no longer has premium for students. 2 people at the school are told.");
+    expect(switchSentence(f, { role: "students", on: false, before, after, told: 2, preview: true })).toBe("ZZ Banyan School will no longer have premium for students. 2 people at the school will be told.");
+    expect(switchSentence(f, { role: "students", on: false, before, after, told: 2, ask: true })).toBe("ZZ Banyan School will no longer have premium for students. 2 people at the school will be told.");
+    // The other role still on and billed before and after: no "stays on its bill" line either (the read of part 6, S1).
+    const bothBefore = view({ ...college, premiumStudents: true, premiumTeachers: true, premiumBilled: true });
+    const teachersAfter = view({ ...college, premiumTeachers: true, premiumBilled: true });
+    expect(switchSentence(f, { role: "students", on: false, before: bothBefore, after: teachersAfter, told: 2 })).toBe("ZZ Banyan School no longer has premium for students. 2 people at the school are told.");
+    expect(switchSentence(f, { role: "students", on: false, before: bothBefore, after: teachersAfter, told: 2, preview: true })).toBe("ZZ Banyan School will no longer have premium for students. 2 people at the school will be told.");
+    // Every other state as today: a school losing a billed premium is told its bill no longer carries it.
+    expect(switchSentence(f, { role: "students", on: false, before: view(ON_BILLED), after: view(), told: 0 })).toBe("ZZ Banyan School no longer has premium for students. Its bill no longer carries premium's ₹50 a student a year.");
   });
 
   it("a note alone, previewed, will be saved; saved, is", () => {
@@ -420,7 +449,8 @@ describe("phase 6: the onboarding summary (§2.5; C2; C6)", () => {
     expect(onboardSentence(f, { ...base, subscription: { ...TIER, discountBps: 1_000, paysPaise: 17_900, source: "OWN_DISCOUNT" } })).toContain("ZZ School pays ₹179 a student a year for Shalaghar, on the Affiliated college tier less its own 10 %: held whatever your discount does.");
     // A college with no tier has no bill at all, premium or not (C2a): nothing is said to be billed (the review of phase 6, 4).
     expect(onboardSentence(f, { ...base, subscription: null })).toBe(
-      "ZZ School has no tier chosen, so it has no Shalaghar price yet. Nothing is billed; its renewal date is 21 May 2027. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours). Figures are before GST.",
+      // C7a point 2b, in the one function: with no tier there is no bill, so premium is said with what still stands, never as billed.
+      "ZZ School has no tier chosen, so it has no Shalaghar price yet. Nothing is billed; its renewal date is 21 May 2027. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours), billed once the college's tier is chosen. Figures are before GST.",
     );
     expect(onboardSentence(f, { ...base, premium: { ...base.premium, figure: { ...OURS_PREMIUM, basePaise: 6_000, paysPaise: 6_000, source: "OWN_PRICE" } } })).toContain("Premium add-on for students: ₹60 more a student a year (its own price, fixed).");
   });
@@ -475,7 +505,7 @@ describe("C7.9: Hindi and Marathi sentences that carry a school's or a college's
   const flat = (node: Record<string, unknown>, prefix = ""): [string, string][] =>
     Object.entries(node).flatMap(([key, value]) => (typeof value === "string" ? [[`${prefix}${key}`, value] as [string, string]] : flat(value as Record<string, unknown>, `${prefix}${key}.`)));
   const named = (dictionary: Record<string, unknown>) =>
-    flat(dictionary).filter(([key]) => /^subs\.ob[A-Z]/.test(key) || ["root.onboardDone", "subs.sSubscription", "subs.sSubscriptionFree", "subs.sNoTier", "subs.sNotSet", "subs.sNotSetOld", "subs.howTier", "subs.howTierOwnDiscount", "subs.switchOnStudents", "subs.switchOnTeachers", "subs.switchOffBill", "subs.switchOffBillWill"].includes(key));
+    flat(dictionary).filter(([key]) => /^subs\.ob[A-Z]/.test(key) || ["root.onboardDone", "subs.sSubscription", "subs.sSubscriptionFree", "subs.sNoTier", "subs.sNotSet", "subs.sNotSetOld", "subs.howTier", "subs.howTierOwnDiscount", "subs.switchOnStudents", "subs.switchOnTeachers", "subs.switchOnStudentsWill", "subs.switchOnTeachersWill", "subs.switchOffBill", "subs.switchOffBillWill"].includes(key));
 
   it("Marathi: no case suffix after the name with a space, and no feminine pronoun standing for the institution", () => {
     const rows = named(mr as unknown as Record<string, unknown>);
@@ -499,3 +529,69 @@ describe("C7.9: Hindi and Marathi sentences that carry a school's or a college's
     expect(rows["subs.sSubscription"]).toMatch(/\{school\} का/);
   });
 });
+
+describe("the sentence under the phone's question (C7 point 7c, as C7a point 2 settles it)", () => {
+  const ask = (input: Omit<Parameters<typeof switchSentence>[1], "ask">, g: Fmt = f) => switchSentence(g, { ...input, ask: true });
+  const notSetStudents = { termsSet: false, termsSetAt: null, premiumStudents: true, premiumNotBilled: "TERMS_NOT_SET" as const };
+
+  it("a switch ON opens in the future and says who will be told; billed, the billed line as the console says it; nobody told, nothing said", () => {
+    expect(ask({ role: "students", on: true, before: view(), after: view(ON_BILLED), told: 2 })).toBe(
+      "ZZ Banyan School will get premium for students. It is billed from its renewal on 21 May 2027: ₹50 more a student a year + GST (about ₹20,600 at last count), on top of its ₹80 subscription. 2 people at the school will be told.",
+    );
+    expect(ask({ role: "students", on: true, before: view(), after: view(ON_BILLED), told: 0 })).not.toMatch(/told/);
+    // The console's toast is unchanged: written when the toast goes, it says the act as done.
+    expect(switchSentence(f, { role: "students", on: true, before: view(), after: view({ ...notSetStudents, premiumWaitsFor: ["STUDENT"] }), told: 2 })).toBe(
+      "ZZ Banyan School gets premium for students now. It is not billed: terms not set. 2 people at the school are told.",
+    );
+  });
+
+  it("one thing standing: the price being set, as the premium sheet names it, with that one thing, then that figures are before GST", () => {
+    expect(ask({ role: "students", on: true, before: view(), after: view({ premiumStudents: true, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT"] }), told: 1 })).toBe(
+      "ZZ Banyan School will get premium for students. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours), billed once the Student plan is asked for. Figures are before GST. 1 person at the school will be told.",
+    );
+    expect(ask({ role: "students", on: true, before: view(), after: view({ ...notSetStudents, premiumWaitsFor: [] }), told: 0 })).toBe(
+      "ZZ Banyan School will get premium for students. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours), billed once terms are set. Figures are before GST.",
+    );
+    // At a college whose plan is asked for and whose tier alone is missing, the sentence that exists, which says "+ GST".
+    expect(ask({ role: "students", on: true, before: view(), after: view({ ...ON_BILLED, kind: "COLLEGE", noTierChosen: true, subscriptionFigure: null, bill: null }), told: 0 })).toBe(
+      "ZZ Banyan School will get premium for students. It is billed once the college's tier is chosen: ₹50 more a student a year + GST.",
+    );
+  });
+
+  it("never one condition named as if it were enough: where more than one stands, every one, in order (terms, tier, plan)", () => {
+    expect(ask({ role: "students", on: true, before: view(), after: view({ ...notSetStudents, premiumWaitsFor: ["STUDENT"] }), told: 0 })).toBe(
+      "ZZ Banyan School will get premium for students. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours). Not billed yet; still needed: terms set; the Student plan asked for. Figures are before GST.",
+    );
+    expect(ask({ role: "students", on: true, before: view(), after: view({ kind: "COLLEGE", noTierChosen: true, subscriptionFigure: null, bill: null, premiumStudents: true, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT"] }), told: 0 })).toBe(
+      "ZZ Banyan School will get premium for students. Premium add-on for students: ₹50 more a student a year (ours; it moves with ours). Not billed yet; still needed: the college's tier chosen; the Student plan asked for. Figures are before GST.",
+    );
+    expect(ask({ role: "students", on: true, before: view(), after: view({ ...notSetStudents, kind: "COLLEGE", planCode: null, subscriptionFigure: null, bill: null, premiumWaitsFor: ["STUDENT"] }), told: 0 })).toContain(
+      "Not billed yet; still needed: terms set; the college's tier chosen; the Student plan asked for.",
+    );
+    expect(ask({ role: "teachers", on: true, before: view(), after: view({ premiumStudents: true, premiumTeachers: true, premiumNotBilled: "PLAN_NOT_ASKED", premiumWaitsFor: ["STUDENT", "TEACHER"] }), told: 0 })).toContain(
+      "Premium add-on for students and teachers: ₹50 more a student a year (ours; it moves with ours), billed once the Student or the Teacher plan is asked for. Figures are before GST.",
+    );
+  });
+
+  it("premium free by agreement is said as now, whatever else is missing, and with no GST line", () => {
+    expect(ask({ role: "students", on: true, before: view(), after: view({ ...notSetStudents, premiumWaitsFor: ["STUDENT"], premiumFigure: { ...FREE } }), told: 0 })).toBe(
+      "ZZ Banyan School will get premium for students. Premium add-on for students: free by agreement.",
+    );
+  });
+
+  it("a switch OFF is the console's sheet's own sentence before the act, with nothing added", () => {
+    const sheet = switchSentence(f, { role: "students", on: false, before: view(ON_BILLED), after: view(), told: 2, preview: true });
+    expect(ask({ role: "students", on: false, before: view(ON_BILLED), after: view(), told: 2 })).toBe(sheet);
+    expect(sheet).toBe("ZZ Banyan School will no longer have premium for students. Its bill will no longer carry premium's ₹50 a student a year. 2 people at the school will be told.");
+  });
+
+  it("Hindi and Marathi: the future opening with the name standing as C7.9 has it; the list after a colon", () => {
+    const hiAsk = ask({ role: "students", on: true, before: view(), after: view({ ...notSetStudents, premiumWaitsFor: ["STUDENT"] }), told: 2 }, fmtFor("hi"));
+    expect(hiAsk.startsWith("ZZ Banyan School को विद्यार्थियों के लिए प्रीमियम मिलेगा।")).toBe(true);
+    expect(hiAsk).toContain("अभी बाकी: शर्तें तय होना; छात्र योजना का माँगा जाना।");
+    const mrAsk = ask({ role: "students", on: true, before: view(), after: view({ ...notSetStudents, premiumWaitsFor: ["STUDENT"] }), told: 2 }, fmtFor("mr"));
+    expect(mrAsk.startsWith("ZZ Banyan School: विद्यार्थ्यांसाठी प्रीमियम मिळेल.")).toBe(true);
+    expect(mrAsk).toContain("अजून हवे: अटी ठरणे; विद्यार्थी योजना मागितली जाणे.");
+  });
+});
+

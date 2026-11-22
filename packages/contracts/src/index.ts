@@ -40,7 +40,12 @@ export const apiErrorSchema = z.object({
 });
 export type ApiError = z.infer<typeof apiErrorSchema>;
 
-export type ApiResult<T> = { ok: true; data: T } | ({ ok: false; status: number } & ApiError);
+/**
+ * A request's outcome on the phone. A failure's `status` is 0 where no answer came (offline, timed out, cut off); `said` is
+ * set where its sentence is the server's own answer, and absent for a bare status, a proxy's page or an empty body, which
+ * may be a request carried out before it was cut off (C7 point 7g).
+ */
+export type ApiResult<T> = { ok: true; data: T } | ({ ok: false; status: number; said?: true } & ApiError);
 
 import { localeSchema } from "./locale";
 export { localeSchema };

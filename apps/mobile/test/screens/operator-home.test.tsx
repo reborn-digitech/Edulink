@@ -137,6 +137,54 @@ describe("the operator's home", () => {
     open.mockRestore();
   });
 
+  it("a school with the premium add-on on carries its badges, for students and for teachers, read from the list's own rows, so that a school shown by search, by state or as a test school is badged (decision 0010; C7 point 7a)", async () => {
+    const listed = operatorOverviewSchema.parse({ ...OVERVIEW, schools: [{ ...OVERVIEW.schools[0], premium: { students: true, teachers: true } }, OVERVIEW.schools[1]] });
+    const premiumSchool = { id: "s9", name: "ZZ Premium School", city: "Pune", country: null, code: "PREM-1A2B", gradeLow: "6", gradeHigh: "8", createdAt: ago(86_400_000), removedAt: null, verifiedAt: ago(3_600_000), pendingAdminInvites: 0, isTestFixture: true, premium: { students: false, teachers: true } };
+    const all = operatorOverviewSchema.parse({ ...OVERVIEW, schools: [...listed.schools, premiumSchool] });
+    // The dashboard's rows name neither school (DASHBOARD.rows is empty; its default list leaves the test schools out): the
+    // badges do not wait on it.
+    await mount({ "GET /api/v1/operator/overview": ({ url }) => json(url.searchParams.get("state") === "all" ? all : listed) });
+    expect(await screen.findByText("Premium: students")).toBeTruthy();
+    expect(screen.getByText("Premium: teachers")).toBeTruthy();
+    // A school without it carries none.
+    expect(screen.getAllByText("Premium: students")).toHaveLength(1);
+    // Every school, the test schools among them: ZZ Premium School is badged for teachers alone.
+    await fireEvent.press(screen.getByRole("radio", { name: "All" }));
+    expect(await screen.findByText("ZZ Premium School")).toBeTruthy();
+    await waitFor(() => expect(screen.getAllByText("Premium: teachers")).toHaveLength(2));
+    expect(screen.getAllByText("Premium: students")).toHaveLength(1);
+  });
+
+  it("the premium badges stand on a line under the caption, out of the row's right slot, so the name keeps the row's width less the status pills (the coordinator's walk of 06ce1ebf, W1); a screen reader hears them with the row", async () => {
+    const listed = operatorOverviewSchema.parse({ ...OVERVIEW, schools: [OVERVIEW.schools[0], { ...OVERVIEW.schools[1], premium: { students: true, teachers: true } }] });
+    await mount({ "GET /api/v1/operator/overview": () => json(listed) });
+    expect(await screen.findByText("Premium: students")).toBeTruthy();
+    // The texts in the order they are drawn: the title, the caption, the badges under it, and only then the right slot's pills.
+    const order: string[] = [];
+    const walk = (node: unknown): void => {
+      if (typeof node === "string") order.push(node);
+      else if (Array.isArray(node)) node.forEach(walk);
+      else if (node && typeof node === "object") walk((node as { children?: unknown }).children ?? []);
+    };
+    walk(screen.toJSON());
+    // Read from the row's own title on: the counts above also say "Awaiting check".
+    const row = order.indexOf("ZZ Riverside");
+    const from = (text: string) => order.indexOf(text, row);
+    expect(row).toBeGreaterThanOrEqual(0);
+    expect(from("Premium: students")).toBeGreaterThan(row);
+    expect(from("Awaiting check")).toBeGreaterThan(row);
+    expect(from("Premium: teachers")).toBeLessThan(from("Awaiting check"));
+    expect(screen.getByRole("button", { name: /^ZZ Riverside,.*Premium: students, Premium: teachers$/ })).toBeTruthy();
+  });
+
+  it("an older server's list, whose rows say nothing of premium, reads as off and draws no badge", async () => {
+    const older = { ...OVERVIEW, schools: OVERVIEW.schools.map(({ premium: _premium, ...row }) => row) };
+    await mount({ "GET /api/v1/operator/overview": () => json(older) });
+    expect(await screen.findByText("ZZ Northgate")).toBeTruthy();
+    expect(screen.queryByText("Premium: students")).toBeNull();
+    expect(screen.queryByText("Premium: teachers")).toBeNull();
+  });
+
   it("nothing due within a week says so", async () => {
     await mount({ "GET /api/v1/operator/dashboard": () => json({ ...DASHBOARD, dueSoon: [] }) });
     await screen.findByText("ZZ Northgate");

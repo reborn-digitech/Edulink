@@ -54,6 +54,8 @@ export const operatorSchoolSchema = z.object({
   pendingAdminInvites: count,
   /** A school the tests make; the list's default state leaves these out. */
   isTestFixture: z.boolean().default(false),
+  /** Its premium add-on's switches (decision 0010; C7 point 7a), so the list badges every school it shows; an older server says nothing, which reads as off. */
+  premium: z.object({ students: z.boolean(), teachers: z.boolean() }).default({ students: false, teachers: false }),
 });
 export type OperatorSchool = z.infer<typeof operatorSchoolSchema>;
 

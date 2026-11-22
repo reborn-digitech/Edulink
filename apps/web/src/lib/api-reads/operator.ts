@@ -56,6 +56,8 @@ export async function operatorOverview(ctx: ActiveContext, query: OperatorOvervi
       removedAt: isoOrNull(s.removedAt),
       verifiedAt: isoOrNull(s.verifiedAt),
       pendingAdminInvites: s.pendingAdminInvites,
+      isTestFixture: s.isTestFixture,
+      premium: { students: s.premiumStudents, teachers: s.premiumTeachers },
     })),
     jobs: jobs.map((j) => ({
       name: j.name,

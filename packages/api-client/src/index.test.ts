@@ -28,10 +28,21 @@ describe("@edulink/api-client", () => {
 
   it("passes a readable error envelope through and labels a bare status", async () => {
     const api = createApiClient({ baseUrl: "https://app.example", getToken: () => "t", fetch: fakeFetch(422, { error: "Date is invalid.", issues: { dateKey: "Use yyyy-mm-dd." } }) });
-    expect(await api.get("/api/v1/x")).toEqual({ ok: false, status: 422, error: "Date is invalid.", issues: { dateKey: "Use yyyy-mm-dd." } });
+    expect(await api.get("/api/v1/x")).toEqual({ ok: false, status: 422, error: "Date is invalid.", issues: { dateKey: "Use yyyy-mm-dd." }, said: true });
 
     const bare = createApiClient({ baseUrl: "https://app.example", getToken: () => "t", fetch: fakeFetch(401, null, "Unauthorized") });
     expect(await bare.get("/api/v1/x")).toEqual({ ok: false, status: 401, error: "Unauthorized", code: "UNAUTHORIZED" });
+  });
+
+  it("says when an error's sentence is the server's own, so that a 5xx carrying none (a proxy's page, an empty body) can be told from the server's refusal (C7 point 7g)", async () => {
+    const server = createApiClient({ baseUrl: "https://app.example", getToken: () => "t", fetch: fakeFetch(500, { error: "Something went wrong.", code: "SERVER" }) });
+    expect(await server.get("/api/v1/x")).toEqual({ ok: false, status: 500, error: "Something went wrong.", code: "SERVER", said: true });
+    const proxy = createApiClient({ baseUrl: "https://app.example", getToken: () => "t", fetch: vi.fn(async () => new Response("<html>502 Bad Gateway</html>", { status: 502, statusText: "Bad Gateway" })) as unknown as typeof fetch });
+    const page = await proxy.get("/api/v1/x");
+    expect(page).toEqual({ ok: false, status: 502, error: "<html>502 Bad Gateway</html>", code: "SERVER" });
+    expect(page.ok === false && page.said).toBeFalsy();
+    const empty = createApiClient({ baseUrl: "https://app.example", getToken: () => "t", fetch: fakeFetch(504, null, "Gateway Timeout") });
+    expect(await empty.get("/api/v1/x")).toEqual({ ok: false, status: 504, error: "Gateway Timeout", code: "SERVER" });
   });
 
   it("turns a dropped connection into a result rather than a throw", async () => {

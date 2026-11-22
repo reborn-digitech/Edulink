@@ -21,6 +21,10 @@ export async function GET(request: Request) {
           id: r.id,
           name: r.name,
           city: r.city,
+          // What the contract's row declares, the kind and premium's switches among it (the second review of phase 8, E1:
+          // copied field by field, both were left out, and the default filled in "off").
+          kind: r.kind,
+          premium: r.premium,
           removedAt: r.removedAt,
           verifiedAt: r.verifiedAt,
           pendingAdminInvites: r.pendingAdminInvites,
