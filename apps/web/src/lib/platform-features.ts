@@ -95,10 +95,10 @@ export async function featureOn(code: FeatureCode): Promise<boolean> {
   return (await featuresOn()).includes(code);
 }
 
-/** The plan this person lacks for a feature that is on, or null (no plan needed, the plan inactive, or entitled). */
+/** The plan this person lacks for a feature that is on, or null (no plan needed, the plan inactive, covered by their school's premium, or entitled). */
 export async function lockOf(code: FeatureCode, who: WhoLike): Promise<PlanCode | null> {
   const w = whoOf(who);
-  return planLockFor(code, { userId: w.userId, role: w.role });
+  return planLockFor(code, { userId: w.userId, role: w.role, schoolId: w.schoolId });
 }
 
 /**
@@ -178,7 +178,8 @@ export async function assertFeatureSwitchOn(codes: readonly FeatureCode[]): Prom
 export async function childLock(code: FeatureCode, studentMembershipId: string): Promise<PlanCode | null> {
   const m = await db.membership.findUnique({ where: { id: studentMembershipId }, select: { userId: true, schoolId: true } });
   if (!m) return null;
-  return planLockFor(code, { userId: m.userId, role: "STUDENT" });
+  // The child's school's premium covers the child (decision 0010; 0006:27 as amended).
+  return planLockFor(code, { userId: m.userId, role: "STUDENT", schoolId: m.schoolId });
 }
 export async function assertChildMayUse(code: FeatureCode, studentMembershipId: string): Promise<void> {
   if (!(await featureOn(code))) throw new FeatureOffError(code);

@@ -385,6 +385,71 @@ describe("the pass:expiring job", () => {
   });
 });
 
+describe("a school's premium covers its people: no Pay (INCLUDED; decision 0010 decision 12, rule 12)", () => {
+  beforeAll(() => setActivePlansForTests(["STUDENT", "TEACHER", "EXPERT"]));
+  const cover = (data: Record<string, unknown>) => db.school.update({ where: { id: schoolId }, data });
+
+  it("a covered teacher, pupil and a guardian's covered children are offered nothing to buy, and a checkout is refused; a pause stops it", async () => {
+    await cover({ premiumStudents: true, premiumTeachers: true });
+    try {
+      expect((await passOverview(teacher())).offers[0]).toMatchObject({ plan: "TEACHER", buy: "INCLUDED" });
+      expect((await passOverview(adult())).offers[0]).toMatchObject({ plan: "STUDENT", buy: "INCLUDED" });
+      expect((await passOverview(minor())).offers[0]).toMatchObject({ plan: "STUDENT", buy: "INCLUDED" });
+      const g = await passOverview(guardian());
+      expect(g.offers.map((o) => o.buy)).toEqual(["INCLUDED", "INCLUDED"]);
+      expect(passOverviewSchema.parse(g).offers).toHaveLength(2);
+      expect(await openPassCheckout(teacher(), { plan: "TEACHER", period: "MONTH" })).toEqual({ ok: false, errorKey: "passes.refuseIncluded" });
+      expect(await openPassCheckout(guardian(), { plan: "STUDENT", period: "MONTH", studentMembershipId: member.minor })).toEqual({ ok: false, errorKey: "passes.refuseIncluded" });
+      // Nor may a covered pupil ask a guardian for it: that ask goes through no buyState (C4 (iii)).
+      await expect(askGuardianForPass(minor(), "STUDENT")).rejects.toMatchObject({ key: "passes.refuseIncluded" });
+      // In buyState's order, a plan not asked for first (the review's B1): the covered pupil reads that, not "included".
+      setActivePlansForTests(["TEACHER", "EXPERT"]);
+      await expect(askGuardianForPass(minor(), "STUDENT")).rejects.toMatchObject({ key: "passes.refuseNotAsked" });
+      setActivePlansForTests(["STUDENT", "TEACHER", "EXPERT"]);
+      // The expert's plan is no part of premium.
+      expect((await passOverview(expert())).offers[0]).toMatchObject({ plan: "EXPERT", buy: "PAY" });
+      // A plan not asked for is still "nothing to buy, everything open" first.
+      setActivePlansForTests(["STUDENT", "EXPERT"]);
+      expect((await passOverview(teacher())).offers[0]!.buy).toBe("NOT_ASKED");
+      setActivePlansForTests(["STUDENT", "TEACHER", "EXPERT"]);
+      // SUSPENDED stops cover: the sale is as it was.
+      await cover({ subscriptionStatus: "SUSPENDED" });
+      expect((await passOverview(teacher())).offers[0]!.buy).toBe("PAY");
+    } finally {
+      await cover({ premiumStudents: false, premiumTeachers: false, subscriptionStatus: null });
+    }
+    expect((await passOverview(teacher())).offers[0]!.buy).toBe("PAY");
+  });
+
+  it("the expiry notice skips a holder covered wherever their role needs the plan, and tells one covered at only some", async () => {
+    const now = new Date();
+    const today = Math.floor((now.getTime() + 330 * 60_000) / DAY);
+    const indiaMidnight = (daysAhead: number) => new Date((today + daysAhead) * DAY - 330 * 60_000);
+    // A teacher of this case's own, whose only window of the plan is this one (the suite's teacher bought longer passes).
+    const holder = (await db.user.create({ data: { name: `ZZ covteacher ${STAMP}`, email: `zz-pass-covteacher-${STAMP}@test.invalid`, isTestFixture: true }, select: { id: true } })).id;
+    await db.membership.create({ data: { userId: holder, schoolId, role: "TEACHER", status: "ACTIVE" } });
+    const window = await db.entitlement.create({ data: { userId: holder, feature: "ASSISTANT", source: "GRANT", planCode: "TEACHER", validFrom: new Date(now.getTime() - 30 * DAY), validTo: indiaMidnight(8) }, select: { id: true } });
+    const other = await db.school.create({ data: { name: `ZZ Pass Other ${STAMP}`, slug: `zz-pass-other-${STAMP}`, code: `ZPO${String(STAMP).slice(-6)}`, contactEmail: `zz-pass-other-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", isTestFixture: true }, select: { id: true } });
+    const scope = { userIds: [holder] };
+    try {
+      await cover({ premiumTeachers: true });
+      expect(await passExpiringNotices(now, scope)).toEqual({ week: 0, day: 0, skipped: 1 });
+      expect(await db.notification.count({ where: { userId: holder, titleKey: "passes.notifEndsWeekTeacher" } })).toBe(0);
+      // A second school where they teach, without premium: they need the plan there, so they are told.
+      await db.membership.create({ data: { userId: holder, schoolId: other.id, role: "TEACHER", status: "ACTIVE" } });
+      expect(await passExpiringNotices(now, scope)).toEqual({ week: 1, day: 0, skipped: 0 });
+      expect(await db.notification.count({ where: { userId: holder, titleKey: "passes.notifEndsWeekTeacher" } })).toBe(1);
+    } finally {
+      await cover({ premiumTeachers: false });
+      await db.entitlement.deleteMany({ where: { id: window.id } });
+      await db.notification.deleteMany({ where: { userId: holder } });
+      await db.membership.deleteMany({ where: { userId: holder } });
+      await db.school.deleteMany({ where: { id: other.id } });
+      await db.user.deleteMany({ where: { id: holder } });
+    }
+  });
+});
+
 describe("words", () => {
   it("has a sentence for every audit action the passes write", () => {
     for (const action of ["pass.order.start", "pass.order.paid", "pass.order.mismatch", "operator.pass.refund", "pass.refund.failed", "pass.ask.guardian"]) expect(actionKey(action), action).not.toBeNull();

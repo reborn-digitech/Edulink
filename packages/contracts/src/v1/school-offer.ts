@@ -158,6 +158,27 @@ export const PREMIUM_PLAN_OF = { students: "STUDENT", teachers: "TEACHER" } as c
 export const PREMIUM_PLANS = [PREMIUM_PLAN_OF.students, PREMIUM_PLAN_OF.teachers] as const;
 export type PremiumPlan = (typeof PREMIUM_PLANS)[number];
 
+/**
+ * The statuses that stop premium's cover (decision 0010 decision 9). That SUSPENDED and ENDED stop it is carried over from
+ * version 1 by the author: no option the owner chose says it. It lives here alone, so the owner's word can change it in
+ * one place.
+ */
+export const COVER_STOPS_WHILE = ["SUSPENDED", "ENDED"] as const;
+
+/**
+ * The plans a school's premium covers now: live cover (decision 0010 decision 9; the brief's rule 4) is the school's switch
+ * for the role on, its status not one that stops cover, and the school not removed, whether or not its terms are set,
+ * worked out on read. Students premium covers its pupils for the STUDENT plan's whole list, Teachers premium its teachers
+ * for the TEACHER plan's (decision 8); a college's teachers never, Teachers premium being hidden at a college.
+ */
+export function liveCover(school: { kind?: string | null; premiumStudents: boolean; premiumTeachers: boolean; status: string | null; removed: boolean }): PremiumPlan[] {
+  if (school.removed || (COVER_STOPS_WHILE as readonly string[]).includes(school.status ?? "")) return [];
+  const out: PremiumPlan[] = [];
+  if (school.premiumStudents) out.push(PREMIUM_PLAN_OF.students);
+  if (school.premiumTeachers && !isCollegeKind(school.kind)) out.push(PREMIUM_PLAN_OF.teachers);
+  return out;
+}
+
 /** Why a school with premium on is not billed for it, in the order they are told (C3a): its terms not set, then the plan. */
 export const PREMIUM_NOT_BILLED = ["TERMS_NOT_SET", "PLAN_NOT_ASKED"] as const;
 export type PremiumNotBilled = (typeof PREMIUM_NOT_BILLED)[number];

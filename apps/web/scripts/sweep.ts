@@ -38,7 +38,7 @@ const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
 
 /** `role` and `userId` (16 Oct 2026) are what the feature gate and the plans judge a page by (sweep-features.ts). */
-type Actor = { label: string; cookie: string; sessionId: string; role: string | null; userId: string | null };
+type Actor = { label: string; cookie: string; sessionId: string; role: string | null; userId: string | null; schoolId: string | null };
 
 async function mint(email: string, role: string | null, schoolId: string | null, label: string): Promise<Actor> {
   const user = await db.user.findUnique({ where: { email } });
@@ -59,7 +59,7 @@ async function mint(email: string, role: string | null, schoolId: string | null,
     },
   });
   minted.push(session.id);
-  return { label, cookie: `edulink_session=${token}; __Host-edulink_session=${token}`, sessionId: session.id, role, userId: user.id };
+  return { label, cookie: `edulink_session=${token}; __Host-edulink_session=${token}`, sessionId: session.id, role, userId: user.id, schoolId };
 }
 
 /**
@@ -188,7 +188,7 @@ async function check(actor: Actor | null, path: string, expected = 200, note = "
   // A page whose own answer is a redirect may still send the person on before its layout's not-found is drawn (the old
   // /expert/bookings/<id> spelling redirects before reading anything): with the feature off that redirect, which
   // lands on another page of the same feature, is let stand — the person meets the not-found there.
-  const g = actor ? pageGate(path, { role: actor.role, userId: actor.userId }, gate) : null;
+  const g = actor ? pageGate(path, { role: actor.role, userId: actor.userId, schoolId: actor.schoolId }, gate) : null;
   const alsoOk: number[] = [];
   if (g?.state === "off") {
     if (expected === 307) alsoOk.push(307);
@@ -2355,7 +2355,7 @@ async function main() {
     },
   });
   minted.push(studentSession.id);
-  const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}; __Host-edulink_session=${studentToken}`, sessionId: "", role: "STUDENT", userId: studentUser.id };
+  const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}; __Host-edulink_session=${studentToken}`, sessionId: "", role: "STUDENT", userId: studentUser.id, schoolId: riverside.id };
 
   // The warm pass before anything is counted (R-29, sweep-warm.ts): the cheap pages once, every answer thrown away.
   const warmed = await warmUp(BASE, warmPlan([

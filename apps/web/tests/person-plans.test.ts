@@ -35,6 +35,7 @@ import {
   myPlans,
   planNeeded,
   revokeEntitlement,
+  PlanChangedMeanwhile,
   setActivePlansForTests,
   setPersonPlan,
 } from "@/lib/person-plans";
@@ -318,6 +319,19 @@ describe("the operator's grant and revoke", () => {
 });
 
 describe("the plans' prices and active switch", () => {
+  it("under the test runner a save that would move the Student or Teacher switch throws before anything else is judged (C4c point 1); a preview passes", async () => {
+    const operator = await asOperator();
+    await listPersonPlans(operator);
+    for (const code of ["STUDENT", "TEACHER"] as const) {
+      const row = await db.personPlan.findUniqueOrThrow({ where: { code }, select: { active: true, updatedAt: true } });
+      // Sent with a switch-as-read that does not stand: without the guard it is refused as stale, so nothing is written either way.
+      await expect(setPersonPlan(operator, { code, active: !row.active, expect: { active: !row.active } })).rejects.toThrow(/C4c point 1/);
+      expect((await setPersonPlan(operator, { code, active: !row.active }, { preview: true })).activeMoved).toBe(true);
+      expect(await db.personPlan.findUniqueOrThrow({ where: { code }, select: { active: true, updatedAt: true } })).toEqual(row);
+    }
+    // The Expert plan stays writable: the case below moves its switch and puts it back.
+  });
+
   it("changes a plan, audited, a repeat changes nothing, counts its holders, and is put back exactly", async () => {
     const operator = await asOperator();
     await listPersonPlans(operator); // the rows exist
@@ -332,6 +346,9 @@ describe("the plans' prices and active switch", () => {
       const audits = await db.auditLog.findMany({ where: { actorUserId: ids.operator, action: "operator.plan.update" }, select: { targetId: true, schoolId: true } });
       expect(audits).toEqual([{ targetId: "EXPERT", schoolId: null }]);
       expect(actionKey("operator.plan.update")).toBe("audit.operatorPlanUpdate");
+      // The writer says whether its own write moved the switch: it did above; a price alone moves none (the review's C2).
+      expect(set.activeMoved).toBe(true);
+      expect(await setPersonPlan(operator, { code: "EXPERT", pricePaise: target.pricePaise + 100 })).toMatchObject({ changed: true, activeMoved: false });
 
       // Holders now and ending within a week, by person: a row ending in three days counts in both.
       const before = (await listPersonPlans(operator)).find((p) => p.code === "STUDENT")!;
@@ -341,6 +358,46 @@ describe("the plans' prices and active switch", () => {
       expect(after.expiringSoon - before.expiringSoon).toBe(1);
       expect(await myPlans(ids.student)).toEqual([{ plan: "STUDENT", validTo: expect.any(Date) }]);
       await db.entitlement.delete({ where: { id: soon.id } });
+    } finally {
+      await db.personPlan.update({ where: { code: "EXPERT" }, data: { pricePaise: snapshot.pricePaise, yearlyPricePaise: snapshot.yearlyPricePaise, active: snapshot.active, updatedByUserId: snapshot.updatedByUserId, updatedAt: snapshot.updatedAt } });
+    }
+  });
+});
+
+describe("the switch's write is compared and set in the transaction that writes its audit row; a refused write leaves none (decision 0010; C4 point 4, C4c point 1)", () => {
+  // Proven on the Expert plan, no part of premium, put back exactly: no suite moves the Student or Teacher switch (C4c point 1).
+  it("a switch no longer as expected is refused; a change committed between the read and the write is never written over, and no audit row is left", async () => {
+    const operator = await asOperator();
+    await listPersonPlans(operator); // the rows exist
+    const snapshot = await db.personPlan.findUniqueOrThrow({ where: { code: "EXPERT" } });
+    const audits = () => db.auditLog.count({ where: { action: "operator.plan.update", targetId: "EXPERT", actorUserId: ids.operator } });
+    const before = await audits();
+    try {
+      await expect(setPersonPlan(operator, { code: "EXPERT", active: !snapshot.active, expect: { active: !snapshot.active } })).rejects.toBeInstanceOf(PlanChangedMeanwhile);
+      // Another hand's change of the price, held open while this change of the yearly price reads the row and reaches its write.
+      let release!: () => void;
+      let taken!: (pid: number) => void;
+      const held = new Promise<void>((resolve) => (release = resolve));
+      const holder = new Promise<number>((resolve) => (taken = resolve));
+      const other = db.$transaction(async (tx) => {
+        await tx.personPlan.update({ where: { code: "EXPERT" }, data: { pricePaise: snapshot.pricePaise + 100 } });
+        const [row] = await tx.$queryRaw<{ pid: number }[]>`SELECT pg_backend_pid() AS pid`;
+        taken(row!.pid);
+        await held;
+      }, { timeout: 20_000 });
+      const pid = await Promise.race([holder, other.then(() => -1)]);
+      const changing = setPersonPlan(operator, { code: "EXPERT", yearlyPricePaise: snapshot.yearlyPricePaise + 1000 });
+      changing.catch(() => undefined);
+      for (let i = 0; i < 200; i += 1) {
+        const [w] = await db.$queryRaw<{ n: bigint }[]>`SELECT count(*)::bigint AS n FROM pg_stat_activity WHERE datname = current_database() AND ${pid}::int = ANY (pg_blocking_pids(pid))`;
+        if (Number(w?.n ?? 0) > 0) break;
+        await new Promise((resolve) => setTimeout(resolve, 25));
+      }
+      release();
+      await other;
+      await expect(changing).rejects.toBeInstanceOf(PlanChangedMeanwhile);
+      expect(await db.personPlan.findUniqueOrThrow({ where: { code: "EXPERT" }, select: { pricePaise: true, yearlyPricePaise: true } })).toEqual({ pricePaise: snapshot.pricePaise + 100, yearlyPricePaise: snapshot.yearlyPricePaise });
+      expect(await audits()).toBe(before);
     } finally {
       await db.personPlan.update({ where: { code: "EXPERT" }, data: { pricePaise: snapshot.pricePaise, yearlyPricePaise: snapshot.yearlyPricePaise, active: snapshot.active, updatedByUserId: snapshot.updatedByUserId, updatedAt: snapshot.updatedAt } });
     }

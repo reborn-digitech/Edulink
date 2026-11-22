@@ -28,7 +28,7 @@ const OVERVIEW = accountOverviewSchema.parse({
 });
 const SESSIONS = sessionsListSchema.parse({ sessions: [] });
 const PASS = "GET /api/v1/account/pass";
-const offer = (buy: "PAY" | "ASK_GUARDIAN" | "NOT_ASKED") => ({ plan: "TEACHER", holder: { userId: "u1", name: "ZZ Teacher", studentMembershipId: null, self: true }, holdsUntil: null, prices: [{ period: "MONTH", amountPaise: 19900, gstPaise: 3582, totalPaise: 23482 }], buy });
+const offer = (buy: "PAY" | "ASK_GUARDIAN" | "NOT_ASKED" | "INCLUDED") => ({ plan: "TEACHER", holder: { userId: "u1", name: "ZZ Teacher", studentMembershipId: null, self: true }, holdsUntil: null, prices: [{ period: "MONTH", amountPaise: 19900, gstPaise: 3582, totalPaise: 23482 }], buy });
 
 function mount(answers: Answers, role: RoleCode = "TEACHER") {
   return mountStaff(
@@ -56,6 +56,12 @@ describe("your plan on the account screen", () => {
   it("says no plan is held, and offers no button when there is nothing to buy", async () => {
     await mount({ [PASS]: () => json(passOverviewSchema.parse({ held: [], gstPercent: 18, offers: [offer("NOT_ASKED")] })) });
     expect(await screen.findByText("You hold no plan.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Buy a pass" })).toBeNull();
+  });
+
+  it("says the school's premium includes the plan, with nothing to buy (decision 0010 decision 12)", async () => {
+    await mount({ [PASS]: () => json(passOverviewSchema.parse({ held: [], gstPercent: 18, offers: [offer("INCLUDED")] })) });
+    expect(await screen.findByText("Included by your school.")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Buy a pass" })).toBeNull();
   });
 

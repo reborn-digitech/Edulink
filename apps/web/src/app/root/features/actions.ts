@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { operatorGrantBodySchema, operatorPersonPlanBodySchema, platformFeatureSchema } from "@edulink/contracts";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { formatInZone } from "@/lib/dates";
-import { grantPlan, PLAN_NAME_KEY, revokeEntitlement, setPersonPlan } from "@/lib/person-plans";
+import { grantPlan, PLAN_NAME_KEY, revokeEntitlement } from "@/lib/person-plans";
+import { askConfirmation, changePersonPlan } from "@/lib/plan-ask";
 import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { assertSuperuser } from "@/lib/superuser";
 import { setFeature } from "@/lib/platform-features";
@@ -40,15 +41,45 @@ export async function setFeatureAction(code: string, on: boolean): Promise<Resul
 /* ---- plans (16 Oct 2026): the plans sold per person, the grant and the revoke (src/lib/person-plans.ts) ---- */
 
 
-/** One plan's prices (paise) or its active switch; audited by the library, a no-op when nothing changes. */
-export async function setPlanAction(input: { code: string; pricePaise?: number; yearlyPricePaise?: number; active?: boolean }): Promise<Result> {
+type PlanInput = { code: string; pricePaise?: number; yearlyPricePaise?: number; active?: boolean; expect?: { active: boolean } };
+
+/**
+ * What moving a plan's switch would do, in the operator's language, for the page's confirm (decision 0010; C4 point 4,
+ * rule 12: the server's sentence). Writes nothing. The switch as the page read it comes with it (`expect`, required here).
+ */
+export async function previewPlanAction(input: { code: string; active: boolean; expect: { active: boolean } }): Promise<{ ok: true; sentence: string } | { ok: false; error: string }> {
+  const t = await getT();
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const parsed = operatorPersonPlanBodySchema.safeParse({ ...input, preview: true });
+    if (!parsed.success || !parsed.data.expect) return { ok: false, error: t("plans.changedMeanwhile") };
+    const result = await changePersonPlan(session, parsed.data);
+    if ("ok" in result) return { ok: false, error: t(result.errorKey) };
+    return { ok: true, sentence: await askConfirmation(t, parsed.data.code, input.active, result, await getLocale()) };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: t(error.key, error.vars) };
+    console.error("[root/features plans]", error);
+    return { ok: false, error: t("common.tryAgainMoment") };
+  }
+}
+
+/**
+ * One plan's prices (paise) or its active switch; audited by the library, a no-op when nothing changes. A move of the switch
+ * carries the switch as the page read it (`expect`, required by this page's action, C4a point 5): one that no longer stands is
+ * refused by name. Through premium (decision 0010): a saved move of the Student or Teacher plan tells the offices whose bill
+ * it moves (plan-ask.ts).
+ */
+export async function setPlanAction(input: PlanInput): Promise<Result> {
   const t = await getT();
   try {
     const session = await requireApiUser();
     assertSuperuser(session);
     const parsed = operatorPersonPlanBodySchema.safeParse(input);
     if (!parsed.success) return { ok: false, error: t("plans.priceInvalid") };
-    const result = await setPersonPlan(session, parsed.data);
+    if (parsed.data.active !== undefined && !parsed.data.expect) return { ok: false, error: t("plans.changedMeanwhile") };
+    const result = await changePersonPlan(session, { ...parsed.data, preview: false });
+    if ("ok" in result) return { ok: false, error: t(result.errorKey) };
     revalidatePath("/root/features");
     const name = t(PLAN_NAME_KEY[parsed.data.code]);
     return { ok: true, message: result.changed ? t("plans.saved", { name }) : t("plans.unchanged") };

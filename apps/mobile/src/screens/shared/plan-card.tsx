@@ -26,6 +26,8 @@ export function PlanCard() {
   // The last day held: a window ends at an instant, midnight after its last day.
   const lastDay = (iso: string) => formatDate(new Date(new Date(iso).getTime() - 1), "Asia/Kolkata");
   const canBuy = d.offers.some((o) => o.buy === "PAY" || o.buy === "ASK_GUARDIAN");
+  // Covered by the school's premium (decision 0010 decision 12): said so, with nothing to buy.
+  const included = d.offers.some((o) => o.holder.self && o.buy === "INCLUDED");
   return (
     <Card title={t("plans.yourPlanTitle")}>
       {d.held.length === 0 ? (
@@ -39,6 +41,11 @@ export function PlanCard() {
           </Text>
         ))
       )}
+      {included ? (
+        <Text variant="sm" tone="muted">
+          {t("passes.included")}
+        </Text>
+      ) : null}
       {canBuy ? (
         <>
           <Button label={t("passes.buyOnWeb")} variant="secondary" onPress={() => void Linking.openURL(`${API_BASE}/account/plan`)} />

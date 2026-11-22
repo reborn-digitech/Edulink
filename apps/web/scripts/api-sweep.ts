@@ -119,6 +119,8 @@ const notFound = new NotFoundReport();
 
 /** Each actor's person, for the plans: whether they hold an entitlement (sweep-features.ts). Filled by `mint`. */
 const userOf: Partial<Record<Role, string>> = {};
+/** The school each role's session is bound to, where its premium may cover the person (decision 0010; sweep-features.ts Who). */
+const schoolOf: Partial<Record<Role, string | null>> = {};
 /** The switches, the active plans and the actors' entitlements, read after the actors are minted (main, crossProbe). */
 let gate: GateState = { on: new Set(), activePlans: new Set(), entitled: new Map() };
 /** How many calls were judged by the feature gate (404 FEATURE_OFF) and by the plans (402 PLAN_REQUIRED). */
@@ -131,11 +133,11 @@ const gated = { FEATURE_OFF: 0, PLAN_REQUIRED: 0 };
  */
 function featureAnswer(e: Endpoint, role: Role | null): { status: 404 | 402; code: "FEATURE_OFF" | "PLAN_REQUIRED" } | null {
   if (role === null && e.access !== "anyone") return null;
-  return featureAnswerFor(e, role, role ? (userOf[role] ?? null) : null);
+  return featureAnswerFor(e, role, role ? (userOf[role] ?? null) : null, role ? (schoolOf[role] ?? null) : null);
 }
 /** The same for a person (a role variant's: their own entitlements decide a plan; owner-batch-item13). */
-function featureAnswerFor(e: Endpoint, role: Role | null, userId: string | null): { status: 404 | 402; code: "FEATURE_OFF" | "PLAN_REQUIRED" } | null {
-  const g = doorGate(e, { role, userId }, gate);
+function featureAnswerFor(e: Endpoint, role: Role | null, userId: string | null, schoolId: string | null): { status: 404 | 402; code: "FEATURE_OFF" | "PLAN_REQUIRED" } | null {
+  const g = doorGate(e, { role, userId, schoolId }, gate);
   if (g.state === "off") return { status: 404, code: "FEATURE_OFF" };
   if (g.state === "plan") return { status: 402, code: "PLAN_REQUIRED" };
   return null;
@@ -212,6 +214,7 @@ async function mint(userId: string, role: Role, schoolId: string | null): Promis
   });
   minted.push(s.id);
   userOf[role] = userId;
+  schoolOf[role] = schoolId;
   return token;
 }
 
@@ -660,7 +663,7 @@ async function walkVariants(e: Endpoint, path: string, goodBody: Record<string, 
 }
 
 function judgeVariant(e: Endpoint, call: VariantCall, actor: VariantActor, role: Role, body: boolean, got: Answer): { expected: string; ok: boolean; unproved: boolean } {
-  const byFeature = featureAnswerFor(e, role, actor.userId);
+  const byFeature = featureAnswerFor(e, role, actor.userId, actor.tenant.schoolId);
   if (byFeature) return { expected: `${byFeature.status} ${byFeature.code}`, ok: got.status === byFeature.status && got.code === byFeature.code, unproved: true };
   // A plan the variant's person does not hold, answered by the handler itself (a door whose feature the gate leaves to it): the platform's answer, not the reach's.
   if (got.status === 402 && got.code === "PLAN_REQUIRED") return { expected: "402 PLAN_REQUIRED (the variant's person holds no plan)", ok: true, unproved: true };

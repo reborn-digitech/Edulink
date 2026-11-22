@@ -8,7 +8,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { grantPlanAction, revokeEntitlementAction, setPlanAction } from "./actions";
+import { grantPlanAction, previewPlanAction, revokeEntitlementAction, setPlanAction } from "./actions";
 
 /**
  * THE OPERATOR'S PLAN CONTROLS on /root/features (16 October 2026; src/lib/person-plans.ts): one plan's prices in
@@ -32,10 +32,12 @@ function useResult() {
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
-  function run(work: () => Promise<{ ok: true; message: string } | { ok: false; error: string }>, after?: () => void) {
+  /** `work` answers null where the operator stepped back (a confirm declined): nothing said, nothing refreshed. */
+  function run(work: () => Promise<{ ok: true; message: string } | { ok: false; error: string } | null>, after?: () => void) {
     setError(null);
     startTransition(async () => {
       const result = await work();
+      if (result === null) return;
       if (!result.ok) {
         setError(result.error);
         return;
@@ -54,7 +56,6 @@ export function PlanPrices({ code, pricePaise, yearlyPricePaise, active }: { cod
   const { pending, error, setError, run } = useResult();
   const [monthly, setMonthly] = useState(rupeesOf(pricePaise));
   const [yearly, setYearly] = useState(rupeesOf(yearlyPricePaise));
-  const name = t(NAME_KEY[code]);
 
   function save() {
     const m = paiseOf(monthly);
@@ -65,9 +66,15 @@ export function PlanPrices({ code, pricePaise, yearlyPricePaise, active }: { cod
     }
     run(() => setPlanAction({ code, pricePaise: m, yearlyPricePaise: y }));
   }
+  // The server's sentence (decision 0010; C4 point 4): what the move does, through premium and the sale, asked for first and
+  // shown in the confirm; then the move, with the switch as this page read it.
   function toggle() {
-    if (!window.confirm(active ? t("plans.confirmInactive", { name }) : t("plans.confirmActive", { name }))) return;
-    run(() => setPlanAction({ code, active: !active }));
+    run(async () => {
+      const preview = await previewPlanAction({ code, active: !active, expect: { active } });
+      if (!preview.ok) return { ok: false, error: preview.error };
+      if (!window.confirm(preview.sentence)) return null;
+      return setPlanAction({ code, active: !active, expect: { active } });
+    });
   }
 
   return (

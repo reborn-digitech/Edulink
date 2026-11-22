@@ -2308,6 +2308,38 @@ export async function buildTimetable(
 }
 
 /* -------------------------------------------------------------------------- */
+/* a school with premium on (decision 0010; the brief's C4 (ii))               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * ZZ Premium School: Students and Teachers premium both on, so that, while the Student or Teacher plan is asked for (the
+ * features sweep's --plans=on, or a hand on /root/features), its pupil and its teacher pass the plan lock with no plan of
+ * their own (person-plans.ts schoolCover), and its office and head have a card to read (phase 7). Its terms are not set:
+ * cover does not wait for terms (rule 4), and it bills nobody. An office, a head, a teacher and a pupil.
+ */
+async function buildPremiumSchool(ctx: Ctx) {
+  const school = await upsertSchool({
+    name: "ZZ Premium School",
+    slug: "zz-premium-school",
+    city: "Pune",
+    contactEmail: `office.premium@${DOMAIN}`,
+    gradeLow: "6",
+    gradeHigh: "8",
+    brandPrimary: "#7c3aed",
+  });
+  await db.school.update({ where: { id: school.id }, data: { premiumStudents: true, premiumTeachers: true, subscriptionStatus: "ACTIVE" } });
+  const admin = await upsertUser(ctx, `zz.admin.p@${DOMAIN}`, "ZZ Leela Deshmukh");
+  await upsertMembership(admin.id, school.id, "ADMIN", { title: "School administrator" });
+  const principal = await upsertUser(ctx, `zz.principal.p@${DOMAIN}`, "ZZ Arvind Kale");
+  await upsertMembership(principal.id, school.id, "PRINCIPAL", { title: "Principal" });
+  const teacher = await upsertUser(ctx, `zz.teacher.p1@${DOMAIN}`, "ZZ Smita Gokhale");
+  await upsertMembership(teacher.id, school.id, "TEACHER", { title: "Class teacher", subjects: JSON.stringify(["Mathematics"]) });
+  const pupil = await upsertUser(ctx, `zz.pupil.p1@${DOMAIN}`, "ZZ Om Kulkarni");
+  await upsertMembership(pupil.id, school.id, "STUDENT", { studentCode: studentCode(), gradeLevel: "7" });
+  return { school, admin, principal, teacher, pupil };
+}
+
+/* -------------------------------------------------------------------------- */
 /* school B — deliberately empty                                               */
 /* -------------------------------------------------------------------------- */
 
@@ -2773,6 +2805,8 @@ async function main() {
   await buildRollNumbers(southbank.school);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   await buildRollNumbers(banyan.school);
+  const premium = await buildPremiumSchool(ctx);
+  console.log(`  Premium: ${premium.school.name}, Students and Teachers premium on, terms not set; office, head, a teacher and a pupil`);
   const experts = await buildExperts(ctx);
   const sessions = await buildGigSessions(northgate.school, southbank.school);
   console.log(`  Sessions: ${sessions.confirmed ? `pupil 01's confirmed seat ${sessions.confirmed}, one not held, a workshop with pupil 02, two open times, a teacher's half hour; one at Southbank` : "none (no published ZZ expert)"}`);

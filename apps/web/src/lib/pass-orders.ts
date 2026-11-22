@@ -30,7 +30,7 @@ import { BIRTHDAY_ZONE } from "./adulthood";
 import { familyChildren } from "./family-child";
 import { companyDetails, invoiceNumberOf, invoiceSeriesOf, type CompanyDetails, type InvoiceParty } from "./gig-payments";
 import { createPassOrderAtGateway, GigGatewayError, paymentRefundedAtGateway, platformAccount, refundSeat, transport, verifySeatCheckout } from "./gig-gateway";
-import { activePlans, grantPassFromOrder, myPlans, PLAN_NAME_KEY, PLAN_TABLE, planForCard, planHeldUntil, planLastDay, passWindows, restorePassEntitlements, revokePassEntitlements, windowsEndingBetween } from "./person-plans";
+import { activePlans, grantPassFromOrder, myPlans, PLAN_NAME_KEY, PLAN_TABLE, planForCard, planHeldUntil, planLastDay, passWindows, restorePassEntitlements, revokePassEntitlements, windowsEndingBetween, schoolCover } from "./person-plans";
 import type { ActiveContext } from "./session";
 
 /**
@@ -127,6 +127,18 @@ async function pricesFor(plan: PlanCode, gstPercent: number): Promise<PassPrice[
   return PASS_PERIODS.map((period) => passFigures(period, period === "MONTH" ? p.monthly : p.yearly, gstPercent)).filter((x) => x.amountPaise >= 100);
 }
 
+/**
+ * Whether a person can buy this plan here now, and at what: the company can sell (a gateway, a seller a tax invoice can
+ * name) and the plan is priced. The operator's confirmation when a plan is asked for says so, or "Nobody can buy this plan
+ * yet: payment is not set up." while not (decision 0010; C3a, C4 point 4).
+ */
+export async function planSale(plan: PlanCode): Promise<{ onSale: boolean; price: { monthlyPaise: number; yearlyPaise: number } | null }> {
+  const { open, company } = await saleOpen();
+  const prices = await pricesFor(plan, company.gstPercent);
+  if (!open || prices.length === 0) return { onSale: false, price: null };
+  return { onSale: true, price: { monthlyPaise: prices.find((p) => p.period === "MONTH")?.amountPaise ?? 0, yearlyPaise: prices.find((p) => p.period === "YEAR")?.amountPaise ?? 0 } };
+}
+
 /** Whether the company can sell anything at all just now: a gateway, and a seller a tax invoice can name. */
 async function saleOpen(): Promise<{ open: boolean; company: CompanyDetails }> {
   const company = await seller();
@@ -145,27 +157,35 @@ async function isMinorNow(userId: string, now: Date): Promise<boolean> {
   return u ? isMinorToday(u, BIRTHDAY_ZONE, now) : false;
 }
 
-type Holder = { userId: string; name: string; studentMembershipId: string | null; self: boolean; minor: boolean; adultChild: boolean };
+/** `schoolId`: where the holder's cover is judged, the session's school for oneself and the child's for a guardian's child (decision 0010). */
+type Holder = { userId: string; name: string; studentMembershipId: string | null; self: boolean; minor: boolean; adultChild: boolean; schoolId: string | null };
 
 /** The holders this session may buy for, each with the one plan it buys: oneself by the session's role, or a guardian's children. */
 async function holdersFor(ctx: ActiveContext, now: Date): Promise<{ plan: PlanCode; holder: Holder }[]> {
   const out: { plan: PlanCode; holder: Holder }[] = [];
   const own = ctx.role ? PLAN_TABLE[ctx.role] : undefined;
   if (own) {
-    out.push({ plan: own.plan, holder: { userId: ctx.user.id, name: ctx.user.preferredName ?? ctx.user.name, studentMembershipId: null, self: true, minor: await isMinorNow(ctx.user.id, now), adultChild: false } });
+    out.push({ plan: own.plan, holder: { userId: ctx.user.id, name: ctx.user.preferredName ?? ctx.user.name, studentMembershipId: null, self: true, minor: await isMinorNow(ctx.user.id, now), adultChild: false, schoolId: ctx.schoolId } });
   }
   if (ctx.role === "PARENT") {
     for (const child of await familyChildren(ctx.user.id)) {
       if (child.leftAt) continue;
       // A child is a minor by the same reading the family pages use (the institution's calendar); `adult` there.
-      out.push({ plan: "STUDENT", holder: { userId: child.studentUserId, name: child.name, studentMembershipId: child.studentMembershipId, self: false, minor: !child.adult, adultChild: child.adult } });
+      out.push({ plan: "STUDENT", holder: { userId: child.studentUserId, name: child.name, studentMembershipId: child.studentMembershipId, self: false, minor: !child.adult, adultChild: child.adult, schoolId: child.schoolId } });
     }
   }
   return out;
 }
 
-function buyState(input: { asked: boolean; open: boolean; priced: boolean; holder: Holder }): PassBuyState {
+/** Whether the holder's school covers this plan with its premium now (decision 0010 decisions 8, 9 and 12). */
+async function coveredFor(plan: PlanCode, holder: Holder): Promise<boolean> {
+  return holder.schoolId !== null && (await schoolCover(holder.schoolId)).has(plan);
+}
+
+function buyState(input: { asked: boolean; covered: boolean; open: boolean; priced: boolean; holder: Holder }): PassBuyState {
   if (!input.asked) return "NOT_ASKED";
+  // A covered holder is offered no Pay (decision 0010 decision 12): their school's premium already opens the plan.
+  if (input.covered) return "INCLUDED";
   if (input.holder.adultChild) return "ADULT_BUYS_OWN";
   if (!input.open || !input.priced) return "NOT_ON_SALE";
   if (input.holder.self && input.holder.minor) return "ASK_GUARDIAN";
@@ -186,7 +206,7 @@ export async function passOverview(ctx: ActiveContext, now: Date = new Date()): 
       holder: { userId: holder.userId, name: holder.name, studentMembershipId: holder.studentMembershipId, self: holder.self },
       holdsUntil: until ? until.toISOString() : null,
       prices,
-      buy: buyState({ asked: asked.has(plan), open, priced: prices.length > 0, holder }),
+      buy: buyState({ asked: asked.has(plan), covered: await coveredFor(plan, holder), open, priced: prices.length > 0, holder }),
     });
   }
   return { held: held.map((h) => ({ plan: h.plan, validTo: h.validTo.toISOString() })), gstPercent: company.gstPercent, offers };
@@ -194,6 +214,7 @@ export async function passOverview(ctx: ActiveContext, now: Date = new Date()): 
 
 const REFUSAL_OF: Record<Exclude<PassBuyState, "PAY">, TranslationKey> = {
   NOT_ASKED: "passes.refuseNotAsked",
+  INCLUDED: "passes.refuseIncluded",
   NOT_ON_SALE: "passes.refuseNotOnSale",
   ASK_GUARDIAN: "passes.refuseAskGuardian",
   ADULT_BUYS_OWN: "passes.refuseAdultBuysOwn",
@@ -321,7 +342,7 @@ export async function openPassCheckout(ctx: ActiveContext, input: { plan: PlanCo
   }
   const { open, company } = await saleOpen();
   const prices = await pricesFor(input.plan, company.gstPercent);
-  const state = buyState({ asked: (await activePlans()).has(input.plan), open, priced: prices.length > 0, holder: match.holder });
+  const state = buyState({ asked: (await activePlans()).has(input.plan), covered: await coveredFor(input.plan, match.holder), open, priced: prices.length > 0, holder: match.holder });
   if (state !== "PAY") return { ok: false, errorKey: REFUSAL_OF[state] };
   const price = prices.find((p) => p.period === input.period);
   if (!price) return { ok: false, errorKey: "passes.refusePeriod" };
@@ -688,6 +709,11 @@ const ASK_AGAIN_MS = DAY_MS;
 export async function askGuardianForPass(ctx: ActiveContext, plan: PlanCode, now: Date = new Date()): Promise<{ told: number; already: boolean }> {
   if (ctx.role !== "STUDENT" || !ctx.membershipId) throw new AccessError("access.wrongRoleForThisAction");
   if (plan !== "STUDENT") throw new AccessError("passes.refuseWrongPlan");
+  // This ask goes through no buyState, so it is refused here as the checkout refuses it, in buyState's order (C4 (iii); the
+  // coordinating session's review, B1): a plan not asked for first, then a pupil their school's premium covers, who has
+  // nothing to ask a guardian for (decision 0010 decision 12).
+  if (!(await activePlans()).has("STUDENT")) throw new AccessError("passes.refuseNotAsked");
+  if (ctx.schoolId && (await schoolCover(ctx.schoolId)).has("STUDENT")) throw new AccessError("passes.refuseIncluded");
   if (!(await isMinorNow(ctx.user.id, now))) throw new AccessError("passes.refuseAskAdult");
   const guardians = await db.guardianship.findMany({ where: { studentMembershipId: ctx.membershipId, status: "ACTIVE" }, select: { parentUserId: true } });
   const name = ctx.user.preferredName ?? ctx.user.name;
@@ -721,10 +747,25 @@ const ENDS_WEEK_KEY: Record<PlanCode, TranslationKey> = { STUDENT: "passes.notif
 const ENDS_DAY_KEY: Record<PlanCode, TranslationKey> = { STUDENT: "passes.notifEndsDayStudent", TEACHER: "passes.notifEndsDayTeacher", EXPERT: "passes.notifEndsDayExpert" };
 
 /**
+ * Whether a holder needs this plan nowhere: every school where they hold a role that needs it (PLAN_TABLE) covers it with
+ * its premium now, and there is at least one (decision 0010 decision 12; the brief's rule 12). Such a holder is not told
+ * their plan ends; one covered at only some of their schools still needs it at the others, and is told.
+ */
+async function coveredEverywhere(userId: string, plan: PlanCode): Promise<boolean> {
+  const roles = Object.entries(PLAN_TABLE).filter(([, row]) => row?.plan === plan).map(([role]) => role);
+  if (roles.length === 0) return false;
+  const schools = await db.membership.findMany({ where: { userId, role: { in: roles }, status: "ACTIVE", leftAt: null, school: { removedAt: null } }, select: { schoolId: true }, distinct: ["schoolId"] });
+  if (schools.length === 0) return false;
+  for (const s of schools) if (!(await schoolCover(s.schoolId)).has(plan)) return false;
+  return true;
+}
+
+/**
  * THE pass:expiring JOB (05:10 daily): each person whose plan — their latest running window of it, a pass or a grant
  * — ends seven days from today or tomorrow (India's calendar) is told in the app; there is no auto-renewal and no
  * mandate, so the notice is the only reminder. Told once a day at most per plan and notice (a second run the same day
- * finds the notice and skips it). `scope.userIds` narrows it to a test's own people.
+ * finds the notice and skips it), and never a holder their school's premium covers wherever they need the plan
+ * (coveredEverywhere; both counted as skipped). `scope.userIds` narrows it to a test's own people.
  */
 export async function passExpiringNotices(now: Date = new Date(), scope: { userIds?: string[] } = {}): Promise<{ week: number; day: number; skipped: number }> {
   const today = indiaDay(now);
@@ -739,6 +780,10 @@ export async function passExpiringNotices(now: Date = new Date(), scope: { userI
     const left = lastDay - today;
     const titleKey = left === 7 ? ENDS_WEEK_KEY[w.plan] : left === 1 ? ENDS_DAY_KEY[w.plan] : null;
     if (!titleKey) continue;
+    if (await coveredEverywhere(w.userId, w.plan)) {
+      skipped += 1;
+      continue;
+    }
     const seen = await forUser(w.userId, () => db.notification.findFirst({ where: { userId: w.userId, titleKey, createdAt: { gte: todayStart } }, select: { id: true } }));
     if (seen) {
       skipped += 1;

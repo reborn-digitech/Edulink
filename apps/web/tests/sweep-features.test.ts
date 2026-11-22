@@ -56,6 +56,16 @@ describe("the sweeps' copy of the plan table", () => {
     expect(accessFor(["QUESTION_BANK"], { role: "STUDENT", userId: "pupil02" }, state([], ["STUDENT"]))).toEqual({ state: "off", feature: "QUESTION_BANK" });
   });
 
+  it("opens a locked feature to everyone at a school whose premium covers the plan (decision 0010), and to nobody else", () => {
+    const s: GateState = { ...state(["QUESTION_BANK", "JOB_BOARD"], ["STUDENT", "TEACHER"]), covered: new Map([["covered", new Set<PlanCode>(["STUDENT"])]]) };
+    expect(accessFor(["QUESTION_BANK"], { role: "STUDENT", userId: "pupil02", schoolId: "covered" }, s)).toEqual({ state: "open" });
+    expect(accessFor(["QUESTION_BANK"], { role: "STUDENT", userId: null, schoolId: "covered" }, s)).toEqual({ state: "open" });
+    expect(accessFor(["QUESTION_BANK"], { role: "STUDENT", userId: "pupil02", schoolId: "plain" }, s)).toEqual({ state: "plan", feature: "QUESTION_BANK", plan: "STUDENT" });
+    expect(accessFor(["JOB_BOARD"], { role: "TEACHER", userId: "teacher", schoolId: "covered" }, s)).toEqual({ state: "plan", feature: "JOB_BOARD", plan: "TEACHER" });
+    // The platform's switch stays above the cover.
+    expect(accessFor(["QUESTION_BANK"], { role: "STUDENT", userId: "pupil02", schoolId: "covered" }, { ...s, on: new Set() })).toEqual({ state: "off", feature: "QUESTION_BANK" });
+  });
+
   it("reads the two flags", () => {
     expect(gateFlags(["--features=on"])).toEqual({ features: true, plans: false });
     expect(gateFlags(["--plans=on", "--features=on"])).toEqual({ features: true, plans: true });

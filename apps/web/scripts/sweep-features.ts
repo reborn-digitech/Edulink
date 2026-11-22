@@ -22,7 +22,7 @@
  */
 import { createHash, randomBytes } from "node:crypto";
 import type { PrismaClient } from "@prisma/client";
-import { entitledFromRows, featuresOfPlanRow, PERSON_PLANS, PLAN_FEATURES, PLATFORM_FEATURES, type FeatureCode, type PlanCode } from "@edulink/contracts";
+import { liveCover, entitledFromRows, featuresOfPlanRow, PERSON_PLANS, PLAN_FEATURES, PLATFORM_FEATURES, type FeatureCode, type PlanCode } from "@edulink/contracts";
 import { featuresOf, type Endpoint } from "../src/lib/api-catalog/types";
 
 export type GateState = {
@@ -32,10 +32,15 @@ export type GateState = {
   activePlans: ReadonlySet<PlanCode>;
   /** Per user id, the features the person holds now by the server's own rule (contracts entitledFromRows). */
   entitled: ReadonlyMap<string, ReadonlySet<FeatureCode>>;
+  /** Per school id, the plans its premium covers now (decision 0010; person-plans.ts schoolCover, contracts liveCover). */
+  covered?: ReadonlyMap<string, ReadonlySet<PlanCode>>;
 };
 
-/** Who is asking: the role on the session and the person. A role-less caller (signed out, the operator) needs no plan. */
-export type Who = { role: string | null; userId: string | null };
+/**
+ * Who is asking: the role on the session, the person, and the school they are judged at (the session's), whose premium
+ * may cover them. A role-less caller (signed out, the operator) needs no plan.
+ */
+export type Who = { role: string | null; userId: string | null; schoolId?: string | null };
 
 /** What the gate makes of a caller at a surface: open, off for the platform, or locked behind a plan. */
 export type Gate = { state: "open" } | { state: "off"; feature: FeatureCode } | { state: "plan"; feature: FeatureCode; plan: PlanCode };
@@ -49,7 +54,7 @@ export async function readGateState(db: PrismaClient, userIds: readonly string[]
   // plan lists today that the window names no row for, and a revoked row keeps its feature shut.
   const live = { validFrom: { lte: now }, validTo: { gt: now } };
   const select = { userId: true, feature: true, planCode: true, revokedAt: true } as const;
-  const [features, plans, rows] = await Promise.all([
+  const [features, plans, rows, premium] = await Promise.all([
     db.platformFeature.findMany({ select: { code: true, enabled: true } }),
     db.personPlan.findMany({ select: { code: true, active: true, features: true } }),
     // "everyone": the page sweep mints its actors as it goes, so it reads every live row (a small table) once.
@@ -58,6 +63,8 @@ export async function readGateState(db: PrismaClient, userIds: readonly string[]
       : userIds.length
         ? db.entitlement.findMany({ where: { userId: { in: [...new Set(userIds)] }, ...live }, select })
         : Promise.resolve([]),
+    // Premium's cover (decision 0010): the schools with a switch on, as the server reads them on each request.
+    db.school.findMany({ where: { OR: [{ premiumStudents: true }, { premiumTeachers: true }] }, select: { id: true, kind: true, premiumStudents: true, premiumTeachers: true, subscriptionStatus: true, removedAt: true } }),
   ]);
   const byUser = new Map<string, typeof rows>();
   for (const r of rows) byUser.set(r.userId, [...(byUser.get(r.userId) ?? []), r]);
@@ -71,6 +78,7 @@ export async function readGateState(db: PrismaClient, userIds: readonly string[]
     on: new Set(features.filter((f) => f.enabled && isFeature(f.code)).map((f) => f.code as FeatureCode)),
     activePlans: new Set(plans.filter((p) => p.active && isPlan(p.code)).map((p) => p.code as PlanCode)),
     entitled,
+    covered: new Map(premium.map((s) => [s.id, new Set<PlanCode>(liveCover({ kind: s.kind, premiumStudents: s.premiumStudents, premiumTeachers: s.premiumTeachers, status: s.subscriptionStatus, removed: s.removedAt !== null }))])),
   };
 }
 
@@ -90,7 +98,7 @@ export function accessFor(codes: readonly FeatureCode[], who: Who, s: GateState)
   for (const code of codes) {
     if (!s.on.has(code)) continue;
     const plan = planNeeded(who.role, code);
-    if (!plan || !s.activePlans.has(plan) || (who.userId !== null && s.entitled.get(who.userId)?.has(code))) return { state: "open" };
+    if (!plan || !s.activePlans.has(plan) || (who.schoolId && s.covered?.get(who.schoolId)?.has(plan)) || (who.userId !== null && s.entitled.get(who.userId)?.has(code))) return { state: "open" };
     locked ??= { feature: code, plan };
   }
   return locked ? { state: "plan", ...locked } : { state: "off", feature: codes[0]! };

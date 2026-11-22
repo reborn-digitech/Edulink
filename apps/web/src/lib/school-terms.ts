@@ -6,6 +6,7 @@ import {
   SUBSCRIPTION_STATUSES,
   adminDutiesHeld,
   billFor,
+  liveCover,
   isCollegeKind,
   offerChangeEntrySchema,
   premiumBilling,
@@ -20,6 +21,7 @@ import {
   type OfferChange,
   type PartTerms,
   type PartTermsBody,
+  type PremiumPlan,
   type SchoolOfferAnswer,
   type SchoolTerms,
   type SubscriptionStatus,
@@ -222,7 +224,7 @@ class ChangedMeanwhile extends Error {
 }
 
 /** The office and the head of each school, told in the app; best-effort, so a notice that fails never undoes the write. */
-async function tellOffices(session: ActiveContext, schools: { id: string; name: string }[]): Promise<number> {
+export async function tellOffices(session: ActiveContext, schools: { id: string; name: string }[]): Promise<number> {
   let told = 0;
   try {
     const { notify } = await import("./notify");
@@ -262,12 +264,56 @@ async function tellOffices(session: ActiveContext, schools: { id: string; name: 
  * How many of the schools' office and head a notice would reach (a preview's count). Read with those schools bound, as
  * tellOffices reads them: Membership has no policy for the operator, so the app role would count none unbound.
  */
-async function officeCount(session: ActiveContext, schoolIds: string[]): Promise<number> {
+export async function officeCount(session: ActiveContext, schoolIds: string[]): Promise<number> {
   if (schoolIds.length === 0) return 0;
   const rows = await forTenant({ schoolIds, userId: session.user.id, joinCode: null, isSuperuser: true }, () =>
     db.membership.findMany({ where: { schoolId: { in: schoolIds }, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { schoolId: true, userId: true } }),
   );
   return new Set(rows.map((r) => `${r.schoolId}:${r.userId}`)).size;
+}
+
+/**
+ * What asking for a premium plan, or ceasing to, does through premium (decision 0010 decisions 10 and 11; the coordinating
+ * session's C2, C3's fourth point, C3a, C4 points 3 and 4, C4a points 3 and 4), worked out on read before the switch moves,
+ * for the confirmation the server words (rule 12) and for the notices after it. Counts are of live schools, test fixtures
+ * included, since the lock, the cover and the notice reach them alike. `covered`: live cover for the plan's role now
+ * (liveCover: the switch on, the status not SUSPENDED or ENDED, not removed; never a college's teachers). `others`: live
+ * schools without it where the plan can lock someone (every kind for the Student plan; for the Teacher plan never a college,
+ * whose staff no plan locks), a SUSPENDED or ENDED school with its switch on among them. `billed`: schools where premium
+ * starts (asking) or stops (ceasing) being billed, premiumBilled changing, with a premium price above ₹0, the status not
+ * read (C3a), each with whether it has no bill yet (no count, no renewal, or a college with no tier: it is told all the
+ * same, its card's premium line changing) and whether it has ended (not told, as updateOffer tells). `scope` is for the
+ * suites, which never move the Student or Teacher switch itself (C4c point 1); the door and the page never pass one.
+ */
+export async function premiumAskEffect(
+  plan: PremiumPlan,
+  active: boolean,
+  scope?: { schoolIds: string[] },
+): Promise<{ covered: number; others: number; billed: { id: string; name: string; ended: boolean; noBill: boolean }[] }> {
+  const [schools, offer, asked] = await Promise.all([
+    db.school.findMany({ where: { removedAt: null, ...(scope ? { id: { in: scope.schoolIds } } : {}) }, select: TERMS_SELECT }),
+    readOffer(),
+    activePlans(),
+  ]);
+  const pupils = await newestPupils(schools.map((s) => s.id));
+  const after = new Set<string>(asked);
+  if (active) after.add(plan);
+  else after.delete(plan);
+  let covered = 0;
+  let others = 0;
+  const billed: { id: string; name: string; ended: boolean; noBill: boolean }[] = [];
+  for (const s of schools) {
+    const status = statusOf(s.subscriptionStatus);
+    if (liveCover({ kind: s.kind, premiumStudents: s.premiumStudents, premiumTeachers: s.premiumTeachers, status, removed: false }).includes(plan)) covered += 1;
+    else if (plan === "STUDENT" || !isCollegeKind(s.kind)) others += 1;
+    const switches = { termsSet: s.termsSetAt !== null, students: s.premiumStudents, teachers: s.premiumTeachers };
+    if (premiumBilling(switches, asked).billed === premiumBilling(switches, after).billed) continue;
+    const figures = figuresOf(s, offer);
+    if (figures.premium.paysPaise <= 0) continue;
+    const bill = billFor({ pupils: pupils.get(s.id) ?? null, termsSet: switches.termsSet, renewalDay: dayOf(s.subscriptionDueAt), subscription: figures.subscription, premium: figures.premium, premiumOn: true });
+    billed.push({ id: s.id, name: s.name, ended: status === "ENDED", noBill: bill === null });
+  }
+  return { covered, others, billed };
 }
 
 /**

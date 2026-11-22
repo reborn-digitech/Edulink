@@ -1,6 +1,7 @@
 import "server-only";
 import { cache } from "react";
 import {
+  liveCover,
   entitledFromRows,
   featuresOfPlanRow,
   PERSON_PLANS,
@@ -15,7 +16,7 @@ import {
 } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
-import { audit } from "./audit";
+import { audit, type AuditTx } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./access-error";
 import { forUser } from "./tenant-context";
@@ -154,14 +155,28 @@ export const entitledFeatures = cache(async (userId: string): Promise<ReadonlySe
 });
 
 /**
- * THE PLAN THIS PERSON LACKS FOR THIS FEATURE, or null: null when the feature needs no plan for the role, when that
- * plan is not active, or when the person holds an entitlement covering now. Does not read the platform switch —
- * `mayUse` (platform-features.ts) does that first.
+ * The plans a school's premium covers now (decision 0010 decisions 8 and 9; the brief's rules 1 and 4): its switch for the
+ * role on, its status neither SUSPENDED nor ENDED, not removed, terms set or not (contracts `liveCover`). Read once per
+ * request, on read, never stored; nothing is written per person.
  */
-export async function planLockFor(code: FeatureCode, who: { userId: string | null; role?: Role | null }): Promise<PlanCode | null> {
+export const schoolCover = cache(async (schoolId: string): Promise<ReadonlySet<PlanCode>> => {
+  const s = await db.school.findUnique({ where: { id: schoolId }, select: { kind: true, premiumStudents: true, premiumTeachers: true, subscriptionStatus: true, removedAt: true } });
+  if (!s) return new Set();
+  return new Set(liveCover({ kind: s.kind, premiumStudents: s.premiumStudents, premiumTeachers: s.premiumTeachers, status: s.subscriptionStatus, removed: s.removedAt !== null }));
+});
+
+/**
+ * THE PLAN THIS PERSON LACKS FOR THIS FEATURE, or null: null when the feature needs no plan for the role, when that
+ * plan is not active, when the school the person is judged at covers that plan (premium, decision 0010: rule 1, a step
+ * after the inactive-plan answer and before the signed-out one), or when the person holds an entitlement covering now.
+ * `schoolId` is the session's school, or a child's for a guardian's reading. Does not read the platform switch — `mayUse`
+ * (platform-features.ts) does that first.
+ */
+export async function planLockFor(code: FeatureCode, who: { userId: string | null; role?: Role | null; schoolId?: string | null }): Promise<PlanCode | null> {
   const plan = planNeeded(who.role, code);
   if (!plan) return null;
   if (!(await activePlans()).has(plan)) return null;
+  if (who.schoolId && (await schoolCover(who.schoolId)).has(plan)) return null;
   if (!who.userId) return plan;
   return (await entitledFeatures(who.userId)).has(code) ? null : plan;
 }
@@ -251,13 +266,25 @@ export async function listPersonPlans(ctx: ActiveContext, now: Date = new Date()
   return out;
 }
 
-export type PlanChange = { code: PlanCode; pricePaise?: number; yearlyPricePaise?: number; active?: boolean };
+/** `expect`: the switch as the form read it; optional, so a caller sending none switches as before (C4a point 5). */
+export type PlanChange = { code: PlanCode; pricePaise?: number; yearlyPricePaise?: number; active?: boolean; expect?: { active: boolean } };
+
+/** The plan's row moved since the form read it, or between this change's read and its write (C4 point 4): refused by name. */
+export class PlanChangedMeanwhile extends Error {
+  constructor() {
+    super("plans.changedMeanwhile");
+  }
+}
 
 /**
  * Change one plan's prices or its active switch. The operator's alone. A field left out stays; a change to what
- * stands writes nothing. Audited "operator.plan.update" with what was and what is.
+ * stands writes nothing. Audited "operator.plan.update" with what was and what is, in the one transaction that writes
+ * the row, compared and set on the row as read (decision 0010; C4 point 4: they were two calls with no comparison), so a
+ * change committed meanwhile is never written over; with `expect`, a switch that no longer stands as the form read it is
+ * refused. Both throw PlanChangedMeanwhile. `preview` checks the change and says whether it would change anything,
+ * writing nothing (plan-ask.ts answers what it would do through premium).
  */
-export async function setPersonPlan(ctx: ActiveContext, change: PlanChange): Promise<{ plan: OperatorPersonPlan; changed: boolean }> {
+export async function setPersonPlan(ctx: ActiveContext, change: PlanChange, opts: { preview?: boolean } = {}): Promise<{ plan: OperatorPersonPlan; changed: boolean; activeMoved: boolean }> {
   assertOperator(ctx);
   if (!isPlan(change.code)) throw new AccessError("plans.unknownPlan", "NOT_FOUND");
   for (const price of [change.pricePaise, change.yearlyPricePaise]) {
@@ -265,25 +292,47 @@ export async function setPersonPlan(ctx: ActiveContext, change: PlanChange): Pro
   }
   const row = (await planRows()).find((r) => r.code === change.code);
   if (!row) throw new AccessError("plans.unknownPlan", "NOT_FOUND");
+  // No suite moves the Student or Teacher plan's switch on a shared database (the coordinating session's C4c point 1, and
+  // its check of the review fixes, point 2): under the test runner such a save throws before anything else is judged,
+  // whatever path reached it (a door, an action, plan-ask), so a lost stub can never ask for a plan, or stop asking, on the
+  // development database the owner tests by hand. A preview writes nothing and passes; the Expert plan stays writable.
+  if (process.env.VITEST && !opts.preview && change.active !== undefined && change.active !== row.active && (change.code === "STUDENT" || change.code === "TEACHER")) {
+    throw new Error(`C4c point 1: no suite moves the ${change.code} plan's switch. Stub setPersonPlan's save, or prove the write on the Expert plan.`);
+  }
+  if (change.expect && change.expect.active !== row.active) throw new PlanChangedMeanwhile();
   const next = {
     pricePaise: change.pricePaise ?? row.pricePaise,
     yearlyPricePaise: change.yearlyPricePaise ?? row.yearlyPricePaise,
     active: change.active ?? row.active,
   };
   const changed = next.pricePaise !== row.pricePaise || next.yearlyPricePaise !== row.yearlyPricePaise || next.active !== row.active;
+  // Whether this write moves the switch, against the row it compares and sets on: a save that meets the switch already moved
+  // by another hand writes its prices alone and moves nothing (the coordinating session's review, C2).
+  const activeMoved = next.active !== row.active;
+  if (opts.preview) return { plan: (await listPersonPlans(ctx)).find((p) => p.code === change.code)!, changed, activeMoved };
   if (changed) {
-    await db.personPlan.update({ where: { id: row.id }, data: { ...next, updatedByUserId: ctx.user.id } });
-    await audit({
-      schoolId: null,
-      actorUserId: ctx.user.id,
-      action: "operator.plan.update",
-      targetType: "PersonPlan",
-      targetId: change.code,
-      meta: { plan: change.code, before: { pricePaise: row.pricePaise, yearlyPricePaise: row.yearlyPricePaise, active: row.active }, after: next },
+    await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      const moved = await tx.personPlan.updateMany({
+        where: { id: row.id, active: row.active, pricePaise: row.pricePaise, yearlyPricePaise: row.yearlyPricePaise },
+        data: { ...next, updatedByUserId: ctx.user.id },
+      });
+      if (moved.count !== 1) throw new PlanChangedMeanwhile();
+      await audit(
+        {
+          schoolId: null,
+          actorUserId: ctx.user.id,
+          action: "operator.plan.update",
+          targetType: "PersonPlan",
+          targetId: change.code,
+          meta: { plan: change.code, before: { pricePaise: row.pricePaise, yearlyPricePaise: row.yearlyPricePaise, active: row.active }, after: next },
+        },
+        tx as unknown as AuditTx,
+      );
     });
   }
   const plan = (await listPersonPlans(ctx)).find((p) => p.code === change.code)!;
-  return { plan, changed };
+  return { plan, changed, activeMoved };
 }
 
 function personByEmail(email: string) {

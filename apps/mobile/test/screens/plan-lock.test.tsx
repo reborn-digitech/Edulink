@@ -5,7 +5,7 @@ import { ExpertAvailability } from "@/screens/expert/availability";
 import { Mentoring } from "@/screens/shared/mentoring";
 import { FamilyPractice } from "@/screens/family/practice";
 import { json, mountStaff, refused } from "./staff-harness";
-import { ME_STUDENT, renderFamily } from "./family-helpers";
+import { ME_PARENT, ME_STUDENT, renderFamily } from "./family-helpers";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -19,7 +19,7 @@ jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchPar
  */
 const locked = (plan: "STUDENT" | "TEACHER" | "EXPERT", feature?: string) => () =>
   json({ error: `This needs the ${plan === "EXPERT" ? "Expert" : plan === "STUDENT" ? "Student" : "Teacher"} plan, which you do not hold yet.`, code: "PLAN_REQUIRED", plan, ...(feature ? { feature } : {}) }, 402);
-const pass = (plan: "STUDENT" | "EXPERT", amountPaise: number, yearly: number) =>
+const pass = (plan: "STUDENT" | "EXPERT", amountPaise: number, yearly: number, buy: "PAY" | "INCLUDED" = "PAY") =>
   passOverviewSchema.parse({
     held: [],
     gstPercent: 18,
@@ -32,7 +32,7 @@ const pass = (plan: "STUDENT" | "EXPERT", amountPaise: number, yearly: number) =
           { period: "MONTH", amountPaise, gstPaise: Math.round(amountPaise * 0.18), totalPaise: Math.round(amountPaise * 1.18) },
           { period: "YEAR", amountPaise: yearly, gstPaise: Math.round(yearly * 0.18), totalPaise: Math.round(yearly * 1.18) },
         ],
-        buy: "PAY",
+        buy,
       },
     ],
   });
@@ -79,6 +79,35 @@ describe("a plan-locked screen on the phone (QA-18)", () => {
     expect(screen.getByText("Vidura (assistant)")).toBeTruthy();
     expect(screen.getByText("Question bank practice")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Try again" })).toBeNull();
+  });
+
+  it("a pupil whose school's premium covers the plan meets no price and no Subscribe: the plan is included (decision 0010 decision 12)", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, {
+      "/api/v1/family/student/practice": locked("STUDENT", "QUESTION_BANK"),
+      "/api/v1/account/pass": () => pass("STUDENT", 9900, 99000, "INCLUDED"),
+    });
+    expect(await screen.findByText("Included by your school.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Subscribe" })).toBeNull();
+    expect(screen.queryByText(/a month/)).toBeNull();
+  });
+
+  it("a guardian whose first child's school covers the plan still meets the price and Subscribe for the child the lock is about (the reader's finding on C4 (iii))", async () => {
+    const offer = (studentMembershipId: string, name: string, buy: "PAY" | "INCLUDED") => ({
+      plan: "STUDENT",
+      holder: { userId: `u-${studentMembershipId}`, name, studentMembershipId, self: false },
+      holdsUntil: null,
+      prices: [
+        { period: "MONTH", amountPaise: 9_900, gstPaise: 1_782, totalPaise: 11_682 },
+        { period: "YEAR", amountPaise: 99_900, gstPaise: 17_982, totalPaise: 117_882 },
+      ],
+      buy,
+    });
+    await renderFamily(<FamilyPractice />, ME_PARENT, {
+      "/api/v1/family/practice": locked("STUDENT", "QUESTION_BANK"),
+      "/api/v1/account/pass": () => passOverviewSchema.parse({ held: [], gstPercent: 18, offers: [offer("c-covered", "ZZ Covered", "INCLUDED"), offer("c-other", "ZZ Other", "PAY")] }),
+    });
+    expect(await screen.findByRole("button", { name: "Subscribe" })).toBeTruthy();
+    expect(screen.queryByText("Included by your school.")).toBeNull();
   });
 
   it("an older server's 402 naming only the plan still draws the card, headed by the plan with the server's sentence; no price line without an offer", async () => {

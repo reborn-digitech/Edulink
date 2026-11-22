@@ -52,6 +52,10 @@ export function PlanLock({ plan, feature, message }: PlanLockInfo & { message?: 
   const offer = offers.find((o) => o.holder.self) ?? offers[0];
   const price = (period: "MONTH" | "YEAR") => offer?.prices.find((p) => p.period === period)?.amountPaise ?? 0;
   const priced = offer ? price("MONTH") > 0 || price("YEAR") > 0 : null;
+  // Covered by the school's premium (decision 0010 decision 12): nothing to buy, so no price and no Subscribe; the lock is
+  // the answer of a moment before, and the feature opens on the next read. Read from the person's own offer alone: a
+  // guardian's first child's school covering that child says nothing of the child this lock is about (C4 (iii)).
+  const included = offers.find((o) => o.holder.self)?.buy === "INCLUDED";
   return (
     <View testID="plan-lock" style={{ gap: th.space[3] }}>
       <Text variant="xl" bold accessibilityRole="header">
@@ -76,19 +80,27 @@ export function PlanLock({ plan, feature, message }: PlanLockInfo & { message?: 
         <Text variant="sm" tone="muted">
           {t(INCLUDES_KEY[plan])}
         </Text>
-        {priced === true ? (
-          <Text variant="sm">
-            {t("plans.priceMonthly", { amount: formatPaise(price("MONTH"), locale) })} · {t("plans.priceYearly", { amount: formatPaise(price("YEAR"), locale) })}
-          </Text>
-        ) : priced === false ? (
+        {included ? (
           <Text variant="sm" tone="muted">
-            {t("plans.priceNotSet")}
+            {t("passes.included")}
           </Text>
-        ) : null}
-        <Button label={t("plans.subscribe")} onPress={() => void Linking.openURL(`${API_BASE}/account/plan?plan=${plan}`)} />
-        <Text variant="xs" tone="muted">
-          {t("passes.buyOnWebNote")}
-        </Text>
+        ) : (
+          <>
+            {priced === true ? (
+              <Text variant="sm">
+                {t("plans.priceMonthly", { amount: formatPaise(price("MONTH"), locale) })} · {t("plans.priceYearly", { amount: formatPaise(price("YEAR"), locale) })}
+              </Text>
+            ) : priced === false ? (
+              <Text variant="sm" tone="muted">
+                {t("plans.priceNotSet")}
+              </Text>
+            ) : null}
+            <Button label={t("plans.subscribe")} onPress={() => void Linking.openURL(`${API_BASE}/account/plan?plan=${plan}`)} />
+            <Text variant="xs" tone="muted">
+              {t("passes.buyOnWebNote")}
+            </Text>
+          </>
+        )}
       </Card>
     </View>
   );

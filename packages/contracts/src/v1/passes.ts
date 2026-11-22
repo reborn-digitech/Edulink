@@ -26,7 +26,8 @@ export const PASS_REFUND_DAYS = 7;
  * child who is eighteen or over buys their own); NOT_ASKED (the plan is not asked for, so everything it includes is
  * open); NOT_ON_SALE (the price, the company's invoice details or the gateway are not ready).
  */
-export const PASS_BUY_STATES = ["PAY", "ASK_GUARDIAN", "ADULT_BUYS_OWN", "NOT_ASKED", "NOT_ON_SALE"] as const;
+/** INCLUDED (decision 0010 decision 12): the holder's school covers the plan with its premium, so nothing is offered to buy. */
+export const PASS_BUY_STATES = ["PAY", "ASK_GUARDIAN", "ADULT_BUYS_OWN", "NOT_ASKED", "NOT_ON_SALE", "INCLUDED"] as const;
 export const passBuyStateSchema = z.enum(PASS_BUY_STATES);
 export type PassBuyState = z.infer<typeof passBuyStateSchema>;
 

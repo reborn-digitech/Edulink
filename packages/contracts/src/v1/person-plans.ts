@@ -102,16 +102,65 @@ export const operatorPersonPlanSchema = z.object({
 export const operatorPersonPlansSchema = z.object({ plans: z.array(operatorPersonPlanSchema) });
 export type OperatorPersonPlan = z.infer<typeof operatorPersonPlanSchema>;
 
-/** PUT /api/v1/operator/plans: one plan's prices and its active switch; a field left out stays as it is. Audited. */
+/**
+ * PUT /api/v1/operator/person-plans: one plan's prices and its active switch; a field left out stays as it is. Audited.
+ * `preview` writes nothing and answers what the change would do (decision 0010, rule 12: every sentence is the server's).
+ * `expect` is the switch as the form read it: optional here and in the library, so a caller that sends none switches as
+ * before (the features sweep's exact body), and required by the console's own form; a save whose `expect` no longer holds is
+ * refused by name, plans.changedMeanwhile (C4 point 4, C4a point 5).
+ */
 export const operatorPersonPlanBodySchema = z
   .object({
     code: personPlanSchema,
     pricePaise: paise.optional(),
     yearlyPricePaise: paise.optional(),
     active: z.boolean().optional(),
+    expect: z.object({ active: z.boolean() }).strict().optional(),
+    preview: z.boolean().optional(),
   })
   .strict();
-export const operatorPersonPlanSetSchema = z.object({ plan: operatorPersonPlanSchema, changed: z.boolean() });
+export type OperatorPersonPlanBody = z.infer<typeof operatorPersonPlanBodySchema>;
+
+/**
+ * What moving a plan's "Asked for" switch does, for any plan (C4 point 4): `holders`, the people holding it now; `onSale`
+ * and `price`, whether a person can buy it here and at what ("Nobody can buy this plan yet: payment is not set up." while not,
+ * C3a).
+ */
+export const planMoveSchema = z.object({ holders: count, onSale: z.boolean(), price: z.object({ monthlyPaise: paise, yearlyPaise: paise }).nullable() });
+export type PlanMove = z.infer<typeof planMoveSchema>;
+
+/**
+ * What asking for the Student or Teacher plan, or ceasing to, does through premium (decision 0010 decisions 10 and 11; the
+ * coordinating session's C2, C3's fourth point, C3a, C4 point 4 and C4a point 3). Counts are of live schools, test fixtures
+ * included, since the lock, the cover and the notice reach them alike. `covered`: live cover for the plan's role (contracts
+ * liveCover); `others`: live schools without it where the plan can lock someone (every kind for the Student plan; for the
+ * Teacher plan never a college, whose staff no plan locks); `billed`: schools where premium starts (asking) or stops
+ * (ceasing) being billed with a premium price above ₹0, the status not read; `noBillYet`: how many of those have no bill yet
+ * (no count, no renewal, or a college with no tier); `toldSchools`: those less an ended school, and `told` their offices and
+ * heads, both nought where the acting operator is a test fixture (C4b point 1). The Expert plan is no part of premium.
+ */
+export const planAskEffectSchema = z.object({ covered: count, others: count, billed: count, noBillYet: count, toldSchools: count, told: count });
+export type PlanAskEffect = z.infer<typeof planAskEffectSchema>;
+
+/** A saved change: the plan as it now stands, whether anything changed, and, for a moved switch, what the move did (`premium.told`: the offices and heads told). */
+export const operatorPersonPlanSetSchema = z.object({
+  preview: z.literal(false).default(false),
+  plan: operatorPersonPlanSchema,
+  changed: z.boolean(),
+  move: planMoveSchema.nullable().default(null),
+  premium: planAskEffectSchema.nullable().default(null),
+});
+/** A preview: the plan as it stands, whether the change would change anything, and what a moved switch would do. Writes nothing. */
+export const operatorPersonPlanPreviewSchema = z.object({
+  preview: z.literal(true),
+  plan: operatorPersonPlanSchema,
+  changed: z.boolean(),
+  move: planMoveSchema.nullable(),
+  premium: planAskEffectSchema.nullable(),
+});
+/** The door's answer: a save or a preview. */
+export const operatorPersonPlanAnswerSchema = z.union([operatorPersonPlanPreviewSchema, operatorPersonPlanSetSchema]);
+export type OperatorPersonPlanAnswer = z.infer<typeof operatorPersonPlanAnswerSchema>;
 
 /** GET /api/v1/operator/entitlements?email=: one person's entitlements, newest first. */
 export const operatorEntitlementsQuerySchema = z.object({ email: z.string().trim().toLowerCase().email().max(254) });

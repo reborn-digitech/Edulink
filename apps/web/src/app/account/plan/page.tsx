@@ -93,6 +93,7 @@ export default async function YourPlanPage({ searchParams }: { searchParams: Pro
                     {o.buy === "ADULT_BUYS_OWN" && <p className="text-sm text-fg-muted">{t("passes.adultBuysOwn", { name: o.holder.name })}</p>}
                     {o.buy === "NOT_ASKED" && <p className="text-sm text-fg-muted">{t("passes.notAsked")}</p>}
                     {o.buy === "NOT_ON_SALE" && <p className="text-sm text-fg-muted">{t("passes.notOnSale")}</p>}
+                    {o.buy === "INCLUDED" && <p className="text-sm text-fg-muted">{o.holder.self ? t("passes.included") : t("passes.includedChild", { name: o.holder.name })}</p>}
                   </CardBody>
                 </Card>
               </li>

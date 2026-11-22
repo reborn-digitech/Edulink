@@ -46661,7 +46661,7 @@
         }
       },
       "put": {
-        "summary": "Change one plan's prices or its active switch ({ code, pricePaise?, yearlyPricePaise?, active? }); a field left out stays; audited, and a no-op when nothing changes",
+        "summary": "Change one plan's prices or its active switch ({ code, pricePaise?, yearlyPricePaise?, active?, expect?, preview? }); a field left out stays; audited in the write's own transaction, compared and set, and a no-op when nothing changes; a switch no longer as `expect` read it is refused 422 (plans.changedMeanwhile). Moving a switch answers how many hold the plan and whether it can be bought; moving the Student or Teacher switch also what it does through premium (schools covered and the others, schools whose premium starts or stops being billed, how many of those have no bill yet, offices told), and, saved, tells those offices, never where the operator is a test fixture; preview writes nothing",
         "description": "The server operator.",
         "security": [
           {
@@ -46675,85 +46675,207 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "plan": {
+                  "anyOf": [
+                    {
                       "type": "object",
                       "properties": {
-                        "code": {
-                          "type": "string",
+                        "preview": {
+                          "type": "boolean",
                           "enum": [
-                            "STUDENT",
-                            "TEACHER",
-                            "EXPERT"
+                            true
                           ]
                         },
-                        "pricePaise": {
-                          "type": "integer",
-                          "minimum": 0,
-                          "maximum": 10000000
+                        "plan": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "STUDENT",
+                                "TEACHER",
+                                "EXPERT"
+                              ]
+                            },
+                            "pricePaise": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 10000000
+                            },
+                            "yearlyPricePaise": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/pricePaise"
+                            },
+                            "features": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "ASSISTANT",
+                                  "QUESTION_BANK",
+                                  "QUESTION_GIG",
+                                  "EXPERT_SESSIONS",
+                                  "TEACHER_SESSIONS",
+                                  "JOB_BOARD",
+                                  "TEXT_MESSAGING",
+                                  "COMPETITIONS"
+                                ]
+                              }
+                            },
+                            "active": {
+                              "type": "boolean"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "nullable": true
+                            },
+                            "updatedByName": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "entitledNow": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "expiringSoon": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "pricePaise",
+                            "yearlyPricePaise",
+                            "features",
+                            "active",
+                            "updatedAt",
+                            "updatedByName",
+                            "entitledNow",
+                            "expiringSoon"
+                          ],
+                          "additionalProperties": false
                         },
-                        "yearlyPricePaise": {
-                          "$ref": "#/properties/plan/properties/pricePaise"
-                        },
-                        "features": {
-                          "type": "array",
-                          "items": {
-                            "type": "string",
-                            "enum": [
-                              "ASSISTANT",
-                              "QUESTION_BANK",
-                              "QUESTION_GIG",
-                              "EXPERT_SESSIONS",
-                              "TEACHER_SESSIONS",
-                              "JOB_BOARD",
-                              "TEXT_MESSAGING",
-                              "COMPETITIONS"
-                            ]
-                          }
-                        },
-                        "active": {
+                        "changed": {
                           "type": "boolean"
                         },
-                        "updatedAt": {
-                          "type": "string",
-                          "format": "date-time",
+                        "move": {
+                          "type": "object",
+                          "properties": {
+                            "holders": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            },
+                            "onSale": {
+                              "type": "boolean"
+                            },
+                            "price": {
+                              "type": "object",
+                              "properties": {
+                                "monthlyPaise": {
+                                  "$ref": "#/anyOf/0/properties/plan/properties/pricePaise"
+                                },
+                                "yearlyPaise": {
+                                  "$ref": "#/anyOf/0/properties/plan/properties/pricePaise"
+                                }
+                              },
+                              "required": [
+                                "monthlyPaise",
+                                "yearlyPaise"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "holders",
+                            "onSale",
+                            "price"
+                          ],
+                          "additionalProperties": false,
                           "nullable": true
                         },
-                        "updatedByName": {
-                          "type": "string",
+                        "premium": {
+                          "type": "object",
+                          "properties": {
+                            "covered": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            },
+                            "others": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            },
+                            "billed": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            },
+                            "noBillYet": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            },
+                            "toldSchools": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            },
+                            "told": {
+                              "$ref": "#/anyOf/0/properties/plan/properties/entitledNow"
+                            }
+                          },
+                          "required": [
+                            "covered",
+                            "others",
+                            "billed",
+                            "noBillYet",
+                            "toldSchools",
+                            "told"
+                          ],
+                          "additionalProperties": false,
                           "nullable": true
-                        },
-                        "entitledNow": {
-                          "type": "integer",
-                          "minimum": 0
-                        },
-                        "expiringSoon": {
-                          "$ref": "#/properties/plan/properties/entitledNow"
                         }
                       },
                       "required": [
-                        "code",
-                        "pricePaise",
-                        "yearlyPricePaise",
-                        "features",
-                        "active",
-                        "updatedAt",
-                        "updatedByName",
-                        "entitledNow",
-                        "expiringSoon"
+                        "preview",
+                        "plan",
+                        "changed",
+                        "move",
+                        "premium"
                       ],
                       "additionalProperties": false
                     },
-                    "changed": {
-                      "type": "boolean"
+                    {
+                      "type": "object",
+                      "properties": {
+                        "preview": {
+                          "type": "boolean",
+                          "enum": [
+                            false
+                          ],
+                          "default": false
+                        },
+                        "plan": {
+                          "$ref": "#/anyOf/0/properties/plan"
+                        },
+                        "changed": {
+                          "type": "boolean"
+                        },
+                        "move": {
+                          "allOf": [
+                            {
+                              "$ref": "#/anyOf/0/properties/move"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
+                        },
+                        "premium": {
+                          "allOf": [
+                            {
+                              "$ref": "#/anyOf/0/properties/premium"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
+                        }
+                      },
+                      "required": [
+                        "plan",
+                        "changed"
+                      ],
+                      "additionalProperties": false
                     }
-                  },
-                  "required": [
-                    "plan",
-                    "changed"
-                  ],
-                  "additionalProperties": false
+                  ]
                 }
               }
             }
@@ -46823,6 +46945,21 @@
                     "$ref": "#/properties/pricePaise"
                   },
                   "active": {
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "object",
+                    "properties": {
+                      "active": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "active"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "preview": {
                     "type": "boolean"
                   }
                 },
@@ -258485,7 +258622,8 @@
                               "ASK_GUARDIAN",
                               "ADULT_BUYS_OWN",
                               "NOT_ASKED",
-                              "NOT_ON_SALE"
+                              "NOT_ON_SALE",
+                              "INCLUDED"
                             ]
                           }
                         },

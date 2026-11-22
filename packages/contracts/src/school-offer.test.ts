@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   BULK_SCHOOLS_MAX,
+  COVER_STOPS_WHILE,
   END_KEEP_DAYS,
   FREE_MONTHS,
   OFFER_START,
@@ -14,6 +15,7 @@ import {
   STANDING_ACTIONS,
   SUBSCRIPTION_PRICE_CHIPS_PAISE,
   billFor,
+  liveCover,
   earliestPauseDay,
   freeMonthsImplied,
   mayPauseOn,
@@ -416,3 +418,23 @@ describe("a partner's month and the partners card's lists (decision 6, the owner
   });
 });
 
+describe("live cover (decision 9, rule 4; phase 4)", () => {
+  const live = (over: Partial<Parameters<typeof liveCover>[0]> = {}) => liveCover({ kind: "SCHOOL", premiumStudents: true, premiumTeachers: true, status: "ACTIVE", removed: false, ...over });
+  it("each switch covers its role's plan, terms set or not, at any status but the two that stop it", () => {
+    expect(live()).toEqual(["STUDENT", "TEACHER"]);
+    expect(live({ premiumTeachers: false })).toEqual(["STUDENT"]);
+    expect(live({ premiumStudents: false })).toEqual(["TEACHER"]);
+    expect(live({ premiumStudents: false, premiumTeachers: false })).toEqual([]);
+    for (const status of ["TRIAL", "ACTIVE", "DUE", null]) expect(live({ status })).toEqual(["STUDENT", "TEACHER"]);
+  });
+  it("SUSPENDED and ENDED stop cover (carried over from version 1 by the author, in one place); so does a removed school", () => {
+    expect(COVER_STOPS_WHILE).toEqual(["SUSPENDED", "ENDED"]);
+    for (const status of COVER_STOPS_WHILE) expect(live({ status })).toEqual([]);
+    expect(live({ removed: true })).toEqual([]);
+  });
+  it("a college's teachers are never covered; its pupils are; a junior college is a school", () => {
+    expect(live({ kind: "COLLEGE" })).toEqual(["STUDENT"]);
+    expect(live({ kind: "AUTONOMOUS_COLLEGE" })).toEqual(["STUDENT"]);
+    expect(live({ kind: "JUNIOR_COLLEGE" })).toEqual(["STUDENT", "TEACHER"]);
+  });
+});
