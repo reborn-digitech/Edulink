@@ -40592,6 +40592,10 @@
                         },
                         "owedThisMonthPaise": {
                           "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "billedYearPaise": {
+                          "$ref": "#/properties/tiles/properties/live",
+                          "default": 0
                         }
                       },
                       "required": [
@@ -40873,6 +40877,26 @@
                               }
                             ],
                             "nullable": true
+                          },
+                          "premium": {
+                            "type": "object",
+                            "properties": {
+                              "students": {
+                                "type": "boolean"
+                              },
+                              "teachers": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "students",
+                              "teachers"
+                            ],
+                            "additionalProperties": false,
+                            "default": {
+                              "students": false,
+                              "teachers": false
+                            }
                           }
                         },
                         "required": [
@@ -41172,6 +41196,14 @@
                             },
                             "notRunning": {
                               "$ref": "#/properties/groups/properties/follow"
+                            },
+                            "noRenewal": {
+                              "$ref": "#/properties/groups/properties/follow",
+                              "default": 0
+                            },
+                            "test": {
+                              "$ref": "#/properties/groups/properties/follow",
+                              "default": 0
                             }
                           },
                           "required": [
@@ -41418,6 +41450,10 @@
                         "notSet"
                       ],
                       "additionalProperties": false
+                    },
+                    "premiumNotBilled": {
+                      "$ref": "#/properties/unchanged/properties/ownPrice",
+                      "default": 0
                     },
                     "yearDeltaPaise": {
                       "type": "integer"
@@ -41861,6 +41897,14 @@
                             },
                             "notRunning": {
                               "$ref": "#/properties/rows/items/properties/pupils"
+                            },
+                            "noRenewal": {
+                              "$ref": "#/properties/rows/items/properties/pupils",
+                              "default": 0
+                            },
+                            "test": {
+                              "$ref": "#/properties/rows/items/properties/pupils",
+                              "default": 0
                             }
                           },
                           "required": [

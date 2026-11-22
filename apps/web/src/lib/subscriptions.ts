@@ -14,7 +14,7 @@ import {
 } from "@edulink/contracts";
 import { db } from "./db";
 import { audit, type AuditTx } from "./audit";
-import { columnsOf, newestPupils, readOffer, readSchoolTerms } from "./school-terms";
+import { billedYear, columnsOf, newestPupils, readOffer, readSchoolTerms } from "./school-terms";
 import { assertSuperuser, createSchool, inviteAdmin, sendAdminInviteMail, type AdminInviteMail, type SchoolDetails } from "./superuser";
 import { assignPlan, monthKeyFor } from "./plans";
 import { addDaysToKey, safeTimeZone, todayKey } from "./dates";
@@ -364,6 +364,43 @@ export async function recordPayment(session: ActiveContext, schoolId: string, in
   return answer;
 }
 
+/** The partner's month as partnerMonth reads it: what it is reckoned on, and whether it earns, and why not. */
+export type PartnerReading = { monthPaise: number | null; earns: boolean; renewalReached: boolean; unpriced: boolean; freeByAgreement: boolean };
+
+/**
+ * The partner's month for one school, today and once its terms are first set (the coordinating session's C2b: the terms
+ * sheet's preview says what happens to it, in the operator's own screen only, never in the school's log or notice). Today's
+ * reading is listPartners' for a school whose terms are not set (a tier's twelfth of this month's roll, else the plan's old
+ * price); once set, partnerMonth on the subscription as the preview reads it and the school's newest count. None where the
+ * school has no partner, or its terms were set before, or the save would not set them.
+ */
+export async function partnerPreview(
+  session: ActiveContext,
+  schoolId: string,
+  after: { termsSet: boolean; subscriptionFigure: { basePaise: number; discountBps: number; paysPaise: number; source: "OURS" | "OWN_DISCOUNT" | "OWN_PRICE"; tierCode: string | null } | null; pupils: number | null },
+  now: Date = new Date(),
+): Promise<{ partner: string; today: PartnerReading; once: PartnerReading } | null> {
+  assertSuperuser(session);
+  const s = await db.school.findUnique({
+    where: { id: schoolId },
+    select: { timezone: true, subscriptionStatus: true, subscriptionDueAt: true, termsSetAt: true, plan: { select: { code: true, priceMonthlyPaise: true } }, commissionPartner: { select: { name: true } } },
+  });
+  if (!s || !s.commissionPartner || s.termsSetAt !== null || !after.termsSet) return null;
+  const status = isSubscriptionStatus(s.subscriptionStatus) ? s.subscriptionStatus : null;
+  const renewalDay = dateToDay(s.subscriptionDueAt);
+  const todayDay = todayKey(safeTimeZone(s.timezone), now);
+  let oldMonthPaise: number | null = s.plan?.priceMonthlyPaise ?? null;
+  if (collegeTierOf(s.plan?.code)) {
+    const roll = await db.usageSample.findFirst({ where: { schoolId, month: monthKeyFor("UTC") }, select: { pupils: true } });
+    oldMonthPaise = tierMonthPaise(s.plan?.code, roll?.pupils ?? 0) || null;
+  }
+  const figure = after.subscriptionFigure;
+  const tier = figure ? (collegeTierOf(figure.tierCode)?.code ?? null) : null;
+  const today = partnerMonth({ termsSet: false, status, renewalDay, todayDay, subscription: null, pupils: null, oldMonthPaise });
+  const once = partnerMonth({ termsSet: true, status, renewalDay, todayDay, subscription: figure ? { ...figure, tierCode: tier } : null, pupils: after.pupils, oldMonthPaise: null });
+  return { partner: s.commissionPartner.name, today, once };
+}
+
 /** A payment whose standing as read is not the school's: the same payment already recorded, by name, or a change to look at again. */
 function missedPayment(input: PaymentBody, status: SubscriptionStatus | null, dueDay: string | null): Refusal {
   const would = nextRenewalOnPayment({ status: input.fromStatus, dueDay: input.fromDueAt, paidOnDay: input.paidOn });
@@ -608,6 +645,8 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
         verifiedAt: true,
         isTestFixture: true,
         msgMonthlyCap: true,
+        premiumStudents: true,
+        premiumTeachers: true,
         plan: { select: { id: true, code: true, name: true, priceMonthlyPaise: true, messageCap: true, storageCapMb: true } },
       },
     }),
@@ -643,6 +682,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
       commission: views.commission,
       contact: views.contact,
       lastActivityAt: seenOf.get(s.id)?.toISOString() ?? null,
+      premium: { students: s.premiumStudents, teachers: s.premiumTeachers },
     };
   });
 
@@ -728,6 +768,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
       storageCapMb: anyStorageCap ? storageCapMb : null,
       jobsOverdue,
       owedThisMonthPaise: partnerTiles.reduce((sum, p) => sum + p.owedThisMonthPaise, 0),
+      billedYearPaise: (await billedYear(session, now)).billedYearPaise,
     },
     partners: partnerTiles,
     plans,

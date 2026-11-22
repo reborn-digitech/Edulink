@@ -7,11 +7,11 @@ import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { SUBSCRIPTION_STATUSES, type OperatorSubscription, type OperatorSubscriptionBody, type SubscriptionStatus } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { setContactAction, setSubscriptionAction } from "../actions";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
+import { formatDateKey } from "@/lib/dates";
 
 type PartnerOption = { id: string; name: string; percentTenths: number };
 
@@ -24,6 +24,7 @@ type PartnerOption = { id: string; name: string; percentTenths: number };
  */
 export function SubscriptionPanel({ schoolId, subscription, partnerId, partners }: { schoolId: string; subscription: OperatorSubscription; partnerId: string | null; partners: PartnerOption[] }) {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -34,8 +35,6 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
     dueAt: subscription.dueAt ?? "",
     invoicedAt: subscription.invoicedAt ?? "",
     invoiceRef: subscription.invoiceRef ?? "",
-    paidAt: subscription.paidAt ?? "",
-    paidRef: subscription.paidRef ?? "",
     partnerId: partnerId ?? "",
   };
   const [form, setForm] = useState(initial);
@@ -43,17 +42,15 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
   const set = (key: keyof typeof initial) => (value: string) => setForm((f) => ({ ...f, [key]: value }));
   const changed = (Object.keys(initial) as (keyof typeof initial)[]).filter((k) => form[k] !== initial[k]);
 
-  const days = subscription.daysToDue;
-  const dueLine = days === null ? null : days === 0 ? t("root.subscriptionDueToday") : days > 0 ? t("root.subscriptionDueIn", { days }) : t("root.subscriptionOverdue", { days: -days });
-  const tone = subscription.status === "ENDED" || subscription.status === "SUSPENDED" || days === null ? "neutral" : days < 0 ? "danger" : days <= 30 ? "warn" : "ok";
+  const day = (key: string) => formatDateKey(key, { day: "numeric", month: "short", year: "numeric" }, locale);
 
   function save(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
     const body: OperatorSubscriptionBody = { reason };
     if (changed.includes("status")) body.status = form.status as SubscriptionStatus;
-    for (const key of ["startsAt", "dueAt", "invoicedAt", "paidAt"] as const) if (changed.includes(key)) body[key] = form[key] || null;
-    for (const key of ["invoiceRef", "paidRef"] as const) if (changed.includes(key)) body[key] = form[key] || null;
+    for (const key of ["startsAt", "dueAt", "invoicedAt"] as const) if (changed.includes(key)) body[key] = form[key] || null;
+    if (changed.includes("invoiceRef")) body.invoiceRef = form.invoiceRef || null;
     if (changed.includes("partnerId")) body.commissionPartnerId = form.partnerId || null;
     startTransition(async () => {
       const result = await setSubscriptionAction(schoolId, body);
@@ -69,10 +66,7 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
 
   return (
     <form onSubmit={save} className="space-y-4" noValidate>
-      <div className="flex flex-wrap items-center gap-2">
-        <Badge tone={tone}>{subscription.status ? t(`root.status${subscription.status}` as TranslationKey) : t("root.subscriptionNone")}</Badge>
-        {dueLine && <span className={`text-sm font-medium ${tone === "danger" ? "text-danger" : tone === "warn" ? "text-warn" : "text-fg-muted"}`}>{dueLine}</span>}
-      </div>
+      {/* One badge for one standing: the card's above (C5 point 8); this form keeps the dates for correcting a record. */}
       {error && (
         <p role="alert" className="rounded-[var(--radius-md)] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
           {error}
@@ -83,7 +77,17 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
           <option value="">{t("root.subscriptionNotRecorded")}</option>
           {SUBSCRIPTION_STATUSES.map((s) => (
             <option key={s} value={s}>
-              {t(`root.status${s}` as TranslationKey)}
+              {/* C1: while nothing is recorded as paid, Trial and Due are the date's two readings, set together. */}
+              {/* C1: while nothing is recorded as paid, Trial and Due are the renewal date's two readings, named with it. */}
+              {!subscription.paidAt && s === "TRIAL"
+                ? form.dueAt
+                  ? t("subs.statusFreeUntil", { date: day(form.dueAt) })
+                  : t("subs.statusTrialPair")
+                : !subscription.paidAt && s === "DUE"
+                  ? form.dueAt
+                    ? t("subs.statusOwedFrom", { date: day(form.dueAt) })
+                    : t("subs.statusDuePair")
+                  : t(`root.status${s}` as TranslationKey)}
             </option>
           ))}
         </SelectField>
@@ -99,10 +103,14 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
         <DateField label={t("root.subscriptionDue")} value={form.dueAt} onChange={(e) => set("dueAt")(e.target.value)} />
         <DateField label={t("root.subscriptionInvoiced")} value={form.invoicedAt} onChange={(e) => set("invoicedAt")(e.target.value)} />
         <TextField label={t("root.subscriptionInvoiceRef")} value={form.invoiceRef} onChange={(e) => set("invoiceRef")(e.target.value)} maxLength={120} />
-        <DateField label={t("root.subscriptionPaid")} value={form.paidAt} onChange={(e) => set("paidAt")(e.target.value)} />
-        <TextField label={t("root.subscriptionPaidRef")} value={form.paidRef} onChange={(e) => set("paidRef")(e.target.value)} maxLength={120} />
       </div>
-      <TextField label={t("root.subscriptionReason")} hint={t("root.subscriptionReasonHint")} required value={reason} onChange={(e) => setReason(e.target.value)} maxLength={500} />
+      {/* Read-only (§2.3): a payment is recorded with Record payment, and changed only by recording one. */}
+      <p className="text-sm text-fg-muted" data-testid="paid-read-only">
+        {subscription.paidAt ? t("subs.paidReadOnly", { date: day(subscription.paidAt), ref: subscription.paidRef ?? "—" }) : t("subs.notPaidYet")}
+      </p>
+      {!subscription.paidAt && <p className="text-xs text-fg-muted">{t("subs.correctionHint")}</p>}
+      {/* The reason goes to the school's own log, so it says so (C2; C5 point 10). */}
+      <TextField label={t("root.subscriptionReason")} hint={t("subs.reasonSchoolReads")} required value={reason} onChange={(e) => setReason(e.target.value)} maxLength={500} />
       <div className="flex flex-wrap items-center gap-2">
         <Button type="submit" loading={pending} disabled={changed.length === 0 || !reason.trim()} icon={<FloppyDiskIcon weight="bold" />}>
           {t("root.subscriptionSave")}

@@ -264,6 +264,8 @@ export const operatorDashboardRowSchema = z.object({
   contact: operatorContactSchema,
   /** The newest audit row that names the school, or null. */
   lastActivityAt: iso.nullable(),
+  /** Its premium add-on's switches (decision 0010; the brief's §2.6); an older server says nothing, which reads as off. */
+  premium: z.object({ students: z.boolean(), teachers: z.boolean() }).default({ students: false, teachers: false }),
 });
 export type OperatorDashboardRow = z.infer<typeof operatorDashboardRowSchema>;
 
@@ -285,6 +287,8 @@ export const operatorDashboardSchema = z.object({
     jobsOverdue: count,
     /** Recorded only. */
     owedThisMonthPaise: count,
+    /** The year billed across the live schools at today's prices, last count (rule 8, as the Schools tab totals it); an estimate, recorded only; an older server says nothing. */
+    billedYearPaise: count.default(0),
   }),
   /** The partners and what each is owed this month. */
   partners: z.array(z.object({ id, name: z.string(), percentTenths, schools: count, owedThisMonthPaise: count, unpricedSchools: count.default(0), renewalReachedSchools: count.default(0) })),

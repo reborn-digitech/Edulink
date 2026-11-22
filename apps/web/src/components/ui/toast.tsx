@@ -73,6 +73,16 @@ export function keepToasts(current: Toast[], next: Toast, limit = 4): { kept: To
   return { kept: all, dropped };
 }
 
+/**
+ * What a screen reader is told of a toast: its title and its description as one passage. A title that already ends a sentence
+ * (".", "।", "!", "?") keeps its own ending, so "That did not work." is never followed by a second full stop (the coordinating
+ * session's walk of 22 November 2026); one that does not is given a full stop.
+ */
+export function spokenText(title: string, description?: string): string {
+  if (!description) return title;
+  return /[.।!?]$/.test(title.trim()) ? `${title} ${description}` : `${title}. ${description}`;
+}
+
 type ToastContextValue = {
   toast: (toast: Omit<Toast, "id">) => string;
   dismiss: (id: string) => void;
@@ -164,7 +174,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       }
       if (next.duration !== null && next.duration !== undefined) startTimer(id, next.duration);
       // Written into the standing region after it exists, so a screen reader says it (TA-235).
-      const text = next.description ? `${next.title}. ${next.description}` : next.title;
+      const text = spokenText(next.title, next.description);
       setSaid((current) => (next.tone === "danger" ? { ...current, assertive: { id, text } } : { ...current, polite: { id, text } }));
       return id;
     },

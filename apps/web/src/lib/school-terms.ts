@@ -448,14 +448,21 @@ export async function updateOffer(session: ActiveContext, body: OfferBody, now: 
   const told = new Map<string, string>();
   let ownPrice = 0;
   let notSet = 0;
+  let premiumNotBilled = 0;
   let yearDeltaPaise = 0;
+  // Which of our parts this change moves: a school is held by its own price only on a part that changes (the review of phase 5, A2).
+  const subscriptionChanges = current.subscriptionPricePaise !== next.subscriptionPricePaise || current.subscriptionDiscountBps !== next.subscriptionDiscountBps;
+  const premiumChanges = current.premiumPricePaise !== next.premiumPricePaise || current.premiumDiscountBps !== next.premiumDiscountBps;
   for (const school of schools) {
+    const before = figuresOf(school, current);
+    const after = figuresOf(school, next);
+    const billed = premiumBilling({ termsSet: school.termsSetAt !== null, students: school.premiumStudents, teachers: school.premiumTeachers }, asked).billed;
+    // A premium price that moves with ours where premium is not billed: no move is listed, but the price is the new one (A1).
+    if (!billed && before.premium.paysPaise !== after.premium.paysPaise) premiumNotBilled += 1;
     if (!school.termsSetAt) {
       notSet += 1;
       continue;
     }
-    const before = figuresOf(school, current);
-    const after = figuresOf(school, next);
     const count = pupils.get(school.id) ?? 0;
     // The year's difference counts exactly what the totals count (totalsOf, rule 8: real schools, terms set, Trial, Active or
     // Due, recording open, with a subscription figure, a count and a renewal, so with a bill), so it agrees with the year
@@ -464,21 +471,26 @@ export async function updateOffer(session: ActiveContext, body: OfferBody, now: 
     const status = statusOf(school.subscriptionStatus);
     const counted = !school.isTestFixture && (status === "TRIAL" || status === "ACTIVE" || status === "DUE") && school.recordingClosedAt === null && after.subscription !== null && pupils.has(school.id) && school.subscriptionDueAt !== null;
     const tellable = status !== "ENDED";
+    let moved = false;
     if (before.subscription && after.subscription && before.subscription.paysPaise !== after.subscription.paysPaise) {
       moves.push({ schoolId: school.id, name: school.name, part: "SUBSCRIPTION", beforePaise: before.subscription.paysPaise, afterPaise: after.subscription.paysPaise, source: after.subscription.source });
       if (counted) yearDeltaPaise += (after.subscription.paysPaise - before.subscription.paysPaise) * count;
       if (tellable) told.set(school.id, school.name);
-    } else if (school.subscriptionPricePaise !== null) ownPrice += 1;
+      moved = true;
+    }
     // Premium moves only where it is billed, only while its plan is asked for (C3, C3a): elsewhere its figure moves unseen,
     // nobody is told, and the school's bill gains the line, at the price then in force, once the plan is asked for.
-    if (premiumBilling({ termsSet: school.termsSetAt !== null, students: school.premiumStudents, teachers: school.premiumTeachers }, asked).billed && before.premium.paysPaise !== after.premium.paysPaise) {
+    if (billed && before.premium.paysPaise !== after.premium.paysPaise) {
       moves.push({ schoolId: school.id, name: school.name, part: "PREMIUM", beforePaise: before.premium.paysPaise, afterPaise: after.premium.paysPaise, source: after.premium.source });
       if (counted) yearDeltaPaise += (after.premium.paysPaise - before.premium.paysPaise) * count;
       if (tellable) told.set(school.id, school.name);
+      moved = true;
     }
+    // Not moving, held by its own price on a part that changes, and moving on no part (A2).
+    if (!moved && ((subscriptionChanges && school.subscriptionPricePaise !== null) || (premiumChanges && school.premiumPricePaise !== null))) ownPrice += 1;
   }
   const unchanged = { ownPrice, notSet };
-  if (body.preview) return { preview: true, offer: offerView(next), moves, unchanged, yearDeltaPaise, told: await officeCount(session, [...told.keys()]) };
+  if (body.preview) return { preview: true, offer: offerView(next), moves, unchanged, premiumNotBilled, yearDeltaPaise, told: await officeCount(session, [...told.keys()]) };
 
   let saved: Offer;
   try {
@@ -520,18 +532,22 @@ export async function updateOffer(session: ActiveContext, body: OfferBody, now: 
     throw error;
   }
   const toldPeople = await tellOffices(session, [...told].map(([id, name]) => ({ id, name })));
-  return { preview: false, offer: offerView(saved), moves, unchanged, yearDeltaPaise, told: toldPeople };
+  return { preview: false, offer: offerView(saved), moves, unchanged, premiumNotBilled, yearDeltaPaise, told: toldPeople };
 }
 
-/** The live schools that count toward the year billed: real, terms set, running (Trial, Active, Due), recording open, with a count and a figure. */
-function totalsOf(views: { view: SchoolTerms; fixture: boolean; closed: boolean }[]): SchoolOfferAnswer["totals"] {
-  const totals = { billedYearPaise: 0, countedSchools: 0, notCounted: { notSet: 0, noTier: 0, noCount: 0, notRunning: 0 } };
+/** The live schools that count toward the year billed: real, terms set, running (Trial, Active, Due), recording open, with a count and a figure. Exported for its suite. */
+export function totalsOf(views: { view: SchoolTerms; fixture: boolean; closed: boolean }[]): SchoolOfferAnswer["totals"] {
+  const totals = { billedYearPaise: 0, countedSchools: 0, notCounted: { notSet: 0, noTier: 0, noCount: 0, notRunning: 0, noRenewal: 0, test: 0 } };
   for (const { view, fixture, closed } of views) {
-    if (fixture) continue;
-    if (!view.termsSet) totals.notCounted.notSet += 1;
+    // Money leaves a test school out, and says so (C5 point 5).
+    if (fixture) totals.notCounted.test += 1;
+    else if (!view.termsSet) totals.notCounted.notSet += 1;
     else if (!view.status || view.status === "SUSPENDED" || view.status === "ENDED" || closed) totals.notCounted.notRunning += 1;
     else if (!view.subscriptionFigure) totals.notCounted.noTier += 1;
-    else if (view.pupils === null || !view.bill) totals.notCounted.noCount += 1;
+    else if (view.pupils === null) totals.notCounted.noCount += 1;
+    // A count with no renewal on record has no bill: said as that, not as no count (the review of phase 5, A9).
+    else if (!view.renewsOn) totals.notCounted.noRenewal += 1;
+    else if (!view.bill) totals.notCounted.noCount += 1;
     else {
       totals.billedYearPaise += view.bill.totalPaise;
       totals.countedSchools += 1;
@@ -546,9 +562,16 @@ export async function readOfferAnswer(session: ActiveContext, now: Date = new Da
   const [offer, schools, asked] = await Promise.all([readOffer(), db.school.findMany({ where: { removedAt: null }, select: TERMS_SELECT }), activePlans()]);
   const pupils = await newestPupils(schools.map((s) => s.id));
   const views = schools.map((s) => ({ view: viewOf(s, offer, pupils.get(s.id) ?? null, now, asked), fixture: s.isTestFixture, closed: s.recordingClosedAt !== null }));
+  return { offer: offerView(offer), groups: groupsOf(views.map((v) => v.view)), totals: totalsOf(views), recent: await recentOfferChanges() };
+}
+
+/**
+ * How the live schools stand against our offer. Every count of schools counts the rows the Schools tab shows, test schools
+ * included; only money leaves them out (C5 point 5). Exported for its suite.
+ */
+export function groupsOf(views: Pick<SchoolTerms, "premiumStudents" | "premiumTeachers" | "termsSet" | "kind" | "subscription">[]): SchoolOfferAnswer["groups"] {
   const groups = { follow: 0, ownDiscount: 0, ownPrice: 0, colleges: 0, notSet: 0, premiumOn: 0 };
-  for (const { view, fixture } of views) {
-    if (fixture) continue;
+  for (const view of views) {
     if (view.premiumStudents || view.premiumTeachers) groups.premiumOn += 1;
     if (!view.termsSet) groups.notSet += 1;
     else if (isCollegeKind(view.kind)) groups.colleges += 1;
@@ -556,7 +579,15 @@ export async function readOfferAnswer(session: ActiveContext, now: Date = new Da
     else if (view.subscription.mode === "OWN_DISCOUNT") groups.ownDiscount += 1;
     else groups.follow += 1;
   }
-  return { offer: offerView(offer), groups, totals: totalsOf(views), recent: await recentOfferChanges() };
+  return groups;
+}
+
+/** The year billed across the live schools at today's prices, last count (rule 8), as the Schools tab and our offer total it: the dashboard's tile. */
+export async function billedYear(session: ActiveContext, now: Date = new Date()): Promise<SchoolOfferAnswer["totals"]> {
+  assertSuperuser(session);
+  const [offer, schools, asked] = await Promise.all([readOffer(), db.school.findMany({ where: { removedAt: null }, select: TERMS_SELECT }), activePlans()]);
+  const pupils = await newestPupils(schools.map((s) => s.id));
+  return totalsOf(schools.map((s) => ({ view: viewOf(s, offer, pupils.get(s.id) ?? null, now, asked), fixture: s.isTestFixture, closed: s.recordingClosedAt !== null })));
 }
 
 /** The last ten changes of our offer, newest first, from the operator's own log (§5): when, why, before and after. */
@@ -583,8 +614,10 @@ export async function listSubscriptions(session: ActiveContext, query: Subscript
     if (query.premium === "on" && !premiumOn) return false;
     if (query.premium === "off" && premiumOn) return false;
     if (query.terms === "notset" && view.termsSet) return false;
-    if (query.terms === "ours" && (!view.termsSet || view.subscription.mode !== "OURS")) return false;
-    if (query.terms === "own" && (!view.termsSet || view.subscription.mode === "OURS")) return false;
+    // Ours: both parts at our prices; own: either part on its own terms, as the Prices tab lists them (the review of phase 5, B6).
+    const own = view.subscription.mode !== "OURS" || view.premium.mode !== "OURS";
+    if (query.terms === "ours" && (!view.termsSet || own)) return false;
+    if (query.terms === "own" && (!view.termsSet || !own)) return false;
     const today = todayKey(zone, now);
     if (query.renewal === "passed" && !renewalReached(view.renewsOn, today)) return false;
     // Both ends on the school's own day (C1c): not yet reached, and no later than thirty days on from it.
@@ -709,4 +742,55 @@ export async function officeSubscription(ctx: ActiveContext, now: Date = new Dat
     state: view.state,
     recording: { paused: row.recordingClosedAt !== null, since: row.recordingClosedAt?.toISOString() ?? null },
   };
+}
+
+/** What the school's card names as its last change (§2.3), from the operator's own log. */
+export type LastTermsChange = {
+  what: "TERMS" | "NOTE" | "PREMIUM_STUDENTS_ON" | "PREMIUM_STUDENTS_OFF" | "PREMIUM_TEACHERS_ON" | "PREMIUM_TEACHERS_OFF" | "PREMIUM" | "PAYMENT" | "SUBSCRIPTION";
+  at: Date;
+  /** The day it was made, on the school's own clock (the review of phase 5, A5). */
+  day: string;
+  byUserId: string | null;
+  byName: string | null;
+};
+
+/**
+ * The newest of the operator's own rows about one school's terms, premium, payment or status and dates (the platform's log,
+ * schoolId null, as the server log reads it), for the card's "Last change: premium on for students, by you, 21 Nov 2026".
+ * None before the first.
+ */
+export async function lastTermsChange(session: ActiveContext, schoolId: string): Promise<LastTermsChange | null> {
+  assertSuperuser(session);
+  const row = await db.auditLog.findFirst({
+    where: { schoolId: null, targetType: "School", targetId: schoolId, action: { in: ["superuser.school.terms", "superuser.school.premium", "superuser.school.subscription"] } },
+    orderBy: { createdAt: "desc" },
+    select: { action: true, createdAt: true, actorUserId: true, meta: true },
+  });
+  if (!row) return null;
+  let meta: Record<string, unknown> = {};
+  try {
+    const parsed: unknown = JSON.parse(row.meta);
+    if (parsed && typeof parsed === "object") meta = parsed as Record<string, unknown>;
+  } catch {
+    meta = {};
+  }
+  let what: LastTermsChange["what"];
+  if (row.action === "superuser.school.subscription") what = meta.kind === "payment" ? "PAYMENT" : "SUBSCRIPTION";
+  else if (row.action === "superuser.school.premium") {
+    const students = typeof meta.premiumStudents === "boolean" ? meta.premiumStudents : null;
+    const teachers = typeof meta.premiumTeachers === "boolean" ? meta.premiumTeachers : null;
+    what = students !== null && teachers !== null ? "PREMIUM" : students !== null ? (students ? "PREMIUM_STUDENTS_ON" : "PREMIUM_STUDENTS_OFF") : teachers ? "PREMIUM_TEACHERS_ON" : "PREMIUM_TEACHERS_OFF";
+  } else what = meta.subscription || meta.premium || meta.termsSet ? "TERMS" : "NOTE";
+  const [by, school] = await Promise.all([
+    row.actorUserId ? db.user.findUnique({ where: { id: row.actorUserId }, select: { name: true, preferredName: true } }) : null,
+    db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } }),
+  ]);
+  return { what, at: row.createdAt, day: todayKey(safeTimeZone(school?.timezone), row.createdAt), byUserId: row.actorUserId, byName: by ? by.preferredName || by.name : null };
+}
+
+/** The school's own day today (C1b), for a sentence that says "today" of it (record payment's preview). */
+export async function schoolDay(session: ActiveContext, schoolId: string, now: Date = new Date()): Promise<string | null> {
+  assertSuperuser(session);
+  const row = await db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } });
+  return row ? todayKey(safeTimeZone(row.timezone), now) : null;
 }

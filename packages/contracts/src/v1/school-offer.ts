@@ -542,7 +542,12 @@ export const offerGroupsSchema = z.object({ follow: count, ownDiscount: count, o
 export const offerTotalsSchema = z.object({
   billedYearPaise: paise,
   countedSchools: count,
-  notCounted: z.object({ notSet: count, noTier: count, noCount: count, notRunning: count }),
+  /**
+   * Why each live school is left out of the year billed: terms not set, not running (not Trial, Active or Due, or recording
+   * closed), no tier, no count, no renewal on record (the review of phase 5, A9), or a test school, which money leaves out
+   * though every count of schools includes it (C5 point 5). An older server says nothing of the last two.
+   */
+  notCounted: z.object({ notSet: count, noTier: count, noCount: count, notRunning: count, noRenewal: count.default(0), test: count.default(0) }),
 });
 
 /** GET /api/v1/operator/offer. */
@@ -563,6 +568,8 @@ export const offerChangeSchema = z.object({
   offer: offerReadSchema,
   moves: z.array(termsMoveSchema),
   unchanged: z.object({ ownPrice: count, notSet: count }),
+  /** Schools whose premium price moves with ours where premium is not billed: no move is listed for them, but their price is the new one (the review of phase 5, A1). */
+  premiumNotBilled: count.default(0),
   yearDeltaPaise: z.number().int(),
   told: count,
 });

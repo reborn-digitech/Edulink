@@ -77,7 +77,7 @@ const OFFICE_FORM_PAGES: Record<string, string[]> = {
  */
 const PLATFORM: Record<string, string[]> = {
   APPADMIN: ["/appadmin", "/appadmin/bank", "/appadmin/contributions", "/appadmin/new"],
-  OPERATOR: ["/root", "/root/experts", "/root/content-team", "/root/gigs", "/root/audit", "/root/jobs", "/root/plans", "/root/metrics", "/root/new", "/appadmin", "/appadmin/bank", "/appadmin/contributions"],
+  OPERATOR: ["/root", "/root/experts", "/root/content-team", "/root/gigs", "/root/audit", "/root/jobs", "/root/plans", "/root/subscriptions", "/root/subscriptions/prices", "/root/metrics", "/root/new", "/appadmin", "/appadmin/bank", "/appadmin/contributions"],
 };
 
 const walked: [role: string, hrefs: string[], prefixes: Set<string>][] = [
@@ -136,6 +136,31 @@ for (const [role, hrefs, prefixes] of walked) {
     });
   }
 }
+
+/**
+ * The operator's school page, which carries the subscription card, its sheets and Record payment (the review of phase 5, D8):
+ * its address names a school, so a ZZ fixture is found here rather than listed above, and the same gate runs on it.
+ */
+test.describe("OPERATOR · a school's page", () => {
+  test("/root/{a ZZ school}", async ({ browser, baseURL }) => {
+    const actor = all.OPERATOR;
+    test.skip(!actor, "no operator actor");
+    const school = await db.school.findFirst({ where: { isTestFixture: true, removedAt: null, name: { startsWith: "ZZ" } }, orderBy: { name: "asc" }, select: { id: true } });
+    test.skip(!school, "no ZZ school");
+    const context = await contextFor(browser, actor!.cookie, { viewport: VIEWPORTS.iphone, theme: "light", locale: "en" }, baseURL!);
+    const page = await context.newPage();
+    const broken = watchMarkup(page);
+    const response = await page.goto(`/root/${school!.id}`, { waitUntil: "networkidle" });
+    expect(response?.status()).toBeLessThan(400);
+    await expect(page.getByTestId("terms-card")).toBeVisible();
+    const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "best-practice"]).analyze();
+    const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
+    expect(serious.map((v) => `${v.id} (${v.impact}): ${v.help} — ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ")}`)).toEqual([]);
+    expect(await smallTargets(page), "interactive elements under 44px").toEqual([]);
+    expect(broken, "invalid nesting or duplicate keys").toEqual([]);
+    await context.close();
+  });
+});
 
 /**
  * Markup React can only report in the console: a link inside a link (/mentoring failed hydration on every render,

@@ -77,7 +77,11 @@ export async function changePersonPlan(ctx: ActiveContext, body: OperatorPersonP
  */
 export async function askConfirmation(t: Translate, plan: PlanCode, active: boolean, answer: { move: PlanMove | null; premium: PlanAskEffect | null }, locale: Locale): Promise<string> {
   const on = await featuresOn();
-  const features = PLAN_FEATURES[plan].filter((f) => on.includes(f)).map((f) => t(FEATURE_META[f].nameKey)).join(", ") || t("plans.noFeatureOn");
+  const named = PLAN_FEATURES[plan].filter((f) => on.includes(f)).map((f) => t(FEATURE_META[f].nameKey));
+  const features = named.join(", ");
+  // None of the plan's features switched on yet: said plainly, nobody losing anything today (the coordinating session's walk
+  // of 22 November 2026; "each student loses no feature switched on yet" did not parse). Where some are on, they are named.
+  const none = named.length === 0;
   const lines: string[] = [];
   const p = answer.premium;
   const billedLines = (key: "plans.askBilled" | "plans.ceaseBilled") => {
@@ -89,10 +93,11 @@ export async function askConfirmation(t: Translate, plan: PlanCode, active: bool
     else lines.push(t("plans.askToldSome", { schools: p.toldSchools, count: p.told }));
   };
   if (active) {
-    if (plan === "EXPERT") lines.push(t("plans.askOthersExpert", { features }));
+    if (plan === "EXPERT") lines.push(none ? t("plans.askOthersExpertNone") : t("plans.askOthersExpert", { features }));
     else if (p) {
       lines.push(t(plan === "STUDENT" ? "plans.askCoveredStudent" : "plans.askCoveredTeacher", { count: p.covered }));
-      lines.push(t(plan === "STUDENT" ? "plans.askOthersStudent" : "plans.askOthersTeacher", { count: p.others, features }));
+      if (none) lines.push(t(plan === "STUDENT" ? "plans.askOthersStudentNone" : "plans.askOthersTeacherNone", { count: p.others }));
+      else lines.push(t(plan === "STUDENT" ? "plans.askOthersStudent" : "plans.askOthersTeacher", { count: p.others, features }));
     }
     if (answer.move) lines.push(t("plans.askHolders", { count: answer.move.holders }));
     billedLines("plans.askBilled");
@@ -103,7 +108,7 @@ export async function askConfirmation(t: Translate, plan: PlanCode, active: bool
       lines.push(t(plan === "STUDENT" ? "plans.askOnSaleStudent" : "plans.askOnSale", prices));
     }
   } else {
-    lines.push(t(plan === "STUDENT" ? "plans.ceaseOpenStudent" : plan === "TEACHER" ? "plans.ceaseOpenTeacher" : "plans.ceaseOpenExpert", { features }));
+    lines.push(none ? t("plans.ceaseOpenNone") : t(plan === "STUDENT" ? "plans.ceaseOpenStudent" : plan === "TEACHER" ? "plans.ceaseOpenTeacher" : "plans.ceaseOpenExpert", { features }));
     lines.push(t("plans.ceaseOffSale"));
     billedLines("plans.ceaseBilled");
   }

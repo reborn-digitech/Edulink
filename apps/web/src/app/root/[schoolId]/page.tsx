@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AddressBookIcon, ArrowLeftIcon, BuildingsIcon, ChartBarIcon, EraserIcon, LifebuoyIcon, PuzzlePieceIcon, ReceiptIcon, ShieldCheckIcon, TagIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
+import { AddressBookIcon, ArrowLeftIcon, BuildingsIcon, ChartBarIcon, EraserIcon, LifebuoyIcon, PuzzlePieceIcon, ShieldCheckIcon, TagIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getSchool, listAdminInvites, listSchoolAdmins } from "@/lib/superuser";
 import { listPlans, schoolUsage } from "@/lib/plans";
 import { PlanPanel } from "./plan-panel";
 import { ContactPanel, SubscriptionPanel } from "./subscription-panel";
+import { TermsCard } from "./terms-card";
 import { listPartners, schoolSubscription } from "@/lib/subscriptions";
 import { SupportPanel } from "./support-panel";
 import { ModulesPanel } from "./modules-panel";
@@ -29,11 +30,14 @@ export async function generateMetadata() {
   return { title: t("root.schoolMeta"), robots: { index: false, follow: false } };
 }
 
-export default async function SchoolPage({ params }: { params: Promise<{ schoolId: string }> }) {
+export default async function SchoolPage({ params, searchParams }: { params: Promise<{ schoolId: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const t = await getT();
   const relativeTime = await getRelativeTime();
   const session = await requireSuperuser();
   const { schoolId } = await params;
+  // A sheet opened from the Schools tab's cells (/root/{id}?sheet=subscription|premium), or Record payment.
+  const asked = (await searchParams).sheet;
+  const sheet = asked === "subscription" || asked === "premium" || asked === "payment" ? asked : null;
 
   const school = await getSchool(session, schoolId);
   if (!school) notFound();
@@ -119,6 +123,21 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
         </CardBody>
       </Card>
 
+      {/* Subscription and premium (decision 0010; §2.3): both parts, the switches, the year, Record payment; the old card's
+          status and dates, for corrections, collapsed inside it. */}
+      {record && (
+        <TermsCard session={session} schoolId={school.id} oldPlan={plans.find((p) => p.id === school.planId) ?? null} modules={modules} sheet={sheet}>
+          <p className="mb-3 text-xs text-fg-muted">
+            {[t("subs.correctionsExplainer"), record.commission ? t("root.commissionLine", { partner: record.commission.partnerName, percent: (record.commission.percentTenths / 10).toLocaleString() }) : t("root.commissionNone")].join(" ")}
+          </p>
+          {/* Keyed on the record as read, so a payment or a correction saved meanwhile starts the form again from it (the reader). */}
+          <SubscriptionPanel
+            key={[record.subscription.status, record.subscription.startsAt, record.subscription.dueAt, record.subscription.invoicedAt, record.subscription.invoiceRef, record.subscription.paidAt, record.subscription.paidRef, record.commission?.partnerId].join("|")}
+            schoolId={school.id}
+            subscription={record.subscription} partnerId={record.commission?.partnerId ?? null} partners={partners.map((p) => ({ id: p.id, name: p.name, percentTenths: p.percentTenths }))} />
+        </TermsCard>
+      )}
+
       <Card>
         <CardHeader
           title={t("root.lookInside")}
@@ -156,21 +175,7 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
         </CardBody>
       </Card>
 
-      {/* The commercial record (2026-10-02): where the subscription stands, the
-          invoice and the payment as dates the operator records, the partner —
-          and who to call. Recorded, never collected. */}
-      {record && (
-        <Card className={record.dueTone === "past" ? "border-danger/50" : record.dueTone === "soon" ? "border-warn/50" : undefined}>
-          <CardHeader
-            icon={<ReceiptIcon weight="duotone" className="size-5" />}
-            title={t("root.subscriptionTitle")}
-            description={[t("root.subscriptionExplainer"), record.commission ? t("root.commissionLine", { partner: record.commission.partnerName, percent: (record.commission.percentTenths / 10).toLocaleString() }) : t("root.commissionNone")].join(" ")}
-          />
-          <CardBody>
-            <SubscriptionPanel schoolId={school.id} subscription={record.subscription} partnerId={record.commission?.partnerId ?? null} partners={partners.map((p) => ({ id: p.id, name: p.name, percentTenths: p.percentTenths }))} />
-          </CardBody>
-        </Card>
-      )}
+      {/* The point of contact (2026-10-02): who to call. The commercial record is the card above. */}
 
       {record && (
         <Card>

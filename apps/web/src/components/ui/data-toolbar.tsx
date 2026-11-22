@@ -47,6 +47,8 @@ export type ToolbarFacet = {
   as?: "chips" | "select";
   /** Parameters that stop meaning anything when this one changes (a state under a country). */
   clears?: string[];
+  /** The facet's name shown before its chips, where a row of chips alone would not say what it filters (the subscription console, C5 point 7). */
+  showLabel?: boolean;
 };
 
 export type ToolbarSort = {
@@ -228,6 +230,11 @@ export function DataToolbar({
       {chipFacets.map((facet) => (
         // The chips wrap: a row that scrolled sideways was cut at "Mentoring one chil…" with no sign of more (the walk of 2026-10-01).
         <div key={facet.key} role="group" aria-label={facet.label} className="-mx-1 flex flex-wrap gap-1.5 px-1 pb-0.5">
+          {facet.showLabel && (
+            <span aria-hidden="true" className="self-center pr-1 text-xs font-semibold text-fg-muted">
+              {facet.label}
+            </span>
+          )}
           {facet.options.map((o) => {
             const on = facet.value === o.value;
             return (

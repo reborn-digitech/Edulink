@@ -128,6 +128,10 @@ async function OperatorLinks() {
       <Button asChild variant="ghost" size="sm">
         <Link href="/root/plans">{t("root.plans")}</Link>
       </Button>
+      {/* premium phase 5 (21 Nov 2026): each school's Shalaghar subscription and premium add-on, and our prices (decision 0010). */}
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/root/subscriptions">{t("subs.nav")}</Link>
+      </Button>
       <Button asChild variant="ghost" size="sm">
         <Link href="/root/partners">{t("root.partners")}</Link>
       </Button>

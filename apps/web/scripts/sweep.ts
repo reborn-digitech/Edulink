@@ -1610,6 +1610,12 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
   await check(riversideTeacher, "/root/features", 307, "⚠ …nor a teacher's");
   await check(riversideAdmin, "/root/features", 307, "⚠ …nor a school office's");
   await check(riversideTeacher, "/account/plan", 200, "a signed-in person reads the plan page");
+  // The subscription console (decision 0010; phase 5): the operator's alone.
+  for (const path of ["/root/subscriptions", "/root/subscriptions/prices"]) {
+    await check(null, path, 307, "the subscription console is nobody's signed out");
+    await check(riversideTeacher, path, 307, "⚠ …nor a teacher's");
+    await check(riversideAdmin, path, 307, "⚠ …nor a school office's");
+  }
 
   // The ZZ operator (zz-fixtures.ts), signed in with no school and no role, the way the operator really is.
   const operator = await db.user.findUnique({ where: { email: "zz.operator@zz.test" }, select: { isSuperuser: true } });
@@ -1619,6 +1625,16 @@ async function paidSurfaces(riversideAdmin: Actor, riversideTeacher: Actor, devS
     const features = await hit(op, "/root/features");
     results.push({ role: op.label, path: "/root/features", status: features.status, expected: 200, ok: features.status === 200 && features.body.includes('data-testid="platform-features"') && features.body.includes('data-testid="person-plans"'), note: "the operator switches the platform's features and sets the plans" });
     await check(op, "/root/sites", 200, "…reads every school website and domain");
+    const schools = await hit(op, "/root/subscriptions");
+    results.push({ role: op.label, path: "/root/subscriptions", status: schools.status, expected: 200, ok: schools.status === 200 && schools.body.includes('data-testid="subscriptions-schools"'), note: "…reads every school's subscription and premium on the Schools tab" });
+    // A school's page with its subscription card, its sheets and Record payment (the review of phase 5, D8): a ZZ fixture's.
+    const zz = await db.school.findFirst({ where: { isTestFixture: true, removedAt: null, name: { startsWith: "ZZ" } }, orderBy: { name: "asc" }, select: { id: true } });
+    if (zz) {
+      const card = await hit(op, `/root/${zz.id}`);
+      results.push({ role: op.label, path: "/root/{zz school}", status: card.status, expected: 200, ok: card.status === 200 && card.body.includes('data-testid="terms-card"'), note: "…and a school's page with its subscription card" });
+    } else skip("a school's page with its subscription card", "no ZZ school (run zz:fixtures)");
+    const prices = await hit(op, "/root/subscriptions/prices");
+    results.push({ role: op.label, path: "/root/subscriptions/prices", status: prices.status, expected: 200, ok: prices.status === 200 && prices.body.includes('data-testid="prices-form"'), note: "…and our prices on the Prices tab" });
     const experts = await hit(op, "/root/experts");
     results.push({ role: op.label, path: "/root/experts", status: experts.status, expected: 200, ok: experts.status === 200 && experts.body.includes('id="expert-applications"'), note: "…and the expert applications above the curation queue" });
   } else {

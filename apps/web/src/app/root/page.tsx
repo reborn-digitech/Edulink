@@ -70,6 +70,8 @@ export default async function RootPage({
     { label: t("root.tileStorage"), value: d.tiles.storageCapMb === null ? `${d.tiles.storageMb.toLocaleString()} MB` : t("root.tileOfCap", { used: `${d.tiles.storageMb.toLocaleString()} MB`, cap: `${d.tiles.storageCapMb.toLocaleString()} MB` }), tone: d.tiles.storageCapMb !== null && d.tiles.storageMb > d.tiles.storageCapMb ? "danger" : undefined },
     { label: t("root.tileJobsOverdue"), value: String(d.tiles.jobsOverdue), tone: d.tiles.jobsOverdue > 0 ? "danger" : "ok" },
     { label: t("root.tileOwed"), value: money(d.tiles.owedThisMonthPaise) },
+    // The year billed at today's prices, last count, as the Schools tab totals it (decision 0010; §2.6): an estimate, recorded only.
+    { label: t("subs.tileBilled"), value: money(d.tiles.billedYearPaise) },
   ];
 
   return (
@@ -252,6 +254,17 @@ function SchoolRow({ row, t, relativeTime, percent }: { row: DashboardRow; t: Tr
               {!row.verifiedAt && (
                 <Badge tone="warn" size="sm">
                   {t("root.stateUnverified")}
+                </Badge>
+              )}
+              {/* Its premium add-on (decision 0010; §2.6). */}
+              {row.premium.students && (
+                <Badge tone="accent" size="sm">
+                  {t("subs.badgeStudents")}
+                </Badge>
+              )}
+              {row.premium.teachers && (
+                <Badge tone="accent" size="sm">
+                  {t("subs.badgeTeachers")}
                 </Badge>
               )}
               {row.pendingAdminInvites > 0 && (

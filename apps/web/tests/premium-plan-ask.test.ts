@@ -26,6 +26,7 @@ import { setActivePlansForTests, setPersonPlan } from "@/lib/person-plans";
 import { setPassSaleForTests } from "@/lib/pass-orders";
 import { premiumAskEffect } from "@/lib/school-terms";
 import { askConfirmation, changePersonPlan } from "@/lib/plan-ask";
+import { setFeaturesForTests } from "@/lib/platform-features";
 import { previewPlanAction, setPlanAction } from "@/app/root/features/actions";
 import { PUT as personPlansPut } from "@/app/api/v1/operator/person-plans/route";
 import { translator } from "@/lib/i18n/dictionary";
@@ -273,8 +274,11 @@ describe("the switch through the door's library (C4 point 4; C4b point 1; C4c po
 });
 
 describe("the confirmation, in the operator's words (C4 point 4; C3a)", () => {
+  // Each case names the features it reads as switched on, so the sentence does not follow this database's switches.
+  afterEach(() => setFeaturesForTests(null));
   it("asking: who keeps and who loses the features, who holds it, the bills and who is told, and that nobody can buy it yet", async () => {
     // Worded from the effect of asking, whatever the row stands at (the sentence is the asking one).
+    setFeaturesForTests(["QUESTION_BANK"]);
     const effect = await premiumAskEffect("STUDENT", true, scope());
     const premium = { covered: effect.covered, others: effect.others, billed: effect.billed.length, noBillYet: effect.billed.filter((s) => s.noBill).length, toldSchools: 3, told: 2 };
     const sentence = await askConfirmation(t, "STUDENT", true, { move: { holders: 0, onSale: false, price: null }, premium }, "en");
@@ -286,8 +290,31 @@ describe("the confirmation, in the operator's words (C4 point 4; C3a)", () => {
     expect(sentence).toContain("Nobody can buy this plan yet: payment is not set up.");
   });
 
+  it("no feature of the plan switched on yet: said plainly, nobody losing anything today, and once one is on it is named (the coordinating session's walk of 22 November 2026)", async () => {
+    const premium = { covered: 1, others: 27, billed: 0, noBillYet: 0, toldSchools: 0, told: 0 };
+    try {
+      setFeaturesForTests([]);
+      const none = await askConfirmation(t, "STUDENT", true, { move: { holders: 1, onSale: false, price: null }, premium }, "en");
+      expect(none).toContain("None of this plan's features is switched on yet, so nobody loses anything today. Once one is switched on, students at every other school (27) will need a plan of their own to use it.");
+      expect(none).not.toContain("loses no feature");
+      const teachers = await askConfirmation(t, "TEACHER", true, { move: { holders: 0, onSale: false, price: null }, premium }, "en");
+      expect(teachers).toContain("Once one is switched on, teachers at every other school (27) will need a plan of their own to use it.");
+      const cease = await askConfirmation(t, "STUDENT", false, { move: { holders: 0, onSale: false, price: null }, premium }, "en");
+      expect(cease).toContain("None of this plan's features is switched on yet, so nothing opens today.");
+      const expert = await askConfirmation(t, "EXPERT", true, { move: { holders: 0, onSale: false, price: null }, premium: null }, "en");
+      expect(expert).toContain("None of this plan's features is switched on yet, so nobody loses anything today. Once one is switched on, an expert will need this plan to use it.");
+      setFeaturesForTests(["QUESTION_BANK"]);
+      const one = await askConfirmation(t, "STUDENT", true, { move: { holders: 1, onSale: false, price: null }, premium }, "en");
+      expect(one).toMatch(/At every other school \(27\), terms set or not, each student loses [^.]+ unless they hold a plan of their own\./);
+      expect(one).not.toContain("None of this plan's features");
+    } finally {
+      setFeaturesForTests(null);
+    }
+  });
+
   it("ceasing: the features open to every student, off sale with a plan held running on, the bills that lose premium; the Expert plan: the lock and the sale alone", async () => {
     setActivePlansForTests(["STUDENT"]);
+    setFeaturesForTests(["QUESTION_BANK", "EXPERT_SESSIONS"]);
     const cease = await askConfirmation(t, "STUDENT", false, { move: { holders: 0, onSale: false, price: null }, premium: { covered: 5, others: 3, billed: 4, noBillYet: 1, toldSchools: 3, told: 2 } }, "en");
     expect(cease).toContain("Its features open to every student wherever they are switched on:");
     expect(cease).toContain("The plan comes off sale; a plan already held runs to its end.");
