@@ -243,7 +243,9 @@ async function tellOffices(session: ActiveContext, schools: { id: string; name: 
             titleVars: { school: school.name },
             bodyKey: "notifBody.schoolTermsChanged",
             bodyVars: { school: school.name },
-            url: reads.has(member.userId) ? "/admin/safety" : "/admin/settings",
+            // At the school's card (#subscription): in the safety centre for the head, who cannot open settings, and in
+            // settings for the office (C4a point 1).
+            url: reads.has(member.userId) ? "/admin/safety#subscription" : "/admin/settings#subscription",
             meta: { event: "school.terms" },
           });
           told += 1;
@@ -649,13 +651,13 @@ export async function officeSubscription(ctx: ActiveContext, now: Date = new Dat
   if (!ctx.schoolId) throw new Error("officeSubscription: no school in the session");
   const [row, offer, asked] = await Promise.all([db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: TERMS_SELECT }), readOffer(), activePlans()]);
   const view = viewOf(row, offer, null, now, asked);
-  // Premium on and its plan not asked for (C3): "No charge for it yet", so no figure, and none of the operator's words.
-  const noChargeYet = view.premiumNotBilled === "PLAN_NOT_ASKED";
   return {
     termsSet: view.termsSet,
     subscriptionFigure: view.termsSet ? view.subscriptionFigure : null,
     // Terms not set: no figure for either part, "not recorded yet" (§2.6), though premium may be on.
-    premium: { students: view.premiumStudents, teachers: view.premiumTeachers, figure: view.termsSet && !noChargeYet ? view.premiumFigure : null, billed: view.premiumBilled, notBilled: view.premiumNotBilled },
+    // A premium price only while premium is on and billed (C2b; the review's C-1): with both switches off the card says the
+    // add-on is not on, with no price; on and its plan not asked for, "No charge for it yet" (C3); terms not set, "not recorded yet".
+    premium: { students: view.premiumStudents, teachers: view.premiumTeachers, figure: view.premiumBilled ? view.premiumFigure : null, billed: view.premiumBilled, notBilled: view.premiumNotBilled },
     freeUntil: view.status === "TRIAL" ? view.renewsOn : null,
     renewsOn: view.renewsOn,
     state: view.state,

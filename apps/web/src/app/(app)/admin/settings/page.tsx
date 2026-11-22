@@ -20,6 +20,7 @@ import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 import { officeUsage } from "@/lib/plans";
 import { UsageCard } from "@/app/root/usage-card";
+import { SubscriptionCard } from "../subscription-card";
 // meta-posting (16 Oct 2026)
 import { ShareNetworkIcon } from "@phosphor-icons/react/ssr";
 // end meta-posting
@@ -135,6 +136,9 @@ export default async function SettingsPage() {
           <UsageCard usage={usage} office />
         </CardBody>
       </Card>
+
+      {/* Your Shalaghar subscription (decision 0010; phase 7): read-only, the office's door's answer in the office's words. */}
+      <SubscriptionCard ctx={ctx} />
 
       <Card>
         <CardHeader

@@ -613,9 +613,10 @@ export const officeSubscriptionSchema = z.object({
   termsSet: z.boolean(),
   subscriptionFigure: partFigureSchema.nullable(),
   /**
-   * The figure is null while the school's terms are not set, as the subscription's is ("not recorded yet", §2.6), and
-   * while premium is on but its plan is not asked for (C3: "Premium add-on: on. No charge for it yet.", none of the
-   * operator's words). `billed` and `notBilled` read as the operator's answer does, the terms first (C3a).
+   * The figure, premium's price a student a year, only while premium is on and billed (C2b; the review's C-1): none while
+   * both switches are off, while the school's terms are not set ("not recorded yet", §2.6), or while premium is on and its
+   * plan is not asked for (C3: "Premium add-on: on. No charge for it yet.", none of the operator's words). `billed` and
+   * `notBilled` read as the operator's answer does, the terms first (C3a).
    */
   premium: z.object({ students: z.boolean(), teachers: z.boolean(), figure: partFigureSchema.nullable(), billed: z.boolean(), notBilled: z.enum(PREMIUM_NOT_BILLED).nullable() }),
   freeUntil: dayKey.nullable(),

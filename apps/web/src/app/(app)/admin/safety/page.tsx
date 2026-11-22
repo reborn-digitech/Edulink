@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BuildingsIcon, ShieldCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
+import { SubscriptionCard } from "../subscription-card";
 import { getSession } from "@/lib/session";
 import { listReports, listAudit, openReportCount } from "@/lib/safety";
 import { EmptyState } from "@/components/ui/states";
@@ -109,6 +110,9 @@ export default async function SafetyPage({
           </CardBody>
         </Card>
       )}
+
+      {/* Your Shalaghar subscription (decision 0010; phase 7): here for the head, who cannot open settings, and the office. */}
+      <SubscriptionCard ctx={session} />
 
       <nav className="flex gap-1 rounded-[var(--radius-md)] bg-surface-muted p-1" aria-label={tr("safety.section")}>
         {TABS.map((t) => (
