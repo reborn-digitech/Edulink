@@ -150,6 +150,11 @@ jobs:
         working-directory: apps/web
         # TA-514: a warning fails the job, as the commits' own --max-warnings 0 claims (0 warnings on 14 Nov 2026).
         run: npx eslint . --max-warnings 0
+      - name: zsh, for the bank snapshot's tests
+        # apps/web/scripts/bank-snapshot.sh is a zsh script; under CI its cases fail without zsh.
+        run: |
+          command -v zsh >/dev/null || { sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends zsh; }
+          zsh --version
       - name: Unit and integration suite
         working-directory: apps/web
         # The storage suite proves a traversal id can never reach the repo's

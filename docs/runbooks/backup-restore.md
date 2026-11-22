@@ -67,9 +67,13 @@ rebuildable came back from the scripts in two hours; the rest (hand-entered data
   `restore_command = 'cp /Users/chinmaykulkarni/Documents/Relay/apps/web/storage/pitr/wal/%f %p'` and
   `recovery_target_time = '<moment>'` to its `postgresql.conf`, touch `recovery.signal`, start.
 - **The order and the check (TA-521)**: the morning task runs `npm run db:backup` first and alone, before
-  `npm run bank:snapshot` and its push to the two remotes, so a refused push can never stop the dump; then
-  `node scripts/db-backup-age.mjs` (from `apps/web`), which reads the off-machine folder and exits 1, naming the
-  file, when the newest dump is older than 26 hours or the newest base backup older than eight days. Its lines go
+  `npm run bank:snapshot` and its push to the two remotes, so a refused push can never stop the dump; the snapshot
+  takes the top-level chapter batch files of `apps/web/content/quiz/generated` alone, leaving out `runs/` (the run
+  logs) and `held/`, refuses, exit 1 with a last line starting `bank snapshot:`, when the bank fails
+  `npm run quiz:verify`, when the checkout is not on master or when master is not both remotes', and reports a
+  failed push instead of reporting success; then `node scripts/db-backup-age.mjs` (from `apps/web`), which reads the
+  off-machine folder and exits 1, naming the file, when the newest dump is older than 26 hours or the newest base
+  backup older than eight days. Its lines go
   into the morning report; a red line there means the backups have stopped, whatever else the task did. The task
   itself lives outside the repository (the desktop app's scheduled tasks) and runs only while the laptop is awake
   and the app open, which is why the age is asked and not assumed; a launchd agent or the crontab running
