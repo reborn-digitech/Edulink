@@ -28,5 +28,5 @@ storage-variants/
 # the API sweep's not-found list (TA-512, --report-not-found=<file>), one run's output
 api-sweep-not-found*.json
 
-# the quiz generator's run logs are kept out of this public repository (the owner's decision of 22 November 2026). Logs tracked before that day stay tracked; this line does not untrack them.
+# the quiz generator's run logs are not tracked (the owner's decisions of 22 and 26 November 2026); a case in tests/ta-ops-ci-dr-backups.test.ts holds that none is.
 /content/quiz/generated/runs/

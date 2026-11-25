@@ -237,9 +237,9 @@ function hermetic(dir: string): NodeJS.ProcessEnv {
 type SnapshotRun = { status: number | null; stdout: string; stderr: string; last: string };
 
 /**
- * A throwaway repository as the real checkout stands for the snapshot: the real script, a stub quiz:verify, the run logs'
- * ignore line with two logs tracked from before it, two tracked files under held/, four top-level
- * batch files, and two bare remotes, reborn and origin, at its master. Each case makes its own and removes it.
+ * A throwaway repository for the snapshot: the real script, a stub quiz:verify, the run logs' ignore line with two logs
+ * tracked in spite of it (to hold that the snapshot leaves tracked logs alone), two tracked files under held/, four
+ * top-level batch files, and two bare remotes, reborn and origin, at its master. Each case makes its own and removes it.
  */
 function snapshotRepo() {
   const dir = scratch("zz-ta441-");
@@ -1151,6 +1151,13 @@ describe("TA-441: the bank snapshot commits the top-level batch files and nothin
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
+  });
+
+  it("(s) no run log is tracked: git ls-files under apps/web/content/quiz/generated/runs lists nothing", () => {
+    const env: NodeJS.ProcessEnv = { ...process.env };
+    for (const key of Object.keys(env)) if (key.startsWith("GIT_")) delete env[key];
+    const tracked = execFileSync("git", ["ls-files", "-z", "--", "apps/web/content/quiz/generated/runs"], { cwd: repo, encoding: "utf8", env }).split("\0").filter(Boolean);
+    expect(tracked.length, `${tracked.length} tracked`).toBe(0);
   });
 });
 
