@@ -14,7 +14,7 @@
  */
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient, type Prisma } from "@prisma/client";
-import { OFFER_START, PRICE_MAX_PAISE, bulkBodySchema, paysPaise, renewalFrom, type FreeMonths } from "@edulink/contracts";
+import { OFFER_START, PRICE_MAX_PAISE, bulkBodySchema, paysPaise, renewalFrom, type FreeMonths, type SubscriptionStatus } from "@edulink/contracts";
 import { createSession, getSession, type ActiveContext } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { listSubscriptions, readOffer, readSchoolTerms, setSchoolTerms, bulkTerms, updateOffer } from "@/lib/school-terms";
@@ -29,6 +29,7 @@ import { GET as listGet } from "@/app/api/v1/operator/subscriptions/route";
 import { POST as bulkPost } from "@/app/api/v1/operator/subscriptions/bulk/route";
 import { GET as termsGet, PUT as termsPut } from "@/app/api/v1/operator/schools/[schoolId]/terms/route";
 import { POST as paymentPost } from "@/app/api/v1/operator/schools/[schoolId]/payment/route";
+import { POST as subscriptionPost } from "@/app/api/v1/operator/schools/[schoolId]/subscription/route";
 import { GET as officeGet } from "@/app/api/v1/office/subscription/route";
 import { holdOfferLock, removeLeftOffer, triedAndRolledBack } from "./suite-offer";
 
@@ -81,7 +82,7 @@ async function blockedBy(pid: number): Promise<void> {
   throw new Error(`nothing waited behind backend ${pid} within five seconds`);
 }
 
-const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "", race: "", bulk: "" };
+const ids = { operator: "", teacher: "", follow: "", discount: "", ownPrice: "", notSet: "", college: "", paused: "", trial: "", due: "", receipted: "", again: "", clock: "", gone: "", zone: "", window: "", pStudents: "", pTeachers: "", pBoth: "", pNotSet: "", pCollege: "", race: "", bulk: "", stale: "" };
 const office: Record<string, string[]> = {};
 /** The suite's own schools: our offer's moves and notices are kept to them (updateOffer's scope), never the database's. */
 const scope = () => ({ schoolIds: Object.values(ids).filter((id, i) => i >= 2 && id) });
@@ -150,6 +151,8 @@ beforeAll(async () => {
   ids.race = await school("Race", { subscriptionStatus: "TRIAL", subscriptionStartsAt: at(day(-10)), subscriptionDueAt: at(day(-1)) });
   // B-2: terms not set, every part ours, for the bulk "our prices" that sets them the first time.
   ids.bulk = await school("Bulk", { subscriptionStatus: "ACTIVE", subscriptionStartsAt: at(day(-300)), subscriptionDueAt: at(day(65)) });
+  // A correction drawn before a payment and sent after it: an unpaid trial that no other case pays.
+  ids.stale = await school("Stale", { subscriptionStatus: "TRIAL", subscriptionStartsAt: at(day(-10)), subscriptionDueAt: at(day(170)) });
   ids.teacher = (await db.user.create({ data: { name: `${PREFIX} Teacher`, email: `zz-premium-teacher-${STAMP}@test.invalid` }, select: { id: true } })).id;
   await db.membership.create({ data: { userId: ids.teacher, schoolId: ids.follow, role: "TEACHER", status: "ACTIVE" } });
 });
@@ -174,6 +177,13 @@ afterAll(async () => {
 
 const expectFrom = (t: { termsSetAt: string | null; premiumStudents: boolean; premiumTeachers: boolean; subscription: unknown; premium: unknown; note: string | null }) =>
   ({ termsSetAt: t.termsSetAt, premiumStudents: t.premiumStudents, premiumTeachers: t.premiumTeachers, subscription: t.subscription, premium: t.premium, note: t.note }) as never;
+
+/** A school's standing as a corrections form reads it, the corrections body's expect: the status, the start, the renewal and the paid day. */
+async function standingOf(id: string): Promise<{ status: SubscriptionStatus | null; startsAt: string | null; dueAt: string | null; paidAt: string | null }> {
+  const row = await db.school.findUniqueOrThrow({ where: { id }, select: { subscriptionStatus: true, subscriptionStartsAt: true, subscriptionDueAt: true, subscriptionPaidAt: true } });
+  const dayOf = (value: Date | null) => value?.toISOString().slice(0, 10) ?? null;
+  return { status: row.subscriptionStatus as SubscriptionStatus | null, startsAt: dayOf(row.subscriptionStartsAt), dueAt: dayOf(row.subscriptionDueAt), paidAt: dayOf(row.subscriptionPaidAt) };
+}
 
 describe("the doors are the operator's, and the office's card its own", () => {
   it("a teacher meets no door of the operator's; signed out, none", async () => {
@@ -681,7 +691,10 @@ describe("a correction sent while a payment is recorded (the review's B-1)", () 
       await held;
     }, { timeout: 20_000 });
     const pid = await Promise.race([holder, payment.then(() => -1)]);
-    const correcting = setSubscription(ctx, ids.race, { status: "DUE", reason: "ZZ correction meeting a payment" }, noon);
+    // The standing as the form read it, the payment held and not yet committed: the unpaid trial, so the correction passes
+    // the standing's check and the case still turns on the write's own compare-and-set.
+    const drawn = await standingOf(ids.race);
+    const correcting = setSubscription(ctx, ids.race, { status: "DUE", reason: "ZZ correction meeting a payment", expect: drawn }, noon);
     await blockedBy(pid);
     release();
     await payment;
@@ -689,6 +702,41 @@ describe("a correction sent while a payment is recorded (the review's B-1)", () 
     expect(await db.school.findUniqueOrThrow({ where: { id: ids.race }, select: { subscriptionStatus: true, subscriptionDueAt: true, subscriptionPaidAt: true } })).toEqual(paid);
     // Nothing of the refused correction is in either log.
     expect(await db.auditLog.count({ where: { action: "superuser.school.subscription", targetId: ids.race } })).toBe(0);
+  });
+});
+
+describe("a correction carries the standing its form was drawn from", () => {
+  const rows = () => db.auditLog.count({ where: { action: "superuser.school.subscription", targetId: ids.stale } });
+  it("drawn before a payment and sent after it, it is refused by name: the renewal stays a year on, and the log holds the payment's two rows alone", async () => {
+    const ctx = await as("OPERATOR");
+    const drawn = await standingOf(ids.stale);
+    expect(drawn).toEqual({ status: "TRIAL", startsAt: day(-10), dueAt: day(170), paidAt: null });
+    const paid = await recordPayment(ctx, ids.stale, { fromStatus: "TRIAL", fromDueAt: day(170), paidOn: day(0), amountPaise: 1, acceptDifference: true });
+    expect(paid).toMatchObject({ preview: false, renewalAfter: renewalFrom(day(170), 12), statusAfter: "ACTIVE" });
+    // A payment writes two rows under the same action, the operator's and the school's, both naming the school.
+    expect(await rows()).toBe(2);
+    expect(await setSubscription(ctx, ids.stale, { dueAt: day(60), reason: "ZZ a correction drawn before the payment", expect: drawn })).toEqual({ ok: false, errorKey: "root.subscriptionChangedMeanwhile" });
+    expect(await standingOf(ids.stale)).toEqual({ status: "ACTIVE", startsAt: day(-10), dueAt: renewalFrom(day(170), 12), paidAt: day(0) });
+    expect(await rows()).toBe(2);
+  });
+  it("against the standing read afresh, an earlier renewal is the operator's own change, and is written", async () => {
+    const ctx = await as("OPERATOR");
+    const fresh = await standingOf(ids.stale);
+    const earlier = addDaysToKey(fresh.dueAt!, -30);
+    expect(await setSubscription(ctx, ids.stale, { dueAt: earlier, reason: "ZZ a correction against the record as it stands", expect: fresh })).toEqual({ ok: true });
+    expect((await standingOf(ids.stale)).dueAt).toBe(earlier);
+  });
+  it("the door refuses a body with no standing as invalid, naming the field, and writes nothing", async () => {
+    await as("OPERATOR");
+    const before = await standingOf(ids.stale);
+    const logged = await rows();
+    const res = await subscriptionPost(send("POST", `/operator/schools/${ids.stale}/subscription`, { dueAt: day(45), reason: "ZZ a body with no standing" }), params(ids.stale));
+    expect(res.status).toBe(422);
+    const answer = (await res.json()) as { code: string; issues?: Record<string, string> };
+    expect(answer.code).toBe("BAD_REQUEST");
+    expect(Object.keys(answer.issues ?? {})).toContain("expect");
+    expect(await standingOf(ids.stale)).toEqual(before);
+    expect(await rows()).toBe(logged);
   });
 });
 
@@ -705,10 +753,10 @@ describe("an unpaid school's status corrected with its renewal (rule 5, the coor
   it("TRIAL to DUE only when the renewal as it will stand is today or before, the date and the status in one audited write", async () => {
     const ctx = await as("OPERATOR");
     // The renewal twenty days on: DUE alone is refused, as tests/subscriptions.test.ts:187 holds; so is a renewal tomorrow.
-    expect(await setSubscription(ctx, ids.trial, { status: "DUE", reason }, noon)).toEqual(refused);
-    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(1), reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.trial, { status: "DUE", reason, expect: await standingOf(ids.trial) }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(1), reason, expect: await standingOf(ids.trial) }, noon)).toEqual(refused);
     expect(await standing(ids.trial)).toEqual({ status: "TRIAL", due: day(20) });
-    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(0), reason }, noon)).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.trial, { status: "DUE", dueAt: day(0), reason, expect: await standingOf(ids.trial) }, noon)).toEqual({ ok: true });
     expect(await standing(ids.trial)).toEqual({ status: "DUE", due: day(0) });
     const rows = await db.auditLog.findMany({ where: { action: "superuser.school.subscription", targetId: ids.trial }, select: { schoolId: true, meta: true } });
     expect(rows.map((r) => r.schoolId).sort()).toEqual([ids.trial, null].sort());
@@ -716,18 +764,18 @@ describe("an unpaid school's status corrected with its renewal (rule 5, the coor
   });
   it("DUE to TRIAL only when the renewal as it will stand is after today", async () => {
     const ctx = await as("OPERATOR");
-    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", reason }, noon)).toEqual(refused);
-    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(0), reason }, noon)).toEqual(refused);
-    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(90), reason }, noon)).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", reason, expect: await standingOf(ids.due) }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(0), reason, expect: await standingOf(ids.due) }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.due, { status: "TRIAL", dueAt: day(90), reason, expect: await standingOf(ids.due) }, noon)).toEqual({ ok: true });
     expect(await standing(ids.due)).toEqual({ status: "TRIAL", due: day(90) });
   });
   it("once a payment is recorded the list alone rules: neither move, nor one in the write that records a payment", async () => {
     const ctx = await as("OPERATOR");
-    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), reason }, noon)).toEqual(refused);
-    expect(await setSubscription(ctx, ids.again, { status: "DUE", dueAt: day(0), reason }, noon)).toEqual(refused);
-    expect(await setSubscription(ctx, ids.due, { status: "DUE", dueAt: day(0), paidAt: day(0), reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), reason, expect: await standingOf(ids.receipted) }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.again, { status: "DUE", dueAt: day(0), reason, expect: await standingOf(ids.again) }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.due, { status: "DUE", dueAt: day(0), paidAt: day(0), reason, expect: await standingOf(ids.due) }, noon)).toEqual(refused);
     // C1a: nor one in the write that clears a payment; taking a payment back is its own act.
-    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), paidAt: null, reason }, noon)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.receipted, { status: "TRIAL", dueAt: day(90), paidAt: null, reason, expect: await standingOf(ids.receipted) }, noon)).toEqual(refused);
     expect([await standing(ids.receipted), await standing(ids.again), await standing(ids.due)]).toEqual([
       { status: "DUE", due: day(-5) },
       { status: "TRIAL", due: day(30) },
@@ -736,30 +784,30 @@ describe("an unpaid school's status corrected with its renewal (rule 5, the coor
   });
   it("today is the day the function is given, and a renewal on the start day is owed from the first day (C1a)", async () => {
     const ctx = await as("OPERATOR");
-    expect(await setSubscription(ctx, ids.clock, { status: "DUE", reason }, at(day(19)))).toEqual(refused);
-    expect(await setSubscription(ctx, ids.clock, { status: "DUE", reason }, at(day(20)))).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.clock, { status: "DUE", reason, expect: await standingOf(ids.clock) }, at(day(19)))).toEqual(refused);
+    expect(await setSubscription(ctx, ids.clock, { status: "DUE", reason, expect: await standingOf(ids.clock) }, at(day(20)))).toEqual({ ok: true });
     expect(await standing(ids.clock)).toEqual({ status: "DUE", due: day(20) });
     // A start and a renewal on the same day ahead: owed from that first day, so it stays DUE.
-    expect(await setSubscription(ctx, ids.clock, { status: "TRIAL", startsAt: day(30), dueAt: day(30), reason })).toEqual(refused);
+    expect(await setSubscription(ctx, ids.clock, { status: "TRIAL", startsAt: day(30), dueAt: day(30), reason, expect: await standingOf(ids.clock) })).toEqual(refused);
   });
   it("a date changed with no status moves no status", async () => {
     const ctx = await as("OPERATOR");
-    expect(await setSubscription(ctx, ids.due, { dueAt: day(-1), reason })).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.due, { dueAt: day(-1), reason, expect: await standingOf(ids.due) })).toEqual({ ok: true });
     expect(await standing(ids.due)).toEqual({ status: "TRIAL", due: day(-1) });
   });
   it("the day is the school's own (C1b): at 02:00 on 22 November in Kolkata, still the 21st in UTC, a renewal of the 22nd is reached", async () => {
     const ctx = await as("OPERATOR");
     const lateOn21st = new Date("2026-11-21T18:00:00.000Z"); // 23:30 on the 21st in Kolkata
     const earlyOn22nd = new Date("2026-11-21T20:30:00.000Z"); // 02:00 on the 22nd in Kolkata, the 21st in UTC
-    expect(await setSubscription(ctx, ids.zone, { dueAt: "2026-11-22", reason }, lateOn21st)).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.zone, { dueAt: "2026-11-22", reason, expect: await standingOf(ids.zone) }, lateOn21st)).toEqual({ ok: true });
     const badge = async (now: Date) => {
       const terms = await readSchoolTerms(ctx, ids.zone, now);
       if ("ok" in terms) throw new Error(terms.errorKey);
       return terms.state;
     };
     expect([await badge(lateOn21st), await badge(earlyOn22nd)]).toEqual(["FREE", "FREE_ENDED"]);
-    expect(await setSubscription(ctx, ids.zone, { status: "DUE", reason }, lateOn21st)).toEqual(refused);
-    expect(await setSubscription(ctx, ids.zone, { status: "DUE", reason }, earlyOn22nd)).toEqual({ ok: true });
+    expect(await setSubscription(ctx, ids.zone, { status: "DUE", reason, expect: await standingOf(ids.zone) }, lateOn21st)).toEqual(refused);
+    expect(await setSubscription(ctx, ids.zone, { status: "DUE", reason, expect: await standingOf(ids.zone) }, earlyOn22nd)).toEqual({ ok: true });
     expect(await standing(ids.zone)).toEqual({ status: "DUE", due: "2026-11-22" });
     expect(await badge(earlyOn22nd)).toBe("DUE_SINCE");
   });

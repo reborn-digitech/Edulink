@@ -243,7 +243,10 @@ describe.sequential("TA-172: guided onboarding numbers a name already taken", ()
 describe.sequential("TA-593: a day not on the calendar is refused by name", () => {
   it("TA-593: a subscription due on 2026-13-01 is refused and nothing is written", async () => {
     const id = await school("Subscription Day");
-    await expect(setSubscription(operator, id, { dueAt: "2026-13-01", reason: "ZZ typing slip" })).resolves.toEqual({ ok: false, errorKey: "root.subscriptionDayNotReal" });
+    // The standing as a form reads it on a school made with no subscription: nothing recorded.
+    const row = await db.school.findUniqueOrThrow({ where: { id }, select: { subscriptionStatus: true, subscriptionStartsAt: true, subscriptionDueAt: true, subscriptionPaidAt: true } });
+    expect(row).toEqual({ subscriptionStatus: null, subscriptionStartsAt: null, subscriptionDueAt: null, subscriptionPaidAt: null });
+    await expect(setSubscription(operator, id, { dueAt: "2026-13-01", reason: "ZZ typing slip", expect: { status: null, startsAt: null, dueAt: null, paidAt: null } })).resolves.toEqual({ ok: false, errorKey: "root.subscriptionDayNotReal" });
     expect((await db.school.findUniqueOrThrow({ where: { id }, select: { subscriptionDueAt: true } })).subscriptionDueAt).toBeNull();
   });
 

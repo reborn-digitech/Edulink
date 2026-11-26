@@ -206,10 +206,12 @@ class SubscriptionChangedMeanwhile extends Error {}
  * must exist. Audited twice with the reason — the operator's own row, and
  * one in the school's Safety Centre that names the status and the due date
  * and not the invoice references, which are the operator's bookkeeping.
- * Compared and set on the standing as read (status, start, renewal, paid-at;
- * the review of 21 November 2026, B-1): a payment or another correction
- * committed since the read is never written over, and C1's "nothing recorded
- * as paid" holds of the row as written; the miss is refused by name.
+ * Judged against the standing its form was drawn from (the body's expect:
+ * status, start, renewal, paid-at), so a form drawn before a payment or
+ * another correction and saved after it is refused by name; and compared and
+ * set on the standing as read (the review of 21 November 2026, B-1), so one
+ * committed between this read and this write is never written over, and C1's
+ * "nothing recorded as paid" holds of the row as written.
  */
 export async function setSubscription(session: ActiveContext, schoolId: string, input: OperatorSubscriptionBody, now: Date = new Date()): Promise<{ ok: true } | Refusal> {
   assertSuperuser(session);
@@ -220,6 +222,11 @@ export async function setSubscription(session: ActiveContext, schoolId: string, 
   if (!reason) return { ok: false, errorKey: "root.subscriptionReasonRequired" };
 
   const current = isSubscriptionStatus(school.subscriptionStatus) ? school.subscriptionStatus : null;
+  // The standing the form was drawn from, against the record as read: the status as the record reads it (a value not on
+  // the list reads as none), the days as days. A form drawn before a payment or another correction is refused here, with
+  // nothing written; the write below still compares and sets on this read.
+  const drawn = input.expect;
+  if (drawn.status !== current || drawn.startsAt !== dateToDay(school.subscriptionStartsAt) || drawn.dueAt !== dateToDay(school.subscriptionDueAt) || drawn.paidAt !== dateToDay(school.subscriptionPaidAt)) return { ok: false, errorKey: "root.subscriptionChangedMeanwhile" };
   const data: Record<string, unknown> = {};
   const changes: Record<string, unknown> = {};
 

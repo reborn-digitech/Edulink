@@ -26,7 +26,7 @@ import { assignPlan, createPlan, deletePlan, updatePlan, type PlanInput } from "
 import { createPartner, lookForOnboarded, onboardSchool, previewOnboarding, setContact, setSubscription, updatePartner, type OnboardingField } from "@/lib/subscriptions";
 import { onboardSentence } from "@/lib/terms-sentences";
 import { consoleFmt } from "./subscriptions/fmt";
-import { operatorOnboardBodySchema, type OperatorContactBody, type OperatorOnboardBody, type OperatorPartnerBody, type OperatorPartnerUpdateBody, type OperatorSubscriptionBody } from "@edulink/contracts";
+import { operatorOnboardBodySchema, operatorSubscriptionBodySchema, type OperatorContactBody, type OperatorOnboardBody, type OperatorPartnerBody, type OperatorPartnerUpdateBody } from "@edulink/contracts";
 
 /**
  * Operator actions.
@@ -37,7 +37,8 @@ import { operatorOnboardBodySchema, type OperatorContactBody, type OperatorOnboa
  * exists in a layout is a gate on the furniture.
  */
 
-type Result = { ok: boolean; error?: string; schoolId?: string; code?: string };
+/** An answer; `stale` marks a correction refused because the record changed since its form was drawn, so the page draws itself again. */
+type Result = { ok: boolean; error?: string; schoolId?: string; code?: string; stale?: true };
 
 async function failure(error: unknown): Promise<Result> {
   if (error instanceof AccessError)
@@ -338,12 +339,26 @@ export async function signOutAdminAction(schoolId: string, userId: string): Prom
 /* The dashboard: subscriptions, contacts, partners, onboarding (2026-10-02)   */
 /* -------------------------------------------------------------------------- */
 
-export async function setSubscriptionAction(schoolId: string, input: OperatorSubscriptionBody): Promise<Result> {
+/** The sentence for a correction's body the contract refuses: a missing reason, a status not on the list, else the form's. */
+function subscriptionIssue(issues: { path: PropertyKey[] }[]): TranslationKey {
+  if (issues.some((issue) => issue.path[0] === "reason")) return "root.subscriptionReasonRequired";
+  if (issues.some((issue) => issue.path[0] === "status")) return "root.subscriptionMoveRefused";
+  return "common.checkTheForm";
+}
+
+/**
+ * A correction of the subscription record from the school's page. The input is parsed with the door's contract before the
+ * library is called, as a server action is a public POST; a body the contract refuses is answered with a sentence, never an
+ * issue list. A correction refused because the record changed since its form was drawn is marked `stale`.
+ */
+export async function setSubscriptionAction(schoolId: string, input: unknown): Promise<Result> {
   try {
     const session = await requireApiUser();
     assertSuperuser(session);
-    const result = await setSubscription(session, schoolId, input);
-    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    const parsed = operatorSubscriptionBodySchema.safeParse(input);
+    if (!parsed.success) return { ok: false, error: (await getT())(subscriptionIssue(parsed.error.issues)) };
+    const result = await setSubscription(session, schoolId, parsed.data);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey), ...(result.errorKey === "root.subscriptionChangedMeanwhile" ? { stale: true as const } : {}) };
     revalidatePath("/root");
     revalidatePath(`/root/${schoolId}`);
     revalidatePath("/root/partners");

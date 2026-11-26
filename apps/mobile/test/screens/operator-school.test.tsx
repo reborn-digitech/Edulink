@@ -417,7 +417,7 @@ describe("help for the office, the plan and the usage (2026-10-01)", () => {
     expect(screen.getByText("The school can read this reason.")).toBeTruthy();
     await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "the renewal was the 1st");
     await fireEvent.press(save);
-    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ status: "DUE", dueAt: "2026-10-01", reason: "the renewal was the 1st" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ status: "DUE", dueAt: "2026-10-01", reason: "the renewal was the 1st", expect: { status: "TRIAL", startsAt: "2026-09-14", dueAt: "2026-10-14", paidAt: null } }));
     expect(await screen.findByText("Subscription saved")).toBeTruthy();
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/operator/schools/s1").length).toBe(2));
 
@@ -842,6 +842,102 @@ describe("help for the office, the plan and the usage (2026-10-01)", () => {
     expect(screen.queryByText(/may have been saved/)).toBeNull();
   });
 
+  /** The page's pull to refresh, as a person pulls it: the Screen's RefreshControl. */
+  const pull = async () => {
+    const refreshOf = (node: unknown): (() => void) | null => {
+      const n = node as { props?: Record<string, unknown>; children?: unknown[] } | null;
+      if (!n || typeof n !== "object") return null;
+      const control = n.props?.refreshControl as { props?: { onRefresh?: unknown } } | undefined;
+      if (typeof control?.props?.onRefresh === "function") return control.props.onRefresh as () => void;
+      for (const child of n.children ?? []) {
+        const found = refreshOf(child);
+        if (found) return found;
+      }
+      return null;
+    };
+    await act(async () => {
+      refreshOf(screen.toJSON())!();
+    });
+  };
+
+  it("the corrections card read again after a payment on the web: a save sends only what was typed, with the standing as read again", async () => {
+    // Paid, renewing on 1 December; then a payment recorded on the web moves the renewal a year on.
+    const FIRST = { ...DETAIL, subscription: { ...DETAIL.subscription, status: "ACTIVE" as const, dueAt: "2026-12-01", daysToDue: 5, paidAt: "2025-12-01", paidRef: "UTR-0" } };
+    const PAID = { ...FIRST, subscription: { ...FIRST.subscription, dueAt: "2027-12-01", daysToDue: 370, paidAt: "2026-11-26", paidRef: "UTR-1" } };
+    let current = FIRST;
+    const { calls } = await mount({ "GET /api/v1/operator/schools/s1": () => json(current), "POST /api/v1/operator/schools/s1/subscription": () => json({ ok: true }) });
+    await screen.findByText("ZZ Northgate");
+    expect(screen.getByLabelText("Due on").props.value).toBe("2026-12-01");
+    current = PAID;
+    await pull();
+    // The card's own line reads the record as read again.
+    expect(await screen.findByText("Paid on 26/11/2026, reference UTR-1. A payment is changed only by recording one.")).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText("Invoice reference"), "ZZ-INV-9");
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "the invoice went out");
+    await fireEvent.press(screen.getByRole("button", { name: "Save subscription" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ invoiceRef: "ZZ-INV-9", reason: "the invoice went out", expect: { status: "ACTIVE", startsAt: "2026-09-14", dueAt: "2027-12-01", paidAt: "2026-11-26" } }));
+  });
+
+  it("the corrections card refused as changed meanwhile: the school is read again, the card starts from it, and the refusal stays said beside it", async () => {
+    const STALE = "This school's subscription was changed while this was open. Look at it again, then save.";
+    const PAID = { ...DETAIL, subscription: { ...DETAIL.subscription, status: "ACTIVE" as const, dueAt: "2027-10-14", daysToDue: 322, paidAt: "2026-11-26", paidRef: "UTR-2" } };
+    let current = DETAIL;
+    await mount({
+      "GET /api/v1/operator/schools/s1": () => json(current),
+      // The door answers a refusal as 422 with its sentence alone; the payment that moved the record had landed meanwhile.
+      "POST /api/v1/operator/schools/s1/subscription": () => {
+        current = PAID;
+        return json({ error: STALE, code: "BAD_REQUEST" }, 422);
+      },
+    });
+    await screen.findByText("ZZ Northgate");
+    await fireEvent.changeText(screen.getByLabelText("Due on"), "2026-10-01");
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "the renewal was the 1st");
+    await fireEvent.press(screen.getByRole("button", { name: "Save subscription" }));
+    // Read again, the card starts from the record as it now stands, with nothing typed.
+    await waitFor(() => expect(screen.getByLabelText("Due on").props.value).toBe("2027-10-14"));
+    expect(screen.getByLabelText("Reason for the change").props.value).toBe("");
+    expect(screen.getByText(STALE)).toBeTruthy();
+  });
+
+  it("the corrections card whose save meets a server error, not a refusal: the school is read again, the card starts from it, and the sentence stays", async () => {
+    const ERROR = "ZZ the server met an error.";
+    const PAID = { ...DETAIL, subscription: { ...DETAIL.subscription, status: "ACTIVE" as const, dueAt: "2027-10-14", daysToDue: 322, paidAt: "2026-11-26", paidRef: "UTR-3" } };
+    let current = DETAIL;
+    await mount({
+      "GET /api/v1/operator/schools/s1": () => json(current),
+      // Not a 422: the server answered 500, and the record had moved meanwhile.
+      "POST /api/v1/operator/schools/s1/subscription": () => {
+        current = PAID;
+        return json({ error: ERROR, code: "SERVER" }, 500);
+      },
+    });
+    await screen.findByText("ZZ Northgate");
+    await fireEvent.changeText(screen.getByLabelText("Due on"), "2026-10-01");
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "the renewal was the 1st");
+    await fireEvent.press(screen.getByRole("button", { name: "Save subscription" }));
+    await waitFor(() => expect(screen.getByLabelText("Due on").props.value).toBe("2027-10-14"));
+    expect(screen.getByLabelText("Reason for the change").props.value).toBe("");
+    expect(screen.getByText(ERROR)).toBeTruthy();
+  });
+
+  it("the corrections card: a reason alone, with no field changed, does not enable Save", async () => {
+    await mount({ "POST /api/v1/operator/schools/s1/subscription": () => json({ ok: true }) });
+    await screen.findByText("ZZ Northgate");
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "nothing to change");
+    expect(screen.getByRole("button", { name: "Save subscription" })).toBeDisabled();
+  });
+
+  it("the corrections card at a school with no start and nothing paid: its standing goes with nulls", async () => {
+    const BARE = { ...DETAIL, subscription: { ...DETAIL.subscription, startsAt: null } };
+    const { calls } = await mount({ "GET /api/v1/operator/schools/s1": () => json(BARE), "POST /api/v1/operator/schools/s1/subscription": () => json({ ok: true }) });
+    await screen.findByText("ZZ Northgate");
+    await fireEvent.changeText(screen.getByLabelText("Invoice reference"), "INV-3");
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "invoiced");
+    await fireEvent.press(screen.getByRole("button", { name: "Save subscription" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ invoiceRef: "INV-3", reason: "invoiced", expect: { status: "TRIAL", startsAt: null, dueAt: "2026-10-14", paidAt: null } }));
+  });
+
   it("the corrections card, E9: a day that is not on the calendar holds the button, as one not in the form does", async () => {
     await mount({ "POST /api/v1/operator/schools/s1/subscription": () => json({ ok: true }) });
     await screen.findByText("ZZ Northgate");
@@ -861,7 +957,7 @@ describe("help for the office, the plan and the usage (2026-10-01)", () => {
     await fireEvent.changeText(screen.getByLabelText("Due on"), "2026-10-14");
     await fireEvent.press(await screen.findByRole("radio", { name: "ZZ Other · 5%" }));
     await fireEvent.press(screen.getByRole("button", { name: "Save subscription" }));
-    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ commissionPartnerId: "cp2", reason: "moved" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ commissionPartnerId: "cp2", reason: "moved", expect: { status: "TRIAL", startsAt: "2026-09-14", dueAt: "2026-10-14", paidAt: null } }));
   });
 
   it("the point of contact: the fields hold what is recorded, the button waits for a change, and a save reads the page again", async () => {

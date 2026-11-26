@@ -43299,7 +43299,7 @@
     },
     "/api/v1/operator/schools/{schoolId}/subscription": {
       "post": {
-        "summary": "Change a school's subscription record with a reason: its status (a move the coded list allows), start and due dates, invoice sent and paid dates with references, and its commission partner — recorded, never collected; audited twice",
+        "summary": "Change a school's subscription record with a reason, against the standing as read (its status, start, renewal and paid day, as the form was drawn from them; a correction drawn before the record changed is refused): its status (a move the coded list allows), start and due dates, invoice sent and paid dates with references, and its commission partner — recorded, never collected; audited twice",
         "description": "The server operator.",
         "security": [
           {
@@ -43432,10 +43432,52 @@
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 500
+                  },
+                  "expect": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "allOf": [
+                          {
+                            "$ref": "#/properties/status"
+                          }
+                        ],
+                        "nullable": true
+                      },
+                      "startsAt": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                        "nullable": true
+                      },
+                      "dueAt": {
+                        "allOf": [
+                          {
+                            "$ref": "#/properties/expect/properties/startsAt"
+                          }
+                        ],
+                        "nullable": true
+                      },
+                      "paidAt": {
+                        "allOf": [
+                          {
+                            "$ref": "#/properties/expect/properties/startsAt"
+                          }
+                        ],
+                        "nullable": true
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "startsAt",
+                      "dueAt",
+                      "paidAt"
+                    ],
+                    "additionalProperties": false
                   }
                 },
                 "required": [
-                  "reason"
+                  "reason",
+                  "expect"
                 ],
                 "additionalProperties": false
               }

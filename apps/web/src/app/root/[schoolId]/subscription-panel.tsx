@@ -18,9 +18,13 @@ type PartnerOption = { id: string; name: string; percentTenths: number };
 /**
  * The subscription card: where it stands, the dates, the invoice and the
  * payment as recorded dates with references, the partner — and a reason,
- * which every change must carry. Only what changed is sent; the server
- * refuses a status the list does not allow after the current one, a due
- * date before the start, a blank reason, each with its own sentence.
+ * which every change must carry. Only what changed is sent, with the standing
+ * of the record the card was drawn from; the server refuses a status the list
+ * does not allow after the current one, a due date before the start, a blank
+ * reason, each with its own sentence, and a card drawn before the record
+ * changed. That refusal draws the page again, and this card with it (the page
+ * keys it on the record), so it is said in a pinned toast, which outlives the
+ * card: a correction is typed again against what now stands.
  */
 export function SubscriptionPanel({ schoolId, subscription, partnerId, partners }: { schoolId: string; subscription: OperatorSubscription; partnerId: string | null; partners: PartnerOption[] }) {
   const t = useT();
@@ -38,6 +42,8 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
     partnerId: partnerId ?? "",
   };
   const [form, setForm] = useState(initial);
+  // The standing of the record the card was drawn from, sent with every save.
+  const [standing] = useState(() => ({ status: subscription.status, startsAt: subscription.startsAt, dueAt: subscription.dueAt, paidAt: subscription.paidAt }));
   const [reason, setReason] = useState("");
   const set = (key: keyof typeof initial) => (value: string) => setForm((f) => ({ ...f, [key]: value }));
   const changed = (Object.keys(initial) as (keyof typeof initial)[]).filter((k) => form[k] !== initial[k]);
@@ -47,13 +53,18 @@ export function SubscriptionPanel({ schoolId, subscription, partnerId, partners 
   function save(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
-    const body: OperatorSubscriptionBody = { reason };
+    const body: OperatorSubscriptionBody = { reason, expect: standing };
     if (changed.includes("status")) body.status = form.status as SubscriptionStatus;
     for (const key of ["startsAt", "dueAt", "invoicedAt"] as const) if (changed.includes(key)) body[key] = form[key] || null;
     if (changed.includes("invoiceRef")) body.invoiceRef = form.invoiceRef || null;
     if (changed.includes("partnerId")) body.commissionPartnerId = form.partnerId || null;
     startTransition(async () => {
       const result = await setSubscriptionAction(schoolId, body);
+      if (!result.ok && result.stale) {
+        toast({ tone: "danger", title: t("root.didNotWork"), description: result.error, duration: null });
+        router.refresh();
+        return;
+      }
       if (!result.ok) {
         setError(result.error ?? t("root.didNotWork"));
         return;

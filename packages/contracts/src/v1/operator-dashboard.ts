@@ -3,6 +3,7 @@ import { institutionKindSchema } from "./modules";
 import { streamListSchema } from "./streams";
 import { schoolBoardSchema } from "./filings";
 import { collegeTierCodeSchema, freeMonthsSchema, partTermsSchema } from "./school-offer-parts";
+import { realDateKey } from "./calendar-keys";
 
 /**
  * operator-dashboard: the operator's one page for running fifty schools —
@@ -142,10 +143,30 @@ export const operatorCommissionSchema = z
 export type OperatorCommission = z.infer<typeof operatorCommissionSchema>;
 
 /**
+ * The standing a corrections form was drawn from: the status, the start, the
+ * renewal and the paid day, each as the record held it, null where it held
+ * none. A correction whose standing is not the record's is refused by name
+ * (root.subscriptionChangedMeanwhile), so a form drawn before a payment or
+ * another correction never writes over it. The invoice day, the references
+ * and the partner are not in it: a form sends only what it changed.
+ */
+export const operatorSubscriptionExpectSchema = z
+  .object({
+    status: subscriptionStatusSchema.nullable(),
+    startsAt: realDateKey.nullable(),
+    dueAt: realDateKey.nullable(),
+    paidAt: realDateKey.nullable(),
+  })
+  .strict();
+export type OperatorSubscriptionExpect = z.infer<typeof operatorSubscriptionExpectSchema>;
+
+/**
  * A change to the subscription: only the fields sent change, every change
  * carries a reason for the log, and a status must be a move the list above
  * allows (the lib refuses the rest with its own sentence). The partner is
- * here too — it is part of the same commercial record.
+ * here too — it is part of the same commercial record. Every change carries
+ * the standing its form was drawn from (`expect`), and a body without it is
+ * refused as invalid.
  */
 export const operatorSubscriptionBodySchema = z.object({
   status: subscriptionStatusSchema.optional(),
@@ -157,6 +178,7 @@ export const operatorSubscriptionBodySchema = z.object({
   paidRef: optionalText(120),
   commissionPartnerId: id.nullable().optional(),
   reason: z.string().trim().min(1).max(500),
+  expect: operatorSubscriptionExpectSchema,
 });
 export type OperatorSubscriptionBody = z.infer<typeof operatorSubscriptionBodySchema>;
 

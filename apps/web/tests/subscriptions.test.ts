@@ -79,6 +79,12 @@ const P = "http://localhost/api/v1/operator";
 const get = (path: string) => new Request(`${P}${path}`);
 const send = (method: "POST" | "PATCH", path: string, body: unknown) => new Request(`${P}${path}`, { method, headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 const params = <T extends Record<string, string>>(p: T) => ({ params: Promise.resolve(p) });
+/** A school's standing as a corrections form reads it, the corrections body's expect: the status, the start, the renewal and the paid day. */
+async function standingOf(id: string) {
+  const row = await db.school.findUniqueOrThrow({ where: { id }, select: { subscriptionStatus: true, subscriptionStartsAt: true, subscriptionDueAt: true, subscriptionPaidAt: true } });
+  const dayOf = (value: Date | null) => value?.toISOString().slice(0, 10) ?? null;
+  return { status: row.subscriptionStatus as "TRIAL" | "ACTIVE" | "DUE" | "SUSPENDED" | "ENDED" | null, startsAt: dayOf(row.subscriptionStartsAt), dueAt: dayOf(row.subscriptionDueAt), paidAt: dayOf(row.subscriptionPaidAt) };
+}
 
 async function signIn(who: "OPERATOR" | (typeof ROLES)[number] | "OUT") {
   __resetCookies();
@@ -187,13 +193,13 @@ describe("the record", () => {
   });
 
   it("the subscription moves as the list allows, refuses a due date before the start and a blank reason, and every change is two audit rows", async () => {
-    expect(await setSubscription(operator(), schoolId, { status: "DUE", reason: "x" })).toEqual({ ok: false, errorKey: "root.subscriptionMoveRefused" });
-    expect(await setSubscription(operator(), schoolId, { dueAt: day(-20), reason: "x" })).toEqual({ ok: false, errorKey: "root.subscriptionDatesOrder" });
-    expect(await setSubscription(operator(), schoolId, { status: "ACTIVE", reason: "  " })).toEqual({ ok: false, errorKey: "root.subscriptionReasonRequired" });
-    expect(await setSubscription(operator(), schoolId, { status: "ACTIVE", commissionPartnerId: "nope", reason: "x" })).toEqual({ ok: false, errorKey: "root.noSuchPartner" });
-    expect(await setSubscription(operator(), "nope", { status: "ACTIVE", reason: "x" })).toEqual({ ok: false, errorKey: "root.noSuchSchool" });
+    expect(await setSubscription(operator(), schoolId, { status: "DUE", reason: "x", expect: await standingOf(schoolId) })).toEqual({ ok: false, errorKey: "root.subscriptionMoveRefused" });
+    expect(await setSubscription(operator(), schoolId, { dueAt: day(-20), reason: "x", expect: await standingOf(schoolId) })).toEqual({ ok: false, errorKey: "root.subscriptionDatesOrder" });
+    expect(await setSubscription(operator(), schoolId, { status: "ACTIVE", reason: "  ", expect: await standingOf(schoolId) })).toEqual({ ok: false, errorKey: "root.subscriptionReasonRequired" });
+    expect(await setSubscription(operator(), schoolId, { status: "ACTIVE", commissionPartnerId: "nope", reason: "x", expect: await standingOf(schoolId) })).toEqual({ ok: false, errorKey: "root.noSuchPartner" });
+    expect(await setSubscription(operator(), "nope", { status: "ACTIVE", reason: "x", expect: { status: null, startsAt: null, dueAt: null, paidAt: null } })).toEqual({ ok: false, errorKey: "root.noSuchSchool" });
 
-    const moved = await setSubscription(operator(), schoolId, { status: "ACTIVE", dueAt: day(355), invoicedAt: day(0), invoiceRef: "INV-1", commissionPartnerId: partnerId, reason: "paid for the year" });
+    const moved = await setSubscription(operator(), schoolId, { status: "ACTIVE", dueAt: day(355), invoicedAt: day(0), invoiceRef: "INV-1", commissionPartnerId: partnerId, reason: "paid for the year", expect: await standingOf(schoolId) });
     expect(moved).toEqual({ ok: true });
     const row = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { subscriptionStatus: true, subscriptionDueAt: true, subscriptionInvoiceRef: true, commissionPartnerId: true } });
     expect(row).toMatchObject({ subscriptionStatus: "ACTIVE", subscriptionInvoiceRef: "INV-1", commissionPartnerId: partnerId });
@@ -206,7 +212,7 @@ describe("the record", () => {
     expect(JSON.parse(theirs!.meta as string)).toMatchObject({ status: "ACTIVE", reason: "paid for the year" });
     expect(JSON.parse(theirs!.meta as string)).not.toHaveProperty("invoiceRef");
     // Nothing changed: nothing written.
-    expect(await setSubscription(operator(), schoolId, { status: "ACTIVE", reason: "again" })).toEqual({ ok: true });
+    expect(await setSubscription(operator(), schoolId, { status: "ACTIVE", reason: "again", expect: await standingOf(schoolId) })).toEqual({ ok: true });
     expect(await db.auditLog.count({ where: { action: "superuser.school.subscription", targetId: schoolId } })).toBe(2);
   });
 
@@ -372,8 +378,11 @@ describe("the handlers", () => {
     const dash = operatorDashboardSchema.parse(await (await dashboardGet(get(`/dashboard?state=all&partnerId=${partnerId}`))).json());
     expect(dash.rows.some((r) => r.id === schoolId && r.commission?.partnerId === partnerId)).toBe(true);
     expect(dash.partners.some((p) => p.id === partnerId)).toBe(true);
-    expect((await subscriptionPost(send("POST", `/schools/${schoolId}/subscription`, { paidAt: day(0), paidRef: "UTR-1", reason: "seen on the statement" }), params({ schoolId }))).status).toBe(200);
-    expect((await subscriptionPost(send("POST", `/schools/${schoolId}/subscription`, { status: "TRIAL", reason: "no" }), params({ schoolId }))).status).toBe(422);
+    expect((await subscriptionPost(send("POST", `/schools/${schoolId}/subscription`, { paidAt: day(0), paidRef: "UTR-1", reason: "seen on the statement", expect: await standingOf(schoolId) }), params({ schoolId }))).status).toBe(200);
+    // A move the list refuses, sent with the standing as read: the refusal's sentence alone, not the contract's issues.
+    const moveRefused = await subscriptionPost(send("POST", `/schools/${schoolId}/subscription`, { status: "TRIAL", reason: "no", expect: await standingOf(schoolId) }), params({ schoolId }));
+    expect(moveRefused.status).toBe(422);
+    expect(((await moveRefused.json()) as { issues?: unknown }).issues).toBeUndefined();
     expect((await subscriptionPost(send("POST", `/schools/${schoolId}/subscription`, { status: "ACTIVE" }), params({ schoolId }))).status).toBe(422);
     expect(okSchema.parse(await (await contactPost(send("POST", `/schools/${schoolId}/contact`, { role: "Head clerk" }), params({ schoolId }))).json())).toEqual({ ok: true });
     const made = await partnersPost(send("POST", "/partners", { name: `ZZ Subs Partner ${STAMP} Route`, percentTenths: 10 }));

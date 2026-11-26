@@ -2199,7 +2199,10 @@ async function platformYear(y: number, idx: number) {
   }
   setClock(`${y}-06-01`, 10);
   for (const sid of schoolIdsMine) {
-    await step("OPERATOR", "subscriptions.setSubscription (renew)", () => L.subs.setSubscription(op.ctx, sid, { status: "ACTIVE", startsAt: `${y}-06-01`, dueAt: `${y + 1}-06-01`, invoicedAt: `${y}-05-20`, invoiceRef: `INV-${y}-${sid.slice(-4)}`, paidAt: `${y}-06-01`, paidRef: `UTR${y}${sid.slice(-4)}`, reason: "Annual renewal" } as never));
+    // The standing as the operator's form reads it, which a correction carries (a stale one is refused).
+    const row = await dbx.school.findUnique({ where: { id: sid }, select: { subscriptionStatus: true, subscriptionStartsAt: true, subscriptionDueAt: true, subscriptionPaidAt: true } });
+    const expect = { status: L.subs.isSubscriptionStatus(row?.subscriptionStatus) ? row.subscriptionStatus : null, startsAt: L.subs.dateToDay(row?.subscriptionStartsAt), dueAt: L.subs.dateToDay(row?.subscriptionDueAt), paidAt: L.subs.dateToDay(row?.subscriptionPaidAt) };
+    await step("OPERATOR", "subscriptions.setSubscription (renew)", () => L.subs.setSubscription(op.ctx, sid, { status: "ACTIVE", startsAt: `${y}-06-01`, dueAt: `${y + 1}-06-01`, invoicedAt: `${y}-05-20`, invoiceRef: `INV-${y}-${sid.slice(-4)}`, paidAt: `${y}-06-01`, paidRef: `UTR${y}${sid.slice(-4)}`, reason: "Annual renewal", expect } as never));
   }
 }
 

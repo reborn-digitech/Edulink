@@ -209,6 +209,11 @@ export function OperatorSchool() {
     enabled: Boolean(schoolId) && Boolean(query.data) && !query.data?.school.removedAt,
     queryFn: async () => operatorSchoolSupportSchema.parse(unwrap(await api().get(`/api/v1/operator/schools/${schoolId}/support`))),
   });
+  /**
+   * The corrections card's last refusal, held here, outside the card: the card is keyed on the record as read, so a record
+   * read again starts it afresh, and the sentence stays drawn with it until its next save or until this page is left.
+   */
+  const [subscriptionRefusal, setSubscriptionRefusal] = useState<{ schoolId: string; sentence: string } | null>(null);
   /** A write here changes this page, the console's list and counts, and the server log. */
   const changed = () => {
     void qc.invalidateQueries({ queryKey: ["operator", "school", schoolId] });
@@ -245,7 +250,18 @@ export function OperatorSchool() {
           <>
             <Verification schoolId={schoolId} verifiedAt={school.verifiedAt} onDone={changed} />
             <TermsCard schoolId={schoolId} name={school.name} onDone={changed} />
-            <Subscription schoolId={schoolId} d={d} onDone={changed} />
+            <Subscription
+              key={subscriptionKey(d)}
+              schoolId={schoolId}
+              d={d}
+              refusal={subscriptionRefusal?.schoolId === schoolId ? subscriptionRefusal.sentence : null}
+              onSaving={() => setSubscriptionRefusal(null)}
+              onRefused={(sentence) => {
+                setSubscriptionRefusal({ schoolId, sentence });
+                changed();
+              }}
+              onDone={changed}
+            />
             <Contact schoolId={schoolId} contact={d.contact} onDone={changed} />
             <Invites schoolId={schoolId} invites={d.invites} onChanged={changed} />
             {support.isError ? <Failed error={support.error} onRetry={() => void support.refetch()} /> : null}
@@ -731,9 +747,21 @@ function subscriptionFormFrom(d: OperatorSchoolDetail): SubscriptionForm {
   return { status: s.status ?? "", startsAt: s.startsAt ?? "", dueAt: s.dueAt ?? "", invoicedAt: s.invoicedAt ?? "", invoiceRef: s.invoiceRef ?? "", partnerId: d.commission?.partnerId ?? "" };
 }
 
-/** Only what changed, with the reason: the server keeps the rest and refuses a move the list does not allow. */
-export function subscriptionBody(initial: SubscriptionForm, form: SubscriptionForm, reason: string): OperatorSubscriptionBody {
-  const body: OperatorSubscriptionBody = { reason: reason.trim() };
+/** The record as read, as the web keys its card on it: a record read again that differs starts the card afresh. */
+function subscriptionKey(d: OperatorSchoolDetail): string {
+  const s = d.subscription;
+  return [s.status, s.startsAt, s.dueAt, s.invoicedAt, s.invoiceRef, s.paidAt, s.paidRef, d.commission?.partnerId].join("|");
+}
+
+/** The standing the card was drawn from, sent with every save: the record's own values, null where it held none. */
+function standingFrom(d: OperatorSchoolDetail): OperatorSubscriptionBody["expect"] {
+  const s = d.subscription;
+  return { status: s.status, startsAt: s.startsAt, dueAt: s.dueAt, paidAt: s.paidAt };
+}
+
+/** Only what changed, with the reason: the server keeps the rest and refuses a move the list does not allow. The standing goes beside it. */
+export function subscriptionBody(initial: SubscriptionForm, form: SubscriptionForm, reason: string): Omit<OperatorSubscriptionBody, "expect"> {
+  const body: Omit<OperatorSubscriptionBody, "expect"> = { reason: reason.trim() };
   if (form.status !== initial.status && form.status) body.status = form.status as SubscriptionStatus;
   for (const key of ["startsAt", "dueAt", "invoicedAt"] as const) if (form[key].trim() !== initial[key]) body[key] = form[key].trim() || null;
   if (form.invoiceRef.trim() !== initial.invoiceRef) body.invoiceRef = form.invoiceRef.trim() || null;
@@ -747,16 +775,21 @@ export function subscriptionBody(initial: SubscriptionForm, form: SubscriptionFo
  * school can read. The payment is shown, never typed: it is recorded with Record payment on the web and changed only by
  * recording one. While nothing is recorded as paid, Trial and Due are the renewal date's two readings, named with it (C1).
  * Dates are typed as YYYY-MM-DD; one that is not a day is refused before the send. Recorded, never collected.
+ *
+ * Keyed on the record as read (OperatorSchool), the card starts afresh whenever a record read again differs, dropping what
+ * was typed, as the web's keyed card does; its save is reckoned against the base it started from, captured once, and
+ * carries that base's standing, so the server refuses a card drawn before the record changed. On any failure of the save,
+ * a refusal or no answer, the school is read again: the door answers a refusal 422 with its sentence alone, so a stale one
+ * is not told apart. The sentence is held by the page (`refusal`), since the read may start this card afresh.
  */
-function Subscription({ schoolId, d, onDone }: { schoolId: string; d: OperatorSchoolDetail; onDone: () => void }) {
+function Subscription({ schoolId, d, refusal, onSaving, onRefused, onDone }: { schoolId: string; d: OperatorSchoolDetail; refusal: string | null; onSaving: () => void; onRefused: (sentence: string) => void; onDone: () => void }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
   const toast = useToast();
-  const initial = subscriptionFormFrom(d);
-  const [form, setForm] = useState<SubscriptionForm>(initial);
+  const [base] = useState(() => ({ form: subscriptionFormFrom(d), standing: standingFrom(d) }));
+  const [form, setForm] = useState<SubscriptionForm>(base.form);
   const [reason, setReason] = useState("");
-  const [error, setError] = useState<string | null>(null);
   const set = (key: keyof SubscriptionForm) => (value: string) => setForm((f) => ({ ...f, [key]: value }));
   const partners = useQuery({
     queryKey: ["operator", "partners"],
@@ -767,15 +800,16 @@ function Subscription({ schoolId, d, onDone }: { schoolId: string; d: OperatorSc
     onSuccess: () => {
       toast.show(t("root.subscriptionSaved"));
       setReason("");
-      setError(null);
       void qc.invalidateQueries({ queryKey: ["operator", "dashboard"] });
       void qc.invalidateQueries({ queryKey: ["operator", "partners"] });
       onDone();
     },
-    onError: (e) => setError(e.message),
+    onError: (e) => onRefused(e.message),
   });
-  const body = subscriptionBody(initial, form, reason);
-  const changed = Object.keys(body).length > 1;
+  const changes = subscriptionBody(base.form, form, reason);
+  // Save waits for a field changed: the reason alone is none, nor is the standing sent beside it.
+  const changed = Object.keys(changes).length > 1;
+  const body: OperatorSubscriptionBody = { ...changes, expect: base.standing };
   // A day not on the calendar ("2026-02-30") is refused here, before the save, as one not in the form is (E9).
   const realDay = (value: string) => DAY_KEY.test(value) && isRealDateKey(value);
   const badDate = (["startsAt", "dueAt", "invoicedAt"] as const).some((k) => form[k].trim() && !realDay(form[k].trim()));
@@ -809,9 +843,9 @@ function Subscription({ schoolId, d, onDone }: { schoolId: string; d: OperatorSc
       <Text variant="xs" tone="muted">
         {t("subs.correctionsExplainer")}
       </Text>
-      {error ? (
+      {refusal ? (
         <Text variant="sm" tone="danger" accessibilityRole="alert">
-          {error}
+          {refusal}
         </Text>
       ) : null}
       <Chips label={t("root.subscriptionStatus")} value={form.status} options={statusOptions} onChange={set("status")} />
@@ -842,7 +876,15 @@ function Subscription({ schoolId, d, onDone }: { schoolId: string; d: OperatorSc
         </Text>
       ) : null}
       <Field label={t("root.subscriptionReason")} hint={t("subs.reasonSchoolReads")} value={reason} onChangeText={setReason} maxLength={500} />
-      <Button label={t("root.subscriptionSave")} busy={save.isPending} disabled={!changed || !reason.trim() || badDate} onPress={() => save.mutate(body)} />
+      <Button
+        label={t("root.subscriptionSave")}
+        busy={save.isPending}
+        disabled={!changed || !reason.trim() || badDate}
+        onPress={() => {
+          onSaving();
+          save.mutate(body);
+        }}
+      />
     </Card>
   );
 }
