@@ -2327,7 +2327,26 @@ async function buildPremiumSchool(ctx: Ctx) {
     gradeHigh: "8",
     brandPrimary: "#7c3aed",
   });
-  await db.school.update({ where: { id: school.id }, data: { premiumStudents: true, premiumTeachers: true, subscriptionStatus: "ACTIVE" } });
+  // Both premium switches on, Active with no renewal, no paid day and no payment reference, and the terms not set (no own price
+  // or discount, no note), as e2e/premium-held-writes.spec.ts expects it; put back on every run, since a case that fails
+  // before its restore can leave them moved. A payment writes the status, the renewal, the paid day and the reference.
+  await db.school.update({
+    where: { id: school.id },
+    data: {
+      premiumStudents: true,
+      premiumTeachers: true,
+      subscriptionStatus: "ACTIVE",
+      subscriptionDueAt: null,
+      subscriptionPaidAt: null,
+      subscriptionPaidRef: null,
+      termsSetAt: null,
+      subscriptionPricePaise: null,
+      subscriptionDiscountBps: null,
+      premiumPricePaise: null,
+      premiumDiscountBps: null,
+      termsNote: null,
+    },
+  });
   const admin = await upsertUser(ctx, `zz.admin.p@${DOMAIN}`, "ZZ Leela Deshmukh");
   await upsertMembership(admin.id, school.id, "ADMIN", { title: "School administrator" });
   const principal = await upsertUser(ctx, `zz.principal.p@${DOMAIN}`, "ZZ Arvind Kale");
@@ -2353,6 +2372,9 @@ async function buildSouthbank(ctx: Ctx) {
     gradeHigh: "8",
     brandPrimary: "#b45309",
   });
+  // Premium off for students and teachers, as e2e/premium-held-writes.spec.ts expects it; put back on every run, since a case
+  // that fails before its restore can leave a switch on.
+  await db.school.update({ where: { id: school.id }, data: { premiumStudents: false, premiumTeachers: false } });
 
   const admin = await upsertUser(ctx, `zz.admin.b@${DOMAIN}`, "ZZ Gopal Shirke");
   await upsertMembership(admin.id, school.id, "ADMIN", { title: "School administrator" });

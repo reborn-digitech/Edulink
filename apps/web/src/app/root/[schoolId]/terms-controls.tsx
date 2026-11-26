@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { OWN_DISCOUNT_CHIPS_BPS, type PartTermsBody } from "@edulink/contracts";
 import { formatPaise, parsePercentBps, parseRupees } from "@edulink/i18n";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { paymentAction, termsAction } from "../subscriptions/actions";
 import { setSchoolModuleAction } from "../colleges/actions";
 import { Said, Sheet } from "../subscriptions/sheet";
-import { usePendingWrites } from "../subscriptions/pending-writes";
+import { drawnOn, usePendingWrites, whenAnswered, type DoorAnswer, type HeldSwitch } from "../subscriptions/pending-writes";
 import { PremiumSwitch } from "../subscriptions/premium-switch";
 
 /** The terms as read, sent back with every save (compare-and-set; the review's B-3: the note too). */
@@ -20,6 +20,9 @@ type Expect = { termsSetAt: string | null; premiumStudents: boolean; premiumTeac
 type Role = "students" | "teachers";
 type SheetName = "subscription" | "premium" | "payment" | null;
 type Chips = { mode: PartTermsBody["mode"]; discount: string; price: string };
+/** The subscription's status and renewal as a payment is reckoned from them (the payment body's fromStatus and fromDueAt). */
+type Standing = { fromStatus: string | null; fromDueAt: string | null };
+const standingOf = (payment: Standing): Standing => ({ fromStatus: payment.fromStatus, fromDueAt: payment.fromDueAt });
 
 /** What the card's controls need: the terms as read, our offer's figures for the sheets' chips and warnings, and the payment's starting values. */
 export type TermsControlsProps = {
@@ -67,7 +70,22 @@ const premOf = (expect: Expect) => ({ ...chipFields(expect.premium), students: e
  * (C5 point 3); Save is enabled once the sentence shown is for the values as they stand, and shows it in a toast with Undo.
  * A write held in a toast is never lost (C5 point 1, usePendingWrites); a save refused at its commit opens its sheet again
  * with what was typed (the review, C6); a refusal because the terms changed meanwhile refreshes the card, keeping what was
- * typed (C5 point 2). Every sentence is the server's (../subscriptions/actions.ts).
+ * typed (C5 point 2). Every sentence is the server's (../subscriptions/actions.ts), but two: a commit whose answer is lost
+ * (whenAnswered) is said as such, since whether it was saved is not known, and what it held is let go; and Record payment's
+ * line below. While any write is held, the switches, the sheets and Record payment wait; an Undo lets them go only where it
+ * took the write back, never once the write has gone.
+ *
+ * RECORD PAYMENT IS PINNED TO THE STANDING IT WAS OPENED ON. Its preview and its save send the status and the renewal as they
+ * stood when the sheet was opened (or when the page opened it itself), and nothing moves them: not a redraw, not a refusal of
+ * the save (its commit's or its early send's), not a lost answer, after each of which the sheet opens again with what was
+ * typed and on the same standing. Only closing the sheet, or opening it afresh, lets it go. For this sheet alone this replaces
+ * C5 point 2's redraw: after a stale refusal the card is still drawn again, but the sheet stays on the standing it was opened
+ * on, says so in a line of its own under the server's sentence, and its Save waits. The cost: after
+ * root.paymentChangedMeanwhile the operator closes Record payment and opens it again, and types the reference, a Paid on that
+ * is not today, an amount that is not the bill and the tick again, where the redrawn sheet used to take Save again. It is
+ * borne because that refusal can hide a payment already recorded (missedPayment in src/lib/subscriptions.ts judges "already
+ * recorded" with our own paid-on day), and a lost COMMIT acknowledgement still comes back from the server as a refusal: a
+ * sheet that followed the redraw would then take Save for a second year.
  */
 export function TermsControls(props: TermsControlsProps) {
   const t = useT();
@@ -78,13 +96,27 @@ export function TermsControls(props: TermsControlsProps) {
   const [pending, startTransition] = useTransition();
   const [sheet, setSheet] = useState<SheetName>(props.initialSheet);
   const [error, setError] = useState<string | null>(null);
+  // Whether Record payment's last answer, its preview's or its save's refusal, was stale: the sheet then says, in a line of
+  // its own, that it stays on the standing it was opened on. Set only at those two refusals. Cleared by opening a sheet and
+  // by closing one; by a preview that passes, or is refused without being stale; at the start of the payment's save, by its
+  // lost answer, its early refusal and its commit's refusal that is not stale; and on the switch's off sheet, by its opening,
+  // its Confirm's refusal, its close and its Cancel. saveTerms never meets it set: its sheet's opening cleared it.
+  const [stale, setStale] = useState(false);
   const [off, setOff] = useState<{ role: Role; sentence: string } | null>(null);
-  // A switch's toast still on the screen: the switches and sheets wait, so a second act cannot cross the first's commit.
+  // Any write held on the screen (a switch's, a sheet's save, a payment), held or in flight: the switches, the sheets and
+  // Record payment wait, so a second act cannot cross the first's commit.
   const [waiting, setWaiting] = useState(false);
-  // A switch shown moved: kept until the card is drawn again from the server (the review, C4), so it never flicks back.
-  const [moved, setMoved] = useState<{ role: Role; on: boolean; base: Expect } | null>(null);
+  // A switch shown moved while its write is held, and after its save until the card is drawn again (drawnOn; the review, C4).
+  const [moved, setMoved] = useState<({ role: Role } & HeldSwitch) | null>(null);
+  // The terms as last drawn, for an answer's handler, which runs in a closure from the press.
+  const drawn = useRef(props.expect);
+  useEffect(() => {
+    drawn.current = props.expect;
+  });
   const money = (paise: number) => formatPaise(paise, locale);
   const failed = (message: string) => toast({ tone: "danger", title: t("root.didNotWork"), description: message, duration: null });
+  /** A commit whose answer was lost: it may or may not have been saved, so said as such, pinned, naming the school. */
+  const notKnown = () => toast({ tone: "danger", title: t("subs.noClearAnswer", { school: props.school }), duration: null });
   /** A refusal: its sentence, and, where the terms changed meanwhile, the card drawn again from the server (C5 point 2). */
   const refused = (result: { error: string; stale?: boolean }, show: (message: string) => void = setError) => {
     show(result.error);
@@ -97,16 +129,28 @@ export function TermsControls(props: TermsControlsProps) {
   const [note, setNote] = useState(props.expect.note ?? "");
   const [reason, setReason] = useState("");
   const [pay, setPay] = useState(() => ({ paidOn: props.payment.today, ref: "", amount: rupees(props.payment.billPaise), full: false }));
+  // The standing Record payment was opened on (pinned): its preview and its save send it. Opening the sheet, or the page
+  // opening it itself, pins the card's standing as drawn then; only closing the sheet or opening it afresh lets it go.
+  const [payFrom, setPayFrom] = useState<Standing | null>(() => (props.initialSheet === "payment" ? standingOf(props.payment) : null));
 
   function open(name: SheetName) {
     setError(null);
+    setStale(false);
     setReason("");
     // Each opening starts from the terms as read: edits left in a sheet that was cancelled are not carried into the next.
     setSub(subOf(props.expect));
     setPrem(premOf(props.expect));
     setNote(props.expect.note ?? "");
     setPay({ paidOn: props.payment.today, ref: "", amount: rupees(props.payment.billPaise), full: false });
+    setPayFrom(name === "payment" ? standingOf(props.payment) : null);
     setSheet(name);
+  }
+  /** A sheet closed: Record payment's pinned standing goes with it, and so do its sentence, which a sheet opened again asks anew, and its stale line. */
+  function close() {
+    setSheet(null);
+    setPayFrom(null);
+    setSaid(null);
+    setStale(false);
   }
 
   /** The body of a sheet's save: what the sheet changed, the terms as read, the note, and the reason where asked. */
@@ -136,8 +180,9 @@ export function TermsControls(props: TermsControlsProps) {
 
   function payBody(preview: boolean, differs: boolean) {
     const amount = parseRupees(pay.amount);
-    if (amount === null || !pay.paidOn) return null;
-    return { fromStatus: props.payment.fromStatus, fromDueAt: props.payment.fromDueAt, paidOn: pay.paidOn, ref: pay.ref.trim() || null, amountPaise: amount, ...(differs && pay.full ? { acceptDifference: true } : {}), preview };
+    // The standing the sheet was opened on, never the card as drawn now.
+    if (amount === null || !pay.paidOn || !payFrom) return null;
+    return { fromStatus: payFrom.fromStatus, fromDueAt: payFrom.fromDueAt, paidOn: pay.paidOn, ref: pay.ref.trim() || null, amountPaise: amount, ...(differs && pay.full ? { acceptDifference: true } : {}), preview };
   }
 
   // The server's sentence for the open sheet's values as they stand (C5 point 3): asked for a moment after a change, kept with
@@ -155,8 +200,15 @@ export function TermsControls(props: TermsControlsProps) {
         if (!live) return;
         if (result.ok) {
           setError(null);
+          setStale(false);
           setSaid({ key: previewKey, sentence: result.sentence, bill: result.bill ?? null });
-        } else refused(result);
+        } else {
+          refused(result);
+          setStale(sheet === "payment" && Boolean(result.stale));
+          // A stale refusal: a sentence kept from an earlier preview was worded for a standing that no longer holds, so it
+          // goes, and putting the fields back to its values cannot arm Save with it.
+          if (result.stale) setSaid(null);
+        }
       });
     }, 300);
     return () => {
@@ -177,7 +229,8 @@ export function TermsControls(props: TermsControlsProps) {
     const movesTerms = Boolean(body.subscription) || Boolean((body.premium as { terms?: unknown } | undefined)?.terms);
     if (movesTerms && !reason.trim()) return setError(t("subs.reasonNeeded"));
     const draft = { sheet, sub, prem, note, reason };
-    setSheet(null);
+    close();
+    setWaiting(true);
     const reopen = () => {
       setSub(draft.sub);
       setPrem(draft.prem);
@@ -185,26 +238,42 @@ export function TermsControls(props: TermsControlsProps) {
       setReason(draft.reason);
       setSheet(draft.sheet);
     };
+    // No clear answer: said, the sheet open again with what was typed, the card drawn again; reckoned against the terms as
+    // they then stand, a save that did land leaves nothing to change.
+    const lost = () => {
+      notKnown();
+      reopen();
+      router.refresh();
+    };
     let toastId = "";
     const write = hold(
-      () => {
-        void termsAction(props.schoolId, body).then((saved) => {
-          if (!saved.ok) {
-            // Refused at its commit: the sheet opens again with what was typed (the review, C6).
-            failed(saved.error);
-            reopen();
-            refused(saved);
-            return;
-          }
-          router.refresh();
-        });
-      },
+      () =>
+        whenAnswered(
+          termsAction(props.schoolId, body),
+          (saved) => {
+            setWaiting(false);
+            if (!saved.ok) {
+              // Refused at its commit: the sheet opens again with what was typed (the review, C6).
+              failed(saved.error);
+              reopen();
+              refused(saved);
+              return;
+            }
+            router.refresh();
+          },
+          () => {
+            setWaiting(false);
+            lost();
+          },
+        ),
       // The page hidden or left before the toast goes: the same save to the terms door (C5 point 1).
       () => ({ url: `/api/v1/operator/schools/${props.schoolId}/terms`, method: "PUT", body }),
       {
         onSending: () => dismiss(toastId),
-        onSent: (ok) => {
-          if (!ok) {
+        onSent: (answer: DoorAnswer) => {
+          setWaiting(false);
+          if (answer === "unknown") return lost();
+          if (answer === "refused") {
             failed(t("subs.earlyNotSaved"));
             reopen();
           }
@@ -212,49 +281,99 @@ export function TermsControls(props: TermsControlsProps) {
         },
       },
     );
-    toastId = toast({ tone: "ok", title: sentence ?? t("subs.cardTitle"), onUndo: write.undo, onCommit: write.commit });
+    toastId = toast({
+      tone: "ok",
+      title: sentence ?? t("subs.cardTitle"),
+      // An Undo that came after the write had gone takes nothing back: the controls wait for its answer.
+      onUndo: () => {
+        if (write.undo()) setWaiting(false);
+      },
+      onCommit: write.commit,
+    });
   }
 
   function savePayment() {
     setError(null);
+    setStale(false);
     const body = payBody(false, differs);
     if (!body) return setError(t("subs.invalid"));
     if (differs && !pay.full) return setError(t("root.paymentDiffers"));
     const draft = pay;
+    // The standing the sheet was opened on, which the save carries: the sheet opens again on it after any refusal or lost
+    // answer. A save that was taken leaves the pin as it is; the next opening pins afresh, so a taken save never moves a sheet.
+    const sentFrom = { fromStatus: body.fromStatus, fromDueAt: body.fromDueAt };
     setSheet(null);
+    setSaid(null);
+    setWaiting(true);
+    /** The sheet open again with what was typed, on the standing it was opened on. */
+    const reopen = () => {
+      setPay(draft);
+      setPayFrom(sentFrom);
+      setSheet("payment");
+    };
+    // No clear answer: said, and the sheet open again as after a refusal.
+    const lost = () => {
+      notKnown();
+      setError(null);
+      setStale(false);
+      reopen();
+      router.refresh();
+    };
     let toastId = "";
     const write = hold(
-      () => {
-        void paymentAction(props.schoolId, body).then((saved) => {
-          if (!saved.ok) {
-            failed(saved.error);
-            setPay(draft);
-            setSheet("payment");
-            refused(saved);
-            return;
-          }
-          router.refresh();
-        });
-      },
+      () =>
+        whenAnswered(
+          paymentAction(props.schoolId, body),
+          (saved) => {
+            setWaiting(false);
+            if (!saved.ok) {
+              failed(saved.error);
+              reopen();
+              refused(saved);
+              setStale(Boolean(saved.stale));
+              return;
+            }
+            router.refresh();
+          },
+          () => {
+            setWaiting(false);
+            lost();
+          },
+        ),
       // The page hidden or left before the toast goes: the same payment to the payment door, which the operator has read
       // as done ("Status becomes Paid"; the walk of 22 November 2026).
       () => ({ url: `/api/v1/operator/schools/${props.schoolId}/payment`, method: "POST", body }),
       {
         onSending: () => dismiss(toastId),
-        onSent: (ok) => {
-          if (!ok) {
+        onSent: (answer: DoorAnswer) => {
+          setWaiting(false);
+          if (answer === "unknown") return lost();
+          if (answer === "refused") {
             failed(t("subs.earlyNotSaved"));
-            setPay(draft);
-            setSheet("payment");
+            setStale(false);
+            reopen();
           }
           router.refresh();
         },
       },
     );
-    toastId = toast({ tone: "ok", title: sentence ?? t("subs.recordPayment"), onUndo: write.undo, onCommit: write.commit });
+    toastId = toast({
+      tone: "ok",
+      title: sentence ?? t("subs.recordPayment"),
+      // An Undo that came after the payment had gone takes nothing back: Record payment waits for its answer.
+      onUndo: () => {
+        if (write.undo()) setWaiting(false);
+      },
+      onCommit: write.commit,
+    });
   }
 
-  const isOn = (role: Role) => (moved && moved.role === role && moved.base === props.expect ? moved.on : role === "students" ? props.expect.premiumStudents : props.expect.premiumTeachers);
+  const isOn = (role: Role) => {
+    const holds = role === "students" ? props.expect.premiumStudents : props.expect.premiumTeachers;
+    return drawnOn(moved && moved.role === role ? moved : undefined, props.expect, holds);
+  };
+  /** The switch's write answered as saved: drawn as set until the first redraw after this answer (drawnOn). */
+  const markSaved = (role: Role) => setMoved((m) => (m && m.role === role ? { ...m, savedOn: drawn.current } : m));
 
   function flip(role: Role) {
     const on = !isOn(role);
@@ -264,32 +383,43 @@ export function TermsControls(props: TermsControlsProps) {
       if (!preview.ok) return refused(preview, failed);
       if (!on) {
         setError(null);
+        setStale(false);
         setOff({ role, sentence: preview.sentence });
         return;
       }
-      const base = props.expect;
-      setMoved({ role, on: true, base });
+      setMoved({ role, on: true });
       setWaiting(true);
       let toastId = "";
       const write = hold(
-        () => {
-          void termsAction(props.schoolId, body).then((saved) => {
-            setWaiting(false);
-            if (!saved.ok) {
+        () =>
+          whenAnswered(
+            termsAction(props.schoolId, body),
+            (answer) => {
+              setWaiting(false);
+              if (!answer.ok) {
+                setMoved(null);
+                return refused(answer, failed);
+              }
+              markSaved(role);
+              router.refresh();
+            },
+            () => {
+              setWaiting(false);
               setMoved(null);
-              return refused(saved, failed);
-            }
-            router.refresh();
-          });
-        },
+              notKnown();
+              router.refresh();
+            },
+          ),
         () => ({ url: `/api/v1/operator/schools/${props.schoolId}/terms`, method: "PUT", body }),
         {
           onSending: () => dismiss(toastId),
-          onSent: (ok) => {
+          onSent: (answer: DoorAnswer) => {
             setWaiting(false);
-            if (!ok) {
+            if (answer === "taken") markSaved(role);
+            else {
               setMoved(null);
-              failed(t("subs.earlyNotSaved"));
+              if (answer === "refused") failed(t("subs.earlyNotSaved"));
+              else notKnown();
             }
             router.refresh();
           },
@@ -298,10 +428,12 @@ export function TermsControls(props: TermsControlsProps) {
       toastId = toast({
         tone: "ok",
         title: preview.sentence,
+        // An Undo that came after the write had gone takes nothing back: the switch stays drawn and the controls wait.
         onUndo: () => {
-          write.undo();
-          setMoved(null);
-          setWaiting(false);
+          if (write.undo()) {
+            setMoved(null);
+            setWaiting(false);
+          }
         },
         onCommit: write.commit,
       });
@@ -312,7 +444,11 @@ export function TermsControls(props: TermsControlsProps) {
     if (!off) return;
     startTransition(async () => {
       const saved = await termsAction(props.schoolId, { premium: { [off.role]: false }, expect: props.expect });
-      if (!saved.ok) return refused(saved);
+      if (!saved.ok) {
+        // The off sheet's refusal is never drawn with Record payment's line.
+        setStale(false);
+        return refused(saved);
+      }
       setOff(null);
       toast({ tone: "ok", title: saved.sentence });
       router.refresh();
@@ -404,7 +540,7 @@ export function TermsControls(props: TermsControlsProps) {
   // No Review press (C5 point 3): Save, once the sentence shown is for the values as they stand.
   const footer = (save: () => void, saveLabel: string) => (
     <>
-      <Button variant="ghost" onClick={() => setSheet(null)}>
+      <Button variant="ghost" onClick={close}>
         {t("common.cancel")}
       </Button>
       <Button loading={pending} disabled={!sentence || waiting} onClick={save}>
@@ -415,6 +551,18 @@ export function TermsControls(props: TermsControlsProps) {
   const alert = error && (
     <p role="alert" className="text-sm font-medium text-danger">
       {error}
+    </p>
+  );
+  // Record payment's alert: the server's sentence, and under it, while the sheet's last answer was stale, a line of its own
+  // saying that the sheet stays on the standing it was opened on.
+  const paymentAlert = error && (
+    <p role="alert" className="text-sm font-medium text-danger">
+      {error}
+      {stale && (
+        <span className="mt-1 block" data-testid="payment-pinned">
+          {t("subs.paymentSheetPinned")}
+        </span>
+      )}
     </p>
   );
 
@@ -430,7 +578,8 @@ export function TermsControls(props: TermsControlsProps) {
         <Button type="button" size="sm" variant="ghost" disabled={waiting} onClick={() => open("premium")} data-testid="change-premium">
           {t("subs.partPremium")} · {t("subs.change")}
         </Button>
-        <Button type="button" size="sm" variant="secondary" disabled={waiting} onClick={() => open("payment")} data-testid="record-payment">
+        {/* Record payment also waits while a switch's preview is out, so its sheet and the switch's off sheet are never open together. */}
+        <Button type="button" size="sm" variant="secondary" disabled={waiting || pending} onClick={() => open("payment")} data-testid="record-payment">
           {t("subs.recordPayment")}
         </Button>
       </div>
@@ -443,14 +592,14 @@ export function TermsControls(props: TermsControlsProps) {
         </p>
       )}
 
-      <Sheet open={sheet === "subscription"} title={t("subs.sheetSubscription", { school: props.school })} onClose={() => setSheet(null)} testId="subscription-sheet" footer={footer(saveTerms, t("common.save"))}>
+      <Sheet open={sheet === "subscription"} title={t("subs.sheetSubscription", { school: props.school })} onClose={close} testId="subscription-sheet" footer={footer(saveTerms, t("common.save"))}>
         {partChips(sub, (patch) => setSub((s) => ({ ...s, ...patch })), props.ours.subscriptionPaise, props.ours.subscriptionDiscountBps, props.college)}
         {fields}
         <Said sentence={sentence} />
         {alert}
       </Sheet>
 
-      <Sheet open={sheet === "premium"} title={t("subs.sheetPremium", { school: props.school })} onClose={() => setSheet(null)} testId="premium-sheet" footer={footer(saveTerms, t("common.save"))}>
+      <Sheet open={sheet === "premium"} title={t("subs.sheetPremium", { school: props.school })} onClose={close} testId="premium-sheet" footer={footer(saveTerms, t("common.save"))}>
         {props.premiumLines.map((line) => (
           <p key={line} className="text-xs text-fg-muted">
             {line}
@@ -472,7 +621,7 @@ export function TermsControls(props: TermsControlsProps) {
         {alert}
       </Sheet>
 
-      <Sheet open={sheet === "payment"} title={t("subs.paymentTitle", { school: props.school })} onClose={() => setSheet(null)} testId="payment-sheet" footer={footer(savePayment, t("subs.recordPayment"))}>
+      <Sheet open={sheet === "payment"} title={t("subs.paymentTitle", { school: props.school })} onClose={close} testId="payment-sheet" footer={footer(savePayment, t("subs.recordPayment"))}>
         <DateField label={t("subs.paidOn")} value={pay.paidOn} onChange={(e) => setPay((p) => ({ ...p, paidOn: e.target.value }))} />
         <TextField label={t("subs.reference")} value={pay.ref} maxLength={120} onChange={(e) => setPay((p) => ({ ...p, ref: e.target.value }))} />
         <TextField
@@ -490,7 +639,7 @@ export function TermsControls(props: TermsControlsProps) {
           </label>
         )}
         <Said sentence={sentence} />
-        {alert}
+        {paymentAlert}
       </Sheet>
 
       <Sheet
@@ -499,6 +648,7 @@ export function TermsControls(props: TermsControlsProps) {
         onClose={() => {
           setOff(null);
           setError(null);
+          setStale(false);
         }}
         testId="card-premium-off-sheet"
         footer={
@@ -508,6 +658,7 @@ export function TermsControls(props: TermsControlsProps) {
               onClick={() => {
                 setOff(null);
                 setError(null);
+                setStale(false);
               }}
             >
               {t("common.cancel")}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { CheckSquareIcon, XIcon } from "@phosphor-icons/react";
 import type { BulkAction, PartTermsBody } from "@edulink/contracts";
@@ -13,7 +13,7 @@ import { useRouter } from "@/lib/navigation";
 import { useT } from "@/lib/i18n";
 import { bulkAction, premiumSwitchAction } from "./actions";
 import { Said, Sheet } from "./sheet";
-import { usePendingWrites } from "./pending-writes";
+import { barWaits, drawnOn, usePendingWrites, whenAnswered, type DoorAnswer, type HeldSwitch } from "./pending-writes";
 import { PremiumSwitch } from "./premium-switch";
 
 /** The terms a row showed, sent back with a switch so a stale row is refused (compare-and-set). */
@@ -36,7 +36,6 @@ export type SchoolRow = {
 };
 
 type Role = "students" | "teachers";
-type Moved = { on: boolean; rows: SchoolRow[] };
 
 /**
  * THE SCHOOLS TAB'S TABLE (§2.1; the coordinating session's C5). A premium switch, drawn as a switch, turned on shows the
@@ -45,7 +44,10 @@ type Moved = { on: boolean; rows: SchoolRow[] };
  * change over them all (the sticky bar): premium on for students or teachers (a toast with Undo, the chosen rows turning as
  * one switch would), off (a sheet), or our prices for both parts (a sheet naming each school's terms before); the confirm
  * writes the schools its preview named. Pause is never in the bar. A refusal because the terms changed meanwhile refreshes
- * the list (C5 point 2).
+ * the list (C5 point 2). A commit whose answer is lost (whenAnswered) is said as such, naming the schools, since whether it
+ * was saved is not known, and what it held is let go. While a chosen school has a write held, the bar and a bulk sheet's
+ * Confirm wait (barWaits), and a switch whose write is held stays drawn as set (drawnOn); an Undo lets them go only where it
+ * took the write back, never once the write has gone.
  */
 export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
   const t = useT();
@@ -54,8 +56,13 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
   const hold = usePendingWrites();
   const [pending, startTransition] = useTransition();
   const [chosen, setChosen] = useState<Set<string>>(new Set());
-  // A switch shown moved: kept until the list is drawn again from the server (the review, C4), so it never flicks back.
-  const [moved, setMoved] = useState<Record<string, Moved>>({});
+  // A switch shown moved while its write is held, and after its save until the list is drawn again (drawnOn; the review, C4).
+  const [moved, setMoved] = useState<Record<string, HeldSwitch>>({});
+  // The rows as last drawn, for an answer's handler, which runs in a closure from the press.
+  const drawn = useRef(rows);
+  useEffect(() => {
+    drawn.current = rows;
+  });
   const [off, setOff] = useState<{ row: SchoolRow; role: Role; sentence: string } | null>(null);
   const [bulk, setBulk] = useState<{ action: "OFF" | "OUR_PRICES"; role: Role; sentence: string | null; reason: string; schoolIds: string[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -72,20 +79,29 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
     });
 
   const key = (id: string, role: Role) => `${id}:${role}`;
-  const isOn = (row: SchoolRow, role: Role) => {
-    const m = moved[key(row.id, role)];
-    return m && m.rows === rows ? m.on : row[role];
-  };
+  const isOn = (row: SchoolRow, role: Role) => drawnOn(moved[key(row.id, role)], rows, row[role]);
   const show = (ids: string[], role: Role, on: boolean | null) =>
     setMoved((prev) => {
       const next = { ...prev };
       for (const id of ids) {
         if (on === null) delete next[key(id, role)];
-        else next[key(id, role)] = { on, rows };
+        else next[key(id, role)] = { on };
+      }
+      return next;
+    });
+  /** The switches' write answered as saved: drawn as set until the first redraw after this answer (drawnOn). */
+  const markSaved = (ids: string[], role: Role) =>
+    setMoved((prev) => {
+      const next = { ...prev };
+      for (const id of ids) {
+        const held = next[key(id, role)];
+        if (held) next[key(id, role)] = { ...held, savedOn: drawn.current };
       }
       return next;
     });
   const failed = (message: string) => toast({ tone: "danger", title: t("root.didNotWork"), description: message, duration: null });
+  /** A commit whose answer was lost: it may or may not have been saved, so said as such, pinned, naming the schools. */
+  const notKnown = (names: string[]) => toast({ tone: "danger", title: t("subs.noClearAnswer", { school: names.join(", ") }), duration: null });
   /** A refusal: its sentence, and, where the terms changed meanwhile, the list drawn again from the server (C5 point 2). */
   const refused = (result: { error: string; stale?: boolean }, say: (message: string) => void = failed) => {
     say(result.error);
@@ -105,25 +121,39 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
       show([row.id], role, true);
       wait([row.id], true);
       let toastId = "";
+      const lost = () => {
+        show([row.id], role, null);
+        notKnown([row.name]);
+        router.refresh();
+      };
       const write = hold(
-        () => {
-          void premiumSwitchAction(row.id, { role, on: true, seen: row.seen, preview: false }).then((saved) => {
-            wait([row.id], false);
-            if (!saved.ok) {
-              show([row.id], role, null);
-              return refused(saved);
-            }
-            router.refresh();
-          });
-        },
+        () =>
+          whenAnswered(
+            premiumSwitchAction(row.id, { role, on: true, seen: row.seen, preview: false }),
+            (saved) => {
+              wait([row.id], false);
+              if (!saved.ok) {
+                show([row.id], role, null);
+                return refused(saved);
+              }
+              markSaved([row.id], role);
+              router.refresh();
+            },
+            () => {
+              wait([row.id], false);
+              lost();
+            },
+          ),
         // The page hidden or left before the toast goes: the same switch to the terms door, with the terms the preview was
         // reckoned against, the note included (a row shows none), as the action itself would send them.
         () => ({ url: `/api/v1/operator/schools/${row.id}/terms`, method: "PUT", body: { premium: { [role]: true }, expect: preview.expect } }),
         {
           onSending: () => dismiss(toastId),
-          onSent: (ok) => {
+          onSent: (answer: DoorAnswer) => {
             wait([row.id], false);
-            if (!ok) {
+            if (answer === "unknown") return lost();
+            if (answer === "taken") markSaved([row.id], role);
+            else {
               show([row.id], role, null);
               failed(t("subs.earlyNotSaved"));
             }
@@ -134,10 +164,12 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
       toastId = toast({
         tone: "ok",
         title: preview.sentence,
+        // An Undo that came after the write had gone takes nothing back: the switch stays drawn and the school waits.
         onUndo: () => {
-          write.undo();
-          show([row.id], role, null);
-          wait([row.id], false);
+          if (write.undo()) {
+            show([row.id], role, null);
+            wait([row.id], false);
+          }
         },
         onCommit: write.commit,
       });
@@ -157,6 +189,8 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
   }
 
   const ids = rows.filter((r) => chosen.has(r.id)).map((r) => r.id);
+  // A chosen school with a write held: the bar waits, so a second act cannot cross the held one's commit.
+  const barHeld = barWaits(ids, waiting);
   const toggle = (id: string) =>
     setChosen((prev) => {
       const next = new Set(prev);
@@ -178,28 +212,45 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
       }
       // The chosen rows turn while the Undo is up, as one switch would (the review, C7).
       const turning = schoolIds.filter((id) => !rows.find((r) => r.id === id)?.college || role === "students");
+      const names = schoolIds.map((id) => rows.find((r) => r.id === id)?.name ?? id);
       show(turning, role, true);
       wait(schoolIds, true);
+      // No clear answer: said, naming the chosen schools, which stay chosen, as after a refusal.
+      const lost = () => {
+        show(turning, role, null);
+        notKnown(names);
+        router.refresh();
+      };
       let toastId = "";
       const write = hold(
-        () => {
-          void bulkAction({ schoolIds, action }).then((saved) => {
-            wait(schoolIds, false);
-            if (!saved.ok) {
-              show(turning, role, null);
-              return refused(saved);
-            }
-            setChosen(new Set());
-            router.refresh();
-          });
-        },
+        () =>
+          whenAnswered(
+            bulkAction({ schoolIds, action }),
+            (saved) => {
+              wait(schoolIds, false);
+              if (!saved.ok) {
+                show(turning, role, null);
+                return refused(saved);
+              }
+              setChosen(new Set());
+              markSaved(turning, role);
+              router.refresh();
+            },
+            () => {
+              wait(schoolIds, false);
+              lost();
+            },
+          ),
         () => ({ url: "/api/v1/operator/subscriptions/bulk", method: "POST", body: { schoolIds, action } }),
         {
           onSending: () => dismiss(toastId),
-          onSent: (ok) => {
+          onSent: (answer: DoorAnswer) => {
             wait(schoolIds, false);
-            if (ok) setChosen(new Set());
-            else {
+            if (answer === "unknown") return lost();
+            if (answer === "taken") {
+              setChosen(new Set());
+              markSaved(turning, role);
+            } else {
               show(turning, role, null);
               failed(t("subs.earlyNotSaved"));
             }
@@ -210,10 +261,12 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
       toastId = toast({
         tone: "ok",
         title: preview.sentence,
+        // An Undo that came after the write had gone takes nothing back: the rows stay drawn and the schools wait.
         onUndo: () => {
-          write.undo();
-          show(turning, role, null);
-          wait(schoolIds, false);
+          if (write.undo()) {
+            show(turning, role, null);
+            wait(schoolIds, false);
+          }
         },
         onCommit: write.commit,
       });
@@ -368,16 +421,16 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
             {ids.length === 1 ? t("subs.bulkChosenOne") : t("subs.bulkChosenMany", { count: ids.length })}
           </span>
           <div className="ml-auto flex flex-wrap gap-2">
-            <Button size="sm" variant="secondary" disabled={pending} onClick={() => bulkOn("students")}>
+            <Button size="sm" variant="secondary" disabled={pending || barHeld} onClick={() => bulkOn("students")}>
               {t("subs.bulkStudentsOn")}
             </Button>
-            <Button size="sm" variant="secondary" disabled={pending} onClick={() => bulkOn("teachers")}>
+            <Button size="sm" variant="secondary" disabled={pending || barHeld} onClick={() => bulkOn("teachers")}>
               {t("subs.bulkTeachersOn")}
             </Button>
-            <Button size="sm" variant="secondary" disabled={pending} onClick={() => previewBulk("OFF", "students")}>
+            <Button size="sm" variant="secondary" disabled={pending || barHeld} onClick={() => previewBulk("OFF", "students")}>
               {t("subs.bulkPremiumOff")}
             </Button>
-            <Button size="sm" variant="secondary" disabled={pending} onClick={() => previewBulk("OUR_PRICES", "students")}>
+            <Button size="sm" variant="secondary" disabled={pending || barHeld} onClick={() => previewBulk("OUR_PRICES", "students")}>
               {t("subs.bulkOurPrices")}
             </Button>
             <Button size="sm" variant="ghost" onClick={() => setChosen(new Set())} icon={<XIcon weight="bold" />}>
@@ -421,7 +474,7 @@ export function SchoolsTable({ rows }: { rows: SchoolRow[] }) {
             <Button variant="ghost" onClick={cancel}>
               {t("common.cancel")}
             </Button>
-            <Button loading={pending} disabled={!bulk?.sentence} onClick={confirmBulk}>
+            <Button loading={pending} disabled={!bulk?.sentence || barWaits(bulk?.schoolIds ?? [], waiting)} onClick={confirmBulk}>
               {t("common.confirm")}
             </Button>
           </>

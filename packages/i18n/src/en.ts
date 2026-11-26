@@ -21308,6 +21308,8 @@ export const en = {
     needEitherPlan: "the Student or the Teacher plan asked for",
     sOwedFrom: "Owed from {date}.",
     earlyNotSaved: "This was sent as the page was hidden or left, and was not saved. Look at it again, then save.",
+    noClearAnswer: "No clear answer came back from the server for {school}: this change may or may not have been saved. Look at the school again before repeating it.",
+    paymentSheetPinned: "This sheet keeps the subscription as it stood when the sheet was opened, so it cannot be saved against what stands now. Look at the school's subscription first: if this payment is already there, nothing more is needed. If it is not, close this sheet and open Record payment again; what was typed is not kept.",
     phoneSwitchOnAsk: "Switch premium on for {who} at {school}?",
     phoneSwitchOffAsk: "Switch premium off for {who} at {school}?",
     premiumSwitchSaved: "Premium saved",

@@ -131,7 +131,11 @@ export async function premiumSwitchAction(schoolId: string, input: unknown): Pro
 
 /**
  * Record payment (POST …/payment). The preview is asked with the difference accepted, so it can name an amount unlike the bill
- * (the library refuses one without the tick); the save carries the tick only as the operator gave it.
+ * (the library refuses one without the tick); the save carries the tick only as the operator gave it. The school's day is read
+ * before the payment is written, so that after the write nothing runs that can throw but the revalidation and the sentence:
+ * a payment that landed is not answered as a refusal by a read after it. A COMMIT whose acknowledgement is lost after the
+ * database committed is still caught and answered as a refusal; the card's Record payment, pinned to the standing it was
+ * opened on, is what covers that (src/app/root/[schoolId]/terms-controls.tsx).
  */
 export async function paymentAction(schoolId: string, input: unknown): Promise<Said> {
   const f = await words();
@@ -142,10 +146,10 @@ export async function paymentAction(schoolId: string, input: unknown): Promise<S
     const body = parsed.data.preview ? { ...parsed.data, acceptDifference: true } : parsed.data;
     const view = await readSchoolTerms(session, schoolId);
     if ("ok" in view) return refusal(f, view.errorKey);
+    const today = (await schoolDay(session, schoolId)) ?? parsed.data.paidOn;
     const answer = await recordPayment(session, schoolId, body);
     if ("ok" in answer) return refusal(f, answer.errorKey);
     if (!parsed.data.preview) revalidate(schoolId);
-    const today = (await schoolDay(session, schoolId)) ?? parsed.data.paidOn;
     return { ok: true, changed: !parsed.data.preview, bill: answer.billPaise, sentence: paymentSentence(f, { answer, view, paidOn: parsed.data.paidOn, today, amountPaise: parsed.data.amountPaise }) };
   } catch (error) {
     return failure(f, error);

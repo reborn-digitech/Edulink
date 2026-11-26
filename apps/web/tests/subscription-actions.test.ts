@@ -21,6 +21,11 @@ import { bulkAction, offerAction, paymentAction, premiumSwitchAction, termsActio
 
 // A suite has no request for Next to revalidate in; the house stub (as tests/api-v1-office.test.ts).
 vi.mock("next/cache", () => ({ revalidatePath: () => undefined, revalidateTag: () => undefined }));
+// The library as it is, but for the school's day, which is the real one unless a case makes it fail once.
+vi.mock("@/lib/school-terms", async (importOriginal) => {
+  const real = await importOriginal<typeof import("@/lib/school-terms")>();
+  return { ...real, schoolDay: vi.fn(real.schoolDay) };
+});
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -237,6 +242,30 @@ describe("record payment", () => {
     expect(await paymentAction(school.Pay!, { ...body, amountPaise: bill - 100_000, acceptDifference: true })).toMatchObject({ ok: true, changed: true });
     expect(await lastTermsChange((await getSession()) as never, school.Pay!)).toMatchObject({ what: "PAYMENT", byUserId: operator });
     expect(dayOf((await db.school.findUniqueOrThrow({ where: { id: school.Pay! }, select: { subscriptionDueAt: true } })).subscriptionDueAt!)).toBe(dayOf(next));
+  });
+
+  it("a save whose read of the school's day fails is answered as not done and writes nothing: the day is read before the payment is written", async () => {
+    await as(operator);
+    await makeSchool("PayDay", { termsSetAt: new Date(Date.now() - 5 * DAY), subscriptionStatus: "ACTIVE" }, 100);
+    const id = school.PayDay!;
+    const view = await readSchoolTerms((await getSession()) as never, id);
+    if ("ok" in view) throw new Error("no terms");
+    const columns = { subscriptionStatus: true, subscriptionDueAt: true, subscriptionPaidAt: true, subscriptionPaidRef: true } as const;
+    const before = await db.school.findUniqueOrThrow({ where: { id }, select: columns });
+    const since = new Date();
+    const calls = vi.mocked(schoolDay).mock.calls.length;
+    vi.mocked(schoolDay).mockRejectedValueOnce(new Error("ZZ the school's day could not be read"));
+    try {
+      const answer = await paymentAction(id, { fromStatus: "ACTIVE", fromDueAt: dayOf(RENEWAL), paidOn: dayOf(new Date()), amountPaise: view.bill!.totalPaise });
+      // The failure queued above was met by the action's own read of the day, not left for a later caller.
+      expect(vi.mocked(schoolDay).mock.calls.length).toBe(calls + 1);
+      expect(answer).toEqual({ ok: false, error: translator("en")("common.tryAgainMoment") });
+      expect(await db.school.findUniqueOrThrow({ where: { id }, select: columns })).toEqual(before);
+      expect(await db.auditLog.count({ where: { action: "superuser.school.subscription", targetId: id, createdAt: { gte: since } } })).toBe(0);
+    } finally {
+      // The real reading again, and nothing left queued whatever happened above (vitest 3: vi.fn's own implementation).
+      vi.mocked(schoolDay).mockReset();
+    }
   });
 });
 
